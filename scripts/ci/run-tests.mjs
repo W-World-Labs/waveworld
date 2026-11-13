@@ -34,7 +34,6 @@ if (forwarded.length > 0) {
     perfTest,
     '--pool=forks',
     '--maxWorkers=1',
-    '--minWorkers=1',
     '--no-file-parallelism',
   ])
 }

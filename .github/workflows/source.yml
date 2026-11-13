@@ -80,7 +80,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Existing numerical and browser/Host contract smoke
         run: |
-          npm run test:smoke
+          npm test
           npm run test:module-ui
           npm run test:agent:browser
       - name: Existing Host auth, isolation and scientific-review regression gates
