@@ -1,0 +1,86 @@
+# Source operator example only: no live site/upstream values or activation claim.
+# Select an operator-owned edge configuration and independently verify it before use.
+# Topology:
+#   /lab,/lab/  → Host L2 gateway (iframe on/off + health degrade; exact paths only)
+#   /lab-cfd    → Atlas SPA (file_server below) — same public Lab base as Host /lab
+#   /app/lab*   → WaveWorld Lab (apps/lab, basePath=/app/lab)
+# Lab bake: NEXT_PUBLIC_LAB_URL ≡ VITE_LAB_URL ≡ https://<host>/app/lab
+# Prefer Host NEXT_PUBLIC_LAB_URL unset. #49 open → no full-usability claim.
+# X-Frame-Options SAMEORIGIN allows same-origin iframe of /app/lab from /lab and /lab-cfd.
+#
+# Client-IP trust: {http.request.remote.host} resolves the real client IP
+# once the global `servers > trusted_proxies` lists the Cloudflare ranges
+# (configure trusted proxies explicitly at the operator-owned edge). Direct origin hits then get their TCP
+# peer IP here — forged CF-Connecting-IP/XFF cannot spoof rate-limit keys.
+(cf_proxy_headers) {
+	header_up Host {host}
+	header_up X-Real-IP {http.request.remote.host}
+	header_up X-Forwarded-For {http.request.remote.host}
+	header_up X-Forwarded-Proto https
+	header_up CF-Connecting-IP {http.request.remote.host}
+}
+
+https://waveworld.example.invalid {
+	tls internal
+	encode zstd gzip
+
+	header {
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	}
+
+	handle /api/* {
+		reverse_proxy 127.0.0.1:3001 {
+			import cf_proxy_headers
+		}
+	}
+
+	handle_path /ww-next/* {
+		reverse_proxy 127.0.0.1:3001 {
+			import cf_proxy_headers
+		}
+	}
+
+	handle /_next/* {
+		reverse_proxy 127.0.0.1:3001 {
+			import cf_proxy_headers
+		}
+	}
+
+	# Exact /lab and /jobs only — never /lab* (Atlas owns /lab-cfd).
+	@host_gateway path /lab /lab/ /jobs /jobs/
+	handle @host_gateway {
+		reverse_proxy 127.0.0.1:3001 {
+			import cf_proxy_headers
+		}
+	}
+
+	handle /app/lab* {
+		reverse_proxy 127.0.0.1:3000 {
+			import cf_proxy_headers
+			# Set replaces the upstream value. Do not also delete
+			# Cache-Control in this block: Caddy applies Delete after Set,
+			# so that pair erases the intended no-store header.
+			header_down Cache-Control "no-store"
+		}
+	}
+
+	# Hashed assets must 404 when missing. SPA fallback here lets Cloudflare
+	# cache index.html under the .js URL and break the next hashed entry.
+	handle /assets/* {
+		header Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://radar.myfastools.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://radar.myfastools.com; worker-src 'self' blob:; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+		root * /var/www/waveworld
+		header Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+
+	# Atlas SPA: /lab-cfd + other product routes
+	handle {
+		header Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://radar.myfastools.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://radar.myfastools.com; worker-src 'self' blob:; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+		root * /var/www/waveworld
+		try_files {path} /index.html
+		file_server
+	}
+}

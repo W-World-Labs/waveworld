@@ -1,0 +1,38 @@
+/**
+ * English family-role chips for application profiles.
+ * Keys = Chinese `familyRole` source strings (never overwrite Chinese data).
+ */
+export const APPLICATION_FAMILY_ROLE_EN: Readonly<Record<string, string>> = {
+  '太阳辐射源 · 直接光伏': 'Solar radiation source · direct PV',
+  '热辐射源 · 热光伏': 'Thermal radiation source · TPV',
+  '正过程 · 温差发电': 'Forward process · thermoelectric generation',
+  '逆过程 · 电驱动热泵': 'Reverse process · electrically driven heat pump',
+  '电→光 · 发光': 'Electricity → light · emission',
+  '通信链路 · 色散/误码预算': 'Comms link · dispersion / BER budget',
+  '太阳源 · 光热塞贝克': 'Solar source · photothermal Seebeck',
+  '核衰变源 · 同位素热电': 'Nuclear decay source · radioisotope thermoelectric',
+  '常规水电站 · 水头驱动': 'Conventional hydro · head-driven',
+  '开环磁流体 · 热/等离子体源': 'Open-loop MHD · thermal / plasma source',
+  '成像 · 光致热弹声': 'Imaging · photothermoacoustic',
+  '柴油压燃 · 化学源热机发电': 'Diesel compression ignition · chemical heat-engine generation',
+  '压力延迟渗透': 'Pressure-retarded osmosis',
+  '真空/等离子热离子 · 热源': 'Vacuum / plasma thermionic · heat source',
+  '有机工质 · 余热/中低温热源': 'Organic working fluid · waste / mid-low grade heat',
+  'α 源 · 直接核→电': 'α source · direct nuclear → electricity',
+  '氨水混合工质 · 卡林纳余热': 'Ammonia–water mix · Kalina waste heat',
+  '霍尔效应通道 · 电→喷气动能': 'Hall-effect thruster channel · electricity → jet KE',
+  '色散光谱 · 光栅级次选择': 'Dispersive spectroscopy · grating-order selection',
+  '发射–传播–接收 · 驻波比/匹配': 'TX–propagate–RX · VSWR / matching',
+  '数值孔径耦合 · 衰减链路预算': 'NA coupling · attenuation link budget',
+  '干涉滤波 · 法布里–珀罗自由光谱程': 'Interference filter · Fabry–Pérot FSR',
+  '惯性光学 · 萨格纳克环': 'Inertial optics · Sagnac loop',
+  '反馈伺服 · 比例积分微分整定': 'Feedback servo · PID tuning',
+  '磁约束托卡马克 · 劳森叙事': 'Magnetic confinement tokamak · Lawson narrative',
+  '超导射频腔 · 高品质因数储能': 'SRF cavity · high-Q energy storage',
+  '脉冲/拉比驱动 · 自旋传感': 'Pulsed / Rabi drive · spin sensing',
+  '量子比特 · 腔量子电动力学读出': 'Qubit · circuit QED readout',
+  '单基地雷达 · 方程/链路预算': 'Monostatic radar · equation / link budget',
+  '拉姆齐干涉 · 原子频标': 'Ramsey interference · atomic frequency standard',
+  '强制/自然对流冷却 · 努塞尔–雷诺–普朗特': 'Forced / natural convection cooling · Nu–Re–Pr',
+  '超导量子干涉磁强计 · 磁通量子传感': 'SQUID magnetometer · flux-quantum sensing',
+}

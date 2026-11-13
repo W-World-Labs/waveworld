@@ -1,0 +1,35 @@
+/**
+ * English names for conversion-method candidate materials.
+ * Chinese `materials[].name` remains source of truth.
+ */
+export const CONVERSION_MATERIAL_NAME_EN: Readonly<Record<string, string>> = {
+  PVDF聚合物: 'PVDF polymer',
+  PZT陶瓷: 'PZT ceramic',
+  ZnO纳米线: 'ZnO nanowires',
+  偶氮苯聚合物: 'Azobenzene polymer',
+  固态电解质: 'Solid electrolyte',
+  多孔碳: 'Porous carbon',
+  尼龙: 'Nylon',
+  形状记忆合金: 'Shape-memory alloy',
+  方钴矿: 'Skutterudite',
+  晶体硅: 'Crystalline silicon',
+  有机热电材料: 'Organic thermoelectric materials',
+  氮化硼: 'Boron nitride',
+  液晶弹性体: 'Liquid-crystal elastomer',
+  特氟龙: 'Teflon (PTFE)',
+  石墨烯: 'Graphene',
+  砷化镓: 'GaAs',
+  硅负极: 'Silicon anode',
+  碲化铋: 'Bismuth telluride',
+  碳纳米管: 'Carbon nanotubes',
+  等离激元纳米颗粒: 'Plasmonic nanoparticles',
+  聚二甲基硅氧烷: 'PDMS',
+  质子交换膜: 'Proton-exchange membrane',
+  选择性发射器: 'Selective emitter',
+  选择性吸收涂层: 'Selective absorber coating',
+  钙钛矿: 'Perovskite',
+  铂催化剂: 'Platinum catalyst',
+  铅碲化合物: 'Lead telluride compounds',
+  锂离子材料: 'Li-ion materials',
+  锗: 'Germanium',
+}

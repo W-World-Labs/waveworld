@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "@webgpu/types"],
+    "incremental": false
+  },
+  "include": ["*.mts", "../next-env.d.ts"],
+  "exclude": []
+}

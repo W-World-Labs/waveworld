@@ -1,0 +1,942 @@
+{
+  "energy_types": {
+    "electromagnetic": {
+      "name": "电磁能",
+      "description": "光、辐射、电磁波",
+      "icon": "⚡",
+      "color": "#9c27b0",
+      "subtypes": {
+        "solar": {
+          "name": "太阳能",
+          "description": "太阳辐射能量",
+          "examples": [
+            "光伏发电",
+            "光热发电",
+            "光合作用"
+          ]
+        },
+        "radio": {
+          "name": "无线电波",
+          "description": "射频能量",
+          "examples": [
+            "无线通信",
+            "广播",
+            "雷达"
+          ]
+        },
+        "microwave": {
+          "name": "微波",
+          "description": "微波辐射",
+          "examples": [
+            "微波通信",
+            "加热",
+            "遥感"
+          ]
+        },
+        "infrared": {
+          "name": "红外线",
+          "description": "热辐射",
+          "examples": [
+            "热成像",
+            "遥控器",
+            "红外加热"
+          ]
+        },
+        "visible": {
+          "name": "可见光",
+          "description": "人眼可见的光",
+          "examples": [
+            "照明",
+            "显示",
+            "光通信"
+          ]
+        },
+        "ultraviolet": {
+          "name": "紫外线",
+          "description": "UV辐射",
+          "examples": [
+            "杀菌消毒",
+            "UV固化",
+            "医疗治疗"
+          ]
+        }
+      }
+    },
+    "mechanical": {
+      "name": "机械能",
+      "description": "运动、振动、压力",
+      "icon": "⚙️",
+      "color": "#ff9800",
+      "subtypes": {
+        "vibration": {
+          "name": "振动能",
+          "description": "周期性机械运动",
+          "examples": [
+            "压电发电",
+            "振动能量收集",
+            "声波能量"
+          ]
+        },
+        "pressure": {
+          "name": "压力能",
+          "description": "流体或固体的压力",
+          "examples": [
+            "液压发电",
+            "压力传感器",
+            "压缩空气储能"
+          ]
+        },
+        "rotation": {
+          "name": "旋转能",
+          "description": "旋转运动能量",
+          "examples": [
+            "风力发电",
+            "水力发电",
+            "飞轮储能"
+          ]
+        },
+        "flow": {
+          "name": "流体流动",
+          "description": "流体运动能量",
+          "examples": [
+            "水流发电",
+            "风能",
+            "管道能量收集"
+          ]
+        },
+        "impact": {
+          "name": "冲击力",
+          "description": "瞬间冲击能量",
+          "examples": [
+            "压电冲击发电",
+            "减震能量收集",
+            "脚步发电"
+          ]
+        }
+      }
+    },
+    "thermal": {
+      "name": "热能",
+      "description": "温度、热量、温差",
+      "icon": "🔥",
+      "color": "#f44336",
+      "subtypes": {
+        "heat": {
+          "name": "热能",
+          "description": "物质热运动能量",
+          "examples": [
+            "热电发电",
+            "热机",
+            "供热系统"
+          ]
+        },
+        "temperature_difference": {
+          "name": "温差",
+          "description": "温度梯度能量",
+          "examples": [
+            "热电发电",
+            "热泵",
+            "温差发电"
+          ]
+        },
+        "waste_heat": {
+          "name": "废热",
+          "description": "工业余热",
+          "examples": [
+            "废热回收",
+            "热电发电",
+            "余热利用"
+          ]
+        },
+        "geothermal": {
+          "name": "地热",
+          "description": "地球内部热能",
+          "examples": [
+            "地热发电",
+            "地热供暖",
+            "温泉利用"
+          ]
+        }
+      }
+    },
+    "chemical": {
+      "name": "化学能",
+      "description": "燃料、电池、氢能",
+      "icon": "⚗️",
+      "color": "#4caf50",
+      "subtypes": {
+        "fuel": {
+          "name": "燃料",
+          "description": "可燃烧物质",
+          "examples": [
+            "化石燃料",
+            "生物质燃料",
+            "火箭燃料"
+          ]
+        },
+        "battery": {
+          "name": "电池",
+          "description": "电化学储能",
+          "examples": [
+            "锂离子电池",
+            "燃料电池",
+            "液流电池"
+          ]
+        },
+        "hydrogen": {
+          "name": "氢气",
+          "description": "氢燃料能量",
+          "examples": [
+            "氢燃料电池",
+            "氢内燃机",
+            "储氢材料"
+          ]
+        },
+        "chemical_reaction": {
+          "name": "化学反应",
+          "description": "化学反应释放能量",
+          "examples": [
+            "氧化反应",
+            "放热反应",
+            "化学合成"
+          ]
+        }
+      }
+    },
+    "electrical": {
+      "name": "电能",
+      "description": "电流、电压、电荷",
+      "icon": "⚡",
+      "color": "#03dac6",
+      "subtypes": {
+        "electricity": {
+          "name": "电能",
+          "description": "通用电能",
+          "examples": [
+            "电网供电",
+            "电子设备",
+            "电机驱动"
+          ]
+        },
+        "low_voltage": {
+          "name": "低压电",
+          "description": "安全电压",
+          "examples": [
+            "电子设备",
+            "LED照明",
+            "传感器供电"
+          ]
+        },
+        "high_voltage": {
+          "name": "高压电",
+          "description": "输配电电压",
+          "examples": [
+            "电力传输",
+            "工业用电",
+            "牵引供电"
+          ]
+        },
+        "dc": {
+          "name": "直流电",
+          "description": "方向不变的电流",
+          "examples": [
+            "电池供电",
+            "太阳能直流",
+            "电子电路"
+          ]
+        },
+        "ac": {
+          "name": "交流电",
+          "description": "方向周期变化的电流",
+          "examples": [
+            "电网供电",
+            "家用电器",
+            "工业电机"
+          ]
+        }
+      }
+    },
+    "acoustic": {
+      "name": "声能",
+      "description": "声波、振动、噪声",
+      "icon": "🔊",
+      "color": "#2196f3",
+      "subtypes": {
+        "sound": {
+          "name": "声波能",
+          "description": "可听声波能量",
+          "examples": [
+            "声学发电",
+            "噪声能量收集",
+            "声波传感"
+          ]
+        },
+        "ultrasound": {
+          "name": "超声波",
+          "description": "高频声波",
+          "examples": [
+            "超声发电",
+            "医疗超声",
+            "超声清洗"
+          ]
+        },
+        "music": {
+          "name": "音乐",
+          "description": "有组织的声音",
+          "examples": [
+            "音乐发电",
+            "声能转换",
+            "音频分析"
+          ]
+        },
+        "noise_control": {
+          "name": "噪声控制",
+          "description": "噪声能量利用",
+          "examples": [
+            "噪声发电",
+            "声学吸收",
+            "减振降噪"
+          ]
+        }
+      }
+    }
+  },
+  "conversion_methods": {
+    "electromagnetic_to_mechanical": [
+      {
+        "id": "photoelectric_mechanical",
+        "name": "光电机械转换",
+        "description": "利用光效应产生机械运动",
+        "principle": "光子激发材料产生形变或相变",
+        "efficiency_range": "5-15%",
+        "status": "emerging",
+        "materials": [
+          {
+            "name": "液晶弹性体",
+            "cost_range": "$200-800/kg",
+            "efficiency": "10-20%",
+            "maturity": "emerging"
+          },
+          {
+            "name": "偶氮苯聚合物",
+            "cost_range": "$500-1500/kg",
+            "efficiency": "8-15%",
+            "maturity": "research"
+          },
+          {
+            "name": "形状记忆合金",
+            "cost_range": "$100-400/kg",
+            "efficiency": "5-12%",
+            "maturity": "mature"
+          }
+        ],
+        "applications": [
+          "微型机器人",
+          "人工肌肉",
+          "智能光学系统"
+        ],
+        "parameters": [
+          {
+            "name": "光照强度",
+            "unit": "mW/cm²",
+            "range": "10-1000"
+          },
+          {
+            "name": "响应时间",
+            "unit": "ms",
+            "range": "10-5000"
+          },
+          {
+            "name": "形变量",
+            "unit": "%",
+            "range": "1-50"
+          }
+        ],
+        "references": [
+          "T. Ikeda et al., 'Photomechanical Materials', Advanced Materials, 2021",
+          "L. Yang et al., 'Light-Driven Actuators', Nature Communications, 2023"
+        ],
+        "nameEn": "Photomechanical conversion",
+        "descriptionEn": "Convert light into mechanical motion",
+        "principleEn": "Photons drive deformation or phase change in materials",
+        "applicationsEn": [
+          "Micro-robots",
+          "Artificial muscle",
+          "Smart optical systems"
+        ]
+      }
+    ],
+    "electromagnetic_to_electrical": [
+      {
+        "id": "photovoltaic_effect",
+        "name": "光伏效应",
+        "description": "光能直接转换为电能",
+        "principle": "光子激发半导体产生电子-空穴对",
+        "efficiency_range": "15-47%",
+        "status": "mature",
+        "materials": [
+          {
+            "name": "晶体硅",
+            "cost_range": "$10-30/kg",
+            "efficiency": "15-22%",
+            "maturity": "mature"
+          },
+          {
+            "name": "钙钛矿",
+            "cost_range": "$50-200/kg",
+            "efficiency": "25-47%",
+            "maturity": "emerging"
+          },
+          {
+            "name": "砷化镓",
+            "cost_range": "$500-2000/kg",
+            "efficiency": "25-30%",
+            "maturity": "mature"
+          }
+        ],
+        "applications": [
+          "太阳能发电",
+          "空间电源",
+          "便携式充电"
+        ],
+        "parameters": [
+          {
+            "name": "光谱响应",
+            "unit": "nm",
+            "range": "300-1200"
+          },
+          {
+            "name": "工作温度",
+            "unit": "°C",
+            "range": "-40-85"
+          },
+          {
+            "name": "寿命",
+            "unit": "年",
+            "range": "20-30"
+          }
+        ],
+        "references": [
+          "M. A. Green et al., 'Solar cell efficiency tables', Progress in Photovoltaics, 2023",
+          "K. Zhu et al., 'Perovskite Solar Cells', Nature Reviews Materials, 2022"
+        ],
+        "nameEn": "Photovoltaic effect",
+        "descriptionEn": "Direct conversion of light to electricity",
+        "principleEn": "Photons generate electron–hole pairs in a semiconductor",
+        "applicationsEn": [
+          "Solar power",
+          "Space power",
+          "Portable charging"
+        ]
+      }
+    ],
+    "electromagnetic_to_thermal": [
+      {
+        "id": "photothermal_conversion",
+        "name": "光热转换",
+        "description": "吸收光能转换为热能",
+        "principle": "材料吸收光子通过非辐射弛豫转化为热能",
+        "efficiency_range": "60-95%",
+        "status": "mature",
+        "materials": [
+          {
+            "name": "碳纳米管",
+            "cost_range": "$100-500/kg",
+            "efficiency": "85-95%",
+            "maturity": "mature"
+          },
+          {
+            "name": "等离激元纳米颗粒",
+            "cost_range": "$1000-5000/kg",
+            "efficiency": "80-92%",
+            "maturity": "emerging"
+          },
+          {
+            "name": "选择性吸收涂层",
+            "cost_range": "$50-200/m²",
+            "efficiency": "90-97%",
+            "maturity": "mature"
+          }
+        ],
+        "applications": [
+          "太阳能热水器",
+          "太阳能发电",
+          "海水淡化",
+          "工业加热"
+        ],
+        "parameters": [
+          {
+            "name": "吸收率",
+            "unit": "%",
+            "range": "85-98"
+          },
+          {
+            "name": "工作温度",
+            "unit": "°C",
+            "range": "80-400"
+          },
+          {
+            "name": "热稳定性",
+            "unit": "小时",
+            "range": "10000-50000"
+          }
+        ],
+        "references": [
+          "C. B. Smith et al., 'Solar Thermal Materials', Energy & Environmental Science, 2022",
+          "R. Chen et al., 'High-Temperature Solar Absorbers', Nature Energy, 2023"
+        ],
+        "nameEn": "Photothermal conversion",
+        "descriptionEn": "Absorb light and convert to heat",
+        "principleEn": "Non-radiative relaxation of absorbed photons into thermal energy",
+        "applicationsEn": [
+          "Solar water heating",
+          "Solar power",
+          "Desalination",
+          "Industrial heating"
+        ]
+      }
+    ],
+    "mechanical_to_electrical": [
+      {
+        "id": "piezoelectric_effect",
+        "name": "压电效应",
+        "description": "机械应力产生电信号",
+        "principle": "晶体结构中正负离子在应力作用下相对位移产生极化电荷",
+        "efficiency_range": "5-25%",
+        "status": "mature",
+        "materials": [
+          {
+            "name": "PZT陶瓷",
+            "cost_range": "$50-200/kg",
+            "efficiency": "60-90%",
+            "maturity": "mature"
+          },
+          {
+            "name": "PVDF聚合物",
+            "cost_range": "$100-300/kg",
+            "efficiency": "20-40%",
+            "maturity": "mature"
+          },
+          {
+            "name": "ZnO纳米线",
+            "cost_range": "$500-1500/kg",
+            "efficiency": "40-70%",
+            "maturity": "emerging"
+          },
+          {
+            "name": "氮化硼",
+            "cost_range": "$1000-5000/kg",
+            "efficiency": "50-80%",
+            "maturity": "research"
+          }
+        ],
+        "applications": [
+          "传感器",
+          "能量收集",
+          "超声换能器",
+          "点火器"
+        ],
+        "parameters": [
+          {
+            "name": "压电系数d33",
+            "unit": "pC/N",
+            "range": "20-700"
+          },
+          {
+            "name": "机电耦合系数",
+            "unit": "%",
+            "range": "40-80"
+          },
+          {
+            "name": "工作频率",
+            "unit": "kHz",
+            "range": "1-10000"
+          }
+        ],
+        "references": [
+          "J. F. Scott, 'Piezoelectric Materials', Nature Materials, 2023",
+          "S. Xu et al., 'Nanogenerators', Science, 2022"
+        ],
+        "nameEn": "Piezoelectric effect",
+        "descriptionEn": "Mechanical stress produces an electrical signal",
+        "principleEn": "Stress displaces ions in a crystal lattice, creating polarized charge",
+        "applicationsEn": [
+          "Sensors",
+          "Energy harvesting",
+          "Ultrasound transducers",
+          "Igniters"
+        ]
+      },
+      {
+        "id": "triboelectric_nanogenerator",
+        "name": "摩擦纳米发电机",
+        "description": "接触摩擦起电效应",
+        "principle": "不同材料接触时电子转移，分离时产生电势差",
+        "efficiency_range": "10-85%",
+        "status": "emerging",
+        "materials": [
+          {
+            "name": "聚二甲基硅氧烷",
+            "cost_range": "$10-50/kg",
+            "efficiency": "60-85%",
+            "maturity": "emerging"
+          },
+          {
+            "name": "尼龙",
+            "cost_range": "$5-20/kg",
+            "efficiency": "40-70%",
+            "maturity": "mature"
+          },
+          {
+            "name": "特氟龙",
+            "cost_range": "$20-80/kg",
+            "efficiency": "30-60%",
+            "maturity": "mature"
+          },
+          {
+            "name": "石墨烯",
+            "cost_range": "$200-1000/kg",
+            "efficiency": "70-90%",
+            "maturity": "emerging"
+          }
+        ],
+        "applications": [
+          "可穿戴设备",
+          "蓝色能源",
+          "自供电传感器"
+        ],
+        "parameters": [
+          {
+            "name": "表面电荷密度",
+            "unit": "μC/m²",
+            "range": "100-500"
+          },
+          {
+            "name": "输出电压",
+            "unit": "V",
+            "range": "10-1000"
+          },
+          {
+            "name": "功率密度",
+            "unit": "W/m²",
+            "range": "1-100"
+          }
+        ],
+        "references": [
+          "Z. L. Wang et al., 'Triboelectric Nanogenerators', Nature Energy, 2023",
+          "C. Wu et al., 'TENG Applications', Advanced Materials, 2022"
+        ],
+        "nameEn": "Triboelectric nanogenerator",
+        "descriptionEn": "Contact electrification from friction",
+        "principleEn": "Electron transfer on contact of dissimilar materials; separation creates a potential difference",
+        "applicationsEn": [
+          "Self-powered sensors",
+          "Wearable harvesting",
+          "IoT nodes"
+        ]
+      }
+    ],
+    "thermal_to_electrical": [
+      {
+        "id": "thermoelectric_effect",
+        "name": "热电效应",
+        "description": "温差产生电压",
+        "principle": "Seebeck效应，载流子在温度梯度作用下扩散",
+        "efficiency_range": "3-15%",
+        "status": "mature",
+        "materials": [
+          {
+            "name": "碲化铋",
+            "cost_range": "$200-800/kg",
+            "efficiency": "5-8%",
+            "maturity": "mature"
+          },
+          {
+            "name": "铅碲化合物",
+            "cost_range": "$150-600/kg",
+            "efficiency": "6-12%",
+            "maturity": "mature"
+          },
+          {
+            "name": "方钴矿",
+            "cost_range": "$300-1000/kg",
+            "efficiency": "8-15%",
+            "maturity": "emerging"
+          },
+          {
+            "name": "有机热电材料",
+            "cost_range": "$50-200/kg",
+            "efficiency": "3-8%",
+            "maturity": "research"
+          }
+        ],
+        "applications": [
+          "废热回收",
+          "太空电源",
+          "便携式制冷"
+        ],
+        "parameters": [
+          {
+            "name": "Seebeck系数",
+            "unit": "μV/K",
+            "range": "100-300"
+          },
+          {
+            "name": "热导率",
+            "unit": "W/mK",
+            "range": "0.5-2"
+          },
+          {
+            "name": "工作温差",
+            "unit": "K",
+            "range": "50-500"
+          }
+        ],
+        "references": [
+          "G. J. Snyder et al., 'Thermoelectric Materials', Nature Materials, 2023",
+          "Y. Kim et al., 'Advanced Thermoelectrics', Energy & Environmental Science, 2022"
+        ],
+        "nameEn": "Thermoelectric effect",
+        "descriptionEn": "Heat flow converted to electricity (Seebeck)",
+        "principleEn": "Temperature gradients drive carrier diffusion into an emf",
+        "applicationsEn": [
+          "Waste-heat recovery",
+          "RTG",
+          "Temperature sensors"
+        ]
+      },
+      {
+        "id": "thermophotovoltaic",
+        "name": "热光伏效应",
+        "description": "热辐射转换为电能",
+        "principle": "高温物体辐射光子，光伏电池转换",
+        "efficiency_range": "15-40%",
+        "status": "emerging",
+        "materials": [
+          {
+            "name": "锗",
+            "cost_range": "$1000-3000/kg",
+            "efficiency": "20-30%",
+            "maturity": "mature"
+          },
+          {
+            "name": "砷化镓",
+            "cost_range": "$2000-5000/kg",
+            "efficiency": "25-40%",
+            "maturity": "mature"
+          },
+          {
+            "name": "选择性发射器",
+            "cost_range": "$500-2000/m²",
+            "efficiency": "30-40%",
+            "maturity": "emerging"
+          }
+        ],
+        "applications": [
+          "太阳能热发电",
+          "工业废热利用",
+          "深空电源"
+        ],
+        "parameters": [
+          {
+            "name": "工作温度",
+            "unit": "°C",
+            "range": "800-2000"
+          },
+          {
+            "name": "辐射波长",
+            "unit": "μm",
+            "range": "0.5-3"
+          },
+          {
+            "name": "转换效率",
+            "unit": "%",
+            "range": "15-40"
+          }
+        ],
+        "references": [
+          "L. M. Fraas et al., 'Thermophotovoltaics', IEEE Transactions, 2023",
+          "M. Bermel et al., 'TPV Systems', Nature Energy, 2022"
+        ],
+        "nameEn": "Thermophotovoltaics",
+        "descriptionEn": "Thermal radiation converted by a photovoltaic cell",
+        "principleEn": "A hot emitter radiates near-IR/visible photons absorbed by a PV cell",
+        "applicationsEn": [
+          "Portable generators",
+          "Waste-heat recovery",
+          "Space power"
+        ]
+      }
+    ],
+    "chemical_to_electrical": [
+      {
+        "id": "fuel_cell",
+        "name": "燃料电池",
+        "description": "化学反应直接产生电能",
+        "principle": "电化学反应直接转换化学能为电能",
+        "efficiency_range": "40-70%",
+        "status": "mature",
+        "materials": [
+          {
+            "name": "铂催化剂",
+            "cost_range": "$30000-50000/kg",
+            "efficiency": "50-70%",
+            "maturity": "mature"
+          },
+          {
+            "name": "质子交换膜",
+            "cost_range": "$500-2000/m²",
+            "efficiency": "60-80%",
+            "maturity": "mature"
+          },
+          {
+            "name": "多孔碳",
+            "cost_range": "$50-200/kg",
+            "efficiency": "40-60%",
+            "maturity": "mature"
+          }
+        ],
+        "applications": [
+          "电动汽车",
+          "便携式电源",
+          "备用电源"
+        ],
+        "parameters": [
+          {
+            "name": "功率密度",
+            "unit": "W/kg",
+            "range": "100-1000"
+          },
+          {
+            "name": "工作温度",
+            "unit": "°C",
+            "range": "60-800"
+          },
+          {
+            "name": "寿命",
+            "unit": "小时",
+            "range": "5000-50000"
+          }
+        ],
+        "references": [
+          "J. B. Goodenough et al., 'Fuel Cell Technology', Nature Energy, 2023",
+          "M. Z. Jacobson et al., 'Hydrogen Economy', Energy Policy, 2022"
+        ],
+        "nameEn": "Fuel cell",
+        "descriptionEn": "Chemical fuel oxidized to electricity",
+        "principleEn": "Electrochemical oxidation at electrodes transfers electrons through an external circuit",
+        "applicationsEn": [
+          "Vehicles",
+          "Stationary power",
+          "Backup power"
+        ]
+      },
+      {
+        "id": "battery_storage",
+        "name": "电池储能",
+        "description": "电化学储能和释能",
+        "principle": "氧化还原反应储存和释放电荷",
+        "efficiency_range": "70-95%",
+        "status": "mature",
+        "materials": [
+          {
+            "name": "锂离子材料",
+            "cost_range": "$50-150/kg",
+            "efficiency": "85-95%",
+            "maturity": "mature"
+          },
+          {
+            "name": "固态电解质",
+            "cost_range": "$200-800/kg",
+            "efficiency": "90-98%",
+            "maturity": "emerging"
+          },
+          {
+            "name": "硅负极",
+            "cost_range": "$100-400/kg",
+            "efficiency": "88-96%",
+            "maturity": "emerging"
+          }
+        ],
+        "applications": [
+          "消费电子",
+          "电网储能",
+          "电动工具"
+        ],
+        "parameters": [
+          {
+            "name": "能量密度",
+            "unit": "Wh/kg",
+            "range": "100-300"
+          },
+          {
+            "name": "循环寿命",
+            "unit": "次",
+            "range": "500-10000"
+          },
+          {
+            "name": "充电速率",
+            "unit": "C",
+            "range": "0.5-10"
+          }
+        ],
+        "references": [
+          "J. B. Goodenough, 'Battery Technology', Chemical Reviews, 2023",
+          "M. Armand et al., 'Lithium Batteries', Nature Materials, 2022"
+        ],
+        "nameEn": "Battery energy storage",
+        "descriptionEn": "Store chemical energy and deliver electricity on demand",
+        "principleEn": "Reversible redox stores charge in electrodes; discharge drives external current",
+        "applicationsEn": [
+          "Grid storage",
+          "EVs",
+          "Portable electronics"
+        ]
+      }
+    ]
+  },
+  "conversion_chains": {
+    "mechanical_to_electromagnetic": [
+      [
+        "mechanical",
+        "electrical",
+        "electromagnetic"
+      ],
+      [
+        "mechanical",
+        "thermal",
+        "electromagnetic"
+      ]
+    ],
+    "thermal_to_mechanical": [
+      [
+        "thermal",
+        "electrical",
+        "mechanical"
+      ],
+      [
+        "thermal",
+        "chemical",
+        "mechanical"
+      ]
+    ],
+    "acoustic_to_electrical": [
+      [
+        "acoustic",
+        "mechanical",
+        "electrical"
+      ],
+      [
+        "acoustic",
+        "thermal",
+        "electrical"
+      ]
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2024-10-15",
+    "description": "能源转换方法和材料数据库",
+    "source": "波谱宇宙智能能源转换推荐系统"
+  }
+}

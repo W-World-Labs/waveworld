@@ -1,0 +1,4 @@
+*BOUNDARY
+FIX, 1, 3, 0.
+*CLOAD
+2, 2, -100.

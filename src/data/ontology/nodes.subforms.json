@@ -1,0 +1,1329 @@
+[
+  {
+    "id": "mechanical-kinetic",
+    "parent": "mechanical",
+    "name": "平动动能",
+    "symbol": "E_k",
+    "desc": "物体因其质心平动运动而具有的能量，E_k = ½mv²。是机械能最基本的形态，存在于一切运动的宏观物体中（车辆、流体、抛射体）。与转动动能并列构成总动能。",
+    "quantities": [
+      {
+        "symbol": "E_k",
+        "unit": "J",
+        "min": 0.001,
+        "max": 1000000000,
+        "log": true,
+        "note": "从微小物体到高速列车的典型范围；1500kg轿车@20m/s≈3×10^5 J"
+      },
+      {
+        "symbol": "v",
+        "unit": "m/s",
+        "min": 0.1,
+        "max": 300,
+        "note": "宏观运动物体典型速度"
+      },
+      {
+        "symbol": "m",
+        "unit": "kg",
+        "min": 0.001,
+        "max": 1000000,
+        "log": true
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "E_k=½mv² 为经典力学基本定义，非相对论极限下普遍成立。"
+    },
+    "refs": [
+      "https://openstax.org/books/university-physics-volume-1/pages/10-4-moment-of-inertia-and-rotational-kinetic-energy",
+      "https://phys.libretexts.org/Courses/Georgia_State_University/GSU-TM-Physics_I_(2211)/08:_Work_Power_and_Energy/8.15:_Rotational_Kinetic_Energy_-_Work_and_Energy"
+    ]
+  },
+  {
+    "id": "mechanical-rotational",
+    "parent": "mechanical",
+    "name": "转动动能",
+    "symbol": "E_rot",
+    "desc": "刚体绕轴转动所具有的能量，E_rot = ½Iω²，I 为转动惯量、ω 为角速度。是飞轮储能、发电机转子、KERS 的核心储能形态。与平动动能形式完全对偶（I↔m, ω↔v）。",
+    "quantities": [
+      {
+        "symbol": "E_rot",
+        "unit": "J",
+        "min": 0.001,
+        "max": 100000000,
+        "log": true,
+        "note": "飞轮 I=1.03 kg·m²@10000rpm(1047 rad/s)≈5.6×10^5 J"
+      },
+      {
+        "symbol": "I",
+        "unit": "kg·m²",
+        "min": 1e-06,
+        "max": 10000,
+        "log": true
+      },
+      {
+        "symbol": "omega",
+        "unit": "rad/s",
+        "min": 1,
+        "max": 100000,
+        "log": true,
+        "note": "高速飞轮可达 5万rpm≈5236 rad/s"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "E_rot=½Iω² 为刚体动力学标准结果，与平动动能严格对偶。"
+    },
+    "refs": [
+      "https://courses.lumenlearning.com/suny-osuniversityphysics/chapter/10-4-moment-of-inertia-and-rotational-kinetic-energy/",
+      "https://en.wikipedia.org/wiki/Flywheel_energy_storage"
+    ]
+  },
+  {
+    "id": "mechanical-gravitational-pe",
+    "parent": "mechanical",
+    "name": "重力势能",
+    "symbol": "E_p,g",
+    "desc": "物体在重力场中因高度而具有的能量，近地表 E_p = mgh。是抽水蓄能、重力储能塔、水力发电的能量蓄存形态。注意此处指近地表均匀场近似，与宇观引力势能 (gravitational 大类) 为同源但尺度不同。",
+    "quantities": [
+      {
+        "symbol": "E_p",
+        "unit": "J",
+        "min": 1,
+        "max": 10000000000000,
+        "log": true,
+        "note": "百万m³水(10^9 kg)抬升300m≈2.9×10^12 J"
+      },
+      {
+        "symbol": "h",
+        "unit": "m",
+        "min": 0.1,
+        "max": 1000,
+        "note": "抽水蓄能水头典型100-700m"
+      },
+      {
+        "symbol": "g",
+        "unit": "m/s²",
+        "value": 9.81,
+        "note": "标准重力加速度"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "近地表 E_p=mgh 为普遍工程近似，全球抽水蓄能广泛采用。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Pumped-storage_hydroelectricity",
+      "https://www.power-technology.com/features/gravity-based-storage/"
+    ]
+  },
+  {
+    "id": "mechanical-elastic-pe",
+    "parent": "mechanical",
+    "name": "弹性势能",
+    "symbol": "E_p,e",
+    "desc": "弹性体发生形变时储存的能量，线性弹簧 U = ½kx²（胡克定律 F=-kx）。存在于弹簧、钟表发条、张紧的弹性结构中。是机械钟表与机械储能玩具的能量来源。",
+    "quantities": [
+      {
+        "symbol": "U",
+        "unit": "J",
+        "min": 0.0001,
+        "max": 1000,
+        "log": true,
+        "note": "机械表发条满弦≈数J量级"
+      },
+      {
+        "symbol": "k",
+        "unit": "N/m",
+        "min": 1,
+        "max": 1000000,
+        "log": true
+      },
+      {
+        "symbol": "x",
+        "unit": "m",
+        "min": 0.0001,
+        "max": 1,
+        "note": "形变位移"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "U=½kx² 在线性弹性（胡克）区间内为标准结果；大形变需非线性修正。"
+    },
+    "refs": [
+      "https://phys.libretexts.org/Bookshelves/Conceptual_Physics/Introduction_to_Physics_(Park)/03:_Unit_2-_Mechanics_II_-_Energy_and_Momentum_Oscillations_and_Waves_Rotation_and_Fluids/03:_Work_and_Energy/3.06:_Spring_Potential_Energy",
+      "https://www.iwc.com/int/en/journal/the-watch-mainspring-all-wound-up.html"
+    ]
+  },
+  {
+    "id": "mechanical-vibrational",
+    "parent": "mechanical",
+    "name": "振动能",
+    "symbol": "E_vib",
+    "desc": "弹性系统作简谐振动时在动能与势能间往复转换的总机械能，E = ½mω²A²（A 为振幅、ω 为角频率）。存在于音叉、摆、谐振子、振动结构中，是声辐射与振动能量收集的源头。",
+    "quantities": [
+      {
+        "symbol": "E_vib",
+        "unit": "J",
+        "min": 1e-09,
+        "max": 100,
+        "log": true,
+        "note": "音叉/谐振子典型 mJ–J 量级"
+      },
+      {
+        "symbol": "f",
+        "unit": "Hz",
+        "min": 1,
+        "max": 100000,
+        "log": true,
+        "note": "结构振动到石英音叉(32768Hz)频率范围"
+      },
+      {
+        "symbol": "A",
+        "unit": "m",
+        "min": 1e-06,
+        "max": 0.1,
+        "log": true,
+        "note": "振幅"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "简谐振子总能 E=½mω²A² 为标准结果；阻尼系统能量随时间衰减。"
+    },
+    "refs": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8587805/",
+      "https://www.savemyexams.com/dp/physics/ib/23/hl/revision-notes/space-time-and-motion/rigid-body-mechanics/rotational-kinetic-energy/"
+    ]
+  },
+  {
+    "id": "thermal-sensible",
+    "parent": "thermal",
+    "name": "显热",
+    "symbol": "Q_s",
+    "desc": "物质温度变化时储存/释放的热能，与温度成正比而无相变。Q = m·c·ΔT。是热能最常见、最易测量的形态，构成工质内能的温度依赖部分。",
+    "quantities": [
+      {
+        "symbol": "c_p,water",
+        "unit": "J/(kg·K)",
+        "value": 4186,
+        "note": "液态水定压比热容，约25°C"
+      },
+      {
+        "symbol": "c_p,air",
+        "unit": "J/(kg·K)",
+        "value": 1005,
+        "note": "干空气定压比热容"
+      },
+      {
+        "symbol": "Q_s/kg per ΔT",
+        "unit": "J/kg",
+        "min": 1000,
+        "max": 4200000,
+        "note": "1 K 到 1000 K 温升下每千克水储热量级",
+        "log": true
+      },
+      {
+        "symbol": "T_range",
+        "unit": "K",
+        "min": 273,
+        "max": 2000,
+        "note": "典型工程显热储热温区"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "比热容与显热公式 Q=mcΔT 为基础热力学定律，无争议。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Specific_heat_capacity",
+      "https://en.wikipedia.org/wiki/Sensible_heat"
+    ]
+  },
+  {
+    "id": "thermal-latent",
+    "parent": "thermal",
+    "name": "潜热",
+    "symbol": "L",
+    "desc": "物质相变（熔化/凝固、蒸发/冷凝、升华）时在恒温下吸收或释放的热能。Q = m·L。储能密度高、温度恒定，是热泵、蒸汽循环和相变储能(PCM)的核心。",
+    "quantities": [
+      {
+        "symbol": "L_fus,water",
+        "unit": "J/kg",
+        "value": 334000,
+        "note": "水熔化潜热 (0°C)"
+      },
+      {
+        "symbol": "L_vap,water",
+        "unit": "J/kg",
+        "value": 2257000,
+        "note": "水蒸发潜热 (100°C)"
+      },
+      {
+        "symbol": "L_vap,range",
+        "unit": "J/kg",
+        "min": 200000,
+        "max": 2500000,
+        "note": "常见工质蒸发潜热范围",
+        "log": true
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "相变潜热为标准热力学量，由克劳修斯–克拉佩龙关系描述，无争议。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Latent_heat",
+      "https://en.wikipedia.org/wiki/Enthalpy_of_vaporization"
+    ]
+  },
+  {
+    "id": "thermal-internal",
+    "parent": "thermal",
+    "name": "内能",
+    "symbol": "U",
+    "desc": "系统内所有微观粒子动能与势能之和的总热力学内能，宏观由温度、相态、分子结构决定。显热与潜热都是内能在特定过程中的变化分量；U 是热力学第一定律的状态函数。",
+    "quantities": [
+      {
+        "symbol": "u_monatomic",
+        "unit": "J/mol",
+        "value": 3740,
+        "note": "单原子理想气体 U=(3/2)RT，T=300 K"
+      },
+      {
+        "symbol": "k_B·T",
+        "unit": "J",
+        "value": 4.14e-21,
+        "note": "每自由度热能量级，300 K"
+      },
+      {
+        "symbol": "T",
+        "unit": "K",
+        "min": 0,
+        "max": 5000,
+        "note": "工程内能对应温度区间"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "内能作为状态函数及第一定律 ΔU=Q−W 为热力学公理体系基础。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Internal_energy",
+      "https://en.wikipedia.org/wiki/First_law_of_thermodynamics"
+    ]
+  },
+  {
+    "id": "thermal-radiant-heat",
+    "parent": "thermal",
+    "name": "热辐射",
+    "symbol": "Q_rad",
+    "desc": "物体因温度而以电磁波(主要红外)形式向外辐射的能量，遵循斯特藩–玻尔兹曼定律 P=εσAT⁴ 与普朗克黑体谱。是非接触式热传递通道，连接热能与电磁辐射形态。",
+    "quantities": [
+      {
+        "symbol": "σ",
+        "unit": "W/(m²·K⁴)",
+        "value": 5.67e-08,
+        "note": "斯特藩–玻尔兹曼 常数"
+      },
+      {
+        "symbol": "P_bb @300K",
+        "unit": "W/m²",
+        "value": 459,
+        "note": "300 K 黑体辐射出射度 σT⁴"
+      },
+      {
+        "symbol": "T_emitter",
+        "unit": "K",
+        "min": 300,
+        "max": 2673,
+        "note": "环境到热光伏钨发射体(2400°C)温区"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "斯特藩–玻尔兹曼 与 普朗克 定律为已验证基础物理；归类于热能(温度驱动)而非纯电磁。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Thermal_radiation",
+      "https://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_law"
+    ]
+  },
+  {
+    "id": "chemical-bond",
+    "parent": "chemical",
+    "name": "键能",
+    "symbol": "D",
+    "desc": "共价化学键中储存的能量；键解离焓是气相下均裂一摩尔该键所需的焓变。它是一切化学能释放的微观基底：净反应焓等于断裂键焓减生成键焓。弱单键到极强的 N≡N 三键跨度很大。",
+    "quantities": [
+      {
+        "symbol": "D(C-H)",
+        "unit": "kJ/mol",
+        "value": 414,
+        "note": "平均 C-H 键焓（约 412–415）"
+      },
+      {
+        "symbol": "D(O-H)",
+        "unit": "kJ/mol",
+        "value": 464,
+        "note": "水中的 O-H"
+      },
+      {
+        "symbol": "D(C-C)",
+        "unit": "kJ/mol",
+        "value": 347,
+        "note": "C-C 单键"
+      },
+      {
+        "symbol": "D(N≡N)",
+        "unit": "kJ/mol",
+        "value": 941,
+        "note": "氮三键，极强"
+      },
+      {
+        "symbol": "D",
+        "unit": "kJ/mol",
+        "min": 150,
+        "max": 1000,
+        "note": "典型范围：单键到三键"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "表列平均键焓为教科书标准；小幅散布反映分子环境差异。"
+    },
+    "refs": [
+      "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Chemical_Bonding/Fundamentals_of_Chemical_Bonding/Bond_Energies",
+      "https://en.wikipedia.org/wiki/Bond-dissociation_energy"
+    ]
+  },
+  {
+    "id": "chemical-combustion",
+    "parent": "chemical",
+    "name": "燃烧焓（燃料化学能）",
+    "symbol": "ΔH_c",
+    "desc": "燃料与氧气完全反应时以热形式释放的能量，可按单位质量（比能量）或摩尔表示。区分高热值（水蒸气冷凝）与低热值（水保持气态）。是内燃机、锅炉与火力发电的能量账本核心。",
+    "quantities": [
+      {
+        "symbol": "ΔH_c(gasoline)",
+        "unit": "MJ/kg",
+        "value": 44,
+        "note": "低位热值 ~43.6-44, 高位热值 ~47"
+      },
+      {
+        "symbol": "ΔH_c(methane)",
+        "unit": "MJ/kg",
+        "value": 50,
+        "note": "低位热值; 高位热值 ~55.5"
+      },
+      {
+        "symbol": "ΔH_c(H2)",
+        "unit": "MJ/kg",
+        "min": 120,
+        "max": 142,
+        "note": "120 低位热值, 142 高位热值"
+      },
+      {
+        "symbol": "ΔH_c",
+        "unit": "MJ/kg",
+        "min": 15,
+        "max": 142,
+        "note": "木材/生物质约 15–18，氢可达 142"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "热值由弹式量热法测定；高位热值/低位热值区分是标准做法。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Heat_of_combustion",
+      "https://h2tools.org/hyarc/calculator-tools/lower-and-higher-heating-values-fuels",
+      "https://www.engineeringtoolbox.com/standard-heat-of-combustion-energy-content-d_1987.html"
+    ]
+  },
+  {
+    "id": "chemical-electrochemical",
+    "parent": "chemical",
+    "name": "电化学（氧化还原）能",
+    "symbol": "ΔG",
+    "desc": "储存在氧化还原电对中、通过电极电子转移释放的化学能，是电池与燃料电池的基础。可提取的最大电功等于反应吉布斯自由能（理想可逆时）。",
+    "quantities": [
+      {
+        "symbol": "E_cell",
+        "unit": "V",
+        "min": 1.2,
+        "max": 4.2,
+        "note": "质子交换膜燃料电池理论约 1.23 V；锂离子 2.8–4.2 V，标称约 3.6 V"
+      },
+      {
+        "symbol": "w_spec",
+        "unit": "Wh/kg",
+        "min": 150,
+        "max": 330,
+        "note": "商用锂离子电芯；理论上限约 1250"
+      },
+      {
+        "symbol": "ΔG",
+        "unit": "kJ/mol",
+        "min": -1000,
+        "max": -100,
+        "note": "自发放电时为负；ΔG=-nFE"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "能斯特/ΔG=-nFE 热力学是基础；比能量数值在商用体系中有充分表征。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Lithium-ion_battery",
+      "https://www.cei.washington.edu/research/energy-storage/lithium-ion-battery/",
+      "https://www.ufinebattery.com/blog/what-is-the-energy-density-of-a-lithium-ion-battery/"
+    ]
+  },
+  {
+    "id": "chemical-biochemical",
+    "parent": "chemical",
+    "name": "生物化学能（三磷酸腺苷 / 代谢）",
+    "symbol": "ΔG'",
+    "desc": "生命系统的化学能货币，储存在 三磷酸腺苷 及其他高能代谢物的磷酸酐键中。三磷酸腺苷 水解为 ADP+Pi 释放自由能，驱动生物合成、离子泵与肌肉做功。",
+    "quantities": [
+      {
+        "symbol": "ΔG°'(ATP)",
+        "unit": "kJ/mol",
+        "value": -30.5,
+        "note": "标准生化条件，pH 7，Mg2+；范围 -28 至 -34"
+      },
+      {
+        "symbol": "ΔG(ATP,in-vivo)",
+        "unit": "kJ/mol",
+        "min": -65,
+        "max": -50,
+        "note": "细胞内条件，约 -57"
+      },
+      {
+        "symbol": "ΔH_c(glucose)",
+        "unit": "kJ/mol",
+        "value": -2805,
+        "note": "葡萄糖完全氧化，代谢底物"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "三磷酸腺苷标准自由能为教科书结果；体内值依赖 [三磷酸腺苷]/[ADP][Pi] 与 Mg2+，文献充分。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/ATP_hydrolysis",
+      "https://book.bionumbers.org/how-much-energy-is-released-in-atp-hydrolysis/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK9903/"
+    ]
+  },
+  {
+    "id": "nuclear-binding",
+    "parent": "nuclear",
+    "name": "核结合能",
+    "symbol": "B",
+    "desc": "将原子核拆解为自由核子所需的能量，等价于核子结合时释放的质量亏损能量 (B = Δm·c²)。结合能/核子曲线在 Fe-56/Ni-62 处达到峰值 (~8.8 MeV/核子)，是裂变(重核分裂趋向峰值)与聚变(轻核合并趋向峰值)能否放能的根本判据。它本身是势能形态，不是过程，而是裂变/聚变/衰变放能的能量储库。",
+    "quantities": [
+      {
+        "symbol": "B/A",
+        "unit": "MeV/nucleon",
+        "min": 1,
+        "max": 8.795,
+        "note": "结合能/核子；氘 ~1.1，Fe-56 8.790，Ni-62 8.795 为峰值"
+      },
+      {
+        "symbol": "B_total(U-235)",
+        "unit": "MeV",
+        "value": 1784,
+        "note": "U-235 总结合能 ≈ 235×7.59"
+      },
+      {
+        "symbol": "Δm/m",
+        "unit": "1",
+        "min": 0.0008,
+        "max": 0.0095,
+        "note": "质量亏损占比；裂变~0.0009，氘氚聚变~0.0038，普通核子~0.008"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "结合能曲线与 Fe-56/Ni-62 峰值是核物理基石，数据高度收敛"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Nuclear_binding_energy",
+      "https://en.wikipedia.org/wiki/Iron-56",
+      "https://en.wikipedia.org/wiki/Nickel-62"
+    ]
+  },
+  {
+    "id": "nuclear-fission",
+    "parent": "nuclear",
+    "name": "核裂变能",
+    "symbol": "E_fis",
+    "desc": "重核(U-235、Pu-239)吸收中子后分裂为两个中等质量碎片，产物总结合能更高，差额以裂片动能(~168 MeV)、中子、瞬发γ、β衰变能形式释放。每次裂变可回收约 200 MeV(总~210 MeV，约 10 MeV 被反中微子带走)。链式反应是当今所有商用核电与核武器的能量来源。",
+    "quantities": [
+      {
+        "symbol": "Q_fis",
+        "unit": "MeV/fission",
+        "min": 200,
+        "max": 210,
+        "note": "U-235 可回收~200，总释放~210 MeV"
+      },
+      {
+        "symbol": "e_spec",
+        "unit": "J/kg",
+        "value": 82000000000000,
+        "log": true,
+        "note": "U-235 完全裂变能量密度 ≈ 82 TJ/kg"
+      },
+      {
+        "symbol": "nu",
+        "unit": "neutrons/fission",
+        "value": 2.43,
+        "note": "U-235 热中子裂变平均瞬发中子数"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "200 MeV/裂变与 ~82 TJ/kg 是教科书与 WNA 共识值"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/nuclear-fuel-cycle/introduction/physics-of-nuclear-energy",
+      "https://www.nuclear-power.com/nuclear-power/fission/energy-release-from-fission/"
+    ]
+  },
+  {
+    "id": "nuclear-fusion",
+    "parent": "nuclear",
+    "name": "核聚变能",
+    "symbol": "E_fus",
+    "desc": "轻核(D、T、He-3)在极高温(~1.5亿K)克服库仑势垒合并为更重核，产物结合能更高，差额以产物动能释放。氘-氚反应截面最大、Q 值 17.6 MeV(3.5 MeV α + 14.1 MeV 中子)，单位质量能量密度约为裂变的 4 倍。是恒星能源，地面受控聚变(托卡马克/惯性约束)仍处于工程突破阶段。",
+    "quantities": [
+      {
+        "symbol": "Q_DT",
+        "unit": "MeV/reaction",
+        "value": 17.6,
+        "note": "D+T→He-4(3.5)+n(14.1)"
+      },
+      {
+        "symbol": "e_spec",
+        "unit": "J/kg",
+        "value": 340000000000000,
+        "log": true,
+        "note": "氘氚 燃料能量密度 ≈ 340 TJ/kg，约裂变4倍"
+      },
+      {
+        "symbol": "T_ignition",
+        "unit": "K",
+        "min": 100000000,
+        "max": 150000000,
+        "note": "氘氚 点火所需等离子体温度量级"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "氘氚 17.6 MeV 与温度量级为 IAEA/WNA 共识；地面净增益工程为前沿"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Deuterium%E2%80%93tritium_fusion",
+      "https://www-naweb.iaea.org/napc/physics/fusion-basic.htm",
+      "https://world-nuclear.org/information-library/current-and-future-generation/nuclear-fusion-power"
+    ]
+  },
+  {
+    "id": "nuclear-decay",
+    "parent": "nuclear",
+    "name": "放射性衰变能",
+    "symbol": "E_dec",
+    "desc": "不稳定核自发释放粒子(α、β)或γ光子衰变至更稳定态，每次衰变释放的衰变能 Q 以衰变产物动能与γ辐射形式出现。功率随时间按指数衰减 (P=P₀e^(−λt))，由半衰期决定。Pu-238 (α，87.7 a) 是 同位素热电发电机 热源，乏燃料衰变热是反应堆停堆后的关键安全问题。",
+    "quantities": [
+      {
+        "symbol": "Q_alpha(Pu-238)",
+        "unit": "MeV/decay",
+        "value": 5.593,
+        "note": "Pu-238 α 衰变能"
+      },
+      {
+        "symbol": "P_spec(Pu-238)",
+        "unit": "W/g",
+        "value": 0.54,
+        "note": "Pu-238 比功率 ≈ 0.54 W/g(热)"
+      },
+      {
+        "symbol": "t_half",
+        "unit": "a",
+        "min": 87.7,
+        "max": 87.7,
+        "note": "Pu-238 半衰期 87.7 年"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "衰变能、半衰期、比功率为核数据表标准值"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Radioisotope_thermoelectric_generator",
+      "https://www.energy.gov/ne/articles/what-radioisotope-power-system"
+    ]
+  },
+  {
+    "id": "acoustic-infrasound",
+    "parent": "acoustic",
+    "name": "次声",
+    "symbol": "f<20Hz",
+    "desc": "频率低于人耳听阈下限(约20 Hz)的机械纵波/弹性波,下探至约0.001 Hz。波长长、衰减小、传播极远,典型来源为火山、地震、海浪、雷暴、大型机械及核试验监测(CTBTO国际监测系统)。",
+    "quantities": [
+      {
+        "symbol": "f",
+        "unit": "Hz",
+        "min": 0.001,
+        "max": 20,
+        "log": true,
+        "note": "次声频段;CTBTO 国际监测系统 监测下限约0.02 Hz"
+      },
+      {
+        "symbol": "lambda",
+        "unit": "m",
+        "min": 17,
+        "max": 340000,
+        "log": true,
+        "note": "空气中 c=343 m/s 下波长 = c/f"
+      },
+      {
+        "symbol": "c",
+        "unit": "m/s",
+        "value": 343,
+        "note": "20°C 干燥空气声速"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "次声定义为<20 Hz,为声学/地球物理学公认标准。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Infrasound",
+      "https://wiki.seg.org/wiki/Infrasound"
+    ]
+  },
+  {
+    "id": "acoustic-audible",
+    "parent": "acoustic",
+    "name": "可听声",
+    "symbol": "f≈20Hz–20kHz",
+    "desc": "落在正常人耳听觉范围(约20 Hz–20 kHz)的机械振动波,即日常意义上的'声音'。涵盖语音、音乐、环境噪声;能量以声强(W/m²)与声压级(dB SPL)度量。",
+    "quantities": [
+      {
+        "symbol": "f",
+        "unit": "Hz",
+        "min": 20,
+        "max": 20000,
+        "log": true,
+        "note": "人耳标称听觉频带"
+      },
+      {
+        "symbol": "I",
+        "unit": "W/m^2",
+        "min": 1e-12,
+        "max": 1,
+        "log": true,
+        "note": "听阈 1e-12 W/m² 到痛阈 ~1 W/m²"
+      },
+      {
+        "symbol": "L_p",
+        "unit": "dB",
+        "min": 0,
+        "max": 120,
+        "note": "声压级 0(听阈) 到 ~120(痛阈),参考 p0=20 µPa"
+      },
+      {
+        "symbol": "p",
+        "unit": "Pa",
+        "min": 2e-05,
+        "max": 20,
+        "log": true,
+        "note": "声压幅度 均方根,20 µPa 听阈到 ~20 Pa 痛阈"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "20 Hz–20 kHz 听觉范围与 dB SPL/声强度量为公认声学标准(ISO 226)。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Sound",
+      "https://www.iso.org/standard/34222.html"
+    ]
+  },
+  {
+    "id": "acoustic-ultrasound",
+    "parent": "acoustic",
+    "name": "超声",
+    "symbol": "f>20kHz",
+    "desc": "频率高于人耳上限(>20 kHz,延伸至 GHz)的机械波。波长短、方向性强、可聚焦,广泛用于医学成像/治疗(高强度聚焦超声)、工业清洗与无损检测、声呐及声表面波(声表面波)器件。",
+    "quantities": [
+      {
+        "symbol": "f",
+        "unit": "Hz",
+        "min": 20000,
+        "max": 1000000000,
+        "log": true,
+        "note": "20 kHz 到 ~1 GHz(诊断医学常用 2–18 MHz)"
+      },
+      {
+        "symbol": "lambda",
+        "unit": "m",
+        "min": 1.5e-06,
+        "max": 0.017,
+        "log": true,
+        "note": "软组织 c≈1540 m/s 下波长 = c/f"
+      },
+      {
+        "symbol": "I_SPTA",
+        "unit": "W/cm^2",
+        "min": 0.001,
+        "max": 1000,
+        "log": true,
+        "note": "诊断 <0.72 W/cm² 到 高强度聚焦超声 焦点 >1000 W/cm²"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "超声定义为>20 kHz,医学/工业应用频段与强度限值有成熟标准(FDA/IEC)。"
+    },
+    "refs": [
+      "https://www.piceramic.com/en/expertise/piezo-technology/generating-ultrasound-with-piezo-components",
+      "https://en.wikipedia.org/wiki/Ultrasound"
+    ]
+  },
+  {
+    "id": "radiant-solar",
+    "parent": "radiant",
+    "name": "太阳辐射",
+    "symbol": "G",
+    "desc": "太阳作为约5778 K黑体源向外辐射的宽谱电磁能流，地外为太阳常数(AM0)，穿过大气衰减后地表标准为大气质量1.5全球谱。是光伏、太阳能热、光合作用的能量来源；本质是非相干、宽带、近似黑体的辐射能。",
+    "quantities": [
+      {
+        "symbol": "G_AM0",
+        "unit": "W/m^2",
+        "value": 1361,
+        "note": "地外太阳常数(AM0)，WMO/ASTM E490 现值约1361，历史常引用1367"
+      },
+      {
+        "symbol": "G_AM1.5G",
+        "unit": "W/m^2",
+        "value": 1000,
+        "note": "地表标准辐照度(大气质量1.5全球谱, ASTM G173/IEC 60904-3)，即1-Sun"
+      },
+      {
+        "symbol": "lambda_peak",
+        "unit": "nm",
+        "value": 500,
+        "note": "约5778K黑体峰值波长(维恩)，可见光蓝绿区"
+      },
+      {
+        "symbol": "T_sun",
+        "unit": "K",
+        "value": 5778,
+        "note": "太阳有效辐射温度"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "太阳常数与大气质量1.5全球谱标准谱由WMO/ASTM/IEC定义，广泛采用"
+    },
+    "refs": [
+      "https://www.pveducation.org/pvcdrom/properties-of-sunlight/air-mass",
+      "https://www.ossila.com/pages/standard-solar-spectrum",
+      "https://en.wikipedia.org/wiki/Air_mass_(solar_energy)"
+    ]
+  },
+  {
+    "id": "radiant-blackbody",
+    "parent": "radiant",
+    "name": "黑体/热辐射",
+    "symbol": "M",
+    "desc": "任何温度高于绝对零度物体因热运动发射的连续谱电磁辐射。理想黑体的总辐射出射度服从斯特藩–玻尔兹曼定律M=σT⁴，峰值波长服从维恩位移定律。是炽热灯、红外热源、辐射散热与遥感测温的物理基础。",
+    "quantities": [
+      {
+        "symbol": "sigma",
+        "unit": "W/(m^2·K^4)",
+        "value": 5.670374e-08,
+        "note": "斯特藩–玻尔兹曼常数(CODATA)"
+      },
+      {
+        "symbol": "b",
+        "unit": "um·K",
+        "value": 2898,
+        "note": "维恩位移常数 λ_peak·T = b"
+      },
+      {
+        "symbol": "M_300K",
+        "unit": "W/m^2",
+        "value": 459,
+        "note": "T=300K黑体辐射出射度 σT⁴≈459"
+      },
+      {
+        "symbol": "T",
+        "unit": "K",
+        "min": 3,
+        "max": 3000,
+        "note": "工程关注的辐射源温度范围(宇宙背景~2.7K至炽热灯丝~3000K)"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "普朗克/斯特藩–玻尔兹曼/维恩定律为经典验证的物理基石"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Black-body_radiation",
+      "https://www.tec-science.com/thermodynamics/temperature/plancks-law-of-blackbody-radiation/",
+      "https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_(OpenStax)/University_Physics_III_-_Optics_and_Modern_Physics_(OpenStax)/06:_Photons_and_Matter_Waves/6.02:_Blackbody_Radiation"
+    ]
+  },
+  {
+    "id": "radiant-laser",
+    "parent": "radiant",
+    "name": "激光相干辐射",
+    "symbol": "P_L",
+    "desc": "通过受激辐射放大产生的高度单色、时间/空间相干、低发散的定向电磁辐射。其亮度(辐亮度)远超热源，可聚焦到衍射极限。是光通信、激光加工、激光雷达、量子光学的核心辐射形态。",
+    "quantities": [
+      {
+        "symbol": "L_coh",
+        "unit": "m",
+        "min": 0.0001,
+        "max": 100000,
+        "note": "相干长度：宽带二极管亚毫米至窄线宽稳频激光数十~百km，L_c≈c/(πΔν)",
+        "log": true
+      },
+      {
+        "symbol": "Delta_lambda",
+        "unit": "nm",
+        "min": 1e-09,
+        "max": 1,
+        "note": "线宽：稳频激光<1 fm至常规二极管~1nm",
+        "log": true
+      },
+      {
+        "symbol": "Radiance",
+        "unit": "W/(m^2·sr)",
+        "min": 1000000,
+        "max": 100000000000000000000,
+        "note": "辐亮度/亮度远高于太阳(~2e7)，单模激光可达极高值",
+        "log": true
+      },
+      {
+        "symbol": "Theta_div",
+        "unit": "mrad",
+        "min": 0.1,
+        "max": 5,
+        "note": "典型光束发散角(准直后)"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "激光相干性/高亮度是确立的物理特性，1mW激光亮度可超太阳1000倍"
+    },
+    "refs": [
+      "https://www.rp-photonics.com/coherence.html",
+      "https://www.worldoflasers.com/laserproperties.htm",
+      "https://www.lkouniv.ac.in/site/writereaddata/siteContent/202006151236284892NK-Properties%20of%20Laser%20Beam.pdf"
+    ]
+  },
+  {
+    "id": "radiant-luminescence",
+    "parent": "radiant",
+    "name": "发光/荧光辐射",
+    "symbol": "Phi_F",
+    "desc": "物质受激发(光、电、化学)后电子从激发态退激发射光子的非热辐射，包括荧光、磷光、电致发光。发射波长长于激发波长(斯托克斯位移)，效率由荧光量子产率Φ_F表征。是发光二极管、有机发光二极管、荧光标记、显示与照明的基础。",
+    "quantities": [
+      {
+        "symbol": "Phi_F",
+        "unit": "1",
+        "min": 0.001,
+        "max": 1,
+        "note": "荧光量子产率(发射/吸收光子比)；常用染料0.1~0.9"
+      },
+      {
+        "symbol": "Stokes_shift",
+        "unit": "nm",
+        "min": 5,
+        "max": 250,
+        "note": "斯托克斯位移：荧光素~20nm，奎宁~110nm，卟啉>200nm"
+      },
+      {
+        "symbol": "tau_fl",
+        "unit": "ns",
+        "min": 0.1,
+        "max": 100,
+        "note": "荧光寿命典型纳秒量级"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "量子产率0~1、斯托克斯位移为光物理共识，广泛用于荧光显微与发光器件"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Quantum_yield",
+      "https://www.aatbio.com/resources/faq-frequently-asked-questions/What-is-fluorescence-quantum-yield",
+      "https://evidentscientific.com/en/microscope-resource/knowledge-hub/lightandcolor/fluoroexcitation"
+    ]
+  },
+  {
+    "id": "gravitational-potential",
+    "parent": "gravitational",
+    "name": "重力势能",
+    "symbol": "E_p",
+    "desc": "物体在均匀重力场中因高度差储存的势能 E_p = m·g·h。是水库蓄水、抽水蓄能、配重、落锤等一切'抬高质量'储能与做功的物理基础，能量密度低但储量可极大。",
+    "quantities": [
+      {
+        "symbol": "g",
+        "unit": "m/s^2",
+        "value": 9.81,
+        "note": "地表标准重力加速度"
+      },
+      {
+        "symbol": "E_p/m (1 m 高)",
+        "unit": "J/kg",
+        "value": 9.81,
+        "note": "比能量随高度线性增长，能量密度极低"
+      },
+      {
+        "symbol": "h",
+        "unit": "m",
+        "min": 1,
+        "max": 750,
+        "note": "抽水蓄能闭式电站典型水头 200~750 m"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "牛顿引力/经典力学教科书结论，无争议"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Pumped-storage_hydroelectricity",
+      "https://atb.nrel.gov/electricity/2024/pumped_storage_hydropower"
+    ]
+  },
+  {
+    "id": "gravitational-hydro",
+    "parent": "gravitational",
+    "name": "水能（水头势能）",
+    "symbol": "E_h",
+    "desc": "河流/水库中水体相对下游的重力势能与动能，经引水落差驱动水轮机。是全球最大的可再生发电来源，本质是太阳能驱动水循环后以重力势能形式储存。",
+    "quantities": [
+      {
+        "symbol": "H",
+        "unit": "m",
+        "min": 2,
+        "max": 700,
+        "note": "混流式 水轮机适用水头 20~700 m，三峡 61~113 m"
+      },
+      {
+        "symbol": "P_unit",
+        "unit": "MW",
+        "min": 0.1,
+        "max": 760,
+        "note": "三峡单台 混流式 机组最高 760 MW"
+      },
+      {
+        "symbol": "P_plant",
+        "unit": "MW",
+        "value": 22500,
+        "note": "三峡总装机，世界最大"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "成熟工程，全球水电累计装机超 1.4 TW"
+    },
+    "refs": [
+      "https://www.usgs.gov/special-topics/water-science-school/science/three-gorges-dam-worlds-largest-hydroelectric-plant",
+      "https://en.wikipedia.org/wiki/Three_Gorges_Dam"
+    ]
+  },
+  {
+    "id": "gravitational-tidal",
+    "parent": "gravitational",
+    "name": "潮汐能",
+    "symbol": "E_t",
+    "desc": "月球（及太阳）引力梯度引起海水周期性涨落形成的重力势能与动能。源头是地月轨道角动量与地球自转能，由潮汐摩擦耗散，可由潮汐堰坝或潮流涡轮捕获。",
+    "quantities": [
+      {
+        "symbol": "P_global_dissip",
+        "unit": "TW",
+        "value": 3.7,
+        "note": "全球海洋潮汐摩擦总耗散功率（约 2.5 TW 为 M2 月球分量）"
+      },
+      {
+        "symbol": "P_plant",
+        "unit": "MW",
+        "value": 254,
+        "note": "始华湖（Sihwa）世界最大潮汐电站"
+      },
+      {
+        "symbol": "R_tidal_range",
+        "unit": "m",
+        "min": 1,
+        "max": 12,
+        "note": "潮差，经济阈值约 >5 m；芬迪湾极值 ~16 m"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "潮汐发电机理无争议；可经济开发资源量与生态影响仍在评估"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Sihwa_Lake_Tidal_Power_Station",
+      "https://en.wikipedia.org/wiki/Tidal_acceleration"
+    ]
+  },
+  {
+    "id": "gravitational-wave",
+    "parent": "gravitational",
+    "name": "引力波能",
+    "symbol": "E_gw",
+    "desc": "广义相对论预言的时空曲率涟漪，由加速运动的质量四极矩辐射，以光速传播携带能量。致密双星并合可在毫秒内辐射数个太阳质量的等效能量，2015 年 LIGO 首次直接探测（GW150914）。",
+    "quantities": [
+      {
+        "symbol": "E_radiated",
+        "unit": "J",
+        "value": 5.3e+47,
+        "note": "GW150914 总辐射能 ≈ 3 M_sun·c²"
+      },
+      {
+        "symbol": "P_peak",
+        "unit": "W",
+        "value": 3.6e+49,
+        "note": "并合峰值辐射功率，超全宇宙恒星光功率总和"
+      },
+      {
+        "symbol": "h_strain",
+        "unit": "1",
+        "min": 1e-22,
+        "max": 1e-21,
+        "note": "地面探测器处无量纲应变幅度，~1e-21"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "GR 预言 + 激光干涉引力波天文台 直接探测证实（2017 诺奖）；波本身能量近乎无法人工提取"
+    },
+    "refs": [
+      "https://arxiv.org/pdf/1602.03837",
+      "https://en.wikipedia.org/wiki/Gravitational_wave"
+    ]
+  },
+  {
+    "id": "mass-rest",
+    "parent": "mass",
+    "name": "静止质能",
+    "symbol": "E0 = m0·c²",
+    "desc": "物体因其静止质量而内禀拥有的能量，由 E0 = m0·c² 给出。这是质能等价最基本的形式：任何具有静止质量的物体都对应一份巨大的、通常被锁住的能量储库。1 kg 静止质量对应约 9×10^16 J，相当于约 21.5 Mt 梯恩梯。绝大多数静止质能在常规过程中不可释放，只有核反应/湮灭才能动用其中极小份额。",
+    "quantities": [
+      {
+        "symbol": "E0/m",
+        "unit": "J/kg",
+        "value": 89875500000000000,
+        "note": "单位静止质量对应能量 = c²"
+      },
+      {
+        "symbol": "E0(电子)",
+        "unit": "keV",
+        "value": 511,
+        "note": "电子静止质能 0.511 MeV"
+      },
+      {
+        "symbol": "E0(质子)",
+        "unit": "MeV",
+        "value": 938.272,
+        "note": "质子静止质能"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "狭义相对论核心结论，E0=m0c²，实验反复证实（CODATA 基本常数）。"
+    },
+    "refs": [
+      "https://van.physics.illinois.edu/ask/listing/1160",
+      "https://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence"
+    ]
+  },
+  {
+    "id": "mass-binding-defect",
+    "parent": "mass",
+    "name": "核质量亏损 / 结合能",
+    "symbol": "ΔE = Δm·c²",
+    "desc": "原子核质量小于其组成核子静止质量之和，差额 Δm（质量亏损）以结合能形式释放：ΔE = Δm·c²。每核子结合能在 Fe-56 附近达峰（约 8.8 MeV/核子），决定了核反应能量学。氘核 2.22 MeV（~1.1 MeV/核子），He-4 达 28.3 MeV（~7.1 MeV/核子）。质量亏损占总质量约 0.1%~0.8%，是裂变与聚变可释放能量的根源。",
+    "quantities": [
+      {
+        "symbol": "B/A(Fe-56)",
+        "unit": "MeV/nucleon",
+        "value": 8.8,
+        "note": "结合能曲线峰值，最稳定核"
+      },
+      {
+        "symbol": "B(He-4)",
+        "unit": "MeV",
+        "value": 28.3,
+        "note": "氦-4 总结合能"
+      },
+      {
+        "symbol": "Δm(He-4)",
+        "unit": "u",
+        "value": 0.0304,
+        "note": "质量亏损 ≈ 28.3/931.49 = 0.03038 u"
+      },
+      {
+        "symbol": "B(deuteron)",
+        "unit": "MeV",
+        "value": 2.22,
+        "note": "氘核结合能"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "结合能曲线与质量亏损是核物理基石，与原子质量测量（AME2020）一致。"
+    },
+    "refs": [
+      "https://chem.libretexts.org/Courses/can/CHEM_220:_General_Chemistry_II_-_Chemical_Dynamics/09:_Nuclear_Chemistry/9.03:_Nuclear_Stability/9.3.01:_Binding_Energy_and_Mass_Defect",
+      "https://www.britannica.com/science/nuclear-binding-energy"
+    ]
+  },
+  {
+    "id": "mass-annihilation",
+    "parent": "mass",
+    "name": "湮灭能",
+    "symbol": "E = 2m·c²",
+    "desc": "正反粒子（如电子-正电子）相遇时静止质量 100% 转化为辐射能，是质能转化效率最高的形式。e⁺e⁻ 湮灭通常产生两个反向的 511 keV γ 光子（总 1.022 MeV）。这是 正电子发射断层 成像的物理基础，也是恒星/早期宇宙与天体物理（银心 511 keV 线）的关键过程。质子-反质子湮灭则释放约 1.88 GeV。",
+    "quantities": [
+      {
+        "symbol": "Eγ(e+e-)",
+        "unit": "keV",
+        "value": 511,
+        "note": "每个湮灭光子能量 = m_e·c²"
+      },
+      {
+        "symbol": "E_total(e+e-)",
+        "unit": "MeV",
+        "value": 1.022,
+        "note": "两光子总能量 = 2m_e·c²"
+      },
+      {
+        "symbol": "E(p+pbar)",
+        "unit": "GeV",
+        "value": 1.876,
+        "note": "质子-反质子湮灭总静质能 = 2×938.272 MeV"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "量子电动力学 标准过程，正电子发射断层 临床每天验证；511 keV 线天文观测确认。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Annihilation_radiation",
+      "https://radiopaedia.org/articles/electron-positron-annihilation-1"
+    ]
+  },
+  {
+    "id": "mass-fission",
+    "parent": "mass",
+    "name": "裂变质能",
+    "symbol": "Q_fission",
+    "desc": "重核（U-235、Pu-239）分裂为中等质量碎片时，碎片结合能更高，释放质量亏损对应的能量，每次裂变约 200 MeV，其中约 85% 为碎片动能。质量转化分数约 0.09%（Δm/m≈9×10⁻⁴）。1 kg U-235 完全裂变释放约 8.1×10^13 J（≈20 kt 梯恩梯）。是核电与核武器的能量来源。",
+    "quantities": [
+      {
+        "symbol": "Q(U-235)",
+        "unit": "MeV",
+        "value": 200,
+        "note": "每次裂变可用能量"
+      },
+      {
+        "symbol": "Δm/m",
+        "unit": "1",
+        "value": 0.0009,
+        "note": "质量转化分数 ≈ 0.09%"
+      },
+      {
+        "symbol": "E/kg(U-235)",
+        "unit": "J/kg",
+        "value": 80900000000000,
+        "note": "单位质量裂变能 = (Δm/m)·c² ≈ 8.09×10^13"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "Q≈200 MeV/裂变为标准核工程值；世界核协会（WNA）等一致。"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/nuclear-fuel-cycle/introduction/physics-of-nuclear-energy",
+      "https://en.wikipedia.org/wiki/Uranium-235"
+    ]
+  },
+  {
+    "id": "mass-fusion",
+    "parent": "mass",
+    "name": "聚变质能",
+    "symbol": "Q_fusion",
+    "desc": "轻核聚合为更重核时质量亏损转化为能量，每核子产能远高于裂变。氘氚 反应 D+T→He-4+n 释放 17.6 MeV（α 3.5 MeV、中子 14.1 MeV），质量转化分数约 0.38%。是恒星（pp 链、CNO 循环）与受控聚变（ITER、惯性约束）的能量来源，单位燃料质量产能约 3.4×10^14 J/kg。",
+    "quantities": [
+      {
+        "symbol": "Q(D-T)",
+        "unit": "MeV",
+        "value": 17.6,
+        "note": "每次 氘氚聚变释放能量"
+      },
+      {
+        "symbol": "Δm/m",
+        "unit": "1",
+        "value": 0.0038,
+        "note": "质量转化分数 ≈ 0.38%"
+      },
+      {
+        "symbol": "E/kg(D-T)",
+        "unit": "J/kg",
+        "value": 342000000000000,
+        "note": "单位燃料质能 = (Δm/m)·c² ≈ 3.42×10^14"
+      }
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "氘氚 17.6 MeV 为标准聚变值；ITER/WNA 一致；受控发电仍工程未成熟。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Deuterium%E2%80%93tritium_fusion",
+      "https://world-nuclear.org/information-library/current-and-future-generation/nuclear-fusion-power"
+    ]
+  }
+]

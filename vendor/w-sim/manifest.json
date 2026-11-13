@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "repository": "W-World-Labs/w-sim",
+    "revision": "f558f268922e498cd235c468ee7044586e23a24b",
+    "workingTreeClean": true
+  },
+  "roots": [
+    "@w-sim/contracts",
+    "@w-sim/ems-import",
+    "@w-sim/fem-import",
+    "@w-sim/kit",
+    "@w-sim/lammps-import",
+    "@w-sim/msh-import",
+    "@w-sim/openfoam-import",
+    "@w-sim/runtime",
+    "@w-sim/solver-conformance",
+    "@w-sim/solvers-acoustics",
+    "@w-sim/solvers-em-fdtd",
+    "@w-sim/solvers-export-report",
+    "@w-sim/solvers-lbm",
+    "@w-sim/solvers-md",
+    "@w-sim/solvers-path-experiment",
+    "@w-sim/solvers-structural",
+    "@w-sim/solvers-thermal"
+  ],
+  "npmPackages": [
+    {
+      "name": "@w-sim/contracts",
+      "version": "0.3.0",
+      "filename": "w-sim-contracts-0.3.0.tgz",
+      "sha256": "6c3ff3ea515cfb84fd19a1be52a6bfa9b70e061203eaff60a0d39e40a6b4d887",
+      "sizeBytes": 67137,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {},
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/ems-import",
+      "version": "0.3.0",
+      "filename": "w-sim-ems-import-0.3.0.tgz",
+      "sha256": "2ce3328a2c58fe52a9bfbaed0056ea9d1cb615c1b6424831a053e0e7fe1566ea",
+      "sizeBytes": 31663,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/fem-import",
+      "version": "0.3.0",
+      "filename": "w-sim-fem-import-0.3.0.tgz",
+      "sha256": "ded9c902e6e4c04d384952387fa1e72b9292a8571281d78f60684ac094d5fb09",
+      "sizeBytes": 47291,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/kit",
+      "version": "0.3.0",
+      "filename": "w-sim-kit-0.3.0.tgz",
+      "sha256": "1623828714dd8ddb87b5f8a306301fc97e19303d0ec985ceb3f53cd3bb175606",
+      "sizeBytes": 16139,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/lammps-import",
+      "version": "0.3.0",
+      "filename": "w-sim-lammps-import-0.3.0.tgz",
+      "sha256": "8b4ef94675687f481b29bf676a24e9870121a450e8d2ee087eac18fc4163be20",
+      "sizeBytes": 32511,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/msh-import",
+      "version": "0.3.0",
+      "filename": "w-sim-msh-import-0.3.0.tgz",
+      "sha256": "cc213918079051c5857af0f7bba2f1970a4bb285578c96d9aa9664e02f0b05db",
+      "sizeBytes": 29321,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/openfoam-import",
+      "version": "0.3.0",
+      "filename": "w-sim-openfoam-import-0.3.0.tgz",
+      "sha256": "71f7d5056c4784c01c7e7ff478543cf429b4a390b8c97defd67ad17370f162f8",
+      "sizeBytes": 90227,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/runtime",
+      "version": "0.3.0",
+      "filename": "w-sim-runtime-0.3.0.tgz",
+      "sha256": "6a8357115e84b5fa3c67aef99dfb38910a41ccc84a7def8871cebec0ef7a2ac1",
+      "sizeBytes": 59271,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solver-conformance",
+      "version": "0.3.0",
+      "filename": "w-sim-solver-conformance-0.3.0.tgz",
+      "sha256": "6a8091d12d96ab71cf58422780029d580aca8c6d613f755cc94e5772bb9146ab",
+      "sizeBytes": 53501,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-acoustics",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-acoustics-0.3.0.tgz",
+      "sha256": "97942f7d841628f4921d061a5669b44709c1889a7ece53af69c69ca17cb3a71b",
+      "sizeBytes": 165075,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-em-fdtd",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-em-fdtd-0.3.0.tgz",
+      "sha256": "59a2ed2a4c0ff5e7cb8046e1525bfe4326b953a39498fe20a7265a6aef3bccde",
+      "sizeBytes": 182680,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-export-report",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-export-report-0.3.0.tgz",
+      "sha256": "651d3825ee77f8a3b533a2d22fe5ab5658dcacaaf2e80ef6238233472d633cc0",
+      "sizeBytes": 293432,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/solver-conformance": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-lbm",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-lbm-0.3.0.tgz",
+      "sha256": "34ed207f4b0391538a960f7f0cf1d21b6c7f6a52eded5f1a0f0ff9949363bda1",
+      "sizeBytes": 665141,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE",
+        "THIRD_PARTY_NOTICES.md",
+        "licenses/rust/LICENSE-MIT",
+        "licenses/rust/COPYRIGHT",
+        "licenses/compiler-builtins/LICENSE.txt",
+        "licenses/libm/LICENSE.txt",
+        "licenses/compiler-rt/CREDITS.TXT"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-md",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-md-0.3.0.tgz",
+      "sha256": "058d0831acf113265533252bbf4c1ee8e604fa7a54b9ff95e21a7949f3982ed5",
+      "sizeBytes": 299106,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-path-experiment",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-path-experiment-0.3.0.tgz",
+      "sha256": "ed0e9dc9052c7b69ef10139e27be31802c41f410b550c6b4f9133be9a705f0a6",
+      "sizeBytes": 471060,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/solver-conformance": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-structural",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-structural-0.3.0.tgz",
+      "sha256": "a39ddebc6bfa8215b5fc58a651c2012313234759a64c73d3bb6f685179b3d70e",
+      "sizeBytes": 350157,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    },
+    {
+      "name": "@w-sim/solvers-thermal",
+      "version": "0.3.0",
+      "filename": "w-sim-solvers-thermal-0.3.0.tgz",
+      "sha256": "b5b53cdaf1546b3a5c110923a9ad70b8f9d0fa7403b1c326295db6a54e751b18",
+      "sizeBytes": 284379,
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "dependencies": {
+        "@w-sim/contracts": "0.3.0",
+        "@w-sim/kit": "0.3.0"
+      },
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    }
+  ],
+  "rustCrates": [
+    {
+      "name": "w-sim-kernels",
+      "version": "0.1.0",
+      "filename": "w-sim-kernels-0.1.0.crate",
+      "sha256": "e04a2f32598e2de23cda07e3e2c6f78b4806d434be5a7ab3d2c0b12bf5f9ad81",
+      "sizeBytes": 567391,
+      "license": "MIT",
+      "licenseFile": "LICENSE",
+      "dependencies": [
+        {
+          "name": "rayon",
+          "source": "registry+https://github.com/rust-lang/crates.io-index",
+          "req": "^1.10",
+          "kind": null,
+          "rename": null,
+          "optional": true,
+          "uses_default_features": true,
+          "features": [],
+          "target": null,
+          "registry": null
+        }
+      ],
+      "sourceRevision": "f558f268922e498cd235c468ee7044586e23a24b"
+    }
+  ],
+  "licenseFiles": [
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "licenseNotice": "MIT; dependencies retain their own licenses.",
+  "licenseNoticeSource": "LICENSE"
+}

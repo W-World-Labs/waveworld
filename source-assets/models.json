@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "entries": [
+    {
+      "file": "olympus-1u-preview.glb",
+      "archive": "olympus-1u-preview.glb.gz",
+      "bytes": 31960900,
+      "sha256": "ea03d5ddbf99547552441b3b185db006284b9e80cb7ac972f5f19334b1244855",
+      "archiveBytes": 8083340,
+      "archiveSha256": "1d5ebca96e66f73e563384d479b88af45005edfc160a6855debf5cbd7d6b12ba",
+      "rights": "OWFa-1.0",
+      "changes": "Lossless gzip packaging only; decoded bytes equal reviewed original."
+    },
+    {
+      "file": "olympus-1u-cover-removed-preview.glb",
+      "archive": "olympus-1u-cover-removed-preview.glb.gz",
+      "bytes": 31960944,
+      "sha256": "bc8c86d128270c265f7d8f0fcd0c95eb16111cd98c250a4d77e12f10a7b80b06",
+      "archiveBytes": 8083317,
+      "archiveSha256": "cfd3e2683bd31f05a71141a6d9cc007a6358e99d2f9336016b61b1ff9e1f8bbf",
+      "rights": "OWFa-1.0",
+      "changes": "Lossless gzip packaging only; decoded bytes equal reviewed original."
+    },
+    {
+      "file": "milk-truck-solid.stl",
+      "archive": "milk-truck-solid.stl.gz",
+      "bytes": 14140484,
+      "sha256": "8d25ffa22350d8fbb56f4c60c29c58102904b2b012736924ee3e1f2f6e69393d",
+      "archiveBytes": 2040955,
+      "archiveSha256": "c443335c06443999d391ad3c945d90800f2a7dcd6884a4cb7797595e31c1bfd5",
+      "rights": "CC-BY-4.0 AND Cesium trademark notice",
+      "changes": "Lossless gzip packaging only; decoded bytes equal reviewed original."
+    }
+  ],
+  "note": "Explicit build/CI preparation restores these reviewed bytes. No network/model installer runs at runtime. Unknown-rights Ahmed source and PR2 reference are not distributed; raw X57 source reference is not a runtime preset."
+}

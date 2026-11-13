@@ -1,0 +1,1891 @@
+{
+ "schemaVersion": 1,
+ "downloadedAt": "2026-09-11",
+ "purpose": "Offline source fixtures and executed solver checks. No external solver binary is run; cases marked executed-solver are parsed from the pinned upstream inputs and run through W-Sim solver runners under matched physics, checked against upstream-published output or the case's own analytic values.",
+ "projects": {
+  "quantum-espresso": {
+   "repository": "https://github.com/QEF/q-e",
+   "commit": "61569eb480231b649c47f631df9c5c83537df461",
+   "attribution": "Quantum ESPRESSO developers",
+   "license": {
+    "name": "GNU GPL v2",
+    "file": {
+     "path": "quantum-espresso/License",
+     "sourcePath": "License",
+     "url": "https://raw.githubusercontent.com/QEF/q-e/61569eb480231b649c47f631df9c5c83537df461/License",
+     "bytes": 18009,
+     "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+    }
+   }
+  },
+  "cp2k": {
+   "repository": "https://github.com/cp2k/cp2k",
+   "commit": "ba1d7ca22e7ccc538109272e9f450255bf85a54d",
+   "attribution": "CP2K developers",
+   "license": {
+    "name": "GNU GPL v2",
+    "file": {
+     "path": "cp2k/LICENSE",
+     "sourcePath": "LICENSE",
+     "url": "https://raw.githubusercontent.com/cp2k/cp2k/ba1d7ca22e7ccc538109272e9f450255bf85a54d/LICENSE",
+     "bytes": 18092,
+     "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    }
+   }
+  },
+  "openfoam-12": {
+   "repository": "https://github.com/OpenFOAM/OpenFOAM-12",
+   "commit": "0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd",
+   "attribution": "OpenFOAM Foundation",
+   "license": {
+    "name": "GNU GPL v3",
+    "file": {
+     "path": "openfoam-12/COPYING",
+     "sourcePath": "COPYING",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/COPYING",
+     "bytes": 35646,
+     "sha256": "a62f4262b9739f43478d025ed9fc5419585ec27b4b50e88f55e3186141e18ef1"
+    }
+   }
+  },
+  "openfoam-8": {
+   "repository": "https://github.com/OpenFOAM/OpenFOAM-8",
+   "commit": "a86b07b9dabb8c9e8763a146cac4b5ea7824a52b",
+   "attribution": "OpenFOAM Foundation",
+   "license": {
+    "name": "GNU GPL v3",
+    "file": {
+     "path": "openfoam-8/COPYING",
+     "sourcePath": "COPYING",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/COPYING",
+     "bytes": 35226,
+     "sha256": "611082b0773dbc9f20af88381f6d14e39bc3de7af46683711747c30a9f31c38b"
+    }
+   }
+  },
+  "lammps": {
+   "repository": "https://github.com/lammps/lammps",
+   "commit": "3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a",
+   "attribution": "LAMMPS developers / Sandia National Laboratories",
+   "license": {
+    "name": "GNU GPL v2",
+    "file": {
+     "path": "lammps/LICENSE",
+     "sourcePath": "LICENSE",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/LICENSE",
+     "bytes": 17712,
+     "sha256": "be38e38d9482c2beae35408e413045b4363e0e067b0d9f31549047948637a7ed"
+    }
+   }
+  },
+  "cclib": {
+   "repository": "https://github.com/cclib/cclib",
+   "commit": "fc2d404027849b7922cf4e839ad326e79379463b",
+   "attribution": "cclib development team",
+   "license": {
+    "name": "BSD-3-Clause",
+    "file": {
+     "path": "cclib/LICENSE",
+     "sourcePath": "LICENSE",
+     "url": "https://raw.githubusercontent.com/cclib/cclib/fc2d404027849b7922cf4e839ad326e79379463b/LICENSE",
+     "bytes": 1526,
+     "sha256": "a9ed52f8c54cfefc4c9a02681e074eb7082fb29137db0b7977f40ca6ebf667a4"
+    }
+   }
+  },
+  "frame3dd": {
+   "repository": "https://github.com/hpgavin/frame3dd",
+   "commit": "58d66510c120785dcf0ea1ffe67d2eccd545c348",
+   "attribution": "Henri P. Gavin / Frame3DD",
+   "license": {
+    "name": "GNU GPL v3",
+    "file": {
+     "path": "frame3dd/LICENSE",
+     "sourcePath": "LICENSE",
+     "url": "https://raw.githubusercontent.com/hpgavin/frame3dd/58d66510c120785dcf0ea1ffe67d2eccd545c348/LICENSE",
+     "bytes": 33895,
+     "sha256": "41122d1876e4da5f943c6c6326b6f9557dfd2ed0bc1989ebecaeaff83f31f5a9"
+    }
+   }
+  },
+  "energyplus": {
+   "repository": "https://github.com/NREL/EnergyPlus",
+   "commit": "f7c103167afdd833d3c5f97e4d42f5a2f9d7a18c",
+   "attribution": "EnergyPlus developers",
+   "license": {
+    "name": "BSD-3-Clause",
+    "file": {
+     "path": "energyplus/LICENSE.txt",
+     "sourcePath": "LICENSE.txt",
+     "url": "https://raw.githubusercontent.com/NREL/EnergyPlus/f7c103167afdd833d3c5f97e4d42f5a2f9d7a18c/LICENSE.txt",
+     "bytes": 3169,
+     "sha256": "6056c62430939d292fe52a0a7e1cf037d30b110ddb58fe4d51397531d187d653"
+    }
+   }
+  },
+  "calculix": {
+   "repository": "https://github.com/Dhondtguido/CalculiX",
+   "commit": "3593817a4a7658eb8af9e9827fbe98f9552fbd44",
+   "attribution": "Guido Dhondt / CalculiX contributors",
+   "license": {
+    "name": "GNU GPL v2",
+    "file": {
+     "path": "calculix/LICENSE",
+     "sourcePath": "LICENSE",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/LICENSE",
+     "bytes": 18092,
+     "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    }
+   }
+  },
+  "moose": {
+   "repository": "https://github.com/idaholab/moose",
+   "commit": "397623b5be779f950b9f0d851c870bdb682ca65e",
+   "attribution": "Idaho National Laboratory / MOOSE contributors",
+   "license": {
+    "name": "GNU LGPL v2.1",
+    "file": {
+     "path": "moose/LICENSE",
+     "sourcePath": "LICENSE",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/LICENSE",
+     "bytes": 26530,
+     "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    }
+   }
+  }
+ },
+ "datasets": [
+  {
+   "path": "public/datasets/lammps-lj-2d.data",
+   "bytes": 3284,
+   "sha256": "ff8fed370ddd31848932dee727f7187a86c3a910f5f3c73affa2d30cbd563a1a",
+   "provenance": "public/datasets/README.md; scripts/research/lammps-hello.py"
+  },
+  {
+   "path": "public/datasets/lammps-lj-2d-reference.json",
+   "bytes": 2533,
+   "sha256": "7e012e2bfa4e9ae017594b4ac010a03810892ca8055929e0b5b2101226ec14a8",
+   "provenance": "public/datasets/README.md; scripts/research/lammps-hello.py"
+  },
+  {
+   "path": "public/datasets/mit-bih-100-10s.csv",
+   "bytes": 50375,
+   "sha256": "914c8c8d8c4781f9964935859b5384bbbf649d7bc9dba38972bd613dc1c59bc5",
+   "provenance": "public/datasets/README.md (PhysioNet MIT-BIH record 100 excerpt)"
+  },
+  {
+   "path": "public/datasets/ngspice-rc-charge.csv",
+   "bytes": 4701,
+   "sha256": "601b8e7113140c3394c4127bdfc464a7cadce9a98bc61f919614d4775bf30376",
+   "provenance": "public/datasets/README.md; scripts/research/software-hello.py"
+  },
+  {
+   "path": "public/datasets/software-hello-reference.json",
+   "bytes": 29411,
+   "sha256": "8c44748e70969e786127483fdc27d6cde669c206bfe430f89b5c42abbc0afeb9",
+   "provenance": "public/datasets/README.md; scripts/research/software-hello.py"
+  },
+  {
+   "path": "public/datasets/touchstone-example.s1p",
+   "bytes": 179,
+   "sha256": "8ddddf2eec88eb70a57721e4789fc7f4b7d5797ffa3d07580d86823d3ea9f150",
+   "provenance": "public/datasets/README.md (synthetic Touchstone format fixture)"
+  },
+  {
+   "path": "public/datasets/touchstone-example.s2p",
+   "bytes": 146,
+   "sha256": "abbc2f490b466ce1c8c161b70e6f7072941c881547900e01bfbe32538d934c32",
+   "provenance": "public/datasets/README.md (synthetic Touchstone format fixture)"
+  },
+  {
+   "path": "public/datasets/touchstone2-example.s2p",
+   "bytes": 364,
+   "sha256": "f771475b5ac0ba15a4321024ff073b1769fd070b7e6b495067d273bdef531faf",
+   "provenance": "public/datasets/README.md (authored synthetic Touchstone 2.0 fixture; not a vendor oracle)"
+  },
+  {
+   "path": "public/datasets/touchstone2-example.s3p",
+   "bytes": 489,
+   "sha256": "cbfa8753175be1679b1a8185d41784974ddb82fd87063ee21b685207bde1e5ef",
+   "provenance": "public/datasets/README.md (authored synthetic Touchstone 2.0 fixture; not a vendor oracle)"
+  },
+  {
+   "path": "public/datasets/fem-import/README.md",
+   "bytes": 2114,
+   "sha256": "e29a70bb36720e2336144590e4f993385d822a18f4d94b560e94fcbb646bb512"
+  },
+  {
+   "path": "public/datasets/fem-import/assembly-tetra-example.inp",
+   "bytes": 474,
+   "sha256": "fa86c03548b976ecb04b39de23d527f463a6ea60b1166b6a2cc447cc1354c833"
+  },
+  {
+   "path": "public/datasets/fem-import/assembly-tetra-example.json",
+   "bytes": 1236,
+   "sha256": "a6f567083aaeb4372dbb7ec9f850704fe51446c9492cbdb8c55dbb06b9d07722"
+  },
+  {
+   "path": "public/datasets/fem-import/fem-include-example.zip",
+   "bytes": 865,
+   "sha256": "4d1a7ca78063ccf46e1bfc0b6069f3bc380669a5c6e7d3107024928ae5e5eddf",
+   "encoding": "binary"
+  },
+  {
+   "path": "public/datasets/fem-import/loads.inc",
+   "bytes": 43,
+   "sha256": "699c1096de8e8c2d7b122307102e6e7aa2fb5321aa50285cdec4f20279861358"
+  },
+  {
+   "path": "public/datasets/fem-import/main.inp",
+   "bytes": 163,
+   "sha256": "d0f6742eb959316301bc6c83d0df9f141f0edc38f55b916429dc550fda0f492e"
+  },
+  {
+   "path": "public/datasets/fem-import/material.inc",
+   "bytes": 100,
+   "sha256": "48c4a179c68c5c739a2b81d469a45bd1fdef3884e1d7e5d8ce497644baab46ff"
+  },
+  {
+   "path": "public/datasets/fem-import/mesh/mesh.inc",
+   "bytes": 67,
+   "sha256": "3705a671507ab62b9b280ea820c9f7028bc1811789391962064cfdd3011b7d5b"
+  },
+  {
+   "path": "public/datasets/fem-import/nodes.inc",
+   "bytes": 80,
+   "sha256": "ad0415cefd47a90e0105bed419f27d82bda6a01e1bd4e0f70591e2bb49c50267"
+  },
+  {
+   "path": "public/datasets/fem-import/pressure-c3d8.inp",
+   "bytes": 426,
+   "sha256": "14703d5e95ae140d27a6afff35c042e268f1f9bfc75dc9b44191a551c5d9cd0e"
+  },
+  {
+   "path": "public/datasets/star-ccm/directional-cfl-example.csv",
+   "bytes": 177,
+   "sha256": "d77fccd2af52162b76e1ebbd6e9edcb4e14fe649557de811532a20c3126883ca"
+  }
+ ],
+ "cases": [
+  {
+   "id": "qe-scf",
+   "project": "quantum-espresso",
+   "name": "Silicon SCF with weighted k points",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "plane waves",
+    "periodic silicon",
+    "LDA"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input only; referenced pseudopotentials and a QE engine are absent. No QE importer or electronic DFT solver is implemented by WaveWorld.",
+   "files": [
+    {
+     "path": "quantum-espresso/test-suite/pw_scf/scf.in",
+     "sourcePath": "test-suite/pw_scf/scf.in",
+     "url": "https://raw.githubusercontent.com/QEF/q-e/61569eb480231b649c47f631df9c5c83537df461/test-suite/pw_scf/scf.in",
+     "bytes": 347,
+     "sha256": "801a5932eb8a49bda647afce06305b7d5dabda208cee17a35bb996a6ea4f0483"
+    }
+   ]
+  },
+  {
+   "id": "qe-scf-gamma",
+   "project": "quantum-espresso",
+   "name": "Silicon SCF at Gamma",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "plane waves",
+    "periodic silicon",
+    "Gamma-only"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input only; referenced pseudopotentials and a QE engine are absent. No QE importer or electronic DFT solver is implemented by WaveWorld.",
+   "files": [
+    {
+     "path": "quantum-espresso/test-suite/pw_scf/scf-gamma.in",
+     "sourcePath": "test-suite/pw_scf/scf-gamma.in",
+     "url": "https://raw.githubusercontent.com/QEF/q-e/61569eb480231b649c47f631df9c5c83537df461/test-suite/pw_scf/scf-gamma.in",
+     "bytes": 315,
+     "sha256": "3d8770ce593fcd710dbb11aa60d113a9e6e8b0d2dd4b607e398124677d48092b"
+    }
+   ]
+  },
+  {
+   "id": "qe-scf-gth",
+   "project": "quantum-espresso",
+   "name": "Succinic acid crystal with dispersion",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "molecular crystal",
+    "GTH pseudopotentials",
+    "DFT-D2"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input only; referenced pseudopotentials and a QE engine are absent. No QE importer or electronic DFT solver is implemented by WaveWorld.",
+   "files": [
+    {
+     "path": "quantum-espresso/test-suite/pw_scf/scf-gth.in",
+     "sourcePath": "test-suite/pw_scf/scf-gth.in",
+     "url": "https://raw.githubusercontent.com/QEF/q-e/61569eb480231b649c47f631df9c5c83537df461/test-suite/pw_scf/scf-gth.in",
+     "bytes": 1445,
+     "sha256": "cfc21eeee46fd35205be3f327c46b1e98f970d233340ae5b0c4feae9f26c699f"
+    }
+   ]
+  },
+  {
+   "id": "cp2k-h2",
+   "project": "cp2k",
+   "name": "H2",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "GPW",
+    "H2",
+    "Pade LDA"
+   ],
+   "check": "integrity-only",
+   "limitation": "Upstream regression input only; basis/potential files and CP2K are absent. Some regression inputs deliberately use short SCF limits or invalid diagnostic requests. No CP2K import, convergence or DFT result is claimed.",
+   "files": [
+    {
+     "path": "cp2k/tests/QS/regtest-gpw-1/H2.inp",
+     "sourcePath": "tests/QS/regtest-gpw-1/H2.inp",
+     "url": "https://raw.githubusercontent.com/cp2k/cp2k/ba1d7ca22e7ccc538109272e9f450255bf85a54d/tests/QS/regtest-gpw-1/H2.inp",
+     "bytes": 850,
+     "sha256": "d04108d29460f6180cb88b9bc5336277dd3d501efad42aa503b2de4e40e438fc"
+    }
+   ]
+  },
+  {
+   "id": "cp2k-ar",
+   "project": "cp2k",
+   "name": "Ar",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "GPW",
+    "argon",
+    "Pade LDA"
+   ],
+   "check": "integrity-only",
+   "limitation": "Upstream regression input only; basis/potential files and CP2K are absent. Some regression inputs deliberately use short SCF limits or invalid diagnostic requests. No CP2K import, convergence or DFT result is claimed.",
+   "files": [
+    {
+     "path": "cp2k/tests/QS/regtest-gpw-1/Ar.inp",
+     "sourcePath": "tests/QS/regtest-gpw-1/Ar.inp",
+     "url": "https://raw.githubusercontent.com/cp2k/cp2k/ba1d7ca22e7ccc538109272e9f450255bf85a54d/tests/QS/regtest-gpw-1/Ar.inp",
+     "bytes": 995,
+     "sha256": "cf6e78f75d9d0fb2d5a511a8376a9f97b58f71bb8d67b00a3d7ff08baf8b33ff"
+    }
+   ]
+  },
+  {
+   "id": "cp2k-h2o-geoopt",
+   "project": "cp2k",
+   "name": "H2O-geoopt",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "GPW",
+    "water",
+    "geometry optimization"
+   ],
+   "check": "integrity-only",
+   "limitation": "Upstream regression input only; basis/potential files and CP2K are absent. Some regression inputs deliberately use short SCF limits or invalid diagnostic requests. No CP2K import, convergence or DFT result is claimed.",
+   "files": [
+    {
+     "path": "cp2k/tests/QS/regtest-gpw-1/H2O-geoopt.inp",
+     "sourcePath": "tests/QS/regtest-gpw-1/H2O-geoopt.inp",
+     "url": "https://raw.githubusercontent.com/cp2k/cp2k/ba1d7ca22e7ccc538109272e9f450255bf85a54d/tests/QS/regtest-gpw-1/H2O-geoopt.inp",
+     "bytes": 2310,
+     "sha256": "887554f6dc68a746d65a20451a2ee1161474f44455ec6ce115f8caadbf80c6d7"
+    }
+   ]
+  },
+  {
+   "id": "openfoam12-cavity",
+   "project": "openfoam-12",
+   "name": "cavity",
+   "domain": "CFD",
+   "physics": [
+    "incompressible",
+    "Newtonian",
+    "RAS",
+    "k-epsilon"
+   ],
+   "check": "executed-solver",
+   "limitation": "Upstream models this Re=10000 cavity with k-epsilon RAS; the parsed nu/lid/geometry are run on the laminar D2Q9-MRT path as a bounded-regime check only (mass conservation, bounded velocity, recirculation sign). No Ghia agreement is asserted: laminar Re=10000 is outside the validated envelope and turbulent modeling is not simulated.",
+   "files": [
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/0/U",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/0/U",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/0/U",
+     "bytes": 953,
+     "sha256": "fb01f525e4200e910cf986dc34538f203ce5e35152b4cc5d4bd7d8b034c524b6"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/0/p",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/0/p",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/0/p",
+     "bytes": 914,
+     "sha256": "d4bacc4f904d3483b70892a0869f9bf8c1a8c185a0915ad68f597ba3d887d688"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/constant/physicalProperties",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/constant/physicalProperties",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/constant/physicalProperties",
+     "bytes": 740,
+     "sha256": "35023d390fb2813f367cdd50fdb0383ea77ab9d8273105bb10ab589e265987cf"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/constant/momentumTransport",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/constant/momentumTransport",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/constant/momentumTransport",
+     "bytes": 791,
+     "sha256": "8233999c528df6d9b5ab8ba283e10c6592c077327d915e4e0c517c965ad4eacb"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/system/blockMeshDict",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/system/blockMeshDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/system/blockMeshDict",
+     "bytes": 1254,
+     "sha256": "964b52a737dbbf7a458dfe360e388f3917ba70ef01dab92aa5a8242704aa9daa"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/system/controlDict",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/system/controlDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/system/controlDict",
+     "bytes": 1062,
+     "sha256": "8d596145c7d423c94ec7a797dff8de58a5b8ede21317ceb0940093b3c5c62c61"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/system/fvSchemes",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/system/fvSchemes",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/system/fvSchemes",
+     "bytes": 1320,
+     "sha256": "9a3810fbceac7e156523d81549e9e935f0d780232a67ad8007f40c01133f8d24"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/system/fvSolution",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/system/fvSolution",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/system/fvSolution",
+     "bytes": 1221,
+     "sha256": "1523433c53a27ff6cb7a4bdcc4f7f9fd20b6555e3319a6ae24b07d3ceb42d589"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/0/k",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/0/k",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/0/k",
+     "bytes": 1028,
+     "sha256": "d8c1744aa21734e074bb28c9921319916d2f595282e5b2369cbc42599b692e8f"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/0/epsilon",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/0/epsilon",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/0/epsilon",
+     "bytes": 1042,
+     "sha256": "78f51b7f918fb1a73572598033a90ad9c49ba1e4ac6bcb5112c23daf73070078"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/cavity/0/nut",
+     "sourcePath": "tutorials/incompressibleFluid/cavity/0/nut",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/cavity/0/nut",
+     "bytes": 1014,
+     "sha256": "bc2cb1a49149ab10a5fc95622a03096cd96d81d82c28193411f0fa65d7ab2799"
+    }
+   ],
+   "test": "src/lib/sim/software-cases-exec.test.ts: openfoam12-cavity Re=10000 RAS case runs bounded on the laminar MRT path"
+  },
+  {
+   "id": "openfoam12-planarcouette",
+   "project": "openfoam-12",
+   "name": "planarCouette",
+   "domain": "CFD",
+   "physics": [
+    "incompressible",
+    "laminar",
+    "Maxwell viscoelastic"
+   ],
+   "check": "executed-solver",
+   "limitation": "Parsed movingWall/bottomWall/cyclic patches, 20x20x1 mesh and nu are run through the W-Sim D2Q9 Couette channel (new moving-wall bounce-back mode) at the file's wall-node count; checked against the analytic linear Couette profile. The Maxwell viscoelastic model entry is not simulated: the steady shear velocity profile is identical, but normal-stress differences and transients are not validated. A comfortable lattice viscosity is used since the linear steady profile is Re-independent.",
+   "files": [
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/0/U",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/0/U",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/0/U",
+     "bytes": 940,
+     "sha256": "24cec798ed061899418dea37136a8673db6d46428776a0badad6b8d4f31ff61e"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/0/p",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/0/p",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/0/p",
+     "bytes": 901,
+     "sha256": "996fb03bf6425999d32790c0ec18ec1b03d28889ad51df7a877dce2f0951640b"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/constant/physicalProperties",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/constant/physicalProperties",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/constant/physicalProperties",
+     "bytes": 706,
+     "sha256": "6820bbc42e3f50a5a6abb066b798e8f2c2ef26984693e9d0a023d5e96722524d"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/constant/momentumTransport",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/constant/momentumTransport",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/constant/momentumTransport",
+     "bytes": 837,
+     "sha256": "b327be0ab0ea0c7589a6546630a4bdf6b3bfa5e75f5f660de38c7e5c2ff2008a"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/system/blockMeshDict",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/system/blockMeshDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/system/blockMeshDict",
+     "bytes": 1486,
+     "sha256": "a6146ea0e693586d60ed7c59421739c129d6a3a55059e826647e6d86316ec69d"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/system/controlDict",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/system/controlDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/system/controlDict",
+     "bytes": 1061,
+     "sha256": "f5beffd259924589c2fe0957e251094138f3384e474fab076deb14764d49e5f5"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/system/fvSchemes",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/system/fvSchemes",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/system/fvSchemes",
+     "bytes": 1182,
+     "sha256": "bdbe4cd8dd210b71844dda4f65220ad59b73b6f9a0cef1cd7a1b4314890cc18f"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/system/fvSolution",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/system/fvSolution",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/system/fvSolution",
+     "bytes": 1379,
+     "sha256": "7f73484978763e50b5164c682028a8880c36881c750cf7ea643a7c284c375300"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarCouette/0/sigma",
+     "sourcePath": "tutorials/incompressibleFluid/planarCouette/0/sigma",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarCouette/0/sigma",
+     "bytes": 918,
+     "sha256": "9268e41f0f2f7405af5693a7f2136a63ec1ae36cc7c59309f5efe16166b513fd"
+    }
+   ],
+   "test": "src/lib/sim/software-cases-exec.test.ts: openfoam12-planarcouette moving-wall channel reproduces the linear Couette profile"
+  },
+  {
+   "id": "openfoam12-planarpoiseuille",
+   "project": "openfoam-12",
+   "name": "planarPoiseuille",
+   "domain": "CFD",
+   "physics": [
+    "incompressible",
+    "laminar",
+    "Maxwell viscoelastic",
+    "body-force drive"
+   ],
+   "check": "executed-solver",
+   "limitation": "Laminar half-channel with a constant specific momentum source; parsed nu, momentum source and mesh patch planes are mapped to the D2Q9 force-Poiseuille runner at matched Re_h=250 and checked against the analytic parabolic u_max. The Maxwell viscoelastic model entry, cyclic patches and sigma field are not simulated; finite-volume meshing and OpenFOAM itself are not run.",
+   "files": [
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/0/U",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/0/U",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/0/U",
+     "bytes": 874,
+     "sha256": "d93cb955db316abec39d9441a4f8a0d8b4fb14a85a920cb1d466ef9bc28938f6"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/0/p",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/0/p",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/0/p",
+     "bytes": 830,
+     "sha256": "da5aeaf80d773e713af04c881035355bce61e452c4d068e473fa3505bbdbd102"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/constant/physicalProperties",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/constant/physicalProperties",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/constant/physicalProperties",
+     "bytes": 749,
+     "sha256": "4a25c90962c9fb28e0501d79df84d9166321ad096b8891fe50e30c8347f7c378"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/constant/momentumTransport",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/constant/momentumTransport",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/constant/momentumTransport",
+     "bytes": 837,
+     "sha256": "b327be0ab0ea0c7589a6546630a4bdf6b3bfa5e75f5f660de38c7e5c2ff2008a"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/system/blockMeshDict",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/system/blockMeshDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/system/blockMeshDict",
+     "bytes": 1492,
+     "sha256": "47e000053a70252563649772c25f6acead6bcc18d465a8bef571b89b2cfe6fd1"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/system/controlDict",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/system/controlDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/system/controlDict",
+     "bytes": 1033,
+     "sha256": "53ea16322e05cbb0d9d0bd8f21e183b2fb236a75f6313426025f98ae9341b68e"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/system/fvSchemes",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/system/fvSchemes",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/system/fvSchemes",
+     "bytes": 1182,
+     "sha256": "bdbe4cd8dd210b71844dda4f65220ad59b73b6f9a0cef1cd7a1b4314890cc18f"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/system/fvSolution",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/system/fvSolution",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/system/fvSolution",
+     "bytes": 1379,
+     "sha256": "7f73484978763e50b5164c682028a8880c36881c750cf7ea643a7c284c375300"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/0/sigma",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/0/sigma",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/0/sigma",
+     "bytes": 846,
+     "sha256": "02dd4191f24426a504e213cdc1dcfa4a805605d60e4df740638379b9e738d959"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/constant/fvModels",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/constant/fvModels",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/constant/fvModels",
+     "bytes": 904,
+     "sha256": "dcb8c38f83bfeec39673979a52d5e97b4a3ae67affd20914192488b00ba8e00c"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/planarPoiseuille/system/functions",
+     "sourcePath": "tutorials/incompressibleFluid/planarPoiseuille/system/functions",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/planarPoiseuille/system/functions",
+     "bytes": 798,
+     "sha256": "da44eb4b23f7f6a7e7868ab515c35bbdcc037a162c3eaf59d3f35ddaff3018e5"
+    }
+   ],
+   "test": "src/lib/sim/software-cases-exec.test.ts: openfoam12-planarpoiseuille force-driven channel converges to the analytic profile"
+  },
+  {
+   "id": "openfoam12-pitzdailysteady",
+   "project": "openfoam-12",
+   "name": "pitzDailySteady",
+   "domain": "CFD",
+   "physics": [
+    "incompressible",
+    "Newtonian",
+    "steady RAS",
+    "k-epsilon"
+   ],
+   "check": "integrity-only",
+   "limitation": "Selected initial fields, constitutive and numerical dictionaries; not a self-contained executed case. OpenFOAM includes/function objects are not resolved or run. WaveWorld does not import OpenFOAM dictionaries; current Newtonian LBM does not imply RAS or Maxwell capability.",
+   "files": [
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/0/U",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/0/U",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/0/U",
+     "bytes": 1069,
+     "sha256": "9ba1a81f047515fa64f01ee8007ca62d92e59c76f5c203b17009474288a4ef2b"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/0/p",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/0/p",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/0/p",
+     "bytes": 1068,
+     "sha256": "e7acc5ce6106ebf757d95e011029ef5bfc501442cbfa3454269adb84d359224e"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/constant/physicalProperties",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/constant/physicalProperties",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/constant/physicalProperties",
+     "bytes": 732,
+     "sha256": "0ca8cbd26799972151b4fdff67c01cb15c34006ca6f806966bb4d471021125c9"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/constant/momentumTransport",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/constant/momentumTransport",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/constant/momentumTransport",
+     "bytes": 939,
+     "sha256": "689d0f05e900650d37ebb13602ffdd1a154601b1b15356e8245b89a271e69aeb"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/system/blockMeshDict",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/system/blockMeshDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/system/blockMeshDict",
+     "bytes": 2641,
+     "sha256": "6dabf9b7f2d62dfd33ad4ce2318259bfabb87338e6a26b89b2ee12e9bcdcdd72"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/system/controlDict",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/system/controlDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/system/controlDict",
+     "bytes": 1060,
+     "sha256": "90899b1f324c3d39b1d7bbc7c6b16c56a8fea2a17dd97dc747c61db35e7b1633"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/system/fvSchemes",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/system/fvSchemes",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/system/fvSchemes",
+     "bytes": 1366,
+     "sha256": "7656210b3daee41a65509dac6a4bb66afcb5303c7bf56130530a96d905a26335"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/system/fvSolution",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/system/fvSolution",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/system/fvSolution",
+     "bytes": 1562,
+     "sha256": "5713d42738cd87087d9756eb3baf9f0b6c7f6d909171085c8ea06bf32092b989"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/0/k",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/0/k",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/0/k",
+     "bytes": 1178,
+     "sha256": "dd7c8bdd377fadcfdefbf27787f167cdd353a4a86969e7b1c8951f024b74b8a1"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/0/epsilon",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/0/epsilon",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/0/epsilon",
+     "bytes": 1196,
+     "sha256": "00a2789732f52e6e0644be19a86caff7953b638756c29ee1aad75e1221e92fe8"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/0/nut",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/0/nut",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/0/nut",
+     "bytes": 1199,
+     "sha256": "c398846dd7a18978ca31faa5f5eaf186a160e5a7c8b4bad48d5247c5d6e216cf"
+    },
+    {
+     "path": "openfoam-12/tutorials/incompressibleFluid/pitzDailySteady/system/functions",
+     "sourcePath": "tutorials/incompressibleFluid/pitzDailySteady/system/functions",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/incompressibleFluid/pitzDailySteady/system/functions",
+     "bytes": 830,
+     "sha256": "3d8697b8fc07892ff5327252db3a55a84d0c416f0fd6256c0eb3efdd02be9592"
+    }
+   ]
+  },
+  {
+   "id": "openfoam8-cavity-laminar",
+   "project": "openfoam-8",
+   "name": "icoFoam laminar lid-driven cavity",
+   "domain": "CFD",
+   "physics": [
+    "incompressible",
+    "laminar",
+    "Newtonian",
+    "constant kinematic viscosity",
+    "moving lid"
+   ],
+   "check": "executed-solver",
+   "limitation": "Laminar Re=10 cavity (below the Ghia table range) mapped to the D2Q9 lid-cavity runner; checked by steady-state residual, mass conservation and n=32 vs n=64 centerline grid convergence. No external literature values exist at Re=10 in the bundled tables; OpenFOAM itself is not run.",
+   "files": [
+    {
+     "path": "openfoam-8/tutorials/incompressible/icoFoam/cavity/cavity/0/U",
+     "sourcePath": "tutorials/incompressible/icoFoam/cavity/cavity/0/U",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/incompressible/icoFoam/cavity/cavity/0/U",
+     "bytes": 973,
+     "sha256": "b695b6e21142e9281e496e68471d692d690546c9c18436d4317fd14fbf4abbc4"
+    },
+    {
+     "path": "openfoam-8/tutorials/incompressible/icoFoam/cavity/cavity/0/p",
+     "sourcePath": "tutorials/incompressible/icoFoam/cavity/cavity/0/p",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/incompressible/icoFoam/cavity/cavity/0/p",
+     "bytes": 934,
+     "sha256": "af4b5ed802930a14c5ac645c4f212a4028067610382396fcd44921e0c7db4227"
+    },
+    {
+     "path": "openfoam-8/tutorials/incompressible/icoFoam/cavity/cavity/constant/transportProperties",
+     "sourcePath": "tutorials/incompressible/icoFoam/cavity/cavity/constant/transportProperties",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/incompressible/icoFoam/cavity/cavity/constant/transportProperties",
+     "bytes": 743,
+     "sha256": "56af43dc5ae3002b46e50b2589608d2471d29c57fbadd6ef86fef049f9077424"
+    },
+    {
+     "path": "openfoam-8/tutorials/incompressible/icoFoam/cavity/cavity/system/blockMeshDict",
+     "sourcePath": "tutorials/incompressible/icoFoam/cavity/cavity/system/blockMeshDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/incompressible/icoFoam/cavity/cavity/system/blockMeshDict",
+     "bytes": 1307,
+     "sha256": "3c52893aca5b4be4d7e5fa73ae4f4b17574e50c84d0b24ac512c7a6d2ffe21dc"
+    },
+    {
+     "path": "openfoam-8/tutorials/incompressible/icoFoam/cavity/cavity/system/controlDict",
+     "sourcePath": "tutorials/incompressible/icoFoam/cavity/cavity/system/controlDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/incompressible/icoFoam/cavity/cavity/system/controlDict",
+     "bytes": 1045,
+     "sha256": "da55915200f10d56053de05512478b3b0f72ef7a52b540f6c29ef5b26fc2b0a8"
+    },
+    {
+     "path": "openfoam-8/tutorials/incompressible/icoFoam/cavity/cavity/system/fvSchemes",
+     "sourcePath": "tutorials/incompressible/icoFoam/cavity/cavity/system/fvSchemes",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/incompressible/icoFoam/cavity/cavity/system/fvSchemes",
+     "bytes": 1067,
+     "sha256": "97b88adb0fa309336e9f71bb7e5b6c3d88766eb021e24970f4a75b58077a21e3"
+    },
+    {
+     "path": "openfoam-8/tutorials/incompressible/icoFoam/cavity/cavity/system/fvSolution",
+     "sourcePath": "tutorials/incompressible/icoFoam/cavity/cavity/system/fvSolution",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/incompressible/icoFoam/cavity/cavity/system/fvSolution",
+     "bytes": 1171,
+     "sha256": "6717d883c6f982c275a43da75aed052cb3dc2bace6bb43f20da48808879ee151"
+    }
+   ],
+   "test": "src/lib/sim/software-cases-exec.test.ts: openfoam8-cavity-laminar Re=10 lid cavity converges under grid refinement"
+  },
+  {
+   "id": "lammps-lj-2d",
+   "project": "lammps",
+   "name": "Two-dimensional LJ viscosity input and saved state",
+   "domain": "MD",
+   "physics": [
+    "2D",
+    "reduced LJ units",
+    "atomic",
+    "periodic",
+    "shifted lj/cut 2.5"
+   ],
+   "check": "reference-smoke",
+   "limitation": "The original command script is never imported or executed in CI. Reuse the existing 32-atom saved state and 5-step NVE comparison; this does not validate viscosity, transport coefficients or general LAMMPS compatibility.",
+   "files": [
+    {
+     "path": "lammps/examples/VISCOSITY/in.gk.2d",
+     "sourcePath": "examples/VISCOSITY/in.gk.2d",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/VISCOSITY/in.gk.2d",
+     "bytes": 2011,
+     "sha256": "ab4cf71cfef5b4af50b7c913740f71dd77963d7e1b07d00bc694a7c75ca6693c"
+    }
+   ],
+   "test": "src/lib/sim/module-compute.test.ts: LAMMPS data interoperability / continues a downloaded official example for five steps against real LAMMPS output",
+   "references": [
+    {
+     "path": "public/datasets/lammps-lj-2d.data",
+     "bytes": 3284,
+     "sha256": "ff8fed370ddd31848932dee727f7187a86c3a910f5f3c73affa2d30cbd563a1a",
+     "provenance": "public/datasets/README.md; scripts/research/lammps-hello.py"
+    },
+    {
+     "path": "public/datasets/lammps-lj-2d-reference.json",
+     "bytes": 2533,
+     "sha256": "7e012e2bfa4e9ae017594b4ac010a03810892ca8055929e0b5b2101226ec14a8",
+     "provenance": "public/datasets/README.md; scripts/research/lammps-hello.py"
+    }
+   ]
+  },
+  {
+   "id": "lammps-melt",
+   "project": "lammps",
+   "name": "Three-dimensional LJ melt",
+   "domain": "MD",
+   "physics": [
+    "3D",
+    "reduced LJ units",
+    "atomic",
+    "LJ melt"
+   ],
+   "check": "executed-solver",
+   "limitation": "The fail-closed input-script subset interpreter (lammps-input.ts) covers exactly the in.melt command set (units lj, atom_style atomic, lattice fcc, cubic block region, unit mass, lj/cut, fix nve, run); every other command fails closed. The velocity draw honors the `velocity all create` contract (MB at the declared T, zero COM, exact rescale) but the RNG stream is WaveWorld's, not LAMMPS's Park-Miller sequence, so the check asserts energy conservation and physical melting bands — not trajectory agreement. Neighbor/thermo cadences are engine-internal settings. No LAMMPS binary is executed.",
+   "files": [
+    {
+     "path": "lammps/examples/melt/in.melt",
+     "sourcePath": "examples/melt/in.melt",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/melt/in.melt",
+     "bytes": 736,
+     "sha256": "29b7e9e8c6d97d13dcd790f52337c76b80f1552d39bffaad118de92ea5257e96"
+    }
+   ],
+   "test": "src/lib/sim/software-cases-exec.test.ts: lammps-melt 3D FCC LJ input script executes on the shared MD kernel"
+  },
+  {
+   "id": "lammps-rigid",
+   "project": "lammps",
+   "name": "Three-dimensional rigid bodies",
+   "domain": "MD",
+   "physics": [
+    "3D",
+    "rigid bodies",
+    "atomic coordinates"
+   ],
+   "check": "reject-unsupported",
+   "limitation": "Original data lacks required explicit atomic/pair-style section annotations and contains nonzero z. Its associated rigid-body dynamics is unsupported; rejection is expected, not a solver success.",
+   "files": [
+    {
+     "path": "lammps/examples/rigid/in.rigid",
+     "sourcePath": "examples/rigid/in.rigid",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/rigid/in.rigid",
+     "bytes": 1393,
+     "sha256": "ba5b1e6a09a888215652045311dab750c3012222a0bca4ff90aeb1782e251e19"
+    },
+    {
+     "path": "lammps/examples/rigid/data.rigid",
+     "sourcePath": "examples/rigid/data.rigid",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/rigid/data.rigid",
+     "bytes": 2911,
+     "sha256": "7b6ad144eacc36e07c669ce172330078237547f2d0506a43e4606116d5d8d9b3"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: rejects unsupported original LAMMPS input",
+   "rejectFile": "lammps/examples/rigid/data.rigid"
+  },
+  {
+   "id": "lammps-triclinic-fcc",
+   "project": "lammps",
+   "name": "General triclinic FCC primitive cell",
+   "domain": "MD",
+   "physics": [
+    "3D",
+    "triclinic cell",
+    "FCC",
+    "one atom"
+   ],
+   "check": "reject-unsupported",
+   "limitation": "General triclinic avec/bvec/cvec headers, one-atom cells and 3D dynamics are outside the square 2D LJ importer; rejection is expected, not a solver success.",
+   "files": [
+    {
+     "path": "lammps/examples/triclinic/in.fcc.primitive",
+     "sourcePath": "examples/triclinic/in.fcc.primitive",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/triclinic/in.fcc.primitive",
+     "bytes": 660,
+     "sha256": "db761c9eb64ae13000dcb4384783a95a68a41663caafac2a6481bea62939e5cc"
+    },
+    {
+     "path": "lammps/examples/triclinic/data.8Apr24.fcc.primitive.g++.1",
+     "sourcePath": "examples/triclinic/data.8Apr24.fcc.primitive.g++.1",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/triclinic/data.8Apr24.fcc.primitive.g++.1",
+     "bytes": 360,
+     "sha256": "6bc319c72bbe518fb54482a868fb4c48e9b9b2a01eb1db1865f1cbf311415bca"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: rejects unsupported original LAMMPS input",
+   "rejectFile": "lammps/examples/triclinic/data.8Apr24.fcc.primitive.g++.1"
+  },
+  {
+   "id": "gaussian-water-mp2-zmatrix",
+   "project": "cclib",
+   "name": "Gaussian-format water MP2 Z-matrix",
+   "domain": "quantum-chemistry",
+   "physics": [
+    "MP2",
+    "STO-3G",
+    "Z-matrix",
+    "water"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input supplied by cclib maintainers under the bundled BSD-3-Clause license, not by Gaussian Inc. Gaussian software is proprietary and is not included. No Gaussian input parser, HF/MP2/PCM solver or calculation is implemented or claimed.",
+   "files": [
+    {
+     "path": "cclib/data/Gaussian/basicGaussian09/water_mp2.com",
+     "sourcePath": "data/Gaussian/basicGaussian09/water_mp2.com",
+     "url": "https://raw.githubusercontent.com/cclib/cclib/fc2d404027849b7922cf4e839ad326e79379463b/data/Gaussian/basicGaussian09/water_mp2.com",
+     "bytes": 100,
+     "sha256": "1bda73649ad8769b7a8497c96bb2aae0f520a613a11ff0a17442f84e6ee763fc"
+    }
+   ]
+  },
+  {
+   "id": "gaussian-water-hf-pcm",
+   "project": "cclib",
+   "name": "Gaussian-format water HF PCM Cartesian input",
+   "domain": "quantum-chemistry",
+   "physics": [
+    "Hartree-Fock",
+    "STO-3G",
+    "Cartesian coordinates",
+    "PCM toluene",
+    "water"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input supplied by cclib maintainers under the bundled BSD-3-Clause license, not by Gaussian Inc. Gaussian software is proprietary and is not included. No Gaussian input parser, HF/MP2/PCM solver or calculation is implemented or claimed.",
+   "files": [
+    {
+     "path": "cclib/data/Gaussian/basicGaussian16/water_hf_solvent_pcm.com",
+     "sourcePath": "data/Gaussian/basicGaussian16/water_hf_solvent_pcm.com",
+     "url": "https://raw.githubusercontent.com/cclib/cclib/fc2d404027849b7922cf4e839ad326e79379463b/data/Gaussian/basicGaussian16/water_hf_solvent_pcm.com",
+     "bytes": 316,
+     "sha256": "a5b1650a0124e5fd93c4cdd27d924a56d8dff50870b9afbd81e18bb4da639d2d"
+    }
+   ]
+  },
+  {
+   "id": "qe-co-relax",
+   "project": "quantum-espresso",
+   "name": "CO relaxation with fixed oxygen in a periodic supercell",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "plane waves",
+    "CO geometry relaxation",
+    "Gamma-only",
+    "fixed oxygen position",
+    "Cartesian positions and cubic cell length in bohr",
+    "wavefunction/density cutoffs in Ry"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input only; C.pz-rrkjus.UPF, O.pz-rrkjus.UPF and QE are absent. The cell is a 12-bohr periodic cube, not an isolated-boundary calculation; both upstream species masses are 1.00 and are retained verbatim. No QE import, force, optimized geometry or convergence is tested.",
+   "files": [
+    {
+     "path": "quantum-espresso/test-suite/pw_relax/relax.in",
+     "sourcePath": "test-suite/pw_relax/relax.in",
+     "url": "https://raw.githubusercontent.com/QEF/q-e/61569eb480231b649c47f631df9c5c83537df461/test-suite/pw_relax/relax.in",
+     "bytes": 352,
+     "sha256": "630a9bad552c7972ac6b9757cf9341927db2184b1f12e1593e409c488a85c2cd"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: qe-co-relax: source integrity only (1 source files)"
+  },
+  {
+   "id": "qe-ni-lsda",
+   "project": "quantum-espresso",
+   "name": "FCC nickel spin-polarized SCF with smearing",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "plane waves",
+    "periodic FCC nickel",
+    "collinear spin polarization (nspin=2)",
+    "Marzari-Vanderbilt smearing",
+    "shifted 4x4x4 k-point grid",
+    "positions in alat; celldm(1) in bohr; cutoffs and smearing width in Ry"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input only; Ni.pz-nd-rrkjus.UPF and QE are absent. Starting magnetization 0.7 is an initial guess, not a validated final magnetic moment. No spin-DFT importer, energy, magnetization or convergence is tested.",
+   "files": [
+    {
+     "path": "quantum-espresso/test-suite/pw_lsda/lsda.in",
+     "sourcePath": "test-suite/pw_lsda/lsda.in",
+     "url": "https://raw.githubusercontent.com/QEF/q-e/61569eb480231b649c47f631df9c5c83537df461/test-suite/pw_lsda/lsda.in",
+     "bytes": 420,
+     "sha256": "72a78a2897c6664c9abeccbb3ce3569ba83589c70dfb940a647403b656def338"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: qe-ni-lsda: source integrity only (1 source files)"
+  },
+  {
+   "id": "qe-as-vc-relax",
+   "project": "quantum-espresso",
+   "name": "Arsenic variable-cell relaxation at zero target pressure",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "plane waves",
+    "periodic arsenic",
+    "variable-cell relaxation",
+    "damped Wentzcovitch cell dynamics",
+    "Methfessel-Paxton smearing",
+    "A/B/C in angstrom; fractional crystal positions; pressure in kbar; ecutwfc in Ry"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input only; As.pz-bhs.UPF and QE are absent. The full source requests variable-cell relaxation, including cell dynamics and stress, not a single energy call. No cell optimization, pressure, stress, band structure or numerical agreement is tested.",
+   "files": [
+    {
+     "path": "quantum-espresso/test-suite/pw_vc-relax/vc-relax1.in",
+     "sourcePath": "test-suite/pw_vc-relax/vc-relax1.in",
+     "url": "https://raw.githubusercontent.com/QEF/q-e/61569eb480231b649c47f631df9c5c83537df461/test-suite/pw_vc-relax/vc-relax1.in",
+     "bytes": 869,
+     "sha256": "a2ef73ac2a623e7bd7b6bad88e52642bb204ec693267345b2188d61058c876f9"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: qe-as-vc-relax: source integrity only (1 source files)"
+  },
+  {
+   "id": "cp2k-li2-pbe-bohr",
+   "project": "cp2k",
+   "name": "Li2 PBE energy with explicit bohr cell and coordinates",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "Quickstep GPW",
+    "Li2",
+    "PBE",
+    "DZVP Gaussian basis and GTH-PBE pseudopotential",
+    "cell and coordinates explicitly in bohr",
+    "multigrid cutoff 240 Ry"
+   ],
+   "check": "integrity-only",
+   "limitation": "Upstream regression input only; BASIS_SET, POTENTIAL and CP2K are absent. No PERIODIC override is specified, so this must not be described as an isolated-boundary molecule. MAX_SCF 400 and restart/MO print directives are retained but never executed. No CP2K import, energy or SCF convergence is tested.",
+   "files": [
+    {
+     "path": "cp2k/tests/QS/regtest-gpw-1/Li2-0-SCF-PBE.inp",
+     "sourcePath": "tests/QS/regtest-gpw-1/Li2-0-SCF-PBE.inp",
+     "url": "https://raw.githubusercontent.com/cp2k/cp2k/ba1d7ca22e7ccc538109272e9f450255bf85a54d/tests/QS/regtest-gpw-1/Li2-0-SCF-PBE.inp",
+     "bytes": 1218,
+     "sha256": "7d6bea9ea09853baa44061752c43677d4d33353a9e2e79b06eea146b2d4fb3d3"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: cp2k-li2-pbe-bohr: source integrity only (1 source files)"
+  },
+  {
+   "id": "cp2k-no2-lsd",
+   "project": "cp2k",
+   "name": "NO2 spin-polarized Pade LDA input",
+   "domain": "DFT",
+   "physics": [
+    "Kohn-Sham DFT",
+    "Quickstep GPW",
+    "NO2",
+    "spin-polarized LSD",
+    "Pade LDA",
+    "DZVP Gaussian basis and GTH pseudopotentials",
+    "default angstrom cell/coordinates; multigrid cutoff 200 Ry"
+   ],
+   "check": "integrity-only",
+   "limitation": "Upstream regression input only; BASIS_SET, POTENTIAL and CP2K are absent. The 5x5x5 cell has no explicit PERIODIC override; no isolated-molecule boundary, final spin state or convergence is established. The original MAX_SCF 150 is inert text. No CP2K import or electronic result is tested.",
+   "files": [
+    {
+     "path": "cp2k/tests/QS/regtest-gpw-1/NO2_lsd.inp",
+     "sourcePath": "tests/QS/regtest-gpw-1/NO2_lsd.inp",
+     "url": "https://raw.githubusercontent.com/cp2k/cp2k/ba1d7ca22e7ccc538109272e9f450255bf85a54d/tests/QS/regtest-gpw-1/NO2_lsd.inp",
+     "bytes": 801,
+     "sha256": "20623f7ab9b5814e87ae3c25ce86fd43577d8eb20e84d16fbe45177c60d95458"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: cp2k-no2-lsd: source integrity only (1 source files)"
+  },
+  {
+   "id": "gaussian-co-td-pbe0",
+   "project": "cclib",
+   "name": "Gaussian-format CO TD-PBE0 Cartesian input",
+   "domain": "quantum-chemistry",
+   "physics": [
+    "TDDFT",
+    "PBE0 (PBE1PBE)",
+    "6-311++G(d,p)",
+    "CO",
+    "neutral singlet ground-state input",
+    "TD=(50-50,Nstates=12)",
+    "Cartesian coordinates"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input supplied by cclib under the bundled BSD-3-Clause license; Gaussian software is proprietary and is not included. Coordinate units are not declared with a Units keyword, so an eventual importer must resolve Gaussian defaults explicitly. The checkpoint is an output request, not a bundled reference. No Gaussian import, TDDFT, excitation energy or oscillator strength is tested.",
+   "files": [
+    {
+     "path": "cclib/data/Gaussian/basicGaussian16/CO_TD_delta.gjf",
+     "sourcePath": "data/Gaussian/basicGaussian16/CO_TD_delta.gjf",
+     "url": "https://raw.githubusercontent.com/cclib/cclib/fc2d404027849b7922cf4e839ad326e79379463b/data/Gaussian/basicGaussian16/CO_TD_delta.gjf",
+     "bytes": 216,
+     "sha256": "2d8f6395440a9d708e6bb5c9f5921e8405c53f4ed915ccd63bc2630fae489c35"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: gaussian-co-td-pbe0: source integrity only (1 source files)"
+  },
+  {
+   "id": "gaussian-dvb-raman",
+   "project": "cclib",
+   "name": "Gaussian-format divinylbenzene B3LYP Raman Z-matrix",
+   "domain": "quantum-chemistry",
+   "physics": [
+    "hybrid Kohn-Sham DFT",
+    "restricted B3LYP",
+    "STO-3G",
+    "divinylbenzene",
+    "Z-matrix with variables",
+    "harmonic frequency and Raman request"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input supplied by cclib under the bundled BSD-3-Clause license; Gaussian software is proprietary and is not included. No Units keyword is present; Z-matrix lengths and angles require the source format defaults. The original 6GB/8-process directives are inert. The fixed geometry is not optimized or checked for a stationary point in CI; no frequency, Raman intensity or thermochemistry is validated.",
+   "files": [
+    {
+     "path": "cclib/data/Gaussian/basicGaussian16/dvb_raman.gjf",
+     "sourcePath": "data/Gaussian/basicGaussian16/dvb_raman.gjf",
+     "url": "https://raw.githubusercontent.com/cclib/cclib/fc2d404027849b7922cf4e839ad326e79379463b/data/Gaussian/basicGaussian16/dvb_raman.gjf",
+     "bytes": 1251,
+     "sha256": "dd0dddf79d4d33b0dbc064df0c7335bf6a430dabb92afab8acb79d0753371777"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: gaussian-dvb-raman: source integrity only (1 source files)"
+  },
+  {
+   "id": "gaussian-water-ccsd-t",
+   "project": "cclib",
+   "name": "Gaussian-format water CCSD(T) Z-matrix",
+   "domain": "quantum-chemistry",
+   "physics": [
+    "coupled cluster CCSD(T)",
+    "STO-3G",
+    "water",
+    "neutral singlet",
+    "Z-matrix"
+   ],
+   "check": "integrity-only",
+   "limitation": "Input supplied by cclib under the bundled BSD-3-Clause license; Gaussian software is proprietary and is not included. The filename says ccsdt, but the route requests CCSD(T), not full CCSDT. No Units keyword is present, and no unit conversion, Gaussian importer, coupled-cluster energy or calculation is tested.",
+   "files": [
+    {
+     "path": "cclib/data/Gaussian/basicGaussian16/water_ccsdt.com",
+     "sourcePath": "data/Gaussian/basicGaussian16/water_ccsdt.com",
+     "url": "https://raw.githubusercontent.com/cclib/cclib/fc2d404027849b7922cf4e839ad326e79379463b/data/Gaussian/basicGaussian16/water_ccsdt.com",
+     "bytes": 86,
+     "sha256": "2a66f4c1c1935c4c15797ff143dae275cda6de0241981d8c044f3ec8b160e8e2"
+    }
+   ],
+   "test": "src/lib/sim/software-cases.test.ts: gaussian-water-ccsd-t: source integrity only (1 source files)"
+  },
+  {
+   "id": "openfoam8-dambreak",
+   "project": "openfoam-8",
+   "files": [
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/U",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/U",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/U",
+     "bytes": 1124,
+     "sha256": "f497db0c77284bd8faafddefcbfde646ec3a315abdcb721663e5c9c4ce1b9e35"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/alpha.water.orig",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/alpha.water.orig",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/alpha.water.orig",
+     "bytes": 1140,
+     "sha256": "9795ce7670f41b3ed63efd84d75a2f534e18131ec60fef5d0452c69bda72cd61"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/p_rgh",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/p_rgh",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/0/p_rgh",
+     "bytes": 1223,
+     "sha256": "38389d7ad5054a2a8f7d1b7aacb74ff3ec76241a6911adac49ea4e0d1cf6c5ee"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/g",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/g",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/g",
+     "bytes": 768,
+     "sha256": "5500f5f8669edfea47952505bc66ec8e73291d97677fe912525cbb9a68a5882a"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/momentumTransport",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/momentumTransport",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/momentumTransport",
+     "bytes": 727,
+     "sha256": "103c131dd30ca58ddf1a0e050b1a61cefda3c05b8eb08c4b96ce47fc82fae482"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/transportProperties",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/transportProperties",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/constant/transportProperties",
+     "bytes": 935,
+     "sha256": "a8a5f0a1d5f3f613bf053199c33b648bc5989781fb2607e008c1299263d9defc"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/blockMeshDict",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/blockMeshDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/blockMeshDict",
+     "bytes": 2088,
+     "sha256": "d5b9fc37da5dc0de7febfa7b056b8ae872abc218cbe88c004fdc12a655b394c4"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/controlDict",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/controlDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/controlDict",
+     "bytes": 1137,
+     "sha256": "78830ff6f28f3101d40235020e5bcec31d918a77b289a8f8092a08c273cff57e"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/fvSchemes",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/fvSchemes",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/fvSchemes",
+     "bytes": 1130,
+     "sha256": "2cb6f07db5a70298cd529893be154e6bca985a663c25f5fb5b0c0bbf5dde735c"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/fvSolution",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/fvSolution",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/fvSolution",
+     "bytes": 1685,
+     "sha256": "5361dc6a2109be76961292ee2eac2d89c641f2168d63793b89a2e365b555573a"
+    },
+    {
+     "path": "openfoam-8/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/setFieldsDict",
+     "sourcePath": "tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/setFieldsDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-8/a86b07b9dabb8c9e8763a146cac4b5ea7824a52b/tutorials/multiphase/interFoam/laminar/damBreak/damBreak/system/setFieldsDict",
+     "bytes": 924,
+     "sha256": "f386a70e5c91476a29181b03464e124735e4effbebd8d1a1b1fda0a641bbe6a7"
+    }
+   ],
+   "name": "interFoam two-phase dam break with an obstacle",
+   "domain": "CFD",
+   "physics": [
+    "2D incompressible water/air VOF",
+    "laminar Newtonian phases",
+    "gravity (0, -9.81, 0) m/s^2",
+    "surface tension 0.07 N/m",
+    "no-slip walls and an atmospheric opening",
+    "empty front/back faces"
+   ],
+   "check": "executed-solver",
+   "limitation": "Parsed case physics (two-phase transportProperties, g, laminar, setFieldsDict water column, blockMesh tank bounds, controlDict endTime) drive the WaveWorld 2D WCSPH dam-break solver for a bounded early-collapse window (t=0.25 s of upstream endTime=1 s). Single-phase water only: the air phase and surface tension are not modeled; asserted checks are physical invariants (non-increasing total mechanical energy incl. Tait EOS internal energy, monotone surge front below the Ritter dry-bed bound, falling column top, tank containment, bounded density) — not a VOF/interFoam numerical-equivalence claim. No OpenFOAM binary is executed.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: openfoam8-dambreak WCSPH water column collapses within physical bounds"
+  },
+  {
+   "id": "openfoam12-shocktube",
+   "project": "openfoam-12",
+   "files": [
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/0/T.orig",
+     "sourcePath": "tutorials/shockFluid/shockTube/0/T.orig",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/0/T.orig",
+     "bytes": 835,
+     "sha256": "8be85c2063c193ffaca00484a0be05363a234b71798db1416a689a83a79dc94c"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/0/U.orig",
+     "sourcePath": "tutorials/shockFluid/shockTube/0/U.orig",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/0/U.orig",
+     "bytes": 842,
+     "sha256": "78e23b4957ecfe24ec207b837d4746ba3fcf0d0a092bde00fba91a8e8d06aadc"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/0/p.orig",
+     "sourcePath": "tutorials/shockFluid/shockTube/0/p.orig",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/0/p.orig",
+     "bytes": 837,
+     "sha256": "e66c02d13f3927dd97224357bdd8b15ea51a82fc16ed90eea2ba4b2c4ed5feeb"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/constant/momentumTransport",
+     "sourcePath": "tutorials/shockFluid/shockTube/constant/momentumTransport",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/constant/momentumTransport",
+     "bytes": 707,
+     "sha256": "13c2f4bc94cd500699e568d499b1122ca1c84d0ba63371c3fafc07ae323f46b9"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/constant/physicalProperties",
+     "sourcePath": "tutorials/shockFluid/shockTube/constant/physicalProperties",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/constant/physicalProperties",
+     "bytes": 1168,
+     "sha256": "83a11a2de7f8bd2b9b698ce600e0433d88d2ce9cbb62136ed2744fa76e4c05f6"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/system/blockMeshDict",
+     "sourcePath": "tutorials/shockFluid/shockTube/system/blockMeshDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/system/blockMeshDict",
+     "bytes": 1165,
+     "sha256": "440f0d39327827eddc06651bf9668a836d30517f814dae64846a74b17c4f299a"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/system/controlDict",
+     "sourcePath": "tutorials/shockFluid/shockTube/system/controlDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/system/controlDict",
+     "bytes": 1129,
+     "sha256": "e306477d256ca914027e84d264c410f504a0091407e40001cfd499675981ed88"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/system/fvSchemes",
+     "sourcePath": "tutorials/shockFluid/shockTube/system/fvSchemes",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/system/fvSchemes",
+     "bytes": 1129,
+     "sha256": "82de84e046f7d844ad427e43075aac9782385e83e1ecc6e966f6abcf83fc28dd"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/system/fvSolution",
+     "sourcePath": "tutorials/shockFluid/shockTube/system/fvSolution",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/system/fvSolution",
+     "bytes": 1070,
+     "sha256": "c0bc12e7b6f8542149483e8137ddd35513042a296d577f0e903f4823037e2e9b"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/system/setFieldsDict",
+     "sourcePath": "tutorials/shockFluid/shockTube/system/setFieldsDict",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/system/setFieldsDict",
+     "bytes": 995,
+     "sha256": "4782172eca2d7c8bfefb5111abe3b92961cb726952368d339ae494def854cba7"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/system/functions",
+     "sourcePath": "tutorials/shockFluid/shockTube/system/functions",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/system/functions",
+     "bytes": 691,
+     "sha256": "3c6702bfe55d66b8ac227b4698c012edf4950047aa877c39d0b245bb71febe67"
+    },
+    {
+     "path": "openfoam-12/tutorials/shockFluid/shockTube/system/sample",
+     "sourcePath": "tutorials/shockFluid/shockTube/system/sample",
+     "url": "https://raw.githubusercontent.com/OpenFOAM/OpenFOAM-12/0b487fc98b88d3e8dc3c3ead4662e7632dd5e7dd/tutorials/shockFluid/shockTube/system/sample",
+     "bytes": 958,
+     "sha256": "f4f1d26b0a11d3d316eb2bbfb7a7fc20713f0e2d0175d396220a7fc50d700c48"
+    }
+   ],
+   "name": "shockFluid one-dimensional perfect-gas shock tube",
+   "domain": "CFD",
+   "physics": [
+    "1D compressible perfect gas",
+    "inviscid limit: mu = 0",
+    "100000/10000 Pa initial pressure discontinuity",
+    "zero-gradient end patches",
+    "empty transverse faces",
+    "Kurganov flux scheme"
+   ],
+   "check": "executed-solver",
+   "limitation": "Parsed perfect-gas mixture (molWeight/Cp/mu=0), setFieldsDict states and the 1000-cell mesh drive the built-in 1D Euler HLLC solver with transmissive (zeroGradient-equivalent) ends to endTime=0.007 s; checked against an exact Riemann solution. The Kurganov scheme, OpenFOAM runtime, #includeFunc sampling and .orig preprocessing are not run; first-order HLLC contact smearing is asserted, not second-order accuracy.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: openfoam12-shocktube inviscid perfect-gas Riemann problem matches the exact solution"
+  },
+  {
+   "id": "lammps-kappa-langevin",
+   "project": "lammps",
+   "files": [
+    {
+     "path": "lammps/examples/KAPPA/in.langevin",
+     "sourcePath": "examples/KAPPA/in.langevin",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/KAPPA/in.langevin",
+     "bytes": 3121,
+     "sha256": "3182a84b12b39a4846abb895710b35bf78eece8ccbf8dfbda6fc605e04e82bf8"
+    },
+    {
+     "path": "lammps/examples/KAPPA/README",
+     "sourcePath": "examples/KAPPA/README",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/KAPPA/README",
+     "bytes": 3932,
+     "sha256": "b23e0434dd23948fe64b46b268b35587df110cbecab9270dbbfb46e1126c0474"
+    }
+   ],
+   "name": "Three-dimensional LJ thermal conduction with Langevin hot/cold regions",
+   "domain": "MD",
+   "physics": [
+    "3D periodic atomic LJ fluid",
+    "reduced LJ units",
+    "unshifted lj/cut 2.5",
+    "initial NVT equilibration",
+    "Langevin hot/cold regions at reduced temperatures 1.70/1.0",
+    "nonequilibrium thermal conductivity"
+   ],
+   "check": "reject-unsupported",
+   "limitation": "The original command script creates its own FCC atoms and requires LAMMPS rather than an external data file; no script, 8000-atom run, thermostat or conductivity calculation is executed. The restricted 2D shifted-LJ data importer rejects the first variable command. Rejection does not validate Langevin/NVT dynamics, 3D physics or upstream conductivity statistics.",
+   "test": "src/lib/sim/software-cases.test.ts: rejects unsupported original LAMMPS input",
+   "rejectFile": "lammps/examples/KAPPA/in.langevin"
+  },
+  {
+   "id": "lammps-friction",
+   "project": "lammps",
+   "files": [
+    {
+     "path": "lammps/examples/friction/in.friction",
+     "sourcePath": "examples/friction/in.friction",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/friction/in.friction",
+     "bytes": 1939,
+     "sha256": "ddf1d43ac9b8e787fd03d9f3771d2db9d8416f1c86178bf4e5c6561442536b24"
+    }
+   ],
+   "name": "Two-dimensional LJ asperity friction with sliding boundaries",
+   "domain": "MD",
+   "physics": [
+    "2D reduced-LJ atomic dynamics",
+    "periodic x and shrink-wrapped y",
+    "unshifted lj/cut 2.5",
+    "sliding upper asperity and force-constrained boundary atoms",
+    "mobile y-temperature rescaling",
+    "enforced zero z motion"
+   ],
+   "check": "reject-unsupported",
+   "limitation": "The original command script creates its own atom regions and needs the LAMMPS engine; no external data file is referenced. The current data importer rejects dimension 2 as an unsupported command and never runs the 20000-step script. Sliding/friction forces, shrink-wrapped boundaries and temperature-rescale control are not implemented or validated by this rejection test.",
+   "test": "src/lib/sim/software-cases.test.ts: rejects unsupported original LAMMPS input",
+   "rejectFile": "lammps/examples/friction/in.friction"
+  },
+  {
+   "id": "lammps-flow-poiseuille",
+   "project": "lammps",
+   "files": [
+    {
+     "path": "lammps/examples/flow/in.flow.pois",
+     "sourcePath": "examples/flow/in.flow.pois",
+     "url": "https://raw.githubusercontent.com/lammps/lammps/3214c5b1a0e8ad562e436e9a81ec5e8e4883f61a/examples/flow/in.flow.pois",
+     "bytes": 1503,
+     "sha256": "f34dd00afed713922c7efda01856b2c9dcf1efdf36c7cadc646252c24a146222"
+    }
+   ],
+   "name": "Two-dimensional molecular Poiseuille flow with a loaded upper wall",
+   "domain": "MD",
+   "physics": [
+    "2D reduced-LJ atomic channel",
+    "periodic x and shrink-wrapped y",
+    "unshifted lj/cut 1.12246",
+    "body-force-driven fluid",
+    "fixed lower wall and force-loaded upper wall",
+    "temperature rescaling and enforced zero z motion"
+   ],
+   "check": "reject-unsupported",
+   "limitation": "Original atomistic body-force-driven channel script, not a continuum CFD input or pressure-inlet/outlet case. Geometry is created by commands without an external data file. The data importer rejects dimension 2; the 10000-step script, wall loads and thermostat are never executed. This does not validate Poiseuille flow, the shorter LJ cutoff, boundary conditions or LAMMPS command compatibility.",
+   "test": "src/lib/sim/software-cases.test.ts: rejects unsupported original LAMMPS input",
+   "rejectFile": "lammps/examples/flow/in.flow.pois"
+  },
+  {
+   "id": "frame3dd-exA-truss",
+   "project": "frame3dd",
+   "name": "Example A 2D truss with support settlement, load case 1",
+   "domain": "structural",
+   "physics": [
+    "planar truss",
+    "Euler-Bernoulli frame",
+    "prescribed support displacement",
+    "linear static"
+   ],
+   "check": "executed-solver",
+   "test": "src/lib/sim/software-cases-exec.test.ts: frame3dd-exA-truss displacements and reactions match the upstream .out (load case 1)",
+   "limitation": "Only the planar-static subset is mapped to beam2d (kip/in converted to SI; in-plane bending uses Izz). Load case 1 is executed and compared against the pinned upstream exA.out displacement and reaction tables; load case 2 (temperature loads) and Frame3DD itself are not run.",
+   "files": [
+    {
+     "path": "frame3dd/examples/exA.3dd",
+     "sourcePath": "examples/exA.3dd",
+     "url": "https://raw.githubusercontent.com/hpgavin/frame3dd/58d66510c120785dcf0ea1ffe67d2eccd545c348/examples/exA.3dd",
+     "bytes": 4409,
+     "sha256": "fd8ac9490ee623735032937cc9d26dcfe61a475db8c911aa6a56c0abb6f4bb5a"
+    },
+    {
+     "path": "frame3dd/examples/exA.out",
+     "sourcePath": "examples/exA.out",
+     "url": "https://raw.githubusercontent.com/hpgavin/frame3dd/58d66510c120785dcf0ea1ffe67d2eccd545c348/examples/exA.out",
+     "bytes": 18546,
+     "sha256": "24ed25578fb8290414cc78aa00f4a99bd65adccecc2dcc1656062203eb0f1be3"
+    }
+   ]
+  },
+  {
+   "id": "energyplus-1zone-envelope",
+   "project": "energyplus",
+   "name": "1ZoneUncontrolled constructions (R13WALL, FLOOR, ROOF31) at the Denver winter design day",
+   "domain": "thermal",
+   "physics": [
+    "steady 1D conduction",
+    "building envelope",
+    "declared material and no-mass resistance layers"
+   ],
+   "check": "executed-solver",
+   "test": "src/lib/sim/software-cases-exec.test.ts: energyplus-1zone-envelope constructions reproduce their declared resistance",
+   "limitation": "Each single-layer construction is run on the 1D steady conduction solver with the file's winter design-day exterior temperature; the measured resistance must reproduce the declared layer R. Multilayer stacks, films, solar and full zone energy balance are not simulated; EnergyPlus itself is not run.",
+   "files": [
+    {
+     "path": "energyplus/testfiles/1ZoneUncontrolled.idf",
+     "sourcePath": "testfiles/1ZoneUncontrolled.idf",
+     "url": "https://raw.githubusercontent.com/NREL/EnergyPlus/f7c103167afdd833d3c5f97e4d42f5a2f9d7a18c/testfiles/1ZoneUncontrolled.idf",
+     "bytes": 22184,
+     "sha256": "cc928a894a73601be3b48756b8718229d6d4ff63cbdaa6b05da45f45c665d7bb"
+    }
+   ]
+  },
+  {
+   "id": "calculix-b31",
+   "project": "calculix",
+   "name": "B31 cantilever beam, tip force (10-element 3D beam)",
+   "domain": "structural",
+   "physics": [
+    "3D",
+    "beam",
+    "B31",
+    "cantilever",
+    "rectangular section"
+   ],
+   "check": "executed-solver",
+   "limitation": "The fail-closed .inp subset interpreter (calculix-inp.ts) covers B31/B31R beam elements with *BEAM SECTION,SECTION=RECT and *BOUNDARY/*CLOAD over dofs 1-6; anything else fails closed. The 3D model is projected onto its in-plane basis and run as beam2d Euler-Bernoulli elements — B31's Timoshenko shear deformation is not modelled (a documented ~0.05% effect for this L/h=40 cantilever; the check bounds it at 1%). Out-of-plane restraints are dropped, nonzero out-of-plane loads/prescribed values fail closed. Unit-free input is adopted as consistent N-mm-MPa and converted to SI. No CCX binary is run; the check compares against the Euler-Bernoulli analytic field and the upstream .frd.ref tip deflection.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: calculix-b31: B31 cantilever beam runs as beam2d and matches Euler-Bernoulli / b31.frd.ref",
+   "files": [
+    {
+     "path": "calculix/test/b31.inp",
+     "sourcePath": "test/b31.inp",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/b31.inp",
+     "bytes": 549,
+     "sha256": "7fec44993bf8304f7d16ba50c10cdfc2ae29515700655744e6c00c27fb04039d"
+    },
+    {
+     "path": "calculix/test/b31.frd.ref",
+     "sourcePath": "test/b31.frd.ref",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/b31.frd.ref",
+     "bytes": 10913,
+     "sha256": "632c7488009f1ce71a738dfbc9bf07558192ecd15381b2451033dd60691bb80d"
+    }
+   ]
+  },
+  {
+   "id": "calculix-planestress",
+   "project": "calculix",
+   "name": "CPS8R uniaxial tension patch (1x1 mm plate)",
+   "domain": "structural",
+   "physics": [
+    "2D",
+    "plane-stress",
+    "CPS8R",
+    "uniaxial tension"
+   ],
+   "check": "executed-solver",
+   "limitation": "The fail-closed .inp subset interpreter (calculix-inp.ts) covers *NODE/*ELEMENT (CPS/CPE 2D types)/*NSET/*ELSET/*BOUNDARY/*MATERIAL/*ELASTIC/*SOLID SECTION/*STEP/*STATIC/*CLOAD/*DLOAD P1-P4 and the output-request keywords; anything else fails closed. Quadratic CPS8R quads run as CST triangles on the corner connectivity — exact for this constant-strain patch; mid-side nodes and their boundary rows are reduced away. Unit-free input is adopted as consistent N-mm-MPa and converted to SI. No CCX binary is run; the check compares against the upstream .dat.ref.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: calculix-planestress CPS8R tension patch runs as CST and matches planestress.dat.ref",
+   "files": [
+    {
+     "path": "calculix/test/planestress.inp",
+     "sourcePath": "test/planestress.inp",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/planestress.inp",
+     "bytes": 1749,
+     "sha256": "684dbfdebeb3df690b57b36fd50ab7aeb99c2102929a541dc16d4de5dc661ce7"
+    },
+    {
+     "path": "calculix/test/planestress.dat.ref",
+     "sourcePath": "test/planestress.dat.ref",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/planestress.dat.ref",
+     "bytes": 4530,
+     "sha256": "3266afe982f386c53f8b0feab00e9839bc4f3d74f1c6fe818d9a8eb7580113e5"
+    }
+   ]
+  },
+  {
+   "id": "calculix-planestrain",
+   "project": "calculix",
+   "name": "CPE4 uniaxial tension quad (plane strain)",
+   "domain": "structural",
+   "physics": [
+    "2D",
+    "plane-strain",
+    "CPE4",
+    "uniaxial tension"
+   ],
+   "check": "executed-solver",
+   "limitation": "Same fail-closed .inp subset as calculix-planestress. The single CPE4 quad runs as two CST triangles under plane-strain — exact for the constant-strain field (syy=100 MPa, szz=nu*syy=30 MPa). Unit-free input adopted as N-mm-MPa and converted to SI; no CCX binary is run.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: calculix-planestrain CPE4 tension quad runs as CST and matches planestrain.dat.ref",
+   "files": [
+    {
+     "path": "calculix/test/planestrain.inp",
+     "sourcePath": "test/planestrain.inp",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/planestrain.inp",
+     "bytes": 665,
+     "sha256": "bd7d6a8f2e694b7938a14714c613203969b51bc7d7a7fb75e7af68c1bca56ac3"
+    },
+    {
+     "path": "calculix/test/planestrain.dat.ref",
+     "sourcePath": "test/planestrain.dat.ref",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/planestrain.dat.ref",
+     "bytes": 2136,
+     "sha256": "80d755cfe9c98af982ef3a76784dbcd504242049c76f03206bc2fa74b2297cf5"
+    }
+   ]
+  },
+  {
+   "id": "calculix-planestrain2",
+   "project": "calculix",
+   "name": "CPE8 quadratic nodal-load tension quad (plane strain)",
+   "domain": "structural",
+   "physics": [
+    "2D",
+    "plane-strain",
+    "CPE8",
+    "consistent nodal loads"
+   ],
+   "check": "executed-solver",
+   "limitation": "Same fail-closed .inp subset as calculix-planestress, plus CPE8. The CLOADs are the quadratic consistent distribution for uniform syy=100 MPa (0.1667 on each top corner, 0.6667 on the top mid-side node); the CST reduction folds the mid-side load 50/50 onto the edge endpoints, which reproduces the same uniform traction exactly for this affine field. Unit-free input adopted as N-mm-MPa and converted to SI; no CCX binary is run.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: calculix-planestrain2 CPE8 tension quad folds mid-side CLOADs and matches planestrain2.dat.ref",
+   "files": [
+    {
+     "path": "calculix/test/planestrain2.inp",
+     "sourcePath": "test/planestrain2.inp",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/planestrain2.inp",
+     "bytes": 998,
+     "sha256": "76c5524ecc23b1870ac208bc2371c12509406610a3e920a8aaf5005366922e30"
+    },
+    {
+     "path": "calculix/test/planestrain2.dat.ref",
+     "sourcePath": "test/planestrain2.dat.ref",
+     "url": "https://raw.githubusercontent.com/Dhondtguido/CalculiX/3593817a4a7658eb8af9e9827fbe98f9552fbd44/test/planestrain2.dat.ref",
+     "bytes": 6110,
+     "sha256": "c0c6d9e22459fb5681f64a0797c10404f28909c9c38408ff403bd5fbb26111a2"
+    }
+   ]
+  },
+  {
+   "id": "moose-simple-diffusion",
+   "project": "moose",
+   "name": "simple_diffusion (2D Dirichlet diffusion)",
+   "domain": "thermal",
+   "physics": [
+    "2D",
+    "steady diffusion",
+    "DirichletBC",
+    "natural zero-flux"
+   ],
+   "check": "executed-solver",
+   "limitation": "The fail-closed hit-syntax interpreter (moose-inp.ts) covers GeneratedMesh 2D, one FIRST-order LAGRANGE variable, one Diffusion kernel (coefficient 1), DirichletBC/NeumannBC on the named side sets, Steady executioner; any other block/parameter fails closed. MOOSE solves the same PDE with Q1 finite elements; WaveWorld runs node-centred FD on the same mesh — the exact solution u=x is linear so the method difference drops out. No MOOSE binary is run; the check is against the analytic field.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: moose-simple-diffusion 2D Dirichlet diffusion matches u=x to solver tolerance",
+   "files": [
+    {
+     "path": "moose/test/tests/kernels/simple_diffusion/simple_diffusion.i",
+     "sourcePath": "test/tests/kernels/simple_diffusion/simple_diffusion.i",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/test/tests/kernels/simple_diffusion/simple_diffusion.i",
+     "bytes": 498,
+     "sha256": "29595f037216c96b59bcfe037a4cc73eacd9afbd73966d9053d940fd9329eb67"
+    },
+    {
+     "path": "moose/test/tests/kernels/simple_diffusion/tests",
+     "sourcePath": "test/tests/kernels/simple_diffusion/tests",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/test/tests/kernels/simple_diffusion/tests",
+     "bytes": 394,
+     "sha256": "efb78d1133a5c166e6bc55b1d1ea42eaf53e2ac75ebb79d383f18ede9178e29f"
+    }
+   ]
+  },
+  {
+   "id": "moose-simple-transient-diffusion",
+   "project": "moose",
+   "name": "simple_transient_diffusion (CoefDiffusion + TimeDerivative)",
+   "domain": "thermal",
+   "physics": [
+    "2D",
+    "transient diffusion",
+    "CoefDiffusion coef=0.1",
+    "DirichletBC",
+    "natural zero-flux"
+   ],
+   "check": "executed-solver",
+   "limitation": "Same hit-syntax subset as moose-simple-diffusion plus CoefDiffusion/TimeDerivative kernels and the Transient executioner. The 2-D problem is y-invariant, so the built-in 1-D Crank-Nicolson solver is used at MOOSE's dt=0.1, 20 steps. Compared against the Fourier-series exact solution of the fixed-end slab — integrator-agnostic, so MOOSE's backward-Euler scheme difference drops out. No MOOSE binary is run.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: moose-simple-transient-diffusion CN slab transient matches the analytic Fourier series at t=2",
+   "files": [
+    {
+     "path": "moose/test/tests/kernels/simple_transient_diffusion/simple_transient_diffusion.i",
+     "sourcePath": "test/tests/kernels/simple_transient_diffusion/simple_transient_diffusion.i",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/test/tests/kernels/simple_transient_diffusion/simple_transient_diffusion.i",
+     "bytes": 653,
+     "sha256": "8b46911bba2aed66e5796fc4b1c740af9c19dcaf5d8f04b6f4f582b5278f74bf"
+    },
+    {
+     "path": "moose/test/tests/kernels/simple_transient_diffusion/tests",
+     "sourcePath": "test/tests/kernels/simple_transient_diffusion/tests",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/test/tests/kernels/simple_transient_diffusion/tests",
+     "bytes": 5220,
+     "sha256": "41f0833763f19f308ba26b56cb7d15cc560f8a957bded4d19419a5958fc6c546"
+    }
+   ]
+  },
+  {
+   "id": "moose-nafems-t3",
+   "project": "moose",
+   "name": "NAFEMS T3 transient heat conduction benchmark",
+   "domain": "thermal",
+   "physics": [
+    "2D",
+    "transient heat conduction",
+    "sinusoidal Dirichlet BC",
+    "HeatConduction kernels",
+    "GenericConstantMaterial"
+   ],
+   "check": "executed-solver",
+   "limitation": "Same hit-syntax subset plus FunctionDirichletBC (a strict parsed-expression evaluator), HeatConduction/HeatConductionTimeDerivative kernels and GenericConstantMaterial (k, cp, rho). The problem is y-invariant; it runs on the built-in 1-D Crank-Nicolson solver with time-varying Dirichlet support at MOOSE's dt=1 s, refined to 200 FD cells. Verified against the closed-form exact solution (steady-oscillation sinh part plus the decaying sine series, NAFEMS answer T(0.08,32)=36.6) and the bundled MOOSE quad4 fine gold CSV — the gold's own ~0.42 K early-time deviation is bounded, not asserted away. MOOSE solves with QUAD4 Q1 FE + backward Euler; our FD+CN is a different discretization, so the check is against the analytic benchmark, not equivalence. No MOOSE binary is run.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: moose-nafems-t3 CN slab matches the analytic series to ~0.02 K and the bundled gold CSV to ~0.41 K",
+   "files": [
+    {
+     "path": "moose/modules/heat_transfer/test/tests/NAFEMS/transient/T3/nafems_t3_quad_template.i",
+     "sourcePath": "modules/heat_transfer/test/tests/NAFEMS/transient/T3/nafems_t3_quad_template.i",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/NAFEMS/transient/T3/nafems_t3_quad_template.i",
+     "bytes": 1095,
+     "sha256": "8afbb71c22a63bfbd7540e17d9133ecbdd61dbc1ee99ee58da4e0e1741c1af27"
+    },
+    {
+     "path": "moose/modules/heat_transfer/test/tests/NAFEMS/transient/T3/gold/nafems_t3_quad4_fine_out.csv",
+     "sourcePath": "modules/heat_transfer/test/tests/NAFEMS/transient/T3/gold/nafems_t3_quad4_fine_out.csv",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/NAFEMS/transient/T3/gold/nafems_t3_quad4_fine_out.csv",
+     "bytes": 630,
+     "sha256": "875ce657a4d181e0971dfd0ba870f06c2d87e0a10a833aa575d0c7eb5d60e215"
+    },
+    {
+     "path": "moose/modules/heat_transfer/test/tests/NAFEMS/transient/T3/tests",
+     "sourcePath": "modules/heat_transfer/test/tests/NAFEMS/transient/T3/tests",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/NAFEMS/transient/T3/tests",
+     "bytes": 6274,
+     "sha256": "0a812a0b7c92b3e84fcaa09d2f70b2414fe4740ff8c0d582dfcee2eecb92f018"
+    }
+   ]
+  },
+  {
+   "id": "moose-casl-i1-heat-source",
+   "project": "moose",
+   "name": "CASL verification I.1 — 1D slab with volumetric heat source",
+   "domain": "thermal",
+   "physics": [
+    "1D",
+    "steady conduction",
+    "volumetric heat source",
+    "code verification"
+   ],
+   "check": "executed-solver",
+   "limitation": "The fail-closed hit-syntax interpreter covers the dim=1 EDGE2 GeneratedMesh, HeatConduction + constant HeatSource kernels, DirichletBC, Steady, GenericConstantMaterial and [Functions] ParsedFunction (symbol_names/symbol_values via a whitelist AST evaluator — no eval); anything else fails closed. The nodal FD solution is exact for this quadratic field; the upstream error metric (elementwise |u_h-u*| dx over the piecewise-linear interpolant) is reproduced at each h of the bundled convergence CSV. No MOOSE binary is run.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: moose-casl-i1: heat-source slab matches the bundled ParsedFunction and L1 gold series",
+   "files": [
+    {
+     "path": "moose/modules/heat_transfer/test/tests/code_verification/cartesian_test_no1.i",
+     "sourcePath": "modules/heat_transfer/test/tests/code_verification/cartesian_test_no1.i",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/code_verification/cartesian_test_no1.i",
+     "bytes": 1395,
+     "sha256": "953d86fbc17833c5ae9511075917a1ba43e599ca4b90b8433168cb06b157abba"
+    },
+    {
+     "path": "moose/modules/heat_transfer/test/tests/code_verification/gold/cartesian_test_no1_first_order.csv",
+     "sourcePath": "modules/heat_transfer/test/tests/code_verification/gold/cartesian_test_no1_first_order.csv",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/code_verification/gold/cartesian_test_no1_first_order.csv",
+     "bytes": 132,
+     "sha256": "49a922419cc5968ce1d43d31bc87541fca0eb537fa38e6787bf0aae8c65e6a36"
+    }
+   ]
+  },
+  {
+   "id": "moose-convective-flux",
+   "project": "moose",
+   "name": "ConvectiveHeatFluxBC hand-calc case (Robin BC, surface T=150, flux -500)",
+   "domain": "thermal",
+   "physics": [
+    "2D",
+    "steady conduction",
+    "Robin/convective boundary"
+   ],
+   "check": "executed-solver",
+   "limitation": "The interpreter maps ConvectiveHeatFluxBC (T_infinity + heat_transfer_coefficient, dT=0) to a Robin BC and the HeatConduction kernel's literal thermal_conductivity parameter to conductivity; the Transient num_steps=1 executioner has no TimeDerivative kernel, so MOOSE semantics make it a stationary solve run on the steady solver. Surface T=150 (hand calc) and the -500 W/m^2 diffusive flux are checked against the bundled flux_out.csv gold. No MOOSE binary is run.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: moose-convective-flux: ConvectiveHeatFluxBC reproduces the hand-calc surface T and -500 flux",
+   "files": [
+    {
+     "path": "moose/modules/heat_transfer/test/tests/convective_heat_flux/flux.i",
+     "sourcePath": "modules/heat_transfer/test/tests/convective_heat_flux/flux.i",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/convective_heat_flux/flux.i",
+     "bytes": 1452,
+     "sha256": "11411b0ebc7217c84c0b2d05c539333663c8662999aed1b57e422589812099d7"
+    },
+    {
+     "path": "moose/modules/heat_transfer/test/tests/convective_heat_flux/gold/flux_out.csv",
+     "sourcePath": "modules/heat_transfer/test/tests/convective_heat_flux/gold/flux_out.csv",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/convective_heat_flux/gold/flux_out.csv",
+     "bytes": 27,
+     "sha256": "12e62d1bb9e02248bbafbf19d4e84b77bcd3d58a89ec18d06ba138a72e9ae966"
+    }
+   ]
+  },
+  {
+   "id": "moose-casl-i4-heated-plate",
+   "project": "moose",
+   "name": "CASL verification I.4 — heated plate with flux + convective (enclosure-cooling archetype)",
+   "domain": "thermal",
+   "physics": [
+    "1D",
+    "steady conduction",
+    "volumetric heat source",
+    "Neumann flux BC",
+    "Robin/convective BC",
+    "code verification"
+   ],
+   "check": "executed-solver",
+   "limitation": "CASL problem I.4 (SAND2020-3887): k=1 plate, q=1200 source, NeumannBC 200 inflow left, CoupledConvectiveHeatFluxBC htc=10/T_infinity=100 right. This is the canonical electronics/enclosure-cooling abstraction (dissipating wall + airflow film) reduced to 1-D verification form — full conjugate CFD (Icepak/FloTHERM-style) is NOT simulated. The interpreter maps the literal-htc coupled BC to Robin and the Neumann value to inward heat flux; run on the 1-D steady solver across the upstream h-sequence, checked nodally against the bundled ParsedFunction exact solution (u(0)=1040, u(1)=240) and the energy balance (200+1200 = h(u_R−100)). No MOOSE binary is run.",
+   "test": "src/lib/sim/software-cases-exec.test.ts: moose-casl-i4: heated plate with flux + convection matches the enclosure-cooling archetype",
+   "files": [
+    {
+     "path": "moose/modules/heat_transfer/test/tests/code_verification/cartesian_test_no4.i",
+     "sourcePath": "modules/heat_transfer/test/tests/code_verification/cartesian_test_no4.i",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/code_verification/cartesian_test_no4.i",
+     "bytes": 1592,
+     "sha256": "e41d3c9a024613172f723938f9914bfcb32c18fb12c09f98398ad8b4cbb40524"
+    },
+    {
+     "path": "moose/modules/heat_transfer/test/tests/code_verification/gold/cartesian_test_no4_first_order.csv",
+     "sourcePath": "modules/heat_transfer/test/tests/code_verification/gold/cartesian_test_no4_first_order.csv",
+     "url": "https://raw.githubusercontent.com/idaholab/moose/397623b5be779f950b9f0d851c870bdb682ca65e/modules/heat_transfer/test/tests/code_verification/gold/cartesian_test_no4_first_order.csv",
+     "bytes": 130,
+     "sha256": "d1db61e0b0fa93fcbe2c88941a8ee8a7c8a8f02f3a02b7c81a5c4d60090df9ee"
+    }
+   ]
+  }
+ ]
+}

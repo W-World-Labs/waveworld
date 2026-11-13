@@ -1,0 +1,4 @@
+# Catalog slices: a one-method / one-application PR should stay in parts/.
+/src/data/methods/parts/ @agi-wang
+/src/data/applications/parts/ @agi-wang
+/src/lib/principle-depth/parts/ @agi-wang

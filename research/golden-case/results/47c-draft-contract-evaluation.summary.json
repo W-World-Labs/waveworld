@@ -1,0 +1,179 @@
+{
+  "schema": "waveworld.golden-case-v2-draft-evaluation/v1",
+  "status": "draft-evaluation-only",
+  "registered": false,
+  "note": "Frozen snapshot of a CI-safe draft evaluation for peer review. Re-run: npm run golden:draft:eval | golden:draft:write-summary | golden:draft:check. Does not register v2.",
+  "digests": {
+    "v1PreregistrationSha256": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81",
+    "draftPreregistrationSha256": "486f263f47f1b6b94d4e552b12e337c0c0881e8345d310d9134f12355ed5b36a",
+    "draftPinsV1": true
+  },
+  "draft": {
+    "status": "draft-not-registered",
+    "caseId": "mb-pbs-oxygen-transient-2026-v2",
+    "schema": "waveworld.golden-case-preregistration-draft/v2"
+  },
+  "checks": [
+    {
+      "id": "draft-status-unregistered",
+      "passed": true,
+      "detail": "draft.status=draft-not-registered"
+    },
+    {
+      "id": "draft-pins-v1-digest",
+      "passed": true,
+      "detail": "draft.immutablePrior=6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81; file=6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81"
+    },
+    {
+      "id": "v1-gate-remains-failed",
+      "passed": true,
+      "detail": "immutablePriorDecision=fail"
+    },
+    {
+      "id": "scientific-rmse-delta-within-draft-bound",
+      "passed": true,
+      "detail": "max|ΔRMSE(f32,f64)|=1.0336300115820762e-7 ≤ 0.00001",
+      "measured": {
+        "maxObservedRmseDelta": 1.0336300115820762e-7,
+        "rmseDeltaLimit": 0.00001
+      }
+    },
+    {
+      "id": "scientific-model-fit-decision-stable",
+      "passed": true,
+      "detail": "allModelFitFail=true; diagnosis.scientificConclusionStable=true"
+    },
+    {
+      "id": "refinement-factors-match-draft",
+      "passed": true,
+      "detail": "factors=[1,2,4]"
+    },
+    {
+      "id": "refinement-abs-drift-non-decreasing",
+      "passed": true,
+      "detail": "CPU32–CPU64 max abs non-decreases with refinement factor on both conditions"
+    },
+    {
+      "id": "refinement-conclusion-stable",
+      "passed": true,
+      "detail": "scientificConclusionStable=true"
+    },
+    {
+      "id": "implementation-gpu-cpu32-fixture-within-abs-bound",
+      "passed": true,
+      "detail": "air abs=1.1920928955078125e-7; n2 abs=5.960464477539063e-8; bound=4.76837158203125e-7",
+      "measured": {
+        "airMaxAbs": 1.1920928955078125e-7,
+        "n2MaxAbs": 5.960464477539063e-8,
+        "absBound": 4.76837158203125e-7
+      }
+    },
+    {
+      "id": "implementation-gpu-cpu32-fixture-within-floored-rel-bound",
+      "passed": true,
+      "detail": "floored relative uses unit-scale denominator; bound=0.00476837158203125"
+    },
+    {
+      "id": "no-implementation-defect-suspected",
+      "passed": true,
+      "detail": "implementationDefectSuspected=false"
+    }
+  ],
+  "summary": {
+    "allPassed": true,
+    "failedIds": [],
+    "scientificConclusionStable": true,
+    "implementationDefectSuspected": false,
+    "v1GateRemainsFailed": true
+  },
+  "measurements": {
+    "conditions": [
+      {
+        "fixtureKey": "air",
+        "refinements": [
+          {
+            "factor": 1,
+            "dt": 0.01,
+            "steps": 922,
+            "cpu32VsCpu64MaxAbs": 3.731356510439099e-7,
+            "cpu32Rmse": 0.5523075332478521,
+            "cpu64Rmse": 0.5523075720965998,
+            "cpu32RmseDelta": -3.8848747663244865e-8,
+            "modelFitFailsBoth": true
+          },
+          {
+            "factor": 2,
+            "dt": 0.005,
+            "steps": 1844,
+            "cpu32VsCpu64MaxAbs": 5.876770206025839e-7,
+            "cpu32Rmse": 0.5523069888773555,
+            "cpu64Rmse": 0.5523069943879915,
+            "cpu32RmseDelta": -5.51063594755874e-9,
+            "modelFitFailsBoth": true
+          },
+          {
+            "factor": 4,
+            "dt": 0.0025,
+            "steps": 3688,
+            "cpu32VsCpu64MaxAbs": 9.453048905871952e-7,
+            "cpu32Rmse": 0.5523032493091029,
+            "cpu64Rmse": 0.5523033526721041,
+            "cpu32RmseDelta": -1.0336300115820762e-7,
+            "modelFitFailsBoth": true
+          }
+        ],
+        "maxAbsNonDecreasingWithFactor": true
+      },
+      {
+        "fixtureKey": "n2",
+        "refinements": [
+          {
+            "factor": 1,
+            "dt": 0.01,
+            "steps": 922,
+            "cpu32VsCpu64MaxAbs": 9.169177409562579e-7,
+            "cpu32Rmse": 0.6526689174130781,
+            "cpu64Rmse": 0.6526689123610048,
+            "cpu32RmseDelta": 5.052073315248151e-9,
+            "modelFitFailsBoth": true
+          },
+          {
+            "factor": 2,
+            "dt": 0.005,
+            "steps": 1844,
+            "cpu32VsCpu64MaxAbs": 0.0000017513827685888828,
+            "cpu32Rmse": 0.6526688634089983,
+            "cpu64Rmse": 0.6526688498773567,
+            "cpu32RmseDelta": 1.3531641585018406e-8,
+            "modelFitFailsBoth": true
+          },
+          {
+            "factor": 4,
+            "dt": 0.0025,
+            "steps": 3688,
+            "cpu32VsCpu64MaxAbs": 0.0000050296382324566125,
+            "cpu32Rmse": 0.6526690653180914,
+            "cpu64Rmse": 0.6526689880658855,
+            "cpu32RmseDelta": 7.725220596555005e-8,
+            "modelFitFailsBoth": true
+          }
+        ],
+        "maxAbsNonDecreasingWithFactor": true
+      }
+    ],
+    "productionGpuVsCpu32": {
+      "air": {
+        "maxAbsoluteError": 1.1920928955078125e-7,
+        "withinImplAbsBound": true,
+        "withinImplRelBound": true
+      },
+      "n2": {
+        "maxAbsoluteError": 5.960464477539063e-8,
+        "withinImplAbsBound": true,
+        "withinImplRelBound": true
+      }
+    }
+  },
+  "v1GateRemainsFailed": true,
+  "formalReviewStillRequired": true
+}

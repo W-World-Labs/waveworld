@@ -1,0 +1,63 @@
+{
+  "schema": "waveworld.golden-case-run-summary/v1",
+  "caseId": "mb-pbs-oxygen-transient-2026",
+  "manifestSha256": "f3449496afeb0797b1b136ca7c5caa06a5e039389dfec8a86bd891170cda1eb1",
+  "preregistrationSha256": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81",
+  "formalRun": true,
+  "environment": "local CPU reference",
+  "decision": {
+    "status": "fail",
+    "meaning": "The preregistered scientific hypothesis is rejected; workflow integrity passed.",
+    "rk4FitsPass": false,
+    "normalizedRmseMax": 0.6526689123610048,
+    "normalizedRmseThreshold": 0.08,
+    "oxygenSensitiveParameterRelativeDifference": 0,
+    "oxygenSensitiveParameterRelativeDifferenceThreshold": 0.05,
+    "parameterDifferencePass": false
+  },
+  "runs": [
+    {
+      "condition": "air-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-rk4@1.0.0",
+      "steps": 922,
+      "calibrationRmse": 0.5523075720965998,
+      "fittedKExc": 2,
+      "fittedKQ": 8,
+      "uqSeed": 20260802,
+      "uqSamples": 200,
+      "reproducibleResultSha256": "f6a5d7dae5e929c7af085c024773dc692cbb288cdf5a7203e105f3cdba638a80"
+    },
+    {
+      "condition": "air-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-steady-state@1.0.0",
+      "steps": 1,
+      "steadyT1": 0.12903225806451615,
+      "steadySingletO2": 0.02580645161290323,
+      "reproducibleResultSha256": "2242790c3987a7be2c05ceb29f4d529be1982e68901aa193cecbfd87e3f7c355"
+    },
+    {
+      "condition": "nitrogen-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-rk4@1.0.0",
+      "steps": 922,
+      "calibrationRmse": 0.6526689123610048,
+      "fittedKExc": 2,
+      "fittedKQ": 8,
+      "uqSeed": 20260802,
+      "uqSamples": 200,
+      "reproducibleResultSha256": "349c048f9638f9aaf16b02fee4125df53c5ef2b31889fd3a1e755a641ac9ec2a"
+    },
+    {
+      "condition": "nitrogen-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-steady-state@1.0.0",
+      "steps": 1,
+      "steadyT1": 0.2994011976047904,
+      "steadySingletO2": 0.0011976047904191617,
+      "reproducibleResultSha256": "8561c161549d641b87413116d29ebf789332299e750e503ba23955b55fd57f24"
+    }
+  ],
+  "provenance": {
+    "agentBuildId": "dev-5686ad60a734f5b9",
+    "modelImplementationSha256": "5686ad60a734f5b9a92365d9838810b3ae0c0caa14b3eb69765e825a476fea61",
+    "dependencyLockSha256": "401691da22211aa601890addcf77705736a923ed9591828b4a0e41d553f869f4"
+  }
+}

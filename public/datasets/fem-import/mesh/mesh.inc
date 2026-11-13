@@ -1,0 +1,4 @@
+*INCLUDE
+../nodes.inc
+*ELEMENT, TYPE=C3D4, ELSET=ALL
+1, 1, 2, 3, 4

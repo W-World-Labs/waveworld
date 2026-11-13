@@ -1,0 +1,12 @@
+[
+  {
+    "path": "artifacts/thermal-T-22fb764e2bd1",
+    "bytes": 216,
+    "sha256": "745da8decab0fc288cfd61526a8fed5b4ea136de9aa8d79a93bb8c1a89c5ad5c"
+  },
+  {
+    "path": "artifacts/thermal-kpi-22fb764e2bd1",
+    "bytes": 758,
+    "sha256": "9a9420c36eca7ecbd50cf669f75d26a2809890fd1513f8f71a57c00a893418b7"
+  }
+]

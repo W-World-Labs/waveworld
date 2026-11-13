@@ -1,0 +1,25 @@
+import assert from'node:assert/strict'
+import{readFileSync,writeFileSync,mkdtempSync,rmSync}from'node:fs'
+import{gunzipSync}from'node:zlib'
+import{execFileSync}from'node:child_process'
+import{tmpdir}from'node:os'
+import{join}from'node:path'
+import{fileURLToPath}from'node:url'
+const root=fileURLToPath(new URL('../../..',import.meta.url)),scratch=mkdtempSync(join(tmpdir(),'w-sim-faraday-')),fixture=JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/faraday-original-ts.json.gz',import.meta.url))))
+const module=new WebAssembly.Module(Buffer.from(readFileSync(join(root,'packages/solvers-lbm/src/wasm-kernel.ts'),'utf8').match(/WASM_KERNEL_BASE64 = '([^']+)'/)[1],'base64'))
+const cases=[...fixture.scenes.map(f=>({op:0,f})),...fixture.helpers.map(f=>({op:1,f})),...fixture.series.map(f=>({op:2,f})),...fixture.scalar.map(f=>({op:3,f}))]
+let maxScene=0,maxHelper=0,maxScaled=0
+try{const lib=join(scratch,'libw_sim_kernels.rlib'),native=join(scratch,'reference'),file=join(scratch,'input')
+ execFileSync('rustc',[join(root,'crates/w-sim-kernels/src/lib.rs'),'--edition','2021','--crate-name','w_sim_kernels','--crate-type','rlib','-O','-C','panic=abort','-o',lib],{stdio:'inherit',timeout:60000})
+ execFileSync('rustc',[fileURLToPath(new URL('./faraday-reference.rs',import.meta.url)),'--edition','2021','--extern',`w_sim_kernels=${lib}`,'-O','-C','panic=abort','-o',native],{stdio:'inherit',timeout:60000})
+ for(const c of cases){const e=new WebAssembly.Instance(module).exports,cp=(e.heap_base()+7)&~7,out=cp+56,flux=out+40,emf=flux+361*8,bytes=new Uint8Array(e.memory.buffer),d=(p,n)=>new Float64Array(e.memory.buffer,p,n),input=Buffer.alloc(c.op===2?24+c.f.flux.length*8:64);input.writeUInt32LE(c.op);let got,want
+  if(c.op===0){const f=c.f,s=f.scene;[s.omega,s.B,s.N,s.A,s.vBar,s.bMot,s.lBar].forEach((v,i)=>input.writeDoubleLE(v,8+i*8));bytes.set(input.subarray(8),cp);assert.equal(e.faraday_result(cp,flux,emf,out),0);got=Buffer.concat([Buffer.from(bytes.slice(out,out+40)),Buffer.from(bytes.slice(flux,emf+361*8))]);want=[f.result.peak,f.result.linkage,f.result.motionalEmf,f.result.frequency,f.result.period,...f.result.flux,...f.result.emf];assert.equal(e.faraday_result(cp,flux,emf,out),0);assert.deepEqual(Buffer.concat([Buffer.from(bytes.slice(out,out+40)),Buffer.from(bytes.slice(flux,emf+361*8))]),got,'persistent result buffers reset identically');const before=Buffer.from(bytes.slice(cp,emf+361*8));for(const call of[()=>e.faraday_result(cp,flux,flux,out),()=>e.faraday_result(cp+1,flux,emf,out),()=>e.faraday_result(cp,flux,emf,flux),()=>e.faraday_result(cp,flux,emf,e.memory.buffer.byteLength-8)])assert.equal(call(),2);assert.deepEqual(Buffer.from(bytes.slice(cp,emf+361*8)),before);d(cp,1)[0]=0;assert.equal(e.faraday_result(cp,flux,emf,out),3)}
+  if(c.op===1){c.f.input.forEach((v,i)=>input.writeDoubleLE(v,8+i*8));assert.equal(e.faraday_flux(...c.f.input,out),0);assert.equal(e.faraday_emf(...c.f.input,out+8),0);assert.equal(e.faraday_peak(...c.f.input.slice(1),out+16),0);got=Buffer.from(bytes.slice(out,out+24));want=c.f.values}
+  if(c.op===2){const f=c.f,n=f.flux.length;input.writeUInt32LE(n,4);input.writeDoubleLE(f.dt,8);input.writeDoubleLE(f.n,16);f.flux.forEach((v,i)=>input.writeDoubleLE(v,24+i*8));d(flux,n).set(f.flux);assert.equal(e.faraday_series(n?flux:0,n,f.dt,f.n,n?out:0),0);got=Buffer.from(bytes.slice(out,out+n*8));assert.deepEqual(got,Buffer.from(f.bits,'base64'),'old derivative endpoint/empty/singleton signed-zero bytes');if(n){assert.equal(e.faraday_series(flux,n,f.dt,f.n,flux),2);assert.equal(e.faraday_series(flux,n,0,f.n,out),3);d(flux,1)[0]=NaN;assert.equal(e.faraday_series(flux,n,f.dt,f.n,out),4)}else assert.equal(e.faraday_series(flux,0,f.dt,f.n,out),2)}
+  if(c.op===3){c.f.input.forEach((v,i)=>input.writeDoubleLE(v,8+i*8));assert.equal(e.faraday_induced(...c.f.input.slice(0,2),out),0);assert.equal(e.faraday_motional(...c.f.input.slice(2),out+8),0);got=Buffer.from(bytes.slice(out,out+16));want=c.f.values}
+  if(want)want.forEach((v,i)=>{const error=Math.abs(got.readDoubleLE(i*8)-v),scaled=error/Math.max(1,Math.abs(v));if(c.op===0)maxScene=Math.max(maxScene,error);else maxHelper=Math.max(maxHelper,error);maxScaled=Math.max(maxScaled,scaled);assert(scaled<=2e-15,`${c.op}/${i}: ${error}`)});
+  writeFileSync(file,input);assert.deepEqual(got,execFileSync(native,[file],{timeout:10000}),'complete Faraday native/WASM outputs exact');
+  assert.equal(e.faraday_induced(NaN,1,out),4);assert.equal(e.faraday_induced(Number.MAX_VALUE,2,out),4);assert.equal(e.faraday_motional(1,2,3,out+1),2);assert.equal(e.faraday_flux(Number.MAX_VALUE,1,1,1,2,out),4);assert.equal(e.faraday_emf(1,1,1,1,NaN,out),4);assert.equal(e.faraday_peak(1,1,1,1,0),2);assert.equal(e.faraday_series(flux,0xffffffff,1,1,out),2)
+ }
+ console.log(`Faraday: ${cases.length} captured cases, all 361-point results/helpers native/WASM exact; endpoint/singleton/empty/signed-zero finite differences unchanged. Old JS max abs scene=${maxScene}, helper=${maxHelper}, scaled=${maxScaled}; pointer/alias/finite/overflow guards pass.`)
+}finally{rmSync(scratch,{recursive:true,force:true})}

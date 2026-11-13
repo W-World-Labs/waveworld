@@ -1,0 +1,6 @@
+{
+  "protocol": "waveworld.path-model-plugin/v1",
+  "entry": "plugin.mjs",
+  "files": ["plugin.mjs"],
+  "implementationSha256": "1800879ad6a82f1d34514832c86293b60e3bfc9b035aac804ba4d6e4e22115f6"
+}

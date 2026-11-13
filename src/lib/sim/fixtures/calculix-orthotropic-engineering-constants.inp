@@ -1,0 +1,8 @@
+** Source: CalculiX test deck (not an Abaqus execution fixture)
+** Authored synthetic orthotropic import example; not a vendor-validation oracle.
+** Revision: e9e57edea350a6097d0b3cddfc22e6f1d7680887
+** Units: unspecified in source
+** Following source context defines an initial temperature field of 295.00.
+*ELASTIC,TYPE=ENGINEERING CONSTANTS
+181000,10300,1000000,0.28,0,0,7150,5958.3333
+5958.3333,295.

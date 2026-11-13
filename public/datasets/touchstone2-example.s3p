@@ -1,0 +1,12 @@
+! Authored synthetic Touchstone 2.0 fixture; not a vendor oracle.
+[Version] 2.0
+# GHz S RI R 50
+[Number of Ports] 3
+[Number of Frequencies] 3
+[Reference] 50 50 50
+[Matrix Format] Full
+[Network Data]
+1.0 0.10 0.00 0.60 0.00 0.20 0.00 0.60 0.00 0.10 0.00 0.25 0.00 0.20 0.00 0.25 0.00 0.10 0.00
+2.0 0.12 0.01 0.55 -0.01 0.22 0.00 0.55 -0.01 0.12 0.01 0.28 0.00 0.22 0.00 0.28 0.00 0.12 0.01
+3.0 0.15 0.00 0.50 0.00 0.25 0.00 0.50 0.00 0.15 0.00 0.30 0.00 0.25 0.00 0.30 0.00 0.15 0.00
+[End]

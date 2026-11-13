@@ -1,0 +1,13 @@
+*HEADING
+Small include-backed cantilever
+*INCLUDE, INPUT=mesh/nodes.inc
+*INCLUDE, INPUT=mesh/elements.inc
+*INCLUDE, INPUT=material.inc
+*STEP
+*STATIC
+1.0, 1.0
+*BOUNDARY
+FIXED, 1, 3, 0.
+*CLOAD
+TIP, 2, -10.
+*END STEP

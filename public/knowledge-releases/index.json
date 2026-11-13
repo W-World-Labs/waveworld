@@ -1,0 +1,10 @@
+{
+  "schema": "waveworld.knowledge-release-index/v1",
+  "generatedAt": "2026-08-04T18:00:00.000Z",
+  "sample": true,
+  "demo": true,
+  "label": "sample-not-production-truth",
+  "ids": [
+    "kr-sample-48o"
+  ]
+}

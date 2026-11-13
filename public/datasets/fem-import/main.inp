@@ -1,0 +1,8 @@
+*HEADING
+Minimal multi-file structural import example
+*INCLUDE, INPUT=mesh/mesh.inc
+*INCLUDE, INPUT=material.inc
+*STEP
+*STATIC
+*INCLUDE, INPUT=loads.inc
+*END STEP

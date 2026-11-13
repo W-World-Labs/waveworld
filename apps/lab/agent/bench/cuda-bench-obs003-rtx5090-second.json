@@ -1,0 +1,69 @@
+{
+  "git_sha": "91735382b25c38de12f0ecca6be524386fb48503",
+  "binary": "/opt/w-sim-cuda/crates/w-sim-cuda/target/release/w-sim-cuda",
+  "at": "2026-09-19T04:37:20.161Z",
+  "scenes": {
+    "lbm": {
+      "reps": 5,
+      "p50_ms": 142.993271,
+      "p95_ms": 148.930317,
+      "p99_ms": 148.930317,
+      "min_ms": 138.89325499999998,
+      "max_ms": 148.930317,
+      "throughput_per_min": 415.7638729507926,
+      "vram_peak_mb": 19726,
+      "kernel_ms": null
+    },
+    "module-host": {
+      "reps": 5,
+      "p50_ms": 28.183678999999984,
+      "p95_ms": 28.841107999999963,
+      "p99_ms": 28.841107999999963,
+      "min_ms": 27.748109000000113,
+      "max_ms": 28.841107999999963,
+      "throughput_per_min": 1961.011624452024,
+      "vram_peak_mb": null,
+      "kernel_ms": null
+    },
+    "module-cuda": {
+      "reps": 5,
+      "p50_ms": 136.90708600000016,
+      "p95_ms": 157.88456100000008,
+      "p99_ms": 157.88456100000008,
+      "min_ms": 131.75655100000017,
+      "max_ms": 157.88456100000008,
+      "throughput_per_min": 417.3624696095257,
+      "vram_peak_mb": 19812,
+      "kernel_ms": null
+    }
+  },
+  "gate": {
+    "slack": 1.1,
+    "checks": [
+      {
+        "scene": "lbm",
+        "p95_ms": 148.930317,
+        "baseline_p95_ms": 149.58664700000003,
+        "ratio": 0.9956123757490197,
+        "slack": 1.1,
+        "pass": true
+      },
+      {
+        "scene": "module-cuda",
+        "p95_ms": 157.88456100000008,
+        "baseline_p95_ms": 181.56286299999988,
+        "ratio": 0.8695862049718844,
+        "slack": 1.1,
+        "pass": true
+      }
+    ],
+    "baseline": "/tmp/baseline.json",
+    "pass": true
+  },
+  "parity": {
+    "scene": "actuator-line",
+    "max_rel_diff": 0.000073075226425523,
+    "tolerance": 0.001,
+    "within": true
+  }
+}

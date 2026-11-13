@@ -1,0 +1,32 @@
+{
+  "name": "tuanliu-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "tuanliu-agent": "./src/cli.ts"
+  },
+  "scripts": {
+    "register": "tsx src/cli.ts register",
+    "run": "tsx src/cli.ts run",
+    "once": "tsx src/cli.ts once",
+    "submit": "tsx src/cli.ts submit",
+    "preinstall": "node ../../../scripts/verify-wsim-vendor.mjs"
+  },
+  "dependencies": {
+    "@w-sim/contracts": "file:../../../vendor/w-sim/w-sim-contracts-0.3.0.tgz",
+    "@w-sim/kit": "file:../../../vendor/w-sim/w-sim-kit-0.3.0.tgz",
+    "@w-sim/runtime": "file:../../../vendor/w-sim/w-sim-runtime-0.3.0.tgz",
+    "@w-sim/solver-conformance": "file:../../../vendor/w-sim/w-sim-solver-conformance-0.3.0.tgz",
+    "@w-sim/solvers-acoustics": "file:../../../vendor/w-sim/w-sim-solvers-acoustics-0.3.0.tgz",
+    "@w-sim/solvers-em-fdtd": "file:../../../vendor/w-sim/w-sim-solvers-em-fdtd-0.3.0.tgz",
+    "@w-sim/solvers-lbm": "file:../../../vendor/w-sim/w-sim-solvers-lbm-0.3.0.tgz",
+    "@w-sim/solvers-md": "file:../../../vendor/w-sim/w-sim-solvers-md-0.3.0.tgz",
+    "@w-sim/solvers-path-experiment": "file:../../../vendor/w-sim/w-sim-solvers-path-experiment-0.3.0.tgz",
+    "@w-sim/solvers-structural": "file:../../../vendor/w-sim/w-sim-solvers-structural-0.3.0.tgz",
+    "@w-sim/solvers-thermal": "file:../../../vendor/w-sim/w-sim-solvers-thermal-0.3.0.tgz",
+    "@w/xradar": "file:../../../vendor/w-xradar-0.2.1.tgz",
+    "tsx": "^4.23.15",
+    "webgpu": "^0.4.0"
+  }
+}

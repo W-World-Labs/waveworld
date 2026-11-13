@@ -1,0 +1,6 @@
+! Synthetic example fixture for Touchstone import format demonstration.
+! This is not vendor data or a measured device response.
+# MHz S MA R 50
+100 0.0 0
+200 0.25 -45
+300 0.5 90

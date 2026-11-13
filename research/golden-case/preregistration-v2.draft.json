@@ -1,0 +1,116 @@
+{
+  "schema": "waveworld.golden-case-preregistration-draft/v2",
+  "status": "draft-not-registered",
+  "supersedesForFutureRunsOnly": "waveworld.golden-case-preregistration/v1",
+  "caseId": "mb-pbs-oxygen-transient-2026-v2",
+  "sourceCaseId": "mb-pbs-oxygen-transient-2026",
+  "immutablePriorPreregistrationSha256": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81",
+  "workstream": {
+    "parentIssue": 40,
+    "attributionIssue": 47,
+    "slice": "B",
+    "note": "Numerical rationale expansion only. Does not register v2 or amend v1."
+  },
+  "attributionEvidence": {
+    "workstream": "#47-A",
+    "report": "results/47a-precision-attribution-first-cut.md",
+    "rationaleDoc": "results/47b-numerical-rationale.md",
+    "summary": "N2 production GPU f32 vs CPU f64 maxAbsoluteError equals local CPU f32 proxy vs CPU f64 exactly (9.169177409562579e-7). Air ratio ~0.82. Near-zero states do not dominate. First v1-threshold crossing at step 6. Implementation defect not supported.",
+    "v1CpuGpuGateRemainsFailed": true,
+    "implementationDefectSuspected": false
+  },
+  "dimensions": {
+    "stateComponents": ["S0", "S1", "T1", "singletO2", "mb"],
+    "stateScale": {
+      "description": "Normalized populations / dimensionless intensities on O(1) for dominant species; early singletO2 can be near zero.",
+      "unitScaleReference": 1.0,
+      "nearZeroFloorForRelativeError": 0.0001,
+      "binary32UlpAtUnitScale": 1.1920928955078125e-7,
+      "binary32UlpNote": "ulp(1.0f) = 2^-23 ≈ 1.192e-7. Four ULPs ≈ 4.768e-7 used as implementation absolute bound."
+    },
+    "time": {
+      "integrationDt": 0.01,
+      "stepsAtFactor1": 922,
+      "finalTime": 9.22,
+      "timeUnit": "dimensionless_normalized_pulse_log_axis",
+      "note": "dt and step count are those of the fitted golden RK4 trajectory (factor 1×); refinement multiplies step count while holding finalTime fixed."
+    },
+    "scientificObservables": {
+      "calibrationRmse": {
+        "unit": "dimensionless_normalized_intensity",
+        "v1FitThreshold": 0.08,
+        "observedWorstRmseApprox": 0.55,
+        "observedMaxRmseDeltaF32VsF64": 1.27e-7
+      }
+    }
+  },
+  "stepSizeAnalysis": {
+    "baseline": {
+      "dt": 0.01,
+      "steps": 922,
+      "factor": 1
+    },
+    "refinementFactors": [1, 2, 4],
+    "accumulationModel": {
+      "statement": "Each RK4 step performs a fixed number of binary32 fused multiply-adds and rounded divisions. Local truncation is O(dt^5) in exact arithmetic; floating-point local error is O(eps) times state and rate scales. Global f32–f64 state drift grows roughly with step count when the same ODE is integrated with identical coefficients.",
+      "implication": "Halving dt (factor 2, 4) increases the number of binary32 updates, so max |CPU32−CPU64| is expected to non-decrease; the scientific RMSE decision must remain stable (still fail model fit under v1 scientific criteria).",
+      "observedFirstV1ThresholdCrossingStep": 6,
+      "observedFirstCrossingFields": {
+        "air": "S0",
+        "n2": "T1"
+      }
+    },
+    "rationale": "v2 refinementCheck requires factors 1,2,4 at fixed final time and conclusion stability so step-size-driven f32 accumulation cannot be used to claim scientific agreement with f64."
+  },
+  "contract": {
+    "backendImplementationEquivalence": {
+      "reference": "explicitly-rounded CPU f32 RK4",
+      "gpuPrecision": "f32",
+      "maximumAbsoluteStateError": 4.76837158203125e-7,
+      "relativeErrorDenominatorFloor": 0.0001,
+      "maximumFlooredRelativeStateError": 0.00476837158203125,
+      "derivation": {
+        "ulpUnit": 1.1920928955078125e-7,
+        "ulpMultiplier": 4,
+        "absoluteBound": "4 * ulp(1.0f) = 4.76837158203125e-7",
+        "relativeBound": "absoluteBound / unitScale = 4.768e-7 when |x|≥1; floored relative uses max(|x|, 1e-4) so bound ≈ 4.768e-7/1e-4 = 4.768e-3 at the floor",
+        "productionGpuMinusCpu32Ulp": "Air ≤ ~1 ULP (1.19e-7); N2 ≤ ~0.5 ULP (5.96e-8) in prior diagnosis"
+      },
+      "rationale": "Four binary32 epsilons at unit state scale permit arithmetic contraction/order differences while detecting equation, coefficient, indexing, or state-update regressions. Production GPU–CPU32 residual was ≤1 unit-scale ULP (1.19e-7); 4 ulp leaves headroom without masking a wrong update. The denominator floor prevents near-zero states from dominating (observed near-zero max abs ≤ ~1e-12)."
+    },
+    "scientificEquivalence": {
+      "reference": "CPU f64 RK4",
+      "maximumCalibrationRmseDelta": 0.00001,
+      "requireSameModelFitThresholdDecision": true,
+      "requireSameOverallHypothesisDecision": true,
+      "derivation": {
+        "v1NormalizedRmseMax": 0.08,
+        "observedWorstRmse": ">0.55",
+        "observedRmseDeltaF32VsF64": 1.27e-7,
+        "proposedDeltaBound": 1e-5,
+        "marginVsFitThreshold": "1e-5 / 0.08 = 1.25e-4 of the scientific threshold width",
+        "marginVsObservedDelta": "1e-5 / 1.27e-7 ≈ 79× observed max delta"
+      },
+      "rationale": "The observed worst RMSE delta was 1.27e-7. A 1e-5 bound is far below the 0.08 scientific fit threshold and leaves more than an order of magnitude regression margin. CPU f32 and production GPU preserve the model-fit failure by a wide margin (RMSE > 0.55)."
+    },
+    "refinementCheck": {
+      "factors": [1, 2, 4],
+      "sameFinalIntegrationTime": true,
+      "requireConclusionStable": true,
+      "rationale": "Halving dt increases f32–f64 state drift because more binary32 updates accumulate; refinement must not flip the scientific decision."
+    }
+  },
+  "separationFromV1": {
+    "v1CpuGpuAbsoluteTolerance": 1e-9,
+    "v1CpuGpuRelativeTolerance": 1e-7,
+    "whyV1Failed": "v1 compared GPU f32 trajectories to CPU f64 with tolerances tighter than binary32 accumulation over hundreds of steps; failure is expected under correct f32 RK4 and is preserved as a frozen negative result.",
+    "v2DoesNotRescindV1": true
+  },
+  "freezeRequirements": [
+    "Review the numerical rationale independently (dimensions, ULP derivation, step accumulation).",
+    "Add the draft and diagnostic report digests to the versioned manifest.",
+    "Assign a registration timestamp before the first v2 formal run.",
+    "Never modify or reinterpret the v1 preregistration or its failed CPU/GPU result.",
+    "Confirm immutablePriorPreregistrationSha256 still matches research/golden-case/preregistration.json."
+  ]
+}

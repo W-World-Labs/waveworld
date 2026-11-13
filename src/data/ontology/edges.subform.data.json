@@ -1,0 +1,5251 @@
+[
+  {
+    "id": "edge-grav-pe-to-kinetic-fall",
+    "from": "mechanical-gravitational-pe",
+    "to": "mechanical-kinetic",
+    "name": "自由下落 / 释放 (重力势能→平动动能)",
+    "principle": "保守力场中重力做正功，势能转化为动能：½mv² = mgh（无阻力理想情形），落体、水流加速、过山车下坡均属此。",
+    "formula": {
+      "expr": "eta * m * g * h",
+      "latex": "E_k = \\eta\\, m g h",
+      "vars": {
+        "eta": "转化效率(含空气阻力损失)",
+        "m": "质量 kg",
+        "g": "重力加速度 m/s²",
+        "h": "下落高度 m"
+      },
+      "sample": {
+        "eta": 0.98,
+        "m": 1000,
+        "g": 9.81,
+        "h": 50
+      },
+      "expected": 480690.00000000006,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.9,
+      "max": 0.999,
+      "note": "真空中 η→1；空气中受阻力与终端速度限制"
+    },
+    "lossMechanisms": [
+      {
+        "name": "空气阻力",
+        "desc": "气动拖曳将部分动能耗散为热与湍流",
+        "formula": {
+          "expr": "0.5 * Cd * rho * A * v^2 * d",
+          "latex": "W_{drag}=\\tfrac12 C_d \\rho A v^2 d",
+          "vars": {
+            "Cd": "阻力系数",
+            "rho": "空气密度 kg/m³",
+            "A": "迎风面积 m²",
+            "v": "速度 m/s",
+            "d": "路程 m"
+          },
+          "sample": {
+            "Cd": 0.5,
+            "rho": 1.225,
+            "A": 0.5,
+            "v": 30,
+            "d": 50
+          },
+          "expected": 6890.625,
+          "tol": 1e-06
+        }
+      }
+    ],
+    "products": [
+      {
+        "vendor": "通用(过山车/水利)",
+        "model": "重力落体过程",
+        "spec": "理想保守转换"
+      }
+    ],
+    "maturity": "natural-process",
+    "apps": [
+      "水力发电引水",
+      "过山车",
+      "落锤试验机"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "能量守恒下 mgh→½mv² 为经典力学基础结论。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Pumped-storage_hydroelectricity"
+    ]
+  },
+  {
+    "id": "edge-kinetic-to-grav-pe-pump",
+    "from": "mechanical-kinetic",
+    "to": "mechanical-gravitational-pe",
+    "name": "抽水蓄能充能 (动能/做功→重力势能)",
+    "principle": "水泵对水做功，将其抬升至高位水库，机械能蓄存为重力势能；放水发电时逆向。整个抽-放循环往返效率 70–85%。",
+    "formula": {
+      "expr": "eta * m * g * h",
+      "latex": "E_{stored} = \\eta_{RT}\\, m g h",
+      "vars": {
+        "eta": "往返效率",
+        "m": "抽升水质量 kg",
+        "g": "9.81",
+        "h": "净水头 m"
+      },
+      "sample": {
+        "eta": 0.8,
+        "m": 1000000000,
+        "g": 9.81,
+        "h": 300
+      },
+      "expected": 2354400000000,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.7,
+      "max": 0.85,
+      "note": "抽水蓄能往返(往返)效率；约20%循环损失"
+    },
+    "lossMechanisms": [
+      {
+        "name": "水力摩擦/水头损失",
+        "desc": "引水管道湍流与摩擦损失"
+      },
+      {
+        "name": "泵/涡轮机械损失",
+        "desc": "水力机械叶轮效率有限"
+      },
+      {
+        "name": "发电机/电动机损失",
+        "desc": "电磁与铜损"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Bath County (Dominion)",
+        "model": "Bath County PSP",
+        "spec": "3003 MW，美国最大抽水蓄能"
+      },
+      {
+        "vendor": "Voith / Andritz",
+        "model": "可逆式水泵水轮机",
+        "spec": "GW级抽水蓄能机组"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "电网调峰储能",
+      "可再生能源消纳",
+      "频率调节"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "抽水蓄能往返效率 70–85% 为业界共识。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Pumped-storage_hydroelectricity",
+      "https://energy.sustainability-directory.com/question/how-efficient-is-pumped-hydro-storage/"
+    ]
+  },
+  {
+    "id": "edge-grav-pe-to-electric-hydro",
+    "from": "mechanical-gravitational-pe",
+    "to": "el-current",
+    "name": "水力发电 (重力势能→电流)",
+    "principle": "高位水流经水轮机(混流式/Kaplan)将势能转为转动动能驱动发电机，再经电磁感应输出电能；水轮机+发电机综合效率约 90%。",
+    "formula": {
+      "expr": "eta * m * g * h",
+      "latex": "E_{elec} = \\eta\\, m g h",
+      "vars": {
+        "eta": "水轮机×发电机综合效率",
+        "m": "过机水质量 kg",
+        "g": "9.81",
+        "h": "水头 m"
+      },
+      "sample": {
+        "eta": 0.9,
+        "m": 1000000000,
+        "g": 9.81,
+        "h": 300
+      },
+      "expected": 2648700000000,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.85,
+      "max": 0.95,
+      "note": "Kaplan/混流式可捕获>90%出流动能，发电机>95%"
+    },
+    "lossMechanisms": [
+      {
+        "name": "水轮机水力损失",
+        "desc": "尾水残余动能与叶片流动损失"
+      },
+      {
+        "name": "发电机电磁损失",
+        "desc": "铜损、铁损约5%"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "GE / Voith / Andritz",
+        "model": "Francis/Kaplan 水轮发电机组",
+        "spec": "单机可达700+ MW(三峡)"
+      },
+      {
+        "vendor": "三峡集团",
+        "model": "Three Gorges 机组",
+        "spec": "总装机22500 MW"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "大型水电站",
+      "径流式发电",
+      "灌溉渠系发电"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "水电综合效率约90%，单机效率世界领先发电方式之一。"
+    },
+    "refs": [
+      "https://eng.libretexts.org/Sandboxes/jhalpern/Energy_Alternatives/05:_Hydropower/5.03:_Methods_of_Harnessing_Hydropower/5.3.01:_The_Kaplan_and_Francis_Turbines",
+      "https://www.energy.gov/cmei/water/types-hydropower-turbines"
+    ]
+  },
+  {
+    "id": "edge-kinetic-to-rotational-wind",
+    "from": "mechanical-kinetic",
+    "to": "mechanical-rotational",
+    "name": "风力捕获 (风平动动能→转子转动动能)",
+    "principle": "风经叶片将平动动能转为转子转动动能，受 贝茨 极限制约：理论最大功率系数=0.593，实际 0.35–0.45。P = 功率系数·½ρAv³。",
+    "formula": {
+      "expr": "Cp * 0.5 * rho * A * v^3",
+      "latex": "P = C_p \\cdot \\tfrac12 \\rho A v^3",
+      "vars": {
+        "Cp": "功率系数(≤0.593)",
+        "rho": "空气密度 kg/m³",
+        "A": "扫掠面积 m²",
+        "v": "风速 m/s"
+      },
+      "sample": {
+        "Cp": 0.4,
+        "rho": 1.225,
+        "A": 8000,
+        "v": 12
+      },
+      "expected": 3386880.0000000005,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.35,
+      "max": 0.5,
+      "note": "功率系数 上限为 贝茨 0.593；实用机组峰值约0.45"
+    },
+    "lossMechanisms": [
+      {
+        "name": "贝茨 极限",
+        "desc": "气流必须保持流动，无法提取全部动能，理论上限59.3%"
+      },
+      {
+        "name": "叶片气动损失",
+        "desc": "翼型阻力、叶尖涡、偏航误差"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Vestas",
+        "model": "V164 / V236",
+        "spec": "15 MW海上风机，转子直径236m"
+      },
+      {
+        "vendor": "Siemens Gamesa",
+        "model": "SG 14-236 DD",
+        "spec": "14+ MW直驱机组"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "陆上/海上风电场",
+      "分布式风力发电"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "贝茨 极限 59.3% 与实用 功率系数≈0.4 为风能领域基础共识。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Betz's_law",
+      "https://www.energyeducation.ca/encyclopedia/Betz_limit"
+    ]
+  },
+  {
+    "id": "edge-rotational-to-electric-flywheel",
+    "from": "mechanical-rotational",
+    "to": "el-current",
+    "name": "飞轮储能放电 (转动动能→电流)",
+    "principle": "电机加速转子蓄存转动动能(充)，需电时转子减速带动发电机输出电能(放)；磁悬浮+真空腔将机械效率提至97%，往返效率约85%。",
+    "formula": {
+      "expr": "eta * 0.5 * I * omega^2",
+      "latex": "E_{out} = \\eta \\cdot \\tfrac12 I \\omega^2",
+      "vars": {
+        "eta": "往返效率",
+        "I": "转动惯量 kg·m²",
+        "omega": "角速度 rad/s"
+      },
+      "sample": {
+        "eta": 0.85,
+        "I": 1.03,
+        "omega": 1047.2
+      },
+      "expected": 480048.83696,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.7,
+      "max": 0.9,
+      "note": "飞轮往返效率 70–90%，高端磁悬浮真空型≈85%"
+    },
+    "lossMechanisms": [
+      {
+        "name": "轴承摩擦/磁阻拖曳",
+        "desc": "机械轴承与磁悬浮残余阻力使转子自放电"
+      },
+      {
+        "name": "电力电子转换损失",
+        "desc": "电机/逆变器双向转换损耗"
+      },
+      {
+        "name": "风阻损失",
+        "desc": "真空度不足时残余气体阻力"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Amber Kinetics",
+        "model": "M32",
+        "spec": "32 kWh / 8 kW，4h放电，>85%往返效率"
+      },
+      {
+        "vendor": "Beacon Power",
+        "model": "Smart Energy 25",
+        "spec": "25 kWh调频飞轮，20MW电站(Stephentown)"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "电网调频",
+      "不间断电源",
+      "KERS车载能量回收"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "飞轮往返效率85–90%、长寿命无衰减，商业部署成熟。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Flywheel_energy_storage",
+      "https://greyb.com/blog/advanced-flywheel-energy-storage-startups/"
+    ]
+  },
+  {
+    "id": "edge-kinetic-to-electric-regen",
+    "from": "mechanical-kinetic",
+    "to": "el-current",
+    "name": "再生制动 (车辆平动动能→电流)",
+    "principle": "电动车减速时电机反转作发电机，将车辆平动动能回收为电能充入电池，典型回收 60–70% 的制动动能。",
+    "formula": {
+      "expr": "eta * 0.5 * m * v^2",
+      "latex": "E_{rec} = \\eta \\cdot \\tfrac12 m v^2",
+      "vars": {
+        "eta": "回收效率",
+        "m": "车质量 kg",
+        "v": "制动初速度 m/s"
+      },
+      "sample": {
+        "eta": 0.65,
+        "m": 1500,
+        "v": 20
+      },
+      "expected": 195000,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.5,
+      "max": 0.85,
+      "note": "平地缓减速≈48%，下坡可>85%，典型60–70%"
+    },
+    "lossMechanisms": [
+      {
+        "name": "电机/电力电子损失",
+        "desc": "电机铜损铁损与逆变器损耗"
+      },
+      {
+        "name": "电池充电内阻损失",
+        "desc": "化学吸纳过程焦耳热"
+      },
+      {
+        "name": "高速/急刹回收上限",
+        "desc": "大功率制动超出电机回收能力，多余靠机械摩擦耗散为热"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Tesla",
+        "model": "Model 3/Y 单踏板再生制动",
+        "spec": "城市工况增程约10–25%"
+      },
+      {
+        "vendor": "Toyota",
+        "model": "Prius HSD",
+        "spec": "混动再生制动系统"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "电动/混动汽车",
+      "电气化轨道交通",
+      "电梯能量回馈"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "EV再生制动典型回收60–70%制动动能为行业共识。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Regenerative_braking",
+      "https://scienceinsights.org/how-efficient-is-regenerative-braking-the-real-numbers/"
+    ]
+  },
+  {
+    "id": "edge-kinetic-to-thermal-friction",
+    "from": "mechanical-kinetic",
+    "to": "thermal",
+    "name": "摩擦制动耗散 (平动动能→热能)",
+    "principle": "摩擦/机械制动将动能不可逆地耗散为热能：Q = μNd（≈½mv²全部转热）。是熵增的典型过程，效率上指‘转热比例’近100%但能量品位下降。",
+    "formula": {
+      "expr": "mu * m * g * d",
+      "latex": "Q = \\mu m g d",
+      "vars": {
+        "mu": "摩擦系数",
+        "m": "车质量 kg",
+        "g": "9.81",
+        "d": "制动距离 m"
+      },
+      "sample": {
+        "mu": 0.7,
+        "m": 1500,
+        "g": 9.81,
+        "d": 29.1
+      },
+      "expected": 299744.55,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.99,
+      "max": 1,
+      "note": "动能几乎100%转为热能(含微量声/磨损)，但为低品位能量"
+    },
+    "lossMechanisms": [
+      {
+        "name": "声辐射",
+        "desc": "制动尖叫等少量能量转为声波"
+      },
+      {
+        "name": "材料磨损",
+        "desc": "极少量能量耗于材料剥离"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Brembo",
+        "model": "通风盘式制动器",
+        "spec": "高性能刹车系统"
+      },
+      {
+        "vendor": "通用",
+        "model": "鼓式/盘式制动",
+        "spec": "车辆摩擦制动"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "车辆制动",
+      "机械离合/刹车",
+      "阻尼耗能"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "摩擦做功几乎全部转为热，是热力学第二定律的典型不可逆过程。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Regenerative_braking",
+      "https://phys.libretexts.org/Courses/Georgia_State_University/GSU-TM-Physics_I_(2211)/08:_Work_Power_and_Energy/8.15:_Rotational_Kinetic_Energy_-_Work_and_Energy"
+    ]
+  },
+  {
+    "id": "edge-elastic-pe-to-kinetic-release",
+    "from": "mechanical-elastic-pe",
+    "to": "mechanical-kinetic",
+    "name": "弹簧释放 (弹性势能→动能)",
+    "principle": "受压/拉伸弹簧释放时弹性势能 ½kx² 转为物体平动动能，钟表发条、弹射器、弹簧炮均属此；理想弹性体效率接近1，迟滞损失很小。",
+    "formula": {
+      "expr": "eta * 0.5 * k * x^2",
+      "latex": "E_k = \\eta \\cdot \\tfrac12 k x^2",
+      "vars": {
+        "eta": "弹性转换效率(扣除迟滞)",
+        "k": "弹簧刚度 N/m",
+        "x": "形变量 m"
+      },
+      "sample": {
+        "eta": 0.95,
+        "k": 2000,
+        "x": 0.1
+      },
+      "expected": 9.500000000000002,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.9,
+      "max": 0.99,
+      "note": "优质弹性材料迟滞损失小，η→0.99"
+    },
+    "lossMechanisms": [
+      {
+        "name": "弹性迟滞/内摩擦",
+        "desc": "材料阻尼使部分能量转为热"
+      },
+      {
+        "name": "永久形变",
+        "desc": "超弹限时塑性变形损失能量"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "通用机械",
+        "model": "压缩/扭转弹簧",
+        "spec": "弹射/缓冲机构"
+      },
+      {
+        "vendor": "Rolex/IWC",
+        "model": "机械表发条系统",
+        "spec": "36–48h动力储备"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "机械钟表走时",
+      "弹射/弹簧机构",
+      "缓冲减振储能"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "线性弹性区 ½kx²↔动能转换为经典结论，迟滞损失通常很小。"
+    },
+    "refs": [
+      "https://phys.libretexts.org/Bookshelves/Conceptual_Physics/Introduction_to_Physics_(Park)/03:_Unit_2-_Mechanics_II_-_Energy_and_Momentum_Oscillations_and_Waves_Rotation_and_Fluids/03:_Work_and_Energy/3.06:_Spring_Potential_Energy",
+      "https://www.iwc.com/int/en/journal/the-watch-mainspring-all-wound-up.html"
+    ]
+  },
+  {
+    "id": "edge-kinetic-to-vibrational",
+    "from": "mechanical-kinetic",
+    "to": "mechanical-vibrational",
+    "name": "激励起振 (动能→振动能)",
+    "principle": "外部动能冲击/周期激励弹性系统，能量转入简谐振动 E=½mω²A²(动能与弹性势能往复转换)，是音叉、弦、结构受激振动的来源。",
+    "formula": {
+      "expr": "0.5 * m * (2 * pi * f)^2 * A^2",
+      "latex": "E_{vib} = \\tfrac12 m \\omega^2 A^2,\\ \\omega=2\\pi f",
+      "vars": {
+        "m": "振动质量 kg",
+        "f": "频率 Hz",
+        "A": "振幅 m",
+        "pi": "圆周率"
+      },
+      "sample": {
+        "m": 0.01,
+        "f": 440,
+        "A": 0.001,
+        "pi": 3.14159265
+      },
+      "expected": 0.03821510815368374,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.3,
+      "max": 0.95,
+      "note": "高Q谐振系统能量转入效率高；阻尼/失谐降低耦合"
+    },
+    "lossMechanisms": [
+      {
+        "name": "阻尼耗散",
+        "desc": "粘滞与内摩擦使振动能逐渐转热"
+      },
+      {
+        "name": "声辐射",
+        "desc": "振动表面向空气辐射声波带走能量"
+      },
+      {
+        "name": "失谐损失",
+        "desc": "激励频率偏离谐振频率降低能量耦合"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "通用",
+        "model": "音叉/标准音源",
+        "spec": "440Hz A音"
+      },
+      {
+        "vendor": "Seiko/Epson",
+        "model": "石英音叉谐振器",
+        "spec": "32768 Hz计时基准"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "乐器发声",
+      "石英计时谐振",
+      "结构振动激励"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "简谐振子总能 ½mω²A² 与受激振动理论为标准物理结论。"
+    },
+    "refs": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8587805/",
+      "https://www.savemyexams.com/dp/physics/ib/23/hl/revision-notes/space-time-and-motion/rigid-body-mechanics/rotational-kinetic-energy/"
+    ]
+  },
+  {
+    "id": "edge-vibrational-to-acoustic",
+    "from": "mechanical-vibrational",
+    "to": "acoustic",
+    "name": "声辐射 (振动能→声能)",
+    "principle": "振动表面挤压周围介质形成压力波，机械振动能辐射为声能；辐射效率取决于振动面尺寸与声波波长之比(声阻抗匹配)。",
+    "formula": {
+      "expr": "eta * 0.5 * m * (2 * pi * f)^2 * A^2",
+      "latex": "E_{ac} = \\eta_{rad} \\cdot \\tfrac12 m \\omega^2 A^2",
+      "vars": {
+        "eta": "声辐射效率",
+        "m": "振膜质量 kg",
+        "f": "频率 Hz",
+        "A": "振幅 m",
+        "pi": "圆周率"
+      },
+      "sample": {
+        "eta": 0.05,
+        "m": 0.01,
+        "f": 440,
+        "A": 0.001,
+        "pi": 3.14159265
+      },
+      "expected": 0.001910755407684187,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.01,
+      "max": 0.5,
+      "note": "扬声器声电效率通常仅1–5%；号筒/匹配良好时更高"
+    },
+    "lossMechanisms": [
+      {
+        "name": "声阻抗失配",
+        "desc": "小振膜对长波辐射效率低，大部分能量未辐射出去"
+      },
+      {
+        "name": "热损耗",
+        "desc": "音圈电阻与机械阻尼产热"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "通用扬声器厂商",
+        "model": "动圈扬声器",
+        "spec": "声电效率0.5–5%"
+      },
+      {
+        "vendor": "号筒/压缩驱动器",
+        "model": "Compression driver",
+        "spec": "号筒负载提升辐射效率至>10%"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "扬声器/乐器",
+      "声呐换能器",
+      "超声设备"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "振动经声阻抗匹配辐射为声波；常规扬声器声效率低(几%)。"
+    },
+    "refs": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8587805/"
+    ]
+  },
+  {
+    "id": "edge-vibrational-to-electric-piezo",
+    "from": "mechanical-vibrational",
+    "to": "el-current",
+    "name": "压电振动能量收集 (振动能→电流)",
+    "principle": "环境振动驱动压电材料(锆钛酸铅压电陶瓷)反复形变产生束缚电荷，输出交变电流；谐振式收集器在共振频率下功率最大，但机电转换效率有限。",
+    "formula": {
+      "expr": "V^2 / R",
+      "latex": "P = V^2 / R",
+      "vars": {
+        "V": "峰值输出电压 V",
+        "R": "负载电阻 Ω"
+      },
+      "sample": {
+        "V": 41.8,
+        "R": 200000
+      },
+      "expected": 0.0087362,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.01,
+      "max": 0.3,
+      "note": "压电能量收集机电效率通常1–30%；谐振耦合可显著提升输出"
+    },
+    "lossMechanisms": [
+      {
+        "name": "机电耦合系数限制",
+        "desc": "压电材料 k²有限，仅部分应变能转电"
+      },
+      {
+        "name": "失谐/带宽窄",
+        "desc": "偏离谐振频率输出骤降"
+      },
+      {
+        "name": "介电/整流损失",
+        "desc": "压电体介电损耗与整流电路损耗"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "MIDÉ / Volture",
+        "model": "PPA压电悬臂收集器",
+        "spec": "mW级振动取能"
+      },
+      {
+        "vendor": "学术原型(MME音叉)",
+        "model": "Tuning-fork up-conversion harvester",
+        "spec": "7.3Hz@0.7g 输出41.8V/8.74mW"
+      }
+    ],
+    "maturity": "emerging",
+    "apps": [
+      "无线传感器自供电",
+      "工业振动取能",
+      "可穿戴/物联网节点"
+    ],
+    "consensus": {
+      "status": "convention",
+      "confidence": "medium",
+      "summary": "压电振动取能机电原理(P=V²/R, k²耦合)成熟；典型量级 mW，但系统级效率与商用规模仍在发展。"
+    },
+    "refs": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8587805/"
+    ]
+  },
+  {
+    "id": "thermal-sensible-to-latent",
+    "from": "thermal-sensible",
+    "to": "thermal-latent",
+    "name": "显热加热至相变",
+    "principle": "持续向工质输入显热使其温度升至相变点，之后输入的热能转为潜热实现等温相变（如水加热至沸腾蒸发）。",
+    "formula": {
+      "expr": "Q_total = m*c*(T_b - T_0) + m*L_vap",
+      "latex": "Q_{total} = m c (T_b - T_0) + m L_{vap}",
+      "vars": {
+        "m": "工质质量 kg",
+        "c": "比热容 J/(kg·K)",
+        "T_b": "沸点 K",
+        "T_0": "初温 K",
+        "L_vap": "蒸发潜热 J/kg"
+      },
+      "sample": {
+        "m": 1,
+        "c": 4186,
+        "T_b": 373,
+        "T_0": 293,
+        "L_vap": 2257000
+      },
+      "expected": 2591880,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "散热损失",
+        "desc": "加热过程中向环境的对流与辐射热损"
+      },
+      {
+        "name": "过热不可逆",
+        "desc": "局部过热与气泡核化的熵增"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.85,
+      "max": 0.98,
+      "note": "良绝热电热水器/锅炉的热效率"
+    },
+    "products": [
+      {
+        "vendor": "Bosch",
+        "model": "Tronic 电热水器",
+        "spec": "热效率约98%，2-27 kW"
+      },
+      {
+        "vendor": "Viessmann",
+        "model": "Vitomax 蒸汽锅炉",
+        "spec": "约0.5-117 t/h 蒸汽，效率>90%"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "蒸汽发电锅炉",
+      "工业蒸馏",
+      "家用热水/蒸汽"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "显热→潜热路径即标准加热曲线，无争议。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Enthalpy_of_vaporization"
+    ]
+  },
+  {
+    "id": "thermal-latent-to-sensible",
+    "from": "thermal-latent",
+    "to": "thermal-sensible",
+    "name": "潜热释放 / 凝结放热",
+    "principle": "蒸气冷凝或液体凝固时释放潜热，被周围工质以显热吸收升温——相变储能(PCM)与热泵冷凝器的工作原理。",
+    "formula": {
+      "expr": "m_pcm = (m_w*c_w*dT) / L_fus",
+      "latex": "m_{pcm} = \\frac{m_w c_w \\Delta T}{L_{fus}}",
+      "vars": {
+        "m_w": "被加热水质量 kg",
+        "c_w": "水比热 J/(kg·K)",
+        "dT": "目标温升 K",
+        "L_fus": "PCM凝固潜热 J/kg"
+      },
+      "sample": {
+        "m_w": 10,
+        "c_w": 4186,
+        "dT": 5,
+        "L_fus": 334000
+      },
+      "expected": 0.6266467065868263,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "过冷",
+        "desc": "PCM凝固延迟导致温度低于平衡相变点"
+      },
+      {
+        "name": "封装传热阻",
+        "desc": "PCM容器壁热阻降低换热速率"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.8,
+      "max": 0.95,
+      "note": "PCM储热往返热效率"
+    },
+    "products": [
+      {
+        "vendor": "Rubitherm",
+        "model": "RT 系列石蜡 PCM",
+        "spec": "L≈170-250 kJ/kg，相变温度0-100°C可选"
+      },
+      {
+        "vendor": "PCM Products Ltd",
+        "model": "PlusICE S系列",
+        "spec": "盐水合物，L≈140-330 kJ/kg"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "相变储热",
+      "建筑温控",
+      "冷链保温"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "潜热释放为相变储能基础，工业广泛应用。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Phase-change_material"
+    ]
+  },
+  {
+    "id": "thermal-internal-to-mechanical-heatengine",
+    "from": "thermal-internal",
+    "to": "mechanical",
+    "name": "热机循环",
+    "principle": "工质在高低温热源间循环(朗肯/布雷顿/联合循环)，将吸收的内能部分转化为机械功，受卡诺上限 η≤1−T_c/T_h 约束。",
+    "formula": {
+      "expr": "eta_carnot = 1 - T_c/T_h",
+      "latex": "\\eta_{Carnot} = 1 - \\frac{T_c}{T_h}",
+      "vars": {
+        "T_c": "冷源温度 K",
+        "T_h": "热源温度 K"
+      },
+      "sample": {
+        "T_c": 300,
+        "T_h": 1700
+      },
+      "expected": 0.8235294117647058,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "卡诺限制",
+        "desc": "第二定律对热→功转化的根本上限"
+      },
+      {
+        "name": "排气余热",
+        "desc": "冷凝/排气带走未利用内能"
+      },
+      {
+        "name": "摩擦与不可逆",
+        "desc": "湍流、节流、传热温差熵增"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.35,
+      "max": 0.64,
+      "note": "单循环朗肯 35-42%，联合循环纪录>64% (Keadby-2)"
+    },
+    "products": [
+      {
+        "vendor": "Siemens Energy",
+        "model": "SGT5-9000HL 联合循环",
+        "spec": "联合循环效率>63%"
+      },
+      {
+        "vendor": "GE Vernova",
+        "model": "9HA.02 + 联合循环",
+        "spec": "净效率约64% (Keadby-2)"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "燃气/燃煤发电",
+      "船舶推进",
+      "工业汽轮机"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "热机与卡诺效率为热力学第二定律核心，实测效率上限被广泛验证。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Combined-cycle_power_plant",
+      "https://en.wikipedia.org/wiki/Carnot_cycle"
+    ]
+  },
+  {
+    "id": "thermal-internal-to-electric-thermoelectric",
+    "from": "thermal-internal",
+    "to": "el-current",
+    "name": "热电发电（塞贝克：温差→电）",
+    "principle": "塞贝克效应：半导体两端温差驱动载流子扩散产生电势 V=S·ΔT，直接将热能转为电能，效率受材料无量纲优值限制，无运动部件。",
+    "formula": {
+      "expr": "eta = (1 - T_c/T_h) * ((sqrt(1+ZT)-1)/(sqrt(1+ZT)+T_c/T_h))",
+      "latex": "\\eta = \\left(1-\\frac{T_c}{T_h}\\right)\\frac{\\sqrt{1+ZT}-1}{\\sqrt{1+ZT}+T_c/T_h}",
+      "vars": {
+        "T_c": "冷端温度 K",
+        "T_h": "热端温度 K",
+        "ZT": "平均无量纲优值"
+      },
+      "sample": {
+        "T_c": 300,
+        "T_h": 600,
+        "ZT": 1
+      },
+      "expected": 0.10819418755438785,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "焦耳发热",
+        "desc": "内阻 I²R 损耗"
+      },
+      {
+        "name": "傅里叶漏热",
+        "desc": "热端到冷端的寄生热传导降低有效温差"
+      },
+      {
+        "name": "材料热电优值限制",
+        "desc": "电导率/热导率/塞贝克耦合制约优值"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.05,
+      "max": 0.12,
+      "note": "商用碲化铋 热电优值≈1 约5-8%(整器含寄生损耗)；理想热电优值=1公式约11%；高温热电优值≈3-4实验室更高"
+    },
+    "products": [
+      {
+        "vendor": "Marlow / II-VI",
+        "model": "TG12-8 TEG模块",
+        "spec": "碲化铋，ΔT≈150°C输出约6.5 W"
+      },
+      {
+        "vendor": "Gentherm (RTG)",
+        "model": "MMRTG (NASA)",
+        "spec": "PuO2热源，约6-7%热电效率，~110 We"
+      }
+    ],
+    "maturity": "growth",
+    "apps": [
+      "余热回收",
+      "深空同位素热电发电机电源",
+      "可穿戴体温取电"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "塞贝克效应与热电优值效率公式确立；商用效率仍低，材料研究活跃。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Thermoelectric_generator",
+      "https://www.pnas.org/doi/10.1073/pnas.1510231112"
+    ]
+  },
+  {
+    "id": "electric-to-thermal-latent-heatpump",
+    "from": "el-current",
+    "to": "thermal-latent",
+    "name": "热泵",
+    "principle": "压缩-冷凝-膨胀-蒸发循环用电能驱动制冷剂相变(蒸发吸潜热、冷凝放潜热)，把低温环境热量泵送到高温侧；输出热量大于输入电功，性能系数=Q_h/W>1。",
+    "formula": {
+      "expr": "COP_h_ideal = T_h/(T_h - T_c)",
+      "latex": "COP_{h} = \\frac{T_h}{T_h - T_c}",
+      "vars": {
+        "T_h": "供热端温度 K",
+        "T_c": "热源(环境)温度 K"
+      },
+      "sample": {
+        "T_h": 318,
+        "T_c": 273
+      },
+      "expected": 7.066666666666666,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "压缩机不可逆",
+        "desc": "实际性能系数远低于卡诺理想值"
+      },
+      {
+        "name": "传热温差",
+        "desc": "蒸发/冷凝器换热温差损失"
+      },
+      {
+        "name": "除霜与风机功耗",
+        "desc": "低温空气源工况下额外能耗"
+      }
+    ],
+    "kind": "transport",
+    "efficiency": {
+      "symbol": "COP",
+      "unit": "1",
+      "min": 2,
+      "max": 5,
+      "note": "搬运型(transport)：实际供热 性能系数 空气源 2~4、地源 4~5（>1 因搬运环境热，非凭空转换）。效率链中按 100% 封顶。㶲效率(实际性能系数/理想卡诺 性能系数)≈0.3–0.6 是另一维度指标，不入此字段"
+    },
+    "products": [
+      {
+        "vendor": "Daikin",
+        "model": "Altherma 3 空气源热泵",
+        "spec": "供热性能系数约4-5 @7°C"
+      },
+      {
+        "vendor": "Mitsubishi Electric",
+        "model": "Ecodan 地源/空气源",
+        "spec": "SCOP约3.5-4.5"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "建筑供暖/制冷",
+      "热水",
+      "工业升温"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "热泵性能系数>1及卡诺上限为标准制冷热力学，量产成熟。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Coefficient_of_performance",
+      "https://www.pickhvac.com/heat-pump/cop/"
+    ]
+  },
+  {
+    "id": "thermal-internal-to-radiant",
+    "from": "thermal-internal",
+    "to": "thermal-radiant-heat",
+    "name": "热辐射发射",
+    "principle": "受热物体表面将内能以电磁波辐射出去，遵循斯特藩–玻尔兹曼定律 P=εσAT⁴；发射光谱由普朗克定律及温度决定（高温白炽、室温红外）。",
+    "formula": {
+      "expr": "P = eps*sigma*A*T^4",
+      "latex": "P = \\varepsilon \\sigma A T^4",
+      "vars": {
+        "eps": "发射率",
+        "sigma": "Stefan-Boltzmann常数 W/(m²·K⁴)",
+        "A": "面积 m²",
+        "T": "表面温度 K"
+      },
+      "sample": {
+        "eps": 0.9,
+        "sigma": 5.67e-08,
+        "A": 1,
+        "T": 1000
+      },
+      "expected": 51030,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "发射率<1",
+        "desc": "非黑体表面只辐射ε倍黑体功率"
+      },
+      {
+        "name": "环境回辐射",
+        "desc": "净辐射 ∝ (T⁴−T_env⁴)，环境温度抬高净损"
+      },
+      {
+        "name": "对流/传导并行通道",
+        "desc": "部分内能经非辐射途径散失"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0,
+      "max": 0.95,
+      "note": "η即有效发射率ε，黑体涂层可达0.95"
+    },
+    "products": [
+      {
+        "vendor": "Vishay",
+        "model": "钨丝白炽发光体",
+        "spec": "T≈2800 K，约5-10%可见光占比"
+      },
+      {
+        "vendor": "Acktar",
+        "model": "Metal Velvet 黑体涂层",
+        "spec": "ε≈0.96-0.99，用于辐射标定/散热"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "红外加热",
+      "热成像",
+      "辐射散热",
+      "白炽照明"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "斯特藩–玻尔兹曼/普朗克定律为已验证基础物理。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_law",
+      "https://en.wikipedia.org/wiki/Thermal_radiation"
+    ]
+  },
+  {
+    "id": "thermal-radiant-to-electric-tpv",
+    "from": "thermal-radiant-heat",
+    "to": "el-current",
+    "name": "热光伏",
+    "principle": "高温发射体(钨,1900-2400°C)的热辐射照射到带隙匹配的三五族光伏电池上产生电流；带边光谱过滤+背反射器把次带隙光子反射回发射体循环利用，2022年MIT/NREL实测>40%效率。",
+    "formula": {
+      "expr": "eta_tpv = P_elec / P_absorbed",
+      "latex": "\\eta_{TPV} = \\frac{P_{elec}}{P_{absorbed}}",
+      "vars": {
+        "P_elec": "电池输出电功率 W",
+        "P_absorbed": "电池净吸收辐射功率 W"
+      },
+      "sample": {
+        "P_elec": 2.39,
+        "P_absorbed": 5.81
+      },
+      "expected": 0.41135972461273673,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "次带隙光子损失",
+        "desc": "低能光子无法激发载流子(部分由背反射器回收)"
+      },
+      {
+        "name": "热化损失",
+        "desc": "高能光子超出带隙的能量转为热"
+      },
+      {
+        "name": "发射体辐射不匹配",
+        "desc": "发射谱与电池带隙失配"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.2,
+      "max": 0.41,
+      "note": "商用约20-30%；MIT 2022 双结三五族达41.1% @2400°C"
+    },
+    "products": [
+      {
+        "vendor": "MIT / NREL",
+        "model": "双结 III-V TPV 电池",
+        "spec": "带隙1.2/1.4 eV，41.1%@2400°C，2.39 W/cm²"
+      },
+      {
+        "vendor": "Antora Energy",
+        "model": "热电池 TPV 模块",
+        "spec": "碳块储热+热光伏取电，目标>1300°C"
+      }
+    ],
+    "maturity": "growth",
+    "apps": [
+      "热电网储能(thermal battery)",
+      "余热发电",
+      "便携热源供电"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": ">40% 热光伏效率已在Nature(2022)发表并被复核；规模化部署仍在产业化早期。"
+    },
+    "refs": [
+      "https://www.nature.com/articles/s41586-022-04473-y",
+      "https://en.wikipedia.org/wiki/Thermophotovoltaic_energy_conversion"
+    ]
+  },
+  {
+    "id": "chemical-to-thermal-internal-combustion",
+    "from": "chemical",
+    "to": "thermal-internal",
+    "name": "燃烧放热",
+    "principle": "燃料氧化的放热反应将化学键能释放为产物高温内能，焓变 ΔH 决定单位质量放热(发热值)；是绝大多数热能的初级来源。",
+    "formula": {
+      "expr": "Q = m_fuel * LHV",
+      "latex": "Q = m_{fuel} \\cdot LHV",
+      "vars": {
+        "m_fuel": "燃料质量 kg",
+        "LHV": "低位发热值 J/kg"
+      },
+      "sample": {
+        "m_fuel": 1,
+        "LHV": 50000000
+      },
+      "expected": 50000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "不完全燃烧",
+        "desc": "CO/未燃碳氢带走化学能"
+      },
+      {
+        "name": "排烟显热",
+        "desc": "高温烟气带走部分热"
+      },
+      {
+        "name": "辐射/壁面散热",
+        "desc": "炉膛向环境散失"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.85,
+      "max": 0.99,
+      "note": "现代燃烧/锅炉燃烧效率，冷凝锅炉可近99%(基于低位热值)"
+    },
+    "products": [
+      {
+        "vendor": "Viessmann",
+        "model": "Vitodens 冷凝燃气锅炉",
+        "spec": "热效率高达98%(Hi)"
+      },
+      {
+        "vendor": "Weishaupt",
+        "model": "WM 工业燃烧器",
+        "spec": "燃烧效率>95%，调节比可达1:10"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "发电锅炉",
+      "内燃机",
+      "供暖/工业窑炉"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "燃烧焓与发热值为标准热化学数据，普遍应用。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Heat_of_combustion"
+    ]
+  },
+  {
+    "id": "electric-to-thermal-sensible-joule",
+    "from": "el-current",
+    "to": "thermal-sensible",
+    "name": "电阻加热",
+    "principle": "电流通过电阻时电能完全转化为热(焦耳定律 Q=I²Rt)，提升工质显热温度；转化率接近100%，但相对热泵能质较低。",
+    "formula": {
+      "expr": "Q = I^2 * R * t",
+      "latex": "Q = I^2 R t",
+      "vars": {
+        "I": "电流 A",
+        "R": "电阻 Ω",
+        "t": "时间 s"
+      },
+      "sample": {
+        "I": 10,
+        "R": 24,
+        "t": 60
+      },
+      "expected": 144000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "环境散热",
+        "desc": "加热元件向周围非目标散热"
+      },
+      {
+        "name": "能质降级",
+        "desc": "高品位电能转为低品位热(exergy损失)"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.95,
+      "max": 1,
+      "note": "焦耳加热将电能近乎100%转为热(就地)"
+    },
+    "products": [
+      {
+        "vendor": "Kanthal (Sandvik)",
+        "model": "APM/A-1 电阻丝",
+        "spec": "FeCrAl，使用温度可达1400°C"
+      },
+      {
+        "vendor": "Watlow",
+        "model": "管状/陶瓷加热器",
+        "spec": "功率密度高，效率~100%"
+      }
+    ],
+    "maturity": "mature",
+    "apps": [
+      "电炉/电阻炉",
+      "电热水器",
+      "工业过程加热"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "焦耳定律为基础电学，电阻加热效率~100%无争议。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Joule_heating"
+    ]
+  },
+  {
+    "id": "chemical-combustion-to-thermal",
+    "from": "chemical-combustion",
+    "to": "thermal",
+    "name": "燃烧 / 氧化放热",
+    "principle": "燃料的放热氧化把储存的键焓转化为释放到环境的热；是锅炉、火焰与火电的核心热源路径。",
+    "formula": {
+      "expr": "m * dHc * eta",
+      "latex": "Q = m\\,\\Delta H_c\\,\\eta_{comb}",
+      "vars": {
+        "m": "fuel mass (kg)",
+        "dHc": "specific heating value (MJ/kg)",
+        "eta": "combustion completeness (fraction)"
+      },
+      "sample": {
+        "m": 1,
+        "dHc": 44,
+        "eta": 0.98
+      },
+      "expected": 43.12,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_comb",
+      "unit": "1",
+      "min": 0.95,
+      "max": 0.99,
+      "note": "调校良好燃烧器中燃料完全氧化的比例"
+    },
+    "lossMechanisms": [
+      {
+        "name": "不完全燃烧",
+        "desc": "CO 与未燃碳氢未氧化逸出，化学能未释放。"
+      },
+      {
+        "name": "水蒸气潜热",
+        "desc": "产物不冷凝时仅捕获低位热值；高位热值与低位热值之差随烟道流失。"
+      },
+      {
+        "name": "辐射/对流烟道损失",
+        "desc": "热排气带走显热，离开负荷。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Bosch",
+        "model": "Greenstar condensing gas boiler",
+        "spec": "家用甲烷燃烧，高位热值热效率可达约 94%"
+      },
+      {
+        "vendor": "Weishaupt",
+        "model": "WM industrial burner series",
+        "spec": "调制燃气/燃油燃烧器，近完全燃烧"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "炉灶与锅炉",
+      "电厂蒸汽发生",
+      "工艺加热",
+      "火箭与喷气推进"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "燃烧放热是最成熟的能量转换；经弹式量热法验证。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Heat_of_combustion"
+    ]
+  },
+  {
+    "id": "chemical-combustion-to-mechanical",
+    "from": "chemical-combustion",
+    "to": "mechanical",
+    "name": "内燃机",
+    "principle": "密闭气缸内油气燃烧升高气体压力与温度，推动活塞做功，将化学能转为机械能。",
+    "formula": {
+      "expr": "m * dHc * eta",
+      "latex": "W = m\\,\\Delta H_c\\,\\eta_{th}",
+      "vars": {
+        "m": "fuel mass burned (kg)",
+        "dHc": "specific heating value (MJ/kg)",
+        "eta": "thermal/brake efficiency (fraction)"
+      },
+      "sample": {
+        "m": 1,
+        "dHc": 44,
+        "eta": 0.3
+      },
+      "expected": 13.2,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_th",
+      "unit": "1",
+      "min": 0.2,
+      "max": 0.45,
+      "note": "汽油/柴油约 25–40%；最佳柴油/阿特金森约 45%"
+    },
+    "lossMechanisms": [
+      {
+        "name": "卡诺/排气排热",
+        "desc": "循环热力学将大部分热量排至排气与冷却液。"
+      },
+      {
+        "name": "摩擦与泵气损失",
+        "desc": "活塞/轴承摩擦与换气泵气消耗功。"
+      },
+      {
+        "name": "不完全燃烧",
+        "desc": "未燃燃料与 CO 降低释放能量。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Toyota",
+        "model": "Dynamic Force 2.5L (A25A-FXS)",
+        "spec": "峰值热效率可达约 41%"
+      },
+      {
+        "vendor": "Wärtsilä",
+        "model": "31 marine diesel engine",
+        "spec": "大缸径柴油，峰值效率约 50%"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "道路车辆",
+      "船舶与轨道交通",
+      "固定式发电机组",
+      "航空活塞/涡轮发动机"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "内燃机效率受热力学循环上限约束；测量数据充分。"
+    },
+    "refs": [
+      "https://www.sciencedirect.com/science/article/abs/pii/S1359431113007722"
+    ]
+  },
+  {
+    "id": "chemical-electrochemical-to-electric",
+    "from": "chemical-electrochemical",
+    "to": "el-current",
+    "name": "电池放电（原电池）",
+    "principle": "自发的氧化还原反应推动电子经外电路流动；可提取的最大电功由反应吉布斯自由能给出。",
+    "formula": {
+      "expr": "n * F * E",
+      "latex": "W_{max} = nFE",
+      "vars": {
+        "n": "electrons transferred per mole (mol)",
+        "F": "Faraday constant (C/mol)",
+        "E": "cell EMF (V)"
+      },
+      "sample": {
+        "n": 1,
+        "F": 96485,
+        "E": 3.6
+      },
+      "expected": 347346,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_round",
+      "unit": "1",
+      "min": 0.85,
+      "max": 0.97,
+      "note": "Li-ion 往返 coulombic/energy efficiency"
+    },
+    "lossMechanisms": [
+      {
+        "name": "内阻压降",
+        "desc": "欧姆电阻与电荷转移电阻在电流流过时以热耗散能量。"
+      },
+      {
+        "name": "极化过电位",
+        "desc": "动力学与浓度过电位使输出电压低于电动势。"
+      },
+      {
+        "name": "自放电与副反应",
+        "desc": "固态电解质界面膜生长与寄生反应随时间消耗活性材料。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Panasonic / Tesla",
+        "model": "2170 NCA cell",
+        "spec": "~260 Wh/kg, 3.6 V nominal"
+      },
+      {
+        "vendor": "CATL",
+        "model": "Qilin / LFP cell",
+        "spec": "150–200 Wh/kg 电芯，循环寿命高"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "电动汽车",
+      "电网储能",
+      "消费电子",
+      "便携电源"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "ΔG=-nFE 与锂离子比能量是基础且经商用充分表征。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Lithium-ion_battery"
+    ]
+  },
+  {
+    "id": "chemical-electrochemical-from-electric",
+    "from": "el-current",
+    "to": "chemical-electrochemical",
+    "name": "电池充电 / 电解",
+    "principle": "外加电压高于平衡电位时，驱动逆向（非自发）反应，把电能存回化学能。",
+    "formula": {
+      "expr": "n * F * E",
+      "latex": "W_{in} = nFE_{applied}",
+      "vars": {
+        "n": "electrons per mole (mol)",
+        "F": "Faraday constant (C/mol)",
+        "E": "applied cell voltage (V)"
+      },
+      "sample": {
+        "n": 2,
+        "F": 96485,
+        "E": 1.8
+      },
+      "expected": 347346,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_elec",
+      "unit": "1",
+      "min": 0.6,
+      "max": 0.8,
+      "note": "质子交换膜/碱性水电解能量效率"
+    },
+    "lossMechanisms": [
+      {
+        "name": "过电位",
+        "desc": "施加电压超过水的可逆 1.23 V；超出部分以热耗散。"
+      },
+      {
+        "name": "欧姆损失",
+        "desc": "膜与电解质电阻浪费能量。"
+      },
+      {
+        "name": "法拉第效率损失",
+        "desc": "气体串扰与副反应降低产物产率。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Nel Hydrogen",
+        "model": "PEM electrolyser",
+        "spec": "~50-55 kWh/kg H2, ~70% 低位热值 efficiency"
+      },
+      {
+        "vendor": "Siemens Energy",
+        "model": "Silyzer 300",
+        "spec": "MW-scale 质子交换膜 water electrolysis"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "绿氢生产",
+      "电池充电",
+      "工业电解（氯碱、铝）",
+      "电转气"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "电解热力学已确立；效率仍在提升，技术趋于成熟。"
+    },
+    "refs": [
+      "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2025/07/ET48-Power-to-Hydrogen-to-Power.pdf"
+    ]
+  },
+  {
+    "id": "chemical-combustion-to-electric-fuelcell",
+    "from": "chemical-combustion",
+    "to": "el-current",
+    "name": "燃料电池（电化学氧化）",
+    "principle": "燃料电池以电化学方式氧化燃料（如氢气）而非明火燃烧，把化学能更直接地转为电能。",
+    "formula": {
+      "expr": "dGf / dHf",
+      "latex": "\\eta_{ideal} = \\frac{\\Delta G_f}{\\Delta H_f}",
+      "vars": {
+        "dGf": "Gibbs free energy of reaction (kJ/mol)",
+        "dHf": "enthalpy of reaction (kJ/mol)"
+      },
+      "sample": {
+        "dGf": 237,
+        "dHf": 286
+      },
+      "expected": 0.8286713286713286,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_FC",
+      "unit": "1",
+      "min": 0.4,
+      "max": 0.6,
+      "note": "实用质子交换膜燃料电池电效率（低位热值）"
+    },
+    "lossMechanisms": [
+      {
+        "name": "活化过电位",
+        "desc": "阴极氧还原动力学缓慢导致电压损失。"
+      },
+      {
+        "name": "欧姆电阻",
+        "desc": "膜质子传导与接触电阻。"
+      },
+      {
+        "name": "质量传输限制",
+        "desc": "高电流密度下反应物匮乏（浓度损失）。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Toyota",
+        "model": "Mirai FC stack (2nd gen)",
+        "spec": "128 kW 质子交换膜, ~60% peak efficiency"
+      },
+      {
+        "vendor": "Ballard",
+        "model": "FCgen-LCS",
+        "spec": "质子交换膜电堆，重载移动"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "燃料电池汽车",
+      "备用与固定电源",
+      "物料搬运叉车",
+      "船舶辅助电源"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "Fuel-cell thermodynamics 已确立; not 卡诺-limited, ~50-60% practical."
+    },
+    "refs": [
+      "https://www.sciencedirect.com/topics/engineering/fuel-cell-efficiency",
+      "https://www.sfc.com/glossary/fuel-cell-efficiency/"
+    ]
+  },
+  {
+    "id": "chemical-combustion-to-radiant",
+    "from": "chemical-combustion",
+    "to": "em-visible",
+    "name": "化学发光 / 火焰发射",
+    "principle": "放热化学反应使产物处于电子激发态，退激发射可见或红外光，形成化学发光与火焰光谱。",
+    "formula": {
+      "expr": "phi_lum * dHc",
+      "latex": "E_{light} = \\phi_{lum}\\,\\Delta H_{rxn}",
+      "vars": {
+        "phi_lum": "luminescence quantum/energy yield (fraction)",
+        "dHc": "reaction energy (kJ/mol)"
+      },
+      "sample": {
+        "phi_lum": 0.05,
+        "dHc": 200
+      },
+      "expected": 10,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_lum",
+      "unit": "1",
+      "min": 0.001,
+      "max": 0.3,
+      "note": "化学发光量子产率；高效荧光棒可达约 30%，火焰远低"
+    },
+    "lossMechanisms": [
+      {
+        "name": "非辐射弛豫",
+        "desc": "激发态产物以热能而非光子退激。"
+      },
+      {
+        "name": "热分配",
+        "desc": "火焰能量大多为热，仅小部分为光。"
+      },
+      {
+        "name": "再吸收/淬灭",
+        "desc": "发射光子被周围分子吸收或淬灭。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Cyalume",
+        "model": "SnapLight glow stick",
+        "spec": "鲁米诺/草酸酯化学发光，量子产率高"
+      },
+      {
+        "vendor": "various",
+        "model": "candle / gas flame",
+        "spec": "烟灰炽热可见发射"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "应急荧光棒",
+      "分析化学发光检测",
+      "火焰照明",
+      "生物发光标记"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "化学发光机理清楚；量子产率跨越多个数量级。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Chemiluminescence"
+    ]
+  },
+  {
+    "id": "chemical-radiant-to-biochemical-photosynthesis",
+    "from": "em-visible",
+    "to": "chemical-biochemical",
+    "name": "光合作用",
+    "principle": "捕光色素吸收可见光子驱动电荷分离与碳固定，把辐射能转为生物化学能。",
+    "formula": {
+      "expr": "I * eta",
+      "latex": "E_{stored} = I\\,\\eta_{photo}",
+      "vars": {
+        "I": "incident solar energy (MJ)",
+        "eta": "photosynthetic conversion efficiency (fraction)"
+      },
+      "sample": {
+        "I": 100,
+        "eta": 0.039
+      },
+      "expected": 3.9,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_photo",
+      "unit": "1",
+      "min": 0.01,
+      "max": 0.06,
+      "note": "全太阳光谱能量效率 1–6%（田间实际，理论上限 C3 4.6%/C4 6%）。注：相对 光合有效辐射 单色光的光子利用上限更高(~12–35%)，但那非全光谱能量效率，勿混用"
+    },
+    "lossMechanisms": [
+      {
+        "name": "光谱失配",
+        "desc": "Only ~45% of solar spectrum (光合有效辐射) is photosynthetically usable."
+      },
+      {
+        "name": "反射与透射",
+        "desc": "被叶片反射或透射的光未被捕获。"
+      },
+      {
+        "name": "光呼吸与热耗散",
+        "desc": "能量流失于光呼吸与非光化学淬灭（热）。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "nature",
+        "model": "C3/C4 plants, algae, cyanobacteria",
+        "spec": "生物光合系统"
+      },
+      {
+        "vendor": "research",
+        "model": "artificial-leaf photoelectrochemical cells",
+        "spec": "仿生 CO₂ 还原原型"
+      }
+    ],
+    "maturity": "已确立 (natural); 实验 (artificial)",
+    "apps": [
+      "粮食与生物质生产",
+      "固碳",
+      "生物燃料原料",
+      "人工光合作用研究"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "光合能量学已量化；田间效率偏低（3–6%），因多级损失。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Photosynthetic_efficiency",
+      "https://engineering.mit.edu/ask-an-engineer/can-we-calculate-the-efficiency-of-a-natural-photosynthesis-process"
+    ]
+  },
+  {
+    "id": "chemical-biochemical-to-mechanical",
+    "from": "chemical-biochemical",
+    "to": "mechanical",
+    "name": "肌肉收缩（三磷酸腺苷 驱动）",
+    "principle": "肌球蛋白马达头部水解 三磷酸腺苷，驱动构象功率冲程，沿肌动蛋白丝产生拉力与位移。",
+    "formula": {
+      "expr": "N * dG * eta",
+      "latex": "W = N\\,|\\Delta G_{ATP}|\\,\\eta_{musc}",
+      "vars": {
+        "N": "moles ATP hydrolyzed (mol)",
+        "dG": "in-vivo free energy magnitude (kJ/mol)",
+        "eta": "muscle mechanochemical efficiency (fraction)"
+      },
+      "sample": {
+        "N": 1,
+        "dG": 57,
+        "eta": 0.25
+      },
+      "expected": 14.25,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_musc",
+      "unit": "1",
+      "min": 0.18,
+      "max": 0.3,
+      "note": "骨骼肌力化学效率约 20–25%"
+    },
+    "lossMechanisms": [
+      {
+        "name": "代谢热",
+        "desc": "大部分水解能量以热释放（产热）。"
+      },
+      {
+        "name": "横桥效率损失",
+        "desc": "并非每一次三磷酸腺苷冲程都产生有用位移。"
+      },
+      {
+        "name": "激活/维持产热",
+        "desc": "钙转运与肌张力在无外功时仍消耗三磷酸腺苷。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "biology",
+        "model": "skeletal/cardiac muscle (actomyosin)",
+        "spec": "三磷酸腺苷驱动的收缩机械"
+      },
+      {
+        "vendor": "research",
+        "model": "myosin-actin in-vitro motility assay",
+        "spec": "单分子马达测量"
+      }
+    ],
+    "maturity": "已确立 (natural)",
+    "apps": [
+      "动物运动",
+      "心脏泵血",
+      "生物混合执行器",
+      "分子马达研究"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "肌肉力化学耦合测量充分；效率约 20–25%。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/ATP_hydrolysis",
+      "https://www.ncbi.nlm.nih.gov/books/NBK9903/"
+    ]
+  },
+  {
+    "id": "chemical-bond-to-combustion",
+    "from": "chemical-bond",
+    "to": "chemical-combustion",
+    "name": "由键能估算净反应焓",
+    "principle": "宏观反应热是断裂反应物键吸收的能量与生成产物键释放能量之差：ΔH ≈ ΣD(断) − ΣD(成)，把微观键能接到体相燃烧焓。",
+    "formula": {
+      "expr": "Dbroken - Dformed",
+      "latex": "\\Delta H_{rxn} = \\sum D_{broken} - \\sum D_{formed}",
+      "vars": {
+        "Dbroken": "sum of broken-bond enthalpies (kJ/mol)",
+        "Dformed": "sum of formed-bond enthalpies (kJ/mol)"
+      },
+      "sample": {
+        "Dbroken": 2644,
+        "Dformed": 3458
+      },
+      "expected": -814,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η_est",
+      "unit": "1",
+      "min": 0.9,
+      "max": 0.99,
+      "note": "平均键能估算相对实测 ΔH 的准确度（非能量转换效率）"
+    },
+    "lossMechanisms": [
+      {
+        "name": "平均键能近似误差",
+        "desc": "表列平均值忽略分子环境差异，偏差约 5–10%。"
+      },
+      {
+        "name": "相变忽略",
+        "desc": "键能法基于气相；凝聚相焓需额外项。"
+      }
+    ],
+    "products": [],
+    "maturity": "established",
+    "apps": [
+      "热化学教学",
+      "反应焓估算",
+      "燃料筛查",
+      "计算化学"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "盖斯定律键能估算为标准做法；是账本恒等式，不是器件。"
+    },
+    "refs": [
+      "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Chemical_Bonding/Fundamentals_of_Chemical_Bonding/Bond_Energies"
+    ]
+  },
+  {
+    "id": "nuclear-fission-to-thermal",
+    "from": "nuclear-fission",
+    "to": "thermal",
+    "name": "裂变 → 热能 (反应堆堆芯)",
+    "principle": "裂片与衰变粒子在燃料及冷却剂中减速，动能转为晶格热运动；约 93% 裂变能最终沉积为热。Q_th = N·Q·f_dep。",
+    "formula": {
+      "expr": "N * Q * f * 1.602e-13",
+      "latex": "P_{th} = N \\cdot Q \\cdot f \\cdot 1.602\\times10^{-13}",
+      "vars": {
+        "N": "每秒裂变数 (fissions/s)",
+        "Q": "每次回收裂变能 (MeV)",
+        "f": "热沉积份额 (1)"
+      },
+      "sample": {
+        "N": 31000000000000000000,
+        "Q": 200,
+        "f": 0.93
+      },
+      "expected": 923713200,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "反中微子逃逸",
+        "desc": "约 10 MeV/裂变(~5%)由反中微子携带逃出，不可回收"
+      },
+      {
+        "name": "延迟衰变热残留",
+        "desc": "部分β/γ衰变能延迟沉积，停堆后仍持续产热"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_th",
+      "unit": "1",
+      "min": 0.9,
+      "max": 0.95,
+      "note": "裂变能沉积为可用热的份额 ~0.93"
+    },
+    "products": [
+      {
+        "vendor": "Westinghouse",
+        "model": "AP1000",
+        "spec": "3400 MWth PWR 堆芯，热功率输出"
+      },
+      {
+        "vendor": "Framatome/EDF",
+        "model": "EPR",
+        "spec": "4500 MWth PWR"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "核电站堆芯",
+      "舰船反应堆",
+      "供热堆"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "~93% 裂变能成为可用热为反应堆物理标准"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/nuclear-fuel-cycle/introduction/physics-of-nuclear-energy"
+    ]
+  },
+  {
+    "id": "nuclear-fission-to-electric",
+    "from": "nuclear-fission",
+    "to": "electric",
+    "name": "裂变 → 电能 (核电整链)",
+    "principle": "裂变热经蒸汽朗肯循环驱动汽轮发电机，整体热电效率受卡诺限制约束，商用 PWR ~33%。P_e = P_th·η。",
+    "formula": {
+      "expr": "P_th * eta",
+      "latex": "P_e = P_{th} \\cdot \\eta",
+      "vars": {
+        "P_th": "堆芯热功率 (MWth)",
+        "eta": "热电转换效率 (1)"
+      },
+      "sample": {
+        "P_th": 3400,
+        "eta": 0.33
+      },
+      "expected": 1122,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "凝汽器排热",
+        "desc": "朗肯循环冷端约 2/3 热量经冷却塔/海水排放"
+      },
+      {
+        "name": "汽轮机/发电机损耗",
+        "desc": "叶片、轴承、发电机铜损铁损"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.32,
+      "max": 0.37,
+      "note": "轻水堆受材料/压力限温，热电效率~33%"
+    },
+    "products": [
+      {
+        "vendor": "Westinghouse",
+        "model": "AP1000",
+        "spec": "3400 MWth → ~1117 MWe，η≈0.33"
+      },
+      {
+        "vendor": "Rosatom",
+        "model": "VVER-1200",
+        "spec": "~3200 MWth → 1200 MWe"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "核电基荷发电",
+      "海军核动力"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "PWR 33% 热电效率为 EIA/WNA 共识"
+    },
+    "refs": [
+      "https://www.nuclear-power.com/nuclear-engineering/thermodynamics/laws-of-thermodynamics/thermal-efficiency/thermal-efficiency-of-nuclear-power-plants/",
+      "https://www.eia.gov/tools/faqs/faq.php?id=107&t=3"
+    ]
+  },
+  {
+    "id": "nuclear-fission-to-mass",
+    "from": "nuclear-fission",
+    "to": "mass",
+    "name": "裂变 ← 质量亏损",
+    "principle": "裂变产物总质量小于反应物，质量亏损按 E=Δm·c² 转为能量；裂变约亏损 0.0009 的静质量。每次释放能量对应的质量亏损 Δm = Q/c²。",
+    "formula": {
+      "expr": "Q * 1.602e-13 / (2.998e8 * 2.998e8)",
+      "latex": "\\Delta m = \\frac{Q}{c^2}",
+      "vars": {
+        "Q": "每次裂变释放能 (MeV)",
+        "c": "光速隐含 2.998e8 m/s"
+      },
+      "sample": {
+        "Q": 200
+      },
+      "expected": 3.5647514175561117e-28,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "无热力学损耗",
+        "desc": "质能等价为守恒关系，无效率损失，列损耗为反中微子份额未计入可回收能"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_mc2",
+      "unit": "1",
+      "min": 1,
+      "max": 1,
+      "note": "质能转换为精确守恒关系，η=1"
+    },
+    "products": [
+      {
+        "vendor": "—",
+        "model": "质能关系",
+        "spec": "E=mc²，c=2.998e8 m/s，Δm≈3.57e-28 kg/裂变"
+      }
+    ],
+    "maturity": "established",
+    "apps": [
+      "核能能量密度的物理根源",
+      "核数据计算"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "质能等价为相对论基本关系"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/nuclear-fuel-cycle/introduction/physics-of-nuclear-energy"
+    ]
+  },
+  {
+    "id": "nuclear-binding-to-fission",
+    "from": "nuclear-binding",
+    "to": "nuclear-fission",
+    "name": "结合能差 → 裂变释能",
+    "principle": "重核(B/A≈7.6)分裂为接近峰值(B/A≈8.5)的碎片，结合能/核子增加，差额×核子数即释放能。Q ≈ A·(ΔB/A)。",
+    "formula": {
+      "expr": "A * (BA_prod - BA_react)",
+      "latex": "Q = A \\cdot (\\frac{B}{A}_{prod} - \\frac{B}{A}_{react})",
+      "vars": {
+        "A": "核子数",
+        "BA_prod": "产物结合能/核子 (MeV)",
+        "BA_react": "母核结合能/核子 (MeV)"
+      },
+      "sample": {
+        "A": 236,
+        "BA_prod": 8.45,
+        "BA_react": 7.59
+      },
+      "expected": 202.95999999999987,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中微子份额",
+        "desc": "β衰变链中反中微子带走约5%，不计入实测裂片+辐射能"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_B",
+      "unit": "1",
+      "min": 0.95,
+      "max": 1,
+      "note": "结合能差几乎全部成为产物动能与辐射(扣中微子)"
+    },
+    "products": [
+      {
+        "vendor": "—",
+        "model": "结合能曲线",
+        "spec": "Z<26 区域曲线右降，重核裂变放能依据"
+      }
+    ],
+    "maturity": "established",
+    "apps": [
+      "裂变可行性判据",
+      "燃料能量密度估算"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "结合能曲线驱动裂变放能为核物理定论"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Nuclear_binding_energy"
+    ]
+  },
+  {
+    "id": "nuclear-binding-to-fusion",
+    "from": "nuclear-binding",
+    "to": "nuclear-fusion",
+    "name": "结合能差 → 聚变释能",
+    "principle": "轻核(D、T，B/A≈1~2.8)合并为 He-4(B/A≈7.07)，结合能/核子大幅跃升，差额×核子数即释放能。Q ≈ A·(B/A_prod) − Σ反应物结合能。",
+    "formula": {
+      "expr": "A_prod * BA_prod - (B_D + B_T)",
+      "latex": "Q = A_{He}\\cdot\\frac{B}{A}_{He} - (B_D + B_T)",
+      "vars": {
+        "A_prod": "He-4 核子数",
+        "BA_prod": "He-4 结合能/核子 (MeV)",
+        "B_D": "氘结合能 (MeV)",
+        "B_T": "氚结合能 (MeV)"
+      },
+      "sample": {
+        "A_prod": 4,
+        "BA_prod": 7.074,
+        "B_D": 2.224,
+        "B_T": 8.482
+      },
+      "expected": 17.59,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "库仑势垒约束",
+        "desc": "需极高温才能克服势垒，非能量损失而是触发门槛"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_B",
+      "unit": "1",
+      "min": 0.99,
+      "max": 1,
+      "note": "结合能差全部成为产物动能(α+中子)"
+    },
+    "products": [
+      {
+        "vendor": "—",
+        "model": "结合能曲线",
+        "spec": "Z<26 左升段，氘氚→He-4 释放 17.6 MeV"
+      }
+    ],
+    "maturity": "established",
+    "apps": [
+      "聚变可行性判据",
+      "恒星核合成"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "He-4 高结合能驱动 氘氚 放能 17.6 MeV，核数据确证"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Deuterium%E2%80%93tritium_fusion"
+    ]
+  },
+  {
+    "id": "nuclear-fusion-to-thermal",
+    "from": "nuclear-fusion",
+    "to": "thermal",
+    "name": "聚变 → 热能（中子与α加热）",
+    "principle": "氘氚聚变的高能中子沉积于增殖包层、α 粒子加热等离子体；中子份额经包层减速转为可用热。",
+    "formula": {
+      "expr": "N * Q * f_n * 1.602e-13",
+      "latex": "P_{th} = N \\cdot Q \\cdot f_n \\cdot 1.602\\times10^{-13}",
+      "vars": {
+        "N": "聚变率 (reactions/s)",
+        "Q": "每次聚变能 (MeV)",
+        "f_n": "包层捕获份额 (1)"
+      },
+      "sample": {
+        "N": 100000000000000000000,
+        "Q": 17.6,
+        "f_n": 0.9
+      },
+      "expected": 253756800.00000003,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中子泄漏与活化",
+        "desc": "部分中子逃逸或活化结构材料，未全部转热"
+      },
+      {
+        "name": "辐射/输运损失",
+        "desc": "等离子体韧致辐射与传导损失"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_th",
+      "unit": "1",
+      "min": 0.85,
+      "max": 0.95,
+      "note": "包层热捕获份额估值"
+    },
+    "products": [
+      {
+        "vendor": "ITER Organization",
+        "model": "ITER",
+        "spec": "目标 500 MW 聚变热功率，Q≥10"
+      },
+      {
+        "vendor": "Commonwealth Fusion Systems",
+        "model": "SPARC",
+        "spec": "高场托卡马克，目标 Q>2"
+      }
+    ],
+    "maturity": "实验",
+    "apps": [
+      "受控聚变堆(规划)",
+      "聚变-裂变混合堆概念"
+    ],
+    "consensus": {
+      "status": "convention",
+      "confidence": "medium",
+      "summary": "聚变热回收为工程目标，地面净电增益尚未商业化"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/current-and-future-generation/nuclear-fusion-power"
+    ]
+  },
+  {
+    "id": "nuclear-decay-to-thermal",
+    "from": "nuclear-decay",
+    "to": "thermal",
+    "name": "放射衰变 → 热能 (衰变热)",
+    "principle": "α/β衰变粒子在放射源内减速，动能转为热；功率随半衰期指数衰减。P(t) = P₀·e^(−ln2·t/t½)。Pu-238 比功率 ~0.54 W/g。",
+    "formula": {
+      "expr": "m * P0 * exp(-0.6931 * t / t_half)",
+      "latex": "P(t) = m \\cdot P_0 \\cdot e^{-\\frac{\\ln 2 \\cdot t}{t_{1/2}}}",
+      "vars": {
+        "m": "Pu-238 质量 (g)",
+        "P0": "比功率 (W/g)",
+        "t": "经过时间 (a)",
+        "t_half": "半衰期 (a)"
+      },
+      "sample": {
+        "m": 4800,
+        "P0": 0.54,
+        "t": 14,
+        "t_half": 87.7
+      },
+      "expected": 2320.5092757731654,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "γ/中子逃逸",
+        "desc": "穿透性辐射部分逸出源外不沉积为热(Pu-238 占比很小)"
+      },
+      {
+        "name": "半衰期衰减",
+        "desc": "热功率随时间指数下降，非瞬时损耗但限制寿命"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_th",
+      "unit": "1",
+      "min": 0.95,
+      "max": 1,
+      "note": "α衰变能近乎全部就地转热"
+    },
+    "products": [
+      {
+        "vendor": "US DOE / Teledyne",
+        "model": "GPHS 模块",
+        "spec": "PuO₂ 燃料，~250 Wth/模块"
+      },
+      {
+        "vendor": "Rosatom",
+        "model": "Sr-90 RHU",
+        "spec": "锶-90 放射性热源单元"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "深空探测器加热",
+      "同位素热电发电机 热源",
+      "心脏起搏器(历史)"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "Pu-238 比功率 0.54 W/g 与衰变热模型为标准值"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Radioisotope_thermoelectric_generator"
+    ]
+  },
+  {
+    "id": "nuclear-decay-to-electric",
+    "from": "nuclear-decay",
+    "to": "electric",
+    "name": "放射衰变 → 电能（同位素热电）",
+    "principle": "衰变热经热电偶(塞贝克效应)直接发电，系统效率 ~6%。P_e = P_th·η。无活动部件、寿命数十年。",
+    "formula": {
+      "expr": "P_th * eta",
+      "latex": "P_e = P_{th} \\cdot \\eta",
+      "vars": {
+        "P_th": "热源热功率 (W)",
+        "eta": "温差电系统效率 (1)"
+      },
+      "sample": {
+        "P_th": 2000,
+        "eta": 0.063
+      },
+      "expected": 126,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "塞贝克转换损失",
+        "desc": "热电偶 热电优值 值有限，约 94% 热量以废热散失"
+      },
+      {
+        "name": "热端/冷端温差受限",
+        "desc": "卡诺上限与材料耐温限制效率"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.06,
+      "max": 0.07,
+      "note": "多任务同位素热电/通用热源同位素热电 系统效率 ~6.3%；先进斯特林同位素发电机 斯特林可达~30%"
+    },
+    "products": [
+      {
+        "vendor": "Aerojet Rocketdyne / DOE",
+        "model": "MMRTG",
+        "spec": "~2000 Wth → ~110 We BOL，4.8 kg PuO₂"
+      },
+      {
+        "vendor": "GE / DOE",
+        "model": "GPHS-RTG",
+        "spec": "卡西尼/新视野号，约 300 We，η≈6.3%"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "火星车(好奇号/毅力号)",
+      "外行星探测器",
+      "深空电源"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "同位素热电发电机 ~6% 系统效率为 NASA/DOE 实测共识"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Multi-mission_radioisotope_thermoelectric_generator",
+      "https://www.energy.gov/ne/articles/powering-curiosity-multi-mission-radioisotope-thermoelectric-generators"
+    ]
+  },
+  {
+    "id": "nuclear-fusion-to-radiant",
+    "from": "nuclear-fusion",
+    "to": "radiant",
+    "name": "聚变 → 辐射能 (恒星辐射)",
+    "principle": "恒星核心 质子-质子链/CNO 循环聚变能经辐射输运与对流到达表面，以光子形式辐射;太阳每秒约 4.27e9 kg 质量转为辐射(质能等价)。L = (dm/dt)·c²。",
+    "formula": {
+      "expr": "dm_dt * 2.998e8 * 2.998e8",
+      "latex": "L = \\frac{dm}{dt} \\cdot c^2",
+      "vars": {
+        "dm_dt": "每秒质量亏损 (kg/s)"
+      },
+      "sample": {
+        "dm_dt": 4270000000
+      },
+      "expected": 3.837877708e+26,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中微子逃逸",
+        "desc": "质子-质子链约 2% 能量被中微子直接带出，不计入光度"
+      },
+      {
+        "name": "辐射输运迟滞",
+        "desc": "光子从核心到表面需数十万年扩散，非损失但延迟"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_rad",
+      "unit": "1",
+      "min": 0.97,
+      "max": 0.99,
+      "note": "聚变能转为电磁辐射份额(扣中微子~2%)"
+    },
+    "products": [
+      {
+        "vendor": "自然",
+        "model": "太阳",
+        "spec": "光度 3.84e26 W，核心 D/p-p 聚变"
+      }
+    ],
+    "maturity": "established",
+    "apps": [
+      "恒星能源",
+      "太阳辐照(地表 1361 W/m² 太阳常数源头)"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "太阳光度与质量亏损率为天体物理标准值"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/current-and-future-generation/nuclear-fusion-power"
+    ]
+  },
+  {
+    "id": "nuclear-decay-to-radiant",
+    "from": "nuclear-decay",
+    "to": "em-gamma",
+    "name": "放射衰变 → γ辐射",
+    "principle": "激发态子核退激或衰变直接发射γ光子，光子能量等于核能级差。E_γ = h·f，单光子能量由跃迁能级决定(keV~MeV)。",
+    "formula": {
+      "expr": "E_keV * 1.602e-16 / 6.626e-34",
+      "latex": "f = \\frac{E_\\gamma}{h}",
+      "vars": {
+        "E_keV": "γ光子能量 (keV)",
+        "h": "普朗克常数隐含 6.626e-34 J·s"
+      },
+      "sample": {
+        "E_keV": 661.7
+      },
+      "expected": 159982402656202850000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "分支比",
+        "desc": "并非每次衰变都发γ，受衰变分支比与内转换竞争"
+      },
+      {
+        "name": "内转换",
+        "desc": "部分退激能量转移给轨道电子而非发射γ"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_γ",
+      "unit": "1",
+      "min": 0,
+      "max": 1,
+      "note": "γ发射份额取决于核素分支比，差异大"
+    },
+    "products": [
+      {
+        "vendor": "Eckert & Ziegler",
+        "model": "Cs-137 源",
+        "spec": "661.7 keV γ，半衰期30.2 a"
+      },
+      {
+        "vendor": "Curium",
+        "model": "Co-60 源",
+        "spec": "1.17/1.33 MeV γ，工业辐照"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "医学伽马刀/放疗",
+      "工业辐照灭菌",
+      "γ能谱核素鉴别"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "γ发射为核退激标准过程，能级数据精确"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Nuclear_binding_energy"
+    ]
+  },
+  {
+    "id": "el-current-to-acoustic-audible-loudspeaker",
+    "from": "el-current",
+    "to": "acoustic-audible",
+    "name": "动圈扬声器(电流→可听声)",
+    "principle": "音频电流流过位于永磁气隙中的音圈,产生洛伦兹力驱动振膜往复运动,推动空气辐射可听声波。",
+    "formula": {
+      "expr": "P_ac / P_el",
+      "latex": "\\eta = \\dfrac{P_{ac}}{P_{el}}",
+      "vars": {
+        "P_ac": "辐射声功率 (W)",
+        "P_el": "输入电功率 (W)"
+      },
+      "sample": {
+        "P_ac": 4,
+        "P_el": 100
+      },
+      "expected": 0.04,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.01,
+      "max": 0.3,
+      "note": "动圈扬声器典型 1–5%(常见3–5%);压缩驱动器可达~30%"
+    },
+    "lossMechanisms": [
+      {
+        "name": "音圈欧姆热损",
+        "desc": "音圈电阻 I²R 发热,占输入功率绝大部分,转化为热而非声。"
+      },
+      {
+        "name": "机械阻尼/悬挂损耗",
+        "desc": "振膜悬边与定心支片的内摩擦黏滞耗散。"
+      },
+      {
+        "name": "声辐射阻抗失配",
+        "desc": "振膜与空气阻抗不匹配,低频辐射效率极低。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "JBL/Harman",
+        "model": "2226H 15\" woofer",
+        "spec": "灵敏度 97 dB SPL @1W/1m,额定 600 W"
+      },
+      {
+        "vendor": "Beyma",
+        "model": "压缩驱动器 CP800Ti",
+        "spec": "高频压缩驱动,效率可达~25–30%"
+      }
+    ],
+    "maturity": "成熟商用",
+    "apps": [
+      "音响/扬声器",
+      "广播/PA系统",
+      "耳机",
+      "公共广播"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "动圈扬声器电声效率1–5%为业界公认,绝大部分功率以热耗散。"
+    },
+    "refs": [
+      "https://www.thebroadcastbridge.com/content/entry/9823/loudspeaker-technology-part-12-speaker-efficiency",
+      "https://blog.miscospeakers.com/thermal-management-of-speaker-systems"
+    ]
+  },
+  {
+    "id": "acoustic-audible-to-el-current-microphone",
+    "from": "acoustic-audible",
+    "to": "el-current",
+    "name": "传声器/麦克风(可听声→电流)",
+    "principle": "声压使振膜振动,经电磁感应(动圈)、电容变化(驻极体/电容)或压电效应转换为电信号。",
+    "formula": {
+      "expr": "20 * log10((S * p) / V_ref)",
+      "latex": "L = 20\\log_{10}\\!\\left(\\dfrac{S\\,p}{V_{ref}}\\right)",
+      "vars": {
+        "S": "灵敏度 (V/Pa)",
+        "p": "声压 (Pa)",
+        "V_ref": "参考电压 1 V"
+      },
+      "sample": {
+        "S": 0.01,
+        "p": 1,
+        "V_ref": 1
+      },
+      "expected": -40,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 1e-06,
+      "max": 0.001,
+      "note": "声-电能量转换率极低(<0.1%),麦克风以灵敏度而非效率衡量;此处η为能量转换数量级"
+    },
+    "lossMechanisms": [
+      {
+        "name": "阻抗失配",
+        "desc": "声学到机械到电学的多级阻抗失配限制能量传递。"
+      },
+      {
+        "name": "热噪声本底",
+        "desc": "振膜与前置放大器的热噪声决定信噪下限。"
+      },
+      {
+        "name": "频响滚降",
+        "desc": "谐振与阻尼造成频带边缘灵敏度下降。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Shure",
+        "model": "SM58 动圈麦",
+        "spec": "灵敏度 -54.5 dBV/Pa (1.85 mV/Pa)"
+      },
+      {
+        "vendor": "Brüel & Kjær",
+        "model": "4189 测量电容传声器",
+        "spec": "灵敏度 ~50 mV/Pa,IEC 61672 1级"
+      }
+    ],
+    "maturity": "成熟商用",
+    "apps": [
+      "录音/扩声",
+      "电话/通信",
+      "声学测量",
+      "助听器"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "麦克风换能机理公认;能量转换率极低,工程以灵敏度(V/Pa)而非效率描述。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Microphone",
+      "https://www.bksv.com/en/knowledge/blog/sound/microphone-basics"
+    ]
+  },
+  {
+    "id": "el-current-to-acoustic-ultrasound-piezo",
+    "from": "el-current",
+    "to": "acoustic-ultrasound",
+    "name": "压电换能器(电→超声)",
+    "principle": "高频交流电压加于压电陶瓷(锆钛酸铅压电陶瓷)或压电复合材料,逆压电效应使其厚度振动,辐射超声波。",
+    "formula": {
+      "expr": "P_el * kt2",
+      "latex": "P_{ac} = \\eta\\,P_{el},\\quad \\eta \\approx k_t^2",
+      "vars": {
+        "P_el": "输入电功率 (W)",
+        "kt2": "机电耦合系数平方 ≈ 发射效率"
+      },
+      "sample": {
+        "P_el": 100,
+        "kt2": 0.5
+      },
+      "expected": 50,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.4,
+      "max": 0.7,
+      "note": "1-3 压电复合 kt≈0.64,发射效率~50%;单晶/匹配优化可达更高"
+    },
+    "lossMechanisms": [
+      {
+        "name": "介电与机械损耗",
+        "desc": "压电材料 损耗角正切 介电损耗与机械Q有限导致发热。"
+      },
+      {
+        "name": "声阻抗失配",
+        "desc": "锆钛酸铅压电陶瓷与负载(组织/水)阻抗失配需匹配层,失配反射损耗。"
+      },
+      {
+        "name": "背衬吸收",
+        "desc": "背衬层为展宽带宽而吸收部分背向声能。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "PI Ceramic",
+        "model": "PIC255 PZT",
+        "spec": "kt~0.69,用于超声换能器"
+      },
+      {
+        "vendor": "Olympus",
+        "model": "工业超声探头 V系列",
+        "spec": "1–10 MHz 无损检测换能器"
+      }
+    ],
+    "maturity": "成熟商用",
+    "apps": [
+      "医学超声成像",
+      "高强度聚焦超声治疗",
+      "超声清洗",
+      "无损检测/声呐"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "压电换能器发射效率~50%(1-3复合 kt≈0.64)为文献公认范围。"
+    },
+    "refs": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC3537705/",
+      "https://www.piceramic.com/en/expertise/piezo-technology/generating-ultrasound-with-piezo-components"
+    ]
+  },
+  {
+    "id": "acoustic-audible-to-electric-harvest",
+    "from": "acoustic-audible",
+    "to": "electric",
+    "name": "声能采集(可听声→电)",
+    "principle": "亥姆霍兹共振器/超材料将入射声压在腔体内放大,驱动压电振膜或悬臂梁,经压电效应产生电能(声能采集)。",
+    "formula": {
+      "expr": "p2 / (rho * c)",
+      "latex": "I = \\dfrac{p^2}{\\rho c}",
+      "vars": {
+        "p2": "声压RMS平方 (Pa²)",
+        "rho": "空气密度 (kg/m³)",
+        "c": "声速 (m/s)"
+      },
+      "sample": {
+        "p2": 4,
+        "rho": 1.21,
+        "c": 343
+      },
+      "expected": 0.0096378575042768,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.0001,
+      "max": 0.1,
+      "note": "声-电采集效率低,谐振增强可显著提升;µW级输出"
+    },
+    "lossMechanisms": [
+      {
+        "name": "声-机阻抗失配",
+        "desc": "空气与振膜阻抗失配限制可截获声功率。"
+      },
+      {
+        "name": "压电介电损耗",
+        "desc": "压电材料及整流电路的耗散。"
+      },
+      {
+        "name": "窄带共振",
+        "desc": "亥姆霍兹共振仅在窄频带高效,带外采集率骤降。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "学术原型",
+        "model": "EMHR 亥姆霍兹采集器",
+        "spec": "2 Pa@332 Hz 输出 3.49 µW"
+      },
+      {
+        "vendor": "学术原型",
+        "model": "压电纳米发电机 (PENG) 声采集",
+        "spec": "环境噪声采集,µW级"
+      }
+    ],
+    "maturity": "研究/原型",
+    "apps": [
+      "环境噪声能量回收",
+      "自供电传感器",
+      "铁路噪声采集"
+    ],
+    "consensus": {
+      "status": "convention",
+      "confidence": "medium",
+      "summary": "声能采集机理明确但效率低、输出µW级,仍处研究阶段,无统一效率标准。"
+    },
+    "refs": [
+      "https://pubmed.ncbi.nlm.nih.gov/18397006/",
+      "https://www.nature.com/articles/s41378-024-00811-4"
+    ]
+  },
+  {
+    "id": "thermal-to-acoustic-audible-thermoacoustic",
+    "from": "thermal",
+    "to": "acoustic-audible",
+    "name": "热声发动机(热→声)",
+    "principle": "在谐振管内沿温度梯度的气体微团经历类斯特林循环,热能自发激励并放大行波/驻波声振荡(热声效应)。",
+    "formula": {
+      "expr": "eta_th_ac * Q_heat",
+      "latex": "P_{ac} = \\eta_{th\\to ac}\\,Q_{heat}",
+      "vars": {
+        "eta_th_ac": "热-声转换效率",
+        "Q_heat": "输入热功率 (W)"
+      },
+      "sample": {
+        "eta_th_ac": 0.078,
+        "Q_heat": 300
+      },
+      "expected": 23.4,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.07,
+      "max": 0.3,
+      "note": "热-声转换实测约7–8%;热声斯特林整机热效率可>30%(达卡诺~49%)"
+    },
+    "lossMechanisms": [
+      {
+        "name": "黏性边界层耗散",
+        "desc": "谐振管壁附近黏性损耗将声能耗散为热。"
+      },
+      {
+        "name": "不可逆传热",
+        "desc": "板叠与气体间有限温差传热产生熵增。"
+      },
+      {
+        "name": "声辐射/泄漏损失",
+        "desc": "谐振腔端口辐射与密封泄漏。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "学术/Aster Thermoacoustics",
+        "model": "行波热声发动机",
+        "spec": "300 W 热源→54 Hz 声波,热效率7.8%"
+      },
+      {
+        "vendor": "NASA/Los Alamos",
+        "model": "热声斯特林热机 (TASHE)",
+        "spec": "实验整机热效率>30%"
+      }
+    ],
+    "maturity": "原型/早期商用",
+    "apps": [
+      "热声制冷",
+      "余热发电",
+      "深空电源(放射性同位素热声)",
+      "低温制冷"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "热声效应公认;热-声转换实测约百分之几,整机可达卡诺效率~40–49%。"
+    },
+    "refs": [
+      "https://asmedigitalcollection.asme.org/lettersdynsys/article/1/3/031006/1094060/A-Traveling-Wave-Thermoacoustic-Engine-Design-and",
+      "https://www.sciencedirect.com/science/article/abs/pii/S0196890409004609"
+    ]
+  },
+  {
+    "id": "acoustic-audible-to-thermal-thermoacoustic-cooler",
+    "from": "acoustic-audible",
+    "to": "thermal",
+    "name": "热声制冷(声→热泵)",
+    "principle": "逆向热声效应:扬声器驱动谐振腔内声振荡,板叠处气体微团沿声压相位往复压缩-膨胀并与板壁换热,将热量从冷端泵向热端。",
+    "kind": "transport",
+    "formula": {
+      "expr": "COP_R = Q_c / W",
+      "latex": "COP_R = \\dfrac{Q_c}{W}",
+      "vars": {
+        "Q_c": "从冷端抽取的热 W",
+        "W": "输入声功 W"
+      },
+      "sample": {
+        "Q_c": 2,
+        "W": 1
+      },
+      "expected": 2,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "COP",
+      "unit": "1",
+      "min": 1,
+      "max": 3,
+      "note": "搬运型(transport)：制冷 性能系数=Q_c/W 典型 1~3（>1 因搬运冷端环境热）。效率链中按 100% 封顶。相对 卡诺 效率约 20~40% 是另一维度指标，不入此字段"
+    },
+    "lossMechanisms": [
+      {
+        "name": "黏性耗散",
+        "desc": "板叠间隙黏性损耗削弱泵热。"
+      },
+      {
+        "name": "导热回流",
+        "desc": "板叠与气体沿温度梯度的逆向热传导漏热。"
+      },
+      {
+        "name": "声驱动损耗",
+        "desc": "驱动扬声器自身电声效率低。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Ben & Jerry's/PSU",
+        "model": "热声冰箱原型",
+        "spec": "无氟环保制冷演示机"
+      },
+      {
+        "vendor": "学术",
+        "model": "驻波热声制冷器",
+        "spec": "声驱动,相对卡诺~20–40%"
+      }
+    ],
+    "maturity": "原型/演示",
+    "apps": [
+      "无氟绿色制冷",
+      "电子器件冷却",
+      "低温/液化"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "热声制冷为公认逆热声循环,最优器件相对卡诺效率~40%。"
+    },
+    "refs": [
+      "https://pure.hud.ac.uk/en/publications/thermoacoustic-engines/",
+      "https://www.sciencedirect.com/science/article/abs/pii/S0196890409004609"
+    ]
+  },
+  {
+    "id": "acoustic-ultrasound-to-em-visible-sonolum",
+    "from": "acoustic-ultrasound",
+    "to": "em-visible",
+    "name": "声致发光(超声→光)",
+    "principle": "强超声驻波中被困气泡在声压周期内剧烈塌缩,内部气体瞬态达数千K,以皮秒闪光辐射可见-紫外光(单泡声致发光SBSL)。",
+    "formula": {
+      "expr": "eta_sl * P_ac",
+      "latex": "P_{light} = \\eta_{SL}\\,P_{ac}",
+      "vars": {
+        "eta_sl": "声-光转换率",
+        "P_ac": "入射声功率 (W)"
+      },
+      "sample": {
+        "eta_sl": 0.0001,
+        "P_ac": 10
+      },
+      "expected": 0.001,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 1e-06,
+      "max": 0.0001,
+      "note": "典型仅~1e-4入射声能转为光子,极低效"
+    },
+    "lossMechanisms": [
+      {
+        "name": "塌缩热耗散",
+        "desc": "气泡塌缩能量绝大部分转为热与冲击波而非光。"
+      },
+      {
+        "name": "黏性/声辐射损失",
+        "desc": "液体黏性阻尼与气泡再膨胀辐射损耗。"
+      },
+      {
+        "name": "光谱截断",
+        "desc": "黑体~6000K辐射多落在紫外,可见光仅占部分。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "实验装置",
+        "model": "SBSL 谐振水腔",
+        "spec": "~20–40 kHz 驻波,皮秒级闪光"
+      },
+      {
+        "vendor": "自然现象",
+        "model": "枪虾(snapping shrimp)",
+        "spec": "空化致发光"
+      }
+    ],
+    "maturity": "实验室现象",
+    "apps": [
+      "声化学研究",
+      "极端态物理探针",
+      "气泡动力学研究"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "声致发光为公认现象,声-光转换率约1e-4,极度低效。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Sonoluminescence",
+      "https://arxiv.org/pdf/2203.11337"
+    ]
+  },
+  {
+    "id": "acoustic-ultrasound-to-thermal-hifu",
+    "from": "acoustic-ultrasound",
+    "to": "thermal",
+    "name": "聚焦超声生热",
+    "principle": "高强度聚焦超声在焦点处被组织吸收,声能经黏滞吸收转为热,使焦区温度骤升(消融);吸收率正比于吸收系数与声强。",
+    "formula": {
+      "expr": "2 * alpha * I",
+      "latex": "q = 2\\alpha I",
+      "vars": {
+        "alpha": "幅度吸收系数 (1/m)",
+        "I": "声强 (W/m²)"
+      },
+      "sample": {
+        "alpha": 5,
+        "I": 1000000
+      },
+      "expected": 10000000,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.5,
+      "max": 0.95,
+      "note": "焦点处声能几乎全部被组织吸收转热;沿程吸收率取决于α·距离"
+    },
+    "lossMechanisms": [
+      {
+        "name": "传播衰减",
+        "desc": "焦点前路径上的吸收与散射使部分能量提前沉积。"
+      },
+      {
+        "name": "声反射/折射",
+        "desc": "组织界面阻抗失配反射,骨骼/气体强反射。"
+      },
+      {
+        "name": "空化非线性损失",
+        "desc": "高强度下空化与谐波产生改变能量沉积分布。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "InSightec",
+        "model": "Exablate Neuro (MRgFUS)",
+        "spec": "脑部经颅高强度聚焦超声消融,650 kHz"
+      },
+      {
+        "vendor": "Chongqing Haifu",
+        "model": "JC型HIFU肿瘤治疗系统",
+        "spec": "0.8–1.6 MHz 体外聚焦消融"
+      }
+    ],
+    "maturity": "成熟临床",
+    "apps": [
+      "肿瘤热消融",
+      "子宫肌瘤治疗",
+      "经颅神经调控",
+      "工业局部加热"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "高强度聚焦超声声-热转换机理(q=2αI)为生物热学公认;焦点吸收高效。"
+    },
+    "refs": [
+      "https://spj.science.org/doi/10.34133/2022/9764501",
+      "https://www.piceramic.com/en/expertise/piezo-technology/generating-ultrasound-with-piezo-components"
+    ]
+  },
+  {
+    "id": "acoustic-ultrasound-to-mechanical-cleaning",
+    "from": "acoustic-ultrasound",
+    "to": "mechanical",
+    "name": "超声空化机械作用(超声→机械)",
+    "principle": "液体中超声产生空化气泡,塌缩时形成微射流与冲击波,产生强烈局部机械力,用于清洗、乳化与表面加工。",
+    "formula": {
+      "expr": "p_amp / sqrt(2)",
+      "latex": "p_{rms} = \\dfrac{p_{amp}}{\\sqrt{2}}",
+      "vars": {
+        "p_amp": "声压幅值 (Pa),需超过空化阈值"
+      },
+      "sample": {
+        "p_amp": 141421
+      },
+      "expected": 99999.74810218273,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.1,
+      "max": 0.5,
+      "note": "声能转为有效空化机械作用的比例,部分声能转热/散射"
+    },
+    "lossMechanisms": [
+      {
+        "name": "声-热转化",
+        "desc": "大量声能被液体黏性吸收为热(浴温上升)。"
+      },
+      {
+        "name": "空化阈值损失",
+        "desc": "未达阈值区域无空化,声能无效散逸。"
+      },
+      {
+        "name": "驻波分布不均",
+        "desc": "声场节点处清洗作用弱,能量利用不均。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Branson/Emerson",
+        "model": "Bransonic 超声清洗机",
+        "spec": "40 kHz 槽式清洗"
+      },
+      {
+        "vendor": "Hielscher",
+        "model": "UIP1000hd 超声处理器",
+        "spec": "20 kHz 1000 W 工业乳化/分散"
+      }
+    ],
+    "maturity": "成熟商用",
+    "apps": [
+      "超声清洗",
+      "乳化/分散",
+      "声化学反应",
+      "钻孔/加工"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "超声空化机械作用机理公认,广泛工业应用;能量分配随频率/强度变化。"
+    },
+    "refs": [
+      "https://www.piceramic.com/en/expertise/piezo-technology/generating-ultrasound-with-piezo-components",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC3537705/"
+    ]
+  },
+  {
+    "id": "acoustic-infrasound-to-electric-geophone",
+    "from": "acoustic-infrasound",
+    "to": "el-current",
+    "name": "次声/微气压传感(次声→电)",
+    "principle": "次声波微小压力起伏推动微气压计膜片或电容/动圈传感元件,转换为电信号,用于地震、火山与核爆监测。",
+    "formula": {
+      "expr": "S_mic * p",
+      "latex": "V = S_{mic}\\,p",
+      "vars": {
+        "S_mic": "传感器灵敏度 (V/Pa)",
+        "p": "次声声压 (Pa)"
+      },
+      "sample": {
+        "S_mic": 0.045,
+        "p": 0.1
+      },
+      "expected": 0.0045,
+      "tol": 1e-06
+    },
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 1e-06,
+      "max": 0.001,
+      "note": "传感能量转换率极低;以灵敏度(V/Pa)与本底噪声衡量"
+    },
+    "lossMechanisms": [
+      {
+        "name": "风噪与本底",
+        "desc": "风致湍流压力扰动与传感器自噪声限制次声检出。"
+      },
+      {
+        "name": "低频滚降",
+        "desc": "膜片刚度与漏气在极低频段降低响应。"
+      },
+      {
+        "name": "阻抗失配",
+        "desc": "声-机-电多级转换的能量传递损失。"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Hyperion/CEA",
+        "model": "IMS 微气压计",
+        "spec": "CTBTO国际监测系统次声台站,~0.02–4 Hz"
+      },
+      {
+        "vendor": "Chaparral Physics",
+        "model": "Model 64 次声传感器",
+        "spec": "灵敏度~45 mV/Pa,0.01–50 Hz"
+      }
+    ],
+    "maturity": "成熟商用/科研",
+    "apps": [
+      "核爆监测(CTBTO)",
+      "火山/地震预警",
+      "气象/雷暴监测",
+      "结构监测"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "次声传感为成熟科研/监测技术(CTBTO 国际监测系统);以灵敏度衡量,能量转换率极低。"
+    },
+    "refs": [
+      "https://wiki.seg.org/wiki/Infrasound",
+      "https://en.wikipedia.org/wiki/Infrasound"
+    ]
+  },
+  {
+    "id": "edge-solar-to-electric-pv",
+    "from": "radiant-solar",
+    "to": "el-current",
+    "name": "光伏效应：太阳辐射→电能",
+    "principle": "半导体p-n结吸收光子(hν>Eg)产生电子-空穴对，内建电场分离载流子形成光生电流。单结受肖克利–奎伊瑟极限约束(~33%)，多结/叠层突破之。",
+    "efficiency": {
+      "symbol": "eta",
+      "unit": "1",
+      "min": 0.15,
+      "max": 0.342,
+      "note": "商用硅组件~0.20-0.24；实验室硅/钙钛矿叠层电池达0.342(LONGi, 1cm²)"
+    },
+    "formula": {
+      "expr": "P_out / (G * A)",
+      "latex": "\\eta = \\frac{P_{out}}{G\\,A}",
+      "vars": {
+        "P_out": "输出电功率 (W)",
+        "G": "辐照度 (W/m^2)",
+        "A": "受光面积 (m^2)"
+      },
+      "sample": {
+        "P_out": 240,
+        "G": 1000,
+        "A": 1
+      },
+      "expected": 0.24,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "亚带隙透射",
+        "desc": "hν<Eg的光子不被吸收，损失约20%(单结Si)"
+      },
+      {
+        "name": "热化损失",
+        "desc": "hν>Eg的多余能量以声子形式弛豫为热"
+      },
+      {
+        "name": "复合损失",
+        "desc": "辐射/俄歇/肖克利–里德–霍尔复合降低开路电压与填充因子"
+      },
+      {
+        "name": "反射与遮挡",
+        "desc": "表面反射、栅线遮光、串联电阻损失"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "LONGi",
+        "model": "Si/perovskite tandem (R&D)",
+        "spec": "34.2% 认证(ESTI), 1cm² 2端叠层电池"
+      },
+      {
+        "vendor": "LONGi",
+        "model": "Hi-MO 9 (HPBC 2.0)",
+        "spec": "量产组件效率约24.8%"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "地面/屋顶光伏电站",
+      "航天器太阳翼",
+      "便携充电"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "光伏效应与肖克利–奎伊瑟极限确立；叠层电池纪录由NREL/ESTI认证"
+    },
+    "refs": [
+      "https://docs.nrel.gov/docs/fy24osti/90199.pdf",
+      "https://www.fluxim.com/research-blogs/perovskite-silicon-tandem-pv-record-updates"
+    ]
+  },
+  {
+    "id": "edge-solar-to-thermal-collector",
+    "from": "radiant-solar",
+    "to": "thermal",
+    "name": "光热转换：太阳辐射→热能",
+    "principle": "选择性吸收涂层将入射太阳辐射转为内能加热工质(水/导热油/熔盐)；聚光系统(塔式/槽式)提高温度。效率随工作温度上升而因辐射/对流热损下降。",
+    "efficiency": {
+      "symbol": "eta",
+      "unit": "1",
+      "min": 0.4,
+      "max": 0.8,
+      "note": "平板/真空管集热器瞬时效率约0.4-0.8，取决于温差"
+    },
+    "formula": {
+      "expr": "eta0 - a*(Tm - Ta)/G",
+      "latex": "\\eta = \\eta_0 - a\\frac{T_m - T_a}{G}",
+      "vars": {
+        "eta0": "光学效率(截距)",
+        "a": "总热损系数 (W/(m^2·K))",
+        "Tm": "工质平均温度 (K)",
+        "Ta": "环境温度 (K)",
+        "G": "辐照度 (W/m^2)"
+      },
+      "sample": {
+        "eta0": 0.8,
+        "a": 4,
+        "Tm": 333,
+        "Ta": 293,
+        "G": 1000
+      },
+      "expected": 0.64,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "辐射热损",
+        "desc": "吸收体高温下按σT⁴向外再辐射"
+      },
+      {
+        "name": "对流热损",
+        "desc": "吸收体与环境间对流换热"
+      },
+      {
+        "name": "光学损失",
+        "desc": "玻璃盖板反射/吸收、涂层吸收率<1"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Viessmann",
+        "model": "Vitosol 200-FM",
+        "spec": "平板集热器，光学效率约0.79"
+      },
+      {
+        "vendor": "BrightSource/Ivanpah",
+        "model": "塔式定日镜场",
+        "spec": "聚光熔盐/蒸汽，发电用聚光太阳能"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "太阳能热水",
+      "聚光太阳能发电(聚光太阳能热)",
+      "工业供热"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "集热器效率方程为ISO 9806标准方法"
+    }
+  },
+  {
+    "id": "edge-thermal-to-blackbody",
+    "from": "thermal",
+    "to": "radiant-blackbody",
+    "name": "热致辐射：热能→黑体辐射",
+    "principle": "物体内能升高使带电粒子加速热运动，辐射连续谱电磁波；总出射度服从斯特藩–玻尔兹曼定律 M=εσT⁴，峰值波长按维恩定律随T升高而蓝移。",
+    "efficiency": {
+      "symbol": "epsilon",
+      "unit": "1",
+      "min": 0.1,
+      "max": 0.99,
+      "note": "发射率ε：抛光金属~0.1，黑体涂层/碳~0.95+"
+    },
+    "formula": {
+      "expr": "epsilon * sigma * (T^4)",
+      "latex": "M = \\varepsilon\\,\\sigma\\,T^4",
+      "vars": {
+        "epsilon": "发射率 (无量纲)",
+        "sigma": "Stefan–Boltzmann常数 (W/(m^2·K^4))",
+        "T": "绝对温度 (K)"
+      },
+      "sample": {
+        "epsilon": 1,
+        "sigma": 5.670374e-08,
+        "T": 1000
+      },
+      "expected": 56703.74,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "非理想发射率",
+        "desc": "实际表面ε<1，按基尔霍夫定律辐射弱于理想黑体"
+      },
+      {
+        "name": "传导/对流分流",
+        "desc": "部分热能经传导对流散失而非辐射"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Vishay/通用",
+        "model": "钨丝白炽灯",
+        "spec": "灯丝~2800-3000K，主要黑体辐射(可见<10%)"
+      },
+      {
+        "vendor": "FLIR/Hawkeye",
+        "model": "MIRL系列 IR发射器/黑体源",
+        "spec": "标定黑体腔，ε≈0.99，可控温辐射源"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "白炽/卤素照明",
+      "红外热源与加热",
+      "黑体标定源/辐射测温"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "斯特藩–玻尔兹曼/维恩为经典验证定律"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Black-body_radiation",
+      "https://www.concepts-of-physics.com/thermodynamics/stefans-law.php"
+    ]
+  },
+  {
+    "id": "edge-electric-to-laser",
+    "from": "el-current",
+    "to": "radiant-laser",
+    "name": "受激辐射：电能→激光相干光",
+    "principle": "注入电流泵浦增益介质形成粒子数反转，在谐振腔内受激辐射放大产生相干输出。整机电光转换效率以墙插效率(wall-plug efficiency)度量。",
+    "efficiency": {
+      "symbol": "eta_wp",
+      "unit": "1",
+      "min": 0.2,
+      "max": 0.7,
+      "note": "墙插效率：高功率光纤激光纪录~0.512;泵浦二极管实验室>0.7;直接二极管>0.6"
+    },
+    "formula": {
+      "expr": "P_opt / P_elec",
+      "latex": "\\eta_{wp} = \\frac{P_{opt}}{P_{elec}}",
+      "vars": {
+        "P_opt": "输出光功率 (W)",
+        "P_elec": "墙插输入电功率 (W)"
+      },
+      "sample": {
+        "P_opt": 10000,
+        "P_elec": 19531
+      },
+      "expected": 0.5120065536838871,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "量子亏损",
+        "desc": "泵浦光子与激光光子能量差以热释放"
+      },
+      {
+        "name": "非辐射复合",
+        "desc": "增益介质中非辐射弛豫"
+      },
+      {
+        "name": "驱动/热管理损耗",
+        "desc": "电源、制冷功耗计入墙插效率"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "IPG Photonics",
+        "model": "YLS 多千瓦CW光纤激光",
+        "spec": "墙插效率>50%，纪录达51.2% @10kW"
+      },
+      {
+        "vendor": "Coherent/nLIGHT",
+        "model": "高功率泵浦二极管(975nm)",
+        "spec": "电光效率约60-70%"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "激光切割/焊接",
+      "光通信",
+      "激光雷达/测距",
+      "激光武器"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "墙插效率定义与~50%光纤激光纪录已发表"
+    },
+    "refs": [
+      "https://www.rp-photonics.com/wall_plug_efficiency.html",
+      "https://www.researchgate.net/publication/305209000_Multi-Kilowatt_CW_Fiber_Laser_Systems_with_Record_Wall-Plug_Efficiency_Exceeding_50"
+    ]
+  },
+  {
+    "id": "edge-electric-to-luminescence-led",
+    "from": "el-current",
+    "to": "radiant-luminescence",
+    "name": "电致发光：电能→发光辐射",
+    "principle": "正向偏置p-n结注入载流子在耗尽区辐射复合发射光子，能量~Eg对应发光波长。整体效率为外量子效率(外量子效率)与功率效率(壁塞效率)，受内量子效率、提取效率及电压效率乘积约束。",
+    "efficiency": {
+      "symbol": "eta_wpe",
+      "unit": "1",
+      "min": 0.3,
+      "max": 0.85,
+      "note": "顶级蓝/绿发光二极管内量子效率近1，整灯功率效率约0.3-0.6;实验室单器件更高"
+    },
+    "formula": {
+      "expr": "eta_inj * eta_iqe * eta_ext * (E_photon / (q*V))",
+      "latex": "\\eta_{wpe} = \\eta_{inj}\\,\\eta_{IQE}\\,\\eta_{ext}\\,\\frac{E_{ph}}{qV}",
+      "vars": {
+        "eta_inj": "注入效率",
+        "eta_iqe": "内量子效率",
+        "eta_ext": "光提取效率",
+        "E_photon": "光子能量 (eV)",
+        "q": "电荷(此处用1, 单位eV/V)",
+        "V": "结电压 (V)"
+      },
+      "sample": {
+        "eta_inj": 0.98,
+        "eta_iqe": 0.9,
+        "eta_ext": 0.8,
+        "E_photon": 2.7,
+        "q": 1,
+        "V": 3
+      },
+      "expected": 0.63504,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "非辐射复合(肖克利–里德–霍尔/俄歇)",
+        "desc": "缺陷与高注入下的非辐射损失，含efficiency droop"
+      },
+      {
+        "name": "光提取损失",
+        "desc": "高折射率半导体内全反射限制出光"
+      },
+      {
+        "name": "电压过冲",
+        "desc": "结电压高于光子电压的红外压降损耗"
+      },
+      {
+        "name": "斯托克斯荧光粉损失",
+        "desc": "白光发光二极管中蓝光转黄光的下转换能量差"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Cree/Wolfspeed",
+        "model": "XLamp 高效白光LED",
+        "spec": "发光效能可达200+ lm/W"
+      },
+      {
+        "vendor": "Samsung Display",
+        "model": "OLED 显示面板",
+        "spec": "电致发光红绿蓝自发光像素"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "固态照明",
+      "显示(发光二极管/有机发光二极管)",
+      "背光/指示",
+      "可见光通信"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "外量子效率/壁塞效率模型与高IQE蓝光发光二极管为业界共识"
+    },
+    "refs": [
+      "https://www.aatbio.com/resources/faq-frequently-asked-questions/What-is-fluorescence-quantum-yield",
+      "https://en.wikipedia.org/wiki/Quantum_yield"
+    ]
+  },
+  {
+    "id": "edge-laser-to-thermal",
+    "from": "radiant-laser",
+    "to": "thermal",
+    "name": "激光加热：激光相干光→热能",
+    "principle": "高亮度激光聚焦于材料表面，被吸收的光子能量转为晶格振动(热)，局部快速升温实现切割/焊接/熔覆。耦合效率取决于材料对该波长的吸收率A。",
+    "efficiency": {
+      "symbol": "A",
+      "unit": "1",
+      "min": 0.1,
+      "max": 0.9,
+      "note": "吸收/耦合效率随材料与波长变化;金属对1µm近红外约0.3-0.4，熔池/键孔模式下大幅提升"
+    },
+    "formula": {
+      "expr": "(1 - R) * P",
+      "latex": "P_{abs} = (1-R)\\,P",
+      "vars": {
+        "R": "表面反射率",
+        "P": "入射激光功率 (W)"
+      },
+      "sample": {
+        "R": 0.6,
+        "P": 2000
+      },
+      "expected": 800,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "反射损失",
+        "desc": "金属表面对近红外高反射，未吸收部分反射散失"
+      },
+      {
+        "name": "热传导扩散",
+        "desc": "热量传出加工区造成HAZ与能量浪费"
+      },
+      {
+        "name": "等离子体屏蔽",
+        "desc": "高功率下汽化等离子体吸收/散射入射光"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Trumpf",
+        "model": "TruLaser 系列",
+        "spec": "光纤激光切割机，kW级近红外1070nm"
+      },
+      {
+        "vendor": "IPG Photonics",
+        "model": "YLS-CUT",
+        "spec": "高功率CW光纤激光用于金属切割焊接"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "激光切割/焊接",
+      "增材制造/熔覆",
+      "激光医疗消融"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "激光-物质热耦合为成熟工业工艺"
+    }
+  },
+  {
+    "id": "edge-solar-to-blackbody-via-thermal",
+    "from": "radiant-blackbody",
+    "to": "radiant-solar",
+    "name": "恒星热辐射即太阳辐射(同源关系)",
+    "principle": "太阳辐射本质是约5778K近黑体的热辐射，叠加大气吸收带后形成大气质量1.5全球谱谱。黑体辐射定律(普朗克/维恩)直接给出太阳谱的连续基底与峰值波长。",
+    "efficiency": {
+      "symbol": "eta",
+      "unit": "1",
+      "min": 0.9,
+      "max": 1,
+      "note": "太阳连续谱与黑体谱拟合度高(>0.9)，概念归属关系而非器件转换"
+    },
+    "formula": {
+      "expr": "b / T",
+      "latex": "\\lambda_{peak} = \\frac{b}{T}",
+      "vars": {
+        "b": "Wien位移常数 (µm·K)",
+        "T": "太阳有效温度 (K)"
+      },
+      "sample": {
+        "b": 2898,
+        "T": 5778
+      },
+      "expected": 0.5015576323987538,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "大气吸收带",
+        "desc": "H2O/CO2/O3 吸收致地表谱偏离理想黑体(谱凹陷)"
+      },
+      {
+        "name": "瑞利散射",
+        "desc": "短波散射使地表谱相对地外谱蓝端衰减"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Newport/Oriel",
+        "model": "Sol3A 太阳模拟器",
+        "spec": "氙灯+滤光匹配大气质量1.5全球谱, A级谱匹配"
+      },
+      {
+        "vendor": "ABET Technologies",
+        "model": "Sun 3000",
+        "spec": "Class AAA 太阳模拟器"
+      }
+    ],
+    "maturity": "已确立-science",
+    "apps": [
+      "太阳模拟器",
+      "天体辐射建模",
+      "测温/遥感反演"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "太阳谱≈5778K黑体为天体物理共识"
+    },
+    "refs": [
+      "https://www.tec-science.com/thermodynamics/temperature/plancks-law-of-blackbody-radiation/",
+      "https://en.wikipedia.org/wiki/Black-body_radiation"
+    ]
+  },
+  {
+    "id": "grav-pot-to-hydro",
+    "from": "gravitational-potential",
+    "to": "gravitational-hydro",
+    "name": "蓄水成库（重力势能→水头势能）",
+    "principle": "降水/径流被坝拦蓄抬升至高程，重力势能以可调度的水头势能形式储存于水库",
+    "formula": {
+      "expr": "Ep = m*g*h",
+      "latex": "E_p = m g h",
+      "vars": {
+        "Ep": "储存势能 (J)",
+        "m": "蓄水质量 (kg)",
+        "g": "重力加速度 (m/s^2)",
+        "h": "相对下游高程 (m)"
+      },
+      "sample": {
+        "m": 1000000000,
+        "g": 9.81,
+        "h": 100
+      },
+      "expected": 981000000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "蒸发与渗漏",
+        "desc": "库面蒸发、坝基/库岸渗漏损失水量"
+      },
+      {
+        "name": "弃水",
+        "desc": "汛期超过水库与机组容量的来水溢流弃水"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_store",
+      "unit": "1",
+      "min": 0.85,
+      "max": 0.98,
+      "note": "蓄存阶段水量保持率"
+    },
+    "products": [
+      {
+        "vendor": "中国长江三峡集团",
+        "model": "三峡水库",
+        "spec": "正常蓄水位 175 m，库容 393 亿 m³"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "水库调蓄",
+      "防洪",
+      "灌溉供水"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "经典水库工程"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Three_Gorges_Dam"
+    ]
+  },
+  {
+    "id": "grav-hydro-to-electric",
+    "from": "gravitational-hydro",
+    "to": "el-current",
+    "name": "水力发电（水头势能→电能）",
+    "principle": "高位水流经压力管道驱动水轮机旋转，带动同步发电机经电磁感应输出工频交流电",
+    "formula": {
+      "expr": "Ee = eta*m*g*h",
+      "latex": "E_e = \\eta\\, m g h",
+      "vars": {
+        "Ee": "输出电能 (J)",
+        "eta": "水轮发电效率",
+        "m": "过机水量 (kg)",
+        "g": "重力加速度 (m/s^2)",
+        "h": "净水头 (m)"
+      },
+      "sample": {
+        "eta": 0.9,
+        "m": 1000000,
+        "g": 9.81,
+        "h": 100
+      },
+      "expected": 882900000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "水力损失",
+        "desc": "管道沿程/局部水头损失与尾水能量"
+      },
+      {
+        "name": "机械摩擦",
+        "desc": "轴承、导叶水力摩擦发热"
+      },
+      {
+        "name": "发电机铜铁损",
+        "desc": "绕组电阻与铁芯涡流/磁滞损耗"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.8,
+      "max": 0.95,
+      "note": "现代 混流式 水轮机峰值 90~95%，含发电机后整体常约 90%"
+    },
+    "products": [
+      {
+        "vendor": "GE Vernova / 哈电 / 东电",
+        "model": "三峡 700 MW Francis 机组",
+        "spec": "转轮直径 10 m，单机最高出力 760 MW，水头 61~113 m"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "电网基荷/调峰",
+      "可再生发电",
+      "电力外送"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "最成熟的大规模可再生发电技术"
+    },
+    "refs": [
+      "https://www.gevernova.com/hydropower/large-hydropower-solutions/hydro-turbines/francis-turbine",
+      "https://www.usgs.gov/special-topics/water-science-school/science/three-gorges-dam-worlds-largest-hydroelectric-plant"
+    ]
+  },
+  {
+    "id": "grav-electric-to-pot-pump",
+    "from": "el-current",
+    "to": "gravitational-potential",
+    "name": "抽水蓄能-充能（电能→重力势能）",
+    "principle": "电网富余电力驱动可逆水泵-水轮机，将下水库的水抽至上水库，把电能转存为重力势能",
+    "formula": {
+      "expr": "Ep = eta_pump*Ein",
+      "latex": "E_p = \\eta_{pump} E_{in}",
+      "vars": {
+        "Ep": "储存势能 (J)",
+        "eta_pump": "抽水阶段效率",
+        "Ein": "输入电能 (J)"
+      },
+      "sample": {
+        "eta_pump": 0.9,
+        "Ein": 1000000000
+      },
+      "expected": 900000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "水泵损失",
+        "desc": "泵效率与管道水力损失"
+      },
+      {
+        "name": "电机损耗",
+        "desc": "变频/同步电机铜铁损"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_pump",
+      "unit": "1",
+      "min": 0.85,
+      "max": 0.92,
+      "note": "抽水单程效率"
+    },
+    "products": [
+      {
+        "vendor": "Voith / Andritz",
+        "model": "可逆式 Francis 水泵水轮机",
+        "spec": "水头 100~750 m，单机数百 MW"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "电网调峰填谷",
+      "可再生消纳",
+      "大规模储能"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "全球占比最大的电网级储能形式"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Pumped-storage_hydroelectricity",
+      "https://atb.nrel.gov/electricity/2024/pumped_storage_hydropower"
+    ]
+  },
+  {
+    "id": "grav-pot-to-electric-roundtrip",
+    "from": "gravitational-potential",
+    "to": "el-current",
+    "name": "抽水蓄能-放能/全循环（重力势能→电能）",
+    "principle": "需电时上水库放水经水轮机发电；全循环 E_out = η_rt·E_in，体现储能往返效率",
+    "formula": {
+      "expr": "Eout = eta_rt*Ein",
+      "latex": "E_{out} = \\eta_{rt} E_{in}",
+      "vars": {
+        "Eout": "回收电能 (J)",
+        "eta_rt": "往返效率",
+        "Ein": "充能时输入电能 (J)"
+      },
+      "sample": {
+        "eta_rt": 0.8,
+        "Ein": 1000000000
+      },
+      "expected": 800000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "两段水机损失",
+        "desc": "抽水+发电各一次水力与机电损耗叠加"
+      },
+      {
+        "name": "蒸发渗漏",
+        "desc": "储存期间上水库水量损失"
+      },
+      {
+        "name": "待机/变压损耗",
+        "desc": "变压器与待机辅机能耗"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η_rt",
+      "unit": "1",
+      "min": 0.7,
+      "max": 0.87,
+      "note": "美国 2019 实测月均往返效率 ~79%，中心值取 80%"
+    },
+    "products": [
+      {
+        "vendor": "美国 EIA / NREL ATB",
+        "model": "美国抽水蓄能机队",
+        "spec": "2019 月均往返效率 79%"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "日内调峰储能",
+      "电网备用",
+      "频率调节"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "往返效率 70~87%，业内共识中心约 80%"
+    },
+    "refs": [
+      "https://www.eia.gov/todayinenergy/detail.php?id=46756",
+      "https://en.wikipedia.org/wiki/Pumped-storage_hydroelectricity"
+    ]
+  },
+  {
+    "id": "grav-tidal-to-electric",
+    "from": "gravitational-tidal",
+    "to": "el-current",
+    "name": "潮汐发电（潮汐势能→电能）",
+    "principle": "潮汐堰坝在涨落潮间形成水头，海水经低水头灯泡贯流式水轮机发电；每潮周期可捕获势能 E≈η·ρ·g·A·R²/2",
+    "formula": {
+      "expr": "E = eta*rho*g*A*R*R/2",
+      "latex": "E = \\tfrac{1}{2}\\eta\\,\\rho g A R^2",
+      "vars": {
+        "E": "单次潮周期电能 (J)",
+        "eta": "捕获/发电综合效率",
+        "rho": "海水密度 (kg/m^3)",
+        "g": "重力加速度 (m/s^2)",
+        "A": "潮汐库面积 (m^2)",
+        "R": "潮差 (m)"
+      },
+      "sample": {
+        "eta": 0.25,
+        "rho": 1025,
+        "g": 9.81,
+        "A": 23000000,
+        "R": 8
+      },
+      "expected": 1850166000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "低水头水机效率低",
+        "desc": "潮汐水头小（数米），灯泡贯流机组效率受限"
+      },
+      {
+        "name": "间歇与时机损失",
+        "desc": "仅在足够水头窗口发电，单/双向运行存在弃能"
+      },
+      {
+        "name": "湍流耗散",
+        "desc": "进出库湍流与边界层摩擦"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.2,
+      "max": 0.4,
+      "note": "理论可提取份额受 R² 与运行模式限制，综合捕获效率偏低"
+    },
+    "products": [
+      {
+        "vendor": "韩国水资源公社 (K-water)",
+        "model": "始华湖潮汐电站",
+        "spec": "10×25.4 MW 灯泡机组，总 254 MW，年发 552.7 GWh"
+      },
+      {
+        "vendor": "EDF",
+        "model": "朗斯 (La Rance) 潮汐电站",
+        "spec": "240 MW，1966 起运行，可用率 >99%"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "沿海可再生发电",
+      "可预测潮汐基荷"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "潮汐堰坝技术成熟但场址受限；公式为水库势能近似"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Sihwa_Lake_Tidal_Power_Station",
+      "https://www.eia.gov/energyexplained/hydropower/tidal-power.php"
+    ]
+  },
+  {
+    "id": "grav-tidal-to-mechanical",
+    "from": "gravitational-tidal",
+    "to": "mechanical",
+    "name": "潮流捕获（潮汐动能→旋转机械能）",
+    "principle": "潮流像水下风机一样推动水平轴/垂直轴涡轮旋转；可用功率 P=½·η·ρ·A·v³，受 贝茨 极限约束",
+    "formula": {
+      "expr": "P = 0.5*eta*rho*A*v*v*v",
+      "latex": "P = \\tfrac{1}{2}\\eta\\,\\rho A v^3",
+      "vars": {
+        "P": "机械功率 (W)",
+        "eta": "功率系数 Cp",
+        "rho": "海水密度 (kg/m^3)",
+        "A": "叶轮扫掠面积 (m^2)",
+        "v": "潮流速度 (m/s)"
+      },
+      "sample": {
+        "eta": 0.4,
+        "rho": 1025,
+        "A": 254,
+        "v": 3
+      },
+      "expected": 1405890,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "贝茨 极限",
+        "desc": "理论最大功率系数 0.593，实际更低"
+      },
+      {
+        "name": "叶尖/水力损失",
+        "desc": "尾流、空化与叶片阻力"
+      }
+    ],
+    "efficiency": {
+      "symbol": "Cp",
+      "unit": "1",
+      "min": 0.35,
+      "max": 0.45,
+      "note": "潮流涡轮功率系数，受 贝茨 0.593 上限约束"
+    },
+    "products": [
+      {
+        "vendor": "Orbital Marine Power",
+        "model": "O2 浮式潮流涡轮",
+        "spec": "2 MW，双 600 kW(可超发) 转子，叶轮直径 ~20 m，苏格兰 EMEC"
+      }
+    ],
+    "maturity": "demonstration",
+    "apps": [
+      "潮流发电阵列",
+      "海岛供电"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "与风机同源的流体动力学；商业化早期"
+    },
+    "refs": [
+      "https://www.nsenergybusiness.com/analysis/worlds-biggest-tidal-power-plants/",
+      "https://www.eia.gov/energyexplained/hydropower/tidal-power.php"
+    ]
+  },
+  {
+    "id": "grav-tidal-to-thermal",
+    "from": "gravitational-tidal",
+    "to": "thermal",
+    "name": "潮汐摩擦耗散（潮汐势能→热）",
+    "principle": "地月引力驱动的海潮在浅海海床边界层湍流摩擦耗散，将地球自转/地月轨道能转化为热，并使月球以约 3.8 cm/yr 退行",
+    "formula": {
+      "expr": "Q = P_dissip*t",
+      "latex": "Q = P_{dissip}\\, t",
+      "vars": {
+        "Q": "耗散热量 (J)",
+        "P_dissip": "全球潮汐摩擦功率 (W)",
+        "t": "时间 (s)"
+      },
+      "sample": {
+        "P_dissip": 3700000000000,
+        "t": 86400
+      },
+      "expected": 319680000000000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "近乎全部耗散",
+        "desc": "该过程本身即天然耗散，能量几乎全部变为低品位海水热"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.99,
+      "max": 1,
+      "note": "作为'转热'过程几乎 100%；作为可利用能则不可回收"
+    },
+    "products": [],
+    "maturity": "research",
+    "apps": [
+      "地月系统演化研究",
+      "海洋混合/气候建模"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "全球潮汐耗散 ~3.7 TW（M2 约 2.5 TW），天文测量证实"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Tidal_acceleration"
+    ]
+  },
+  {
+    "id": "grav-mass-to-wave",
+    "from": "mass",
+    "to": "gravitational-wave",
+    "name": "致密双星并合辐射引力波（质量-引力束缚能→引力波）",
+    "principle": "加速运动质量的时变四极矩辐射引力波；双黑洞并合将部分总质量以 E=Δm·c² 转为引力波带走",
+    "formula": {
+      "expr": "E = dm*c*c",
+      "latex": "E = \\Delta m\\, c^2",
+      "vars": {
+        "E": "辐射引力波能量 (J)",
+        "dm": "亏损质量 (kg)",
+        "c": "光速 (m/s)"
+      },
+      "sample": {
+        "dm": 5.967e+30,
+        "c": 300000000
+      },
+      "expected": 5.3702999999999996e+47,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "仅四极辐射",
+        "desc": "只有时变质量四极矩有效辐射，单极/偶极不辐射"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.03,
+      "max": 0.05,
+      "note": "GW150914 辐射约 3 M_sun，占系统总质量约 4.6%"
+    },
+    "products": [],
+    "maturity": "research",
+    "apps": [
+      "天体物理事件",
+      "引力波宇宙学"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "GR 预言，GW150914 辐射 ≈3 M_sun·c² ≈5.3e47 J，峰值功率 ~3.6e49 W"
+    },
+    "refs": [
+      "https://arxiv.org/pdf/1602.03837",
+      "http://www.ligo.org/science/Publication-GW150914/index.php"
+    ]
+  },
+  {
+    "id": "grav-wave-to-electric",
+    "from": "gravitational-wave",
+    "to": "el-current",
+    "name": "引力波探测（引力波应变→电信号）",
+    "principle": "引力波使迈克尔逊干涉仪两臂产生差分长度变化 ΔL=h·L，光相位差经光电探测转为可测电信号",
+    "formula": {
+      "expr": "dL = h*L",
+      "latex": "\\Delta L = h L",
+      "vars": {
+        "dL": "臂长变化 (m)",
+        "h": "无量纲应变幅度",
+        "L": "干涉仪臂长 (m)"
+      },
+      "sample": {
+        "h": 1e-21,
+        "L": 4000
+      },
+      "expected": 3.9999999999999995e-18,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "量子散粒噪声",
+        "desc": "高频段光子计数噪声限制灵敏度"
+      },
+      {
+        "name": "热噪声",
+        "desc": "镜面涂层与悬挂的布朗热运动"
+      },
+      {
+        "name": "地震噪声",
+        "desc": "低频段地面振动耦合"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 1e-23,
+      "max": 1e-20,
+      "note": "极微弱'探测'而非'提取能量'；提取波能本身不可行，此处量化的是可探测应变量级"
+    },
+    "products": [
+      {
+        "vendor": "LIGO Scientific Collaboration",
+        "model": "Advanced LIGO",
+        "spec": "4 km 臂长干涉仪，应变灵敏度 ~1e-21，2015 探测 GW150914"
+      }
+    ],
+    "maturity": "research",
+    "apps": [
+      "引力波天文学",
+      "多信使天文",
+      "基础物理检验"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "探测原理确证（2017 诺奖）；引力波几乎不与物质耦合，无法作为能源提取"
+    },
+    "refs": [
+      "https://arxiv.org/pdf/1602.03838",
+      "https://gwosc.org/events/GW150914/"
+    ]
+  },
+  {
+    "id": "mass-binding-to-mass-fission",
+    "from": "mass-binding-defect",
+    "to": "mass-fission",
+    "name": "结合能曲线驱动重核裂变释能",
+    "principle": "重核每核子结合能低于中等质量核，裂变后碎片结合能更高，差额以质量亏损形式释放为裂变能 Q≈200 MeV。",
+    "formula": {
+      "expr": "Q = (delta_m_over_m) * c2_per_kg * m_kg",
+      "latex": "Q = \\frac{\\Delta m}{m}\\,c^2\\,m",
+      "vars": {
+        "delta_m_over_m": "质量转化分数 (1)",
+        "c2_per_kg": "c² (J/kg)",
+        "m_kg": "裂变物质质量 (kg)"
+      },
+      "sample": {
+        "delta_m_over_m": 0.0009,
+        "c2_per_kg": 89875500000000000,
+        "m_kg": 1
+      },
+      "expected": 80887950000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中微子带走能量",
+        "desc": "裂变 β 衰变中微子约携带 8~12 MeV/裂变不可回收（约 5%）。"
+      },
+      {
+        "name": "延迟衰变热",
+        "desc": "裂变产物延迟放射性衰变能在停堆后仍释放，需散热。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.93,
+      "max": 0.95,
+      "note": "可回收热能占总裂变能比例（扣除中微子）"
+    },
+    "products": [
+      {
+        "vendor": "Westinghouse",
+        "model": "AP1000",
+        "spec": "1100 MWe PWR，U-235/U-238 燃料"
+      },
+      {
+        "vendor": "Rosatom",
+        "model": "VVER-1200",
+        "spec": "1200 MWe 压水堆"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "核电站",
+      "核动力舰船",
+      "同位素生产"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "200 MeV/裂变与结合能曲线机制为核工程标准。"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/nuclear-fuel-cycle/introduction/physics-of-nuclear-energy"
+    ]
+  },
+  {
+    "id": "mass-binding-to-mass-fusion",
+    "from": "mass-binding-defect",
+    "to": "mass-fusion",
+    "name": "轻核聚合沿结合能曲线上升释能",
+    "principle": "轻核聚变为更重核（如 D+T→He-4）时每核子结合能上升，质量亏损约 0.38% 转化为聚变能 17.6 MeV。",
+    "formula": {
+      "expr": "Q = (delta_m_over_m) * c2_per_kg * m_kg",
+      "latex": "Q = \\frac{\\Delta m}{m}\\,c^2\\,m",
+      "vars": {
+        "delta_m_over_m": "质量转化分数 (1)",
+        "c2_per_kg": "c² (J/kg)",
+        "m_kg": "燃料质量 (kg)"
+      },
+      "sample": {
+        "delta_m_over_m": 0.0038,
+        "c2_per_kg": 89875500000000000,
+        "m_kg": 1
+      },
+      "expected": 341526900000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中子能量回收难",
+        "desc": "氘氚 中 14.1 MeV 中子需包层慢化吸收，转热效率与材料损伤限制回收。"
+      },
+      {
+        "name": "等离子体辐射损失",
+        "desc": "韧致辐射与同步辐射损耗约束能量，需净增益 Q_plasma>1。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0,
+      "max": 0.8,
+      "note": "受控聚变净电效率尚未商用；理论热回收上限约 0.8"
+    },
+    "products": [
+      {
+        "vendor": "ITER Organization",
+        "model": "ITER",
+        "spec": "托卡马克，目标 Q_plasma=10，500 MW 聚变功率"
+      },
+      {
+        "vendor": "Lawrence Livermore (NIF)",
+        "model": "National Ignition Facility",
+        "spec": "惯性约束，2022 实现点火 Q>1"
+      }
+    ],
+    "maturity": "research",
+    "apps": [
+      "受控聚变发电(研发)",
+      "恒星能源(自然)",
+      "氢弹"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "氘氚 17.6 MeV 物理确证；商用发电仍工程未成熟。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Deuterium%E2%80%93tritium_fusion"
+    ]
+  },
+  {
+    "id": "mass-annihilation-to-em-gamma",
+    "from": "mass-annihilation",
+    "to": "em-gamma",
+    "name": "正负电子湮灭 → 伽马辐射",
+    "principle": "正电子与电子的静止质量全部转化为两个反向伽马光子，遵守能量与动量守恒。",
+    "formula": {
+      "expr": "E_total = 2 * m_e * c^2",
+      "latex": "E = 2 m_e c^2",
+      "vars": {
+        "m_e": "电子静止质量 (kg)",
+        "c": "光速 (m/s)"
+      },
+      "sample": {
+        "m_e": 9.10938e-31,
+        "c": 299792458
+      },
+      "expected": 1.6374204900163184e-13,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "三光子分支",
+        "desc": "正交态正电子素以约 0.27% 概率产生连续谱三光子，能谱展宽。"
+      },
+      {
+        "name": "飞行湮灭多普勒展宽",
+        "desc": "湮灭前动量使 511 keV 线展宽几 keV。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.997,
+      "max": 1,
+      "note": "静质能→辐射近 100%，仅分支比与束缚能微损"
+    },
+    "products": [
+      {
+        "vendor": "Siemens Healthineers",
+        "model": "Biograph Vision PET/CT",
+        "spec": "LSO 晶体 ToF-正电子发射断层，511 keV 符合探测"
+      },
+      {
+        "vendor": "GE HealthCare",
+        "model": "Discovery MI",
+        "spec": "硅光电倍增管 LYSO 正电子断层/计算机断层"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "正电子发射断层 医学成像",
+      "正电子湮灭谱学(材料缺陷)",
+      "天体物理 511 keV 线观测"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "量子电动力学 标准过程，正电子发射断层 临床每日验证。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Annihilation_radiation",
+      "https://www.siemens-healthineers.com/en-in/molecular-imaging/pet-ct/biograph-vision"
+    ]
+  },
+  {
+    "id": "mass-fission-to-thermal",
+    "from": "mass-fission",
+    "to": "thermal",
+    "name": "裂变能 → 热能（堆芯）",
+    "principle": "裂变碎片动能（约 85%）在燃料中迅速热化为晶格热，加上 γ/中子沉积，构成反应堆热功率。",
+    "formula": {
+      "expr": "P_th = N_fission * Q_J",
+      "latex": "P_{th} = \\dot N\\,Q",
+      "vars": {
+        "N_fission": "每秒裂变数 (1/s)",
+        "Q_J": "每次裂变可回收热能 (J)"
+      },
+      "sample": {
+        "N_fission": 93750000000000000000,
+        "Q_J": 3.2e-11
+      },
+      "expected": 3000000000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中微子逃逸",
+        "desc": "约 5% 裂变能由中微子带走不产热。"
+      },
+      {
+        "name": "屏蔽吸收外漏",
+        "desc": "部分 γ/中子能量沉积于屏蔽体而非热载体。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.93,
+      "max": 0.95,
+      "note": "可回收热占总裂变能；【释放能基准】分母为已释放反应能；与顶层 质量裂变-thermal(E₀ 基准,≈9e-4=Δm/m×本值)为不同分辨率，勿混比"
+    },
+    "products": [
+      {
+        "vendor": "Framatome",
+        "model": "EPR",
+        "spec": "约 4500 MWth 反应堆热功率"
+      },
+      {
+        "vendor": "Westinghouse",
+        "model": "AP1000",
+        "spec": "3415 MWth 堆芯"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "核电站产热",
+      "区域供热(部分堆型)",
+      "核动力推进"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "堆芯产热份额为核工程标准设计值。"
+    },
+    "refs": [
+      "https://www.nuclear-power.com/nuclear-power-plant/nuclear-fuel/fuel-consumption-of-conventional-reactor/"
+    ]
+  },
+  {
+    "id": "mass-fusion-to-thermal",
+    "from": "mass-fusion",
+    "to": "thermal",
+    "name": "聚变能 → 热能（包层）",
+    "principle": "氘氚聚变中子与 α 粒子能量在增殖包层与第一壁慢化沉积，转化为可用热能驱动热力循环。",
+    "formula": {
+      "expr": "P_th = N_reactions * Q_J * eta_blanket",
+      "latex": "P_{th} = \\dot N\\,Q\\,\\eta_{bl}",
+      "vars": {
+        "N_reactions": "每秒聚变数 (1/s)",
+        "Q_J": "每反应能量 (J)",
+        "eta_blanket": "包层热回收系数 (1)"
+      },
+      "sample": {
+        "N_reactions": 177000000000000000000,
+        "Q_J": 2.82e-12,
+        "eta_blanket": 1
+      },
+      "expected": 499140000,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中子活化与材料损伤",
+        "desc": "14.1 MeV 中子致结构活化，部分能量用于位移损伤而非有用热。"
+      },
+      {
+        "name": "等离子体辐射外泄",
+        "desc": "韧致/同步辐射部分逃逸冷却等离子体。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0,
+      "max": 0.9,
+      "note": "包层热回收理论高；整体净发电尚未商用；【释放能基准】分母为已释放反应能；与顶层 mass-fusion-thermal(E₀ 基准)经 Δm/m 换算自洽"
+    },
+    "products": [
+      {
+        "vendor": "ITER Organization",
+        "model": "ITER 增殖包层模块(TBM)",
+        "spec": "氚增殖与热提取测试"
+      },
+      {
+        "vendor": "Commonwealth Fusion Systems",
+        "model": "SPARC/ARC",
+        "spec": "高温超导托卡马克，目标 Q>2"
+      }
+    ],
+    "maturity": "research",
+    "apps": [
+      "聚变热发电(研发)",
+      "氚增殖",
+      "高通量中子源"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "能量学确证；包层工程与净增益仍研发阶段。"
+    },
+    "refs": [
+      "https://world-nuclear.org/information-library/current-and-future-generation/nuclear-fusion-power"
+    ]
+  },
+  {
+    "id": "mass-rest-to-mass-annihilation",
+    "from": "mass-rest",
+    "to": "mass-annihilation",
+    "name": "静止质能 → 湮灭能（物质-反物质）",
+    "principle": "当物质遇反物质，全部静止质能 E0=m·c² 解锁转化为辐射，是质能转化的极限（100% 转化率）。",
+    "formula": {
+      "expr": "E = m * c^2",
+      "latex": "E = m c^2",
+      "vars": {
+        "m": "湮灭对总静止质量 (kg)",
+        "c": "光速 (m/s)"
+      },
+      "sample": {
+        "m": 1,
+        "c": 299792458
+      },
+      "expected": 89875517873681760,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "反物质制备能耗",
+        "desc": "人工制反物质能耗远超回收能，净产能为负。"
+      },
+      {
+        "name": "约束与存储损耗",
+        "desc": "彭宁阱存储反物质极微量，湮灭于器壁损失。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 1,
+      "max": 1,
+      "note": "静质能→能量转化率理论 100%（不计制备）"
+    },
+    "products": [
+      {
+        "vendor": "CERN",
+        "model": "Antiproton Decelerator (AD/ELENA)",
+        "spec": "反质子产生与减速，反氢实验"
+      }
+    ],
+    "maturity": "research",
+    "apps": [
+      "基础物理(反氢谱学)",
+      "正电子发射断层 正电子源",
+      "概念性反物质推进"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "100% 质能转化原理确立；工程化净产能不可行。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence"
+    ]
+  },
+  {
+    "id": "mass-fission-to-em-gamma",
+    "from": "mass-fission",
+    "to": "em-gamma",
+    "name": "裂变 → 瞬发/缓发 γ 辐射",
+    "principle": "裂变过程中约 7~8 MeV/裂变以瞬发与缓发 γ 光子形式释放，构成裂变能的电磁辐射通道。",
+    "formula": {
+      "expr": "E_gamma = f_gamma * Q_total",
+      "latex": "E_\\gamma = f_\\gamma\\,Q",
+      "vars": {
+        "f_gamma": "γ 能量份额 (1)",
+        "Q_total": "每次裂变总能 (MeV)"
+      },
+      "sample": {
+        "f_gamma": 0.037,
+        "Q_total": 200
+      },
+      "expected": 7.3999999999999995,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "屏蔽吸收",
+        "desc": "高能 γ 大部分被堆容器/混凝土屏蔽吸收转热而非外用。"
+      },
+      {
+        "name": "缓发份额延迟",
+        "desc": "缓发 γ 随时间释放，难即时利用。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.03,
+      "max": 0.04,
+      "note": "γ 能量占总裂变能份额"
+    },
+    "products": [
+      {
+        "vendor": "Mirion Technologies",
+        "model": "裂变 γ 谱仪",
+        "spec": "高纯锗 探测裂变 γ"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "反应堆功率监测",
+      "核保障与裂变材料检测",
+      "辐照工艺"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "裂变能量分配份额为核数据标准（ENDF）。"
+    },
+    "refs": [
+      "https://inldigitallibrary.inl.gov/sites/sti/sti/5842310.pdf"
+    ]
+  },
+  {
+    "id": "mass-rest-to-mechanical",
+    "from": "mass-rest",
+    "to": "mechanical",
+    "name": "静止质能 → 化学反应动能（极微转化）",
+    "principle": "即使化学反应也对应极微小质量亏损（约 10⁻⁹~10⁻¹⁰ 量级），释放为产物动能/热，体现质能等价的普适性。",
+    "formula": {
+      "expr": "delta_m = Q / c^2",
+      "latex": "\\Delta m = Q/c^2",
+      "vars": {
+        "Q": "反应释放能量 (J)",
+        "c": "光速 (m/s)"
+      },
+      "sample": {
+        "Q": 285800,
+        "c": 299792458
+      },
+      "expected": 3.1799538602012415e-12,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "不可测性",
+        "desc": "化学质量亏损 ~10⁻⁹ 相对量级，远低于现有质谱可测精度。"
+      }
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 1e-10,
+      "max": 1e-09,
+      "note": "化学反应质能转化分数极小（非热力学效率，为质量亏损相对量级）"
+    },
+    "products": [
+      {
+        "vendor": "通用",
+        "model": "氢氧燃烧/燃料电池",
+        "spec": "H2+½O2→H2O，ΔH≈286 kJ/mol"
+      }
+    ],
+    "maturity": "commercial",
+    "apps": [
+      "原理演示",
+      "精密质能等价检验(核反应而非化学)"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "质能等价对化学反应同样成立，但亏损不可直接称量。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence"
+    ]
+  },
+  {
+    "id": "radiant-solar-to-chemical-photosynthesis",
+    "from": "radiant-solar",
+    "to": "chemical",
+    "name": "太阳辐射光合作用（太阳辐射→化学能）",
+    "principle": "植物/藻类色素吸收太阳光谱中 光合有效辐射 波段光子，经光系统与卡尔文循环将 CO₂ 与水合成为碳水化合物，把太阳辐射能固定为化学键能。",
+    "device": [
+      "叶绿体/类囊体",
+      "光生物反应器",
+      "作物冠层"
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.01,
+      "max": 0.06,
+      "note": "全太阳光谱口径：理论 C3~4.6%、C4~6%；田间常见 1–3%。与 radiant-to-化学-光合作用 同口径"
+    },
+    "formula": {
+      "expr": "eta = E_stored / E_in",
+      "latex": "\\eta = \\frac{E_{stored}}{E_{in}}",
+      "vars": {
+        "E_stored": "储存化学能 J",
+        "E_in": "入射太阳辐射能 J"
+      },
+      "sample": {
+        "E_stored": 30,
+        "E_in": 1000
+      },
+      "expected": 0.03,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "非 光合有效辐射 光谱",
+        "desc": "约一半太阳能量在 400–700 nm 之外"
+      },
+      {
+        "name": "光呼吸与反射",
+        "desc": "C3 光呼吸及叶片反射/透射损失"
+      },
+      {
+        "name": "量子需求",
+        "desc": "固定 CO₂ 需多个光子（~8–10）"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "农业",
+        "model": "C4 作物(玉米/甘蔗)",
+        "spec": "田间光合效率较高"
+      },
+      {
+        "vendor": "藻类养殖",
+        "model": "光生物反应器",
+        "spec": "可控光暗培养"
+      }
+    ],
+    "maturity": "natural-process",
+    "apps": [
+      "初级生产力",
+      "生物质能原料",
+      "固碳",
+      "粮食生产"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "太阳辐射→生物质化学能的主导自然路径；与顶层辐射→chemical 光合作用边同机理、落在太阳辐射子形态。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Photosynthetic_efficiency",
+      "https://en.wikipedia.org/wiki/Photosynthesis"
+    ]
+  },
+  {
+    "id": "chemical-to-radiant-luminescence-chemiluminescence",
+    "from": "chemical",
+    "to": "radiant-luminescence",
+    "name": "化学发光（化学能→冷光辐射）",
+    "principle": "放能化学反应生成电子激发态中间体，退激时发射光子（无需高温热辐射），如过氧草酸酯荧光棒、鲁米诺。",
+    "device": [
+      "荧光棒(过氧草酸酯)",
+      "鲁米诺检测试剂",
+      "化学发光免疫分析底物"
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.01,
+      "max": 0.1,
+      "note": "能量效率≈量子产率×E_photon/|ΔG|，通常低于光子量子产率；与 化学→可见化学发光 同能量口径"
+    },
+    "formula": {
+      "expr": "Phi_CL = Phi_react * Phi_es * Phi_fl",
+      "latex": "\\Phi_{CL}=\\Phi_{react}\\Phi_{ES}\\Phi_{fl}",
+      "vars": {
+        "Phi_CL": "化学发光量子产率",
+        "Phi_react": "反应产率",
+        "Phi_es": "激发态产率",
+        "Phi_fl": "发光量子产率"
+      },
+      "sample": {
+        "Phi_react": 0.8,
+        "Phi_es": 0.5,
+        "Phi_fl": 0.5
+      },
+      "expected": 0.2,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "非辐射淬灭",
+        "desc": "激发态碰撞/内转换产热"
+      },
+      {
+        "name": "暗反应分支",
+        "desc": "不经过发光激发态的反应通道"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "Cyalume",
+        "model": "SnapLight",
+        "spec": "化学荧光棒"
+      },
+      {
+        "vendor": "分析化学",
+        "model": "HRP-鲁米诺 CLIA",
+        "spec": "化学发光免疫分析"
+      }
+    ],
+    "maturity": "商用",
+    "apps": [
+      "应急照明",
+      "法医检测",
+      "体外诊断 化学发光免疫分析",
+      "演示实验"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "化学发光是明确的化学能→辐射（冷光）转换；有别于火焰热辐射。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Chemiluminescence",
+      "https://en.wikipedia.org/wiki/Glow_stick"
+    ]
+  },
+  {
+    "id": "gravitational-hydro-to-mechanical-kinetic",
+    "from": "gravitational-hydro",
+    "to": "mechanical-kinetic",
+    "name": "水头势能→水流动能（引水加速）",
+    "principle": "水库/上游水头的重力势能经压力钢管或明渠下落，按伯努利关系部分转为水流定向动能 ½ρv²，再冲击水轮机转轮；是水力发电链中势能→动能的物理中间步。",
+    "device": [
+      "压力钢管",
+      "喷嘴/导叶",
+      "冲击式/反击式转轮进口"
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.9,
+      "max": 0.99,
+      "note": "良好设计压力钢管水力效率很高；局部损失与摩阻决定偏离理想伯努利"
+    },
+    "formula": {
+      "expr": "v = sqrt(2 * g * h)",
+      "latex": "v=\\sqrt{2gh}",
+      "vars": {
+        "v": "理想出流速度 m/s",
+        "g": "重力加速度 m/s²",
+        "h": "有效水头 m"
+      },
+      "sample": {
+        "g": 9.81,
+        "h": 100
+      },
+      "expected": 44.294469180700204,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "沿程摩擦损失",
+        "desc": "管壁摩阻降低有效水头"
+      },
+      {
+        "name": "弯头与阀门局部损失",
+        "desc": "局部水头损失"
+      },
+      {
+        "name": "入口收缩与空化",
+        "desc": "流态不良时能量耗散"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "水电工程",
+        "model": "压力钢管/蜗壳系统",
+        "spec": "高水头水电引水"
+      }
+    ],
+    "maturity": "商用",
+    "apps": [
+      "水力发电引水",
+      "冲击式水轮机喷嘴",
+      "抽蓄放水加速"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "重力水头经管路转为射流/进口动能是流体力学与水电工程的基础。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Bernoulli%27s_principle",
+      "https://en.wikipedia.org/wiki/Penstock"
+    ]
+  },
+  {
+    "id": "em-ir-to-thermal-sensible-heating",
+    "from": "em-ir",
+    "to": "thermal-sensible",
+    "name": "红外加热（红外→显热，子形态）",
+    "principle": "红外光子被材料振转能级/自由载流子吸收，能量迅速热化为晶格与分子平动动能，宏观表现为温度上升（显热）。工业红外烘干、烹饪与理疗加热的子形态边。",
+    "device": [
+      "陶瓷/石英红外加热器",
+      "红外 烤箱与烘干隧道",
+      "远红外理疗板"
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.7,
+      "max": 0.98,
+      "note": "被吸收的 红外 近全部成显热；系统效率还取决于发射器电-红外 效率与几何照射"
+    },
+    "formula": {
+      "expr": "P_heat = alpha * P_ir",
+      "latex": "P_{heat}=\\alpha P_{ir}",
+      "vars": {
+        "P_heat": "显热功率 W",
+        "alpha": "吸收率 1",
+        "P_ir": "入射红外功率 W"
+      },
+      "sample": {
+        "alpha": 0.92,
+        "P_ir": 1000
+      },
+      "expected": 920,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "反射与透射",
+        "desc": "未吸收的 红外 离开工件"
+      },
+      {
+        "name": "再辐射",
+        "desc": "升温后表面热辐射损失"
+      },
+      {
+        "name": "对流散热",
+        "desc": "与空气对流带走热量"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "工业加热",
+        "model": "中波红外烘干模块",
+        "spec": "涂料/食品烘干"
+      },
+      {
+        "vendor": "家电",
+        "model": "红外烤箱/取暖器",
+        "spec": "家用 红外 加热"
+      }
+    ],
+    "maturity": "商用",
+    "apps": [
+      "工业烘干固化",
+      "食品加热",
+      "建筑辐射采暖",
+      "理疗热敷"
+    ],
+    "consensus": {
+      "status": "established",
+      "confidence": "high",
+      "summary": "红外吸收致显热升温是成熟工程热过程，基尔霍夫定律联系吸收与发射。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Infrared_heater",
+      "https://en.wikipedia.org/wiki/Thermal_radiation"
+    ]
+  },
+  {
+    "id": "mass-annihilation-to-thermal",
+    "from": "mass-annihilation",
+    "to": "thermal",
+    "name": "湮灭能→热能（子形态热化）",
+    "principle": "质量湮灭子形态释放的 γ/介子等在吸收介质中级联沉积，最终增加热运动自由度。与顶层 mass-annihilation-thermal 对应，分辨率落在 mass-annihilation 节点。",
+    "device": [
+      "量热吸收靶（概念）",
+      "闪烁/晶体能量沉积体"
+    ],
+    "efficiency": {
+      "symbol": "η",
+      "unit": "1",
+      "min": 0.5,
+      "max": 1,
+      "note": "完全吸收近 1；重子湮灭中微子损失拉低下限"
+    },
+    "formula": {
+      "expr": "eta = E_th / E_ann",
+      "latex": "\\eta = E_{th}/E_{ann}",
+      "vars": {
+        "eta": "湮灭能热化份额 1",
+        "E_th": "热沉积 J",
+        "E_ann": "湮灭释放能 J"
+      },
+      "sample": {
+        "E_th": 0.98,
+        "E_ann": 1
+      },
+      "expected": 0.98,
+      "tol": 1e-06
+    },
+    "lossMechanisms": [
+      {
+        "name": "中微子",
+        "desc": "重子湮灭链中不可回收"
+      },
+      {
+        "name": "次级辐射泄漏",
+        "desc": "γ 未全吸收"
+      }
+    ],
+    "products": [
+      {
+        "vendor": "科研",
+        "model": "湮灭量热概念靶",
+        "spec": "无商用能源产品"
+      }
+    ],
+    "maturity": "基础/概念",
+    "apps": [
+      "剂量与量热",
+      "概念推进热化"
+    ],
+    "consensus": {
+      "status": "contested",
+      "confidence": "medium",
+      "summary": "热化物理成立；能源应用路径有争议。"
+    },
+    "refs": [
+      "https://en.wikipedia.org/wiki/Annihilation",
+      "https://en.wikipedia.org/wiki/Electron%E2%80%93positron_annihilation"
+    ]
+  }
+]

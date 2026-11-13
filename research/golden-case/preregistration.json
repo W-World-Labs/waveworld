@@ -1,0 +1,41 @@
+{
+  "schema": "waveworld.golden-case-preregistration/v1",
+  "caseId": "mb-pbs-oxygen-transient-2026",
+  "registeredAt": "2026-08-02T16:30:00.000Z",
+  "registeredBeforeFormalRun": true,
+  "researchQuestion": "Can two declared kinetic models reproduce the paired Methylene Blue transient-intensity curves, and does oxygenation produce a reproducible difference in fitted kinetics under the same 431 W cm^-2 excitation condition?",
+  "hypotheses": {
+    "primary": "At least one predeclared model attains normalized RMSE <= 0.08 on both conditions, and the fitted oxygen-sensitive parameter differs by at least 5% between air-saturated and nitrogen-saturated PBS.",
+    "alternative": "Neither model attains the fit threshold on both conditions, or the fitted oxygen-sensitive parameter difference is below 5%.",
+    "interpretationBoundary": "The normalized intensity response is an empirical transient-state proxy. It is not an absolute triplet-state or singlet-oxygen concentration and cannot establish a clinical or causal PDT claim."
+  },
+  "models": [
+    { "id": "photosensitization-rk4", "version": "1.0.0" },
+    { "id": "photosensitization-steady-state", "version": "1.0.0" }
+  ],
+  "transform": {
+    "id": "waveworld.mb-transient-normalization/v1",
+    "time": "ln(pulse_width_us / first_pulse_width_us)",
+    "response": "(first_intensity - intensity) / (first_intensity - last_intensity)",
+    "outputColumn": "singletO2",
+    "reason": "Map each condition to a dimensionless monotone response while preserving the complete measured sampling grid."
+  },
+  "split": { "strategy": "all-points-calibration", "reason": "The first case validates workflow reproducibility and comparative fit, not out-of-sample predictive performance." },
+  "thresholds": {
+    "normalizedRmseMax": 0.08,
+    "oxygenSensitiveParameterRelativeDifferenceMin": 0.05,
+    "repeatRuns": 3,
+    "repeatAbsoluteTolerance": 1e-12,
+    "repeatRelativeTolerance": 1e-10,
+    "cpuGpuAbsoluteTolerance": 1e-9,
+    "cpuGpuRelativeTolerance": 1e-7,
+    "uqCoverageProbability": 0.8,
+    "uqSamples": 200,
+    "randomSeed": 20260802
+  },
+  "decision": {
+    "pass": "All integrity and reproducibility gates pass and the primary hypothesis criteria both hold.",
+    "fail": "Any integrity/reproducibility gate fails or both models miss the fit threshold.",
+    "uncertain": "Integrity and reproducibility pass but model-fit and parameter-difference criteria disagree."
+  }
+}

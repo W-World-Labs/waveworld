@@ -1,0 +1,53 @@
+{
+  "schema": "waveworld.golden-case-run-summary/v1",
+  "caseId": "mb-pbs-oxygen-transient-2026",
+  "supersedesExecutionRecord": "formal-local-v1.summary.json",
+  "reason": "Adds observation-aligned prediction series so an offline verifier can independently recalculate RMSE; preregistration, inputs and scientific decision are unchanged.",
+  "manifestSha256": "f3449496afeb0797b1b136ca7c5caa06a5e039389dfec8a86bd891170cda1eb1",
+  "preregistrationSha256": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81",
+  "formalRun": true,
+  "environment": "local CPU reference",
+  "decision": {
+    "status": "fail",
+    "meaning": "The preregistered scientific hypothesis is rejected; workflow integrity passed.",
+    "rk4FitsPass": false,
+    "normalizedRmseMax": 0.6526689123610048,
+    "normalizedRmseThreshold": 0.08,
+    "oxygenSensitiveParameterRelativeDifference": 0,
+    "oxygenSensitiveParameterRelativeDifferenceThreshold": 0.05,
+    "parameterDifferencePass": false
+  },
+  "runs": [
+    {
+      "condition": "air-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-rk4@1.0.0",
+      "calibrationRmse": 0.5523075720965998,
+      "fittedKQ": 8,
+      "predictionSha256": "c67442d3bdc57383cf7b099904a468c65c7356a2b5a8eeeb16ab1da56421bcdc",
+      "reproducibleResultSha256": "4ba0e46f24fd0566350cef4cd96bce6ad3143ec9297405e8b49a5d743e1da066"
+    },
+    {
+      "condition": "air-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-steady-state@1.0.0",
+      "reproducibleResultSha256": "903391f93eb75f54cc240d35c6ecd7f043db6a83b7e3ec3deea5822d4c55ba42"
+    },
+    {
+      "condition": "nitrogen-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-rk4@1.0.0",
+      "calibrationRmse": 0.6526689123610048,
+      "fittedKQ": 8,
+      "predictionSha256": "656a31d660ca04701e018e369b9bc50baf9896fe931d19eeac55ce1920b99df3",
+      "reproducibleResultSha256": "0512e6bdb99525d06c0a0a4daee4b7610827b73053bd276262d768e7f355d632"
+    },
+    {
+      "condition": "nitrogen-saturated PBS, pH 3.5, 431 W cm^-2",
+      "model": "photosensitization-steady-state@1.0.0",
+      "reproducibleResultSha256": "c800cf12e07f39447268eed7c14315b3f730aca4bab9c4d4160b40d32410e278"
+    }
+  ],
+  "provenance": {
+    "agentBuildId": "dev-a591bcfe4d21360c",
+    "modelImplementationSha256": "a591bcfe4d21360c9ef9399121986ba93bd8854b697f1f20a5cf2c1f097ab249",
+    "dependencyLockSha256": "401691da22211aa601890addcf77705736a923ed9591828b4a0e41d553f869f4"
+  }
+}

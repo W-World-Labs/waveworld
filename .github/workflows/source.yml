@@ -1,0 +1,121 @@
+name: Public source CI
+
+on:
+  push:
+    branches: [main, 'codex/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-source-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Reviewed source/rights/size boundary
+        run: python3 scripts/check-public-source.py
+      - name: Current source, reachable history and all Git-object secret scans
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 2 --connect-timeout 15 --max-time 90 --output "$RUNNER_TEMP/gitleaks.tar.gz" https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  $RUNNER_TEMP/gitleaks.tar.gz" | sha256sum --check --strict
+          tar -xzf "$RUNNER_TEMP/gitleaks.tar.gz" -C "$RUNNER_TEMP" gitleaks
+          "$RUNNER_TEMP/gitleaks" dir . --redact=100 --no-banner
+          "$RUNNER_TEMP/gitleaks" git . --log-opts=--all --redact=100 --no-banner
+          python3 - <<'PYOBJECTS'
+          import os, subprocess
+          from pathlib import Path
+          output = Path(os.environ['RUNNER_TEMP']) / 'source-object-payloads'
+          output.mkdir(mode=0o700)
+          for row in subprocess.check_output(['git', 'cat-file', '--batch-all-objects', '--batch-check=%(objectname) %(objecttype)']).decode().splitlines():
+              oid, kind = row.split()
+              if kind in {'blob', 'commit', 'tag'}:
+                  (output / (oid + '.' + kind)).write_bytes(subprocess.check_output(['git', 'cat-file', kind, oid]))
+          PYOBJECTS
+          "$RUNNER_TEMP/gitleaks" dir "$RUNNER_TEMP/source-object-payloads" --redact=100 --no-banner
+
+  build:
+    needs: source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      CI: 'true'
+      WAVEWORLD_E2E: '1'
+      W_RADAR_CODE: ''
+      NODE_OPTIONS: --max-old-space-size=4096
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+      - name: Explicit reviewed source-asset preparation
+        run: node scripts/prepare-source-assets.mjs
+      - name: Locked public dependencies
+        run: |
+          npm ci --registry=https://registry.npmjs.org
+          npm ci --prefix apps/host --legacy-peer-deps --registry=https://registry.npmjs.org
+          npm ci --prefix apps/lab --legacy-peer-deps --registry=https://registry.npmjs.org
+          npm ci --prefix apps/lab/agent --legacy-peer-deps --registry=https://registry.npmjs.org
+      - name: Explicit browser test engine
+        run: npx playwright install --with-deps chromium
+      - name: Existing numerical and browser/Host contract smoke
+        run: |
+          npm run test:smoke
+          npm run test:module-ui
+          npm run test:agent:browser
+      - name: Existing Host auth, isolation and scientific-review regression gates
+        run: |
+          npm run typecheck --prefix apps/host
+          npm run test:host
+      - name: Existing Lab model, preparation and lifecycle gates
+        run: |
+          npm run test:models --prefix apps/lab
+          npm run test:smoke --prefix apps/lab
+          node scripts/ci/lab-execution-smoke.cjs
+          node --import tsx --test apps/lab/src/lib/assemble-job-spec.test.ts
+      - name: Existing Agent and structural-result gates
+        run: |
+          node --import tsx apps/lab/agent/src/cli.ts help
+          node --import tsx --test apps/lab/agent/src/*.test.ts apps/lab/agent/src/backends/*.test.ts
+          npm run test:structural-result
+          npx tsc --noEmit -p tsconfig.app.tests.json
+      - name: Isolated E2E build and navigation
+        run: |
+          bash scripts/ci/configure-e2e-ports.sh
+          npm run build
+          npm run check:formal-spa
+          npm run budget
+          npm run test:navigation
+          npm run test:jobs-ui
+      - name: Existing headless route smoke
+        run: npm run test:e2e
+        env:
+          LAB_E2E_URL: ''
+      - name: Existing clean-URL Atlas, Host, Lab and Agent source builds
+        run: |
+          env -u VITE_LAB_URL npm run build:check
+          npm run build --prefix apps/host
+          TUANLIU_BASE_PATH=/app/lab npm run build --prefix apps/lab
+          npm run agent:build --prefix apps/lab -- --bundle-only
+      - name: Exact-commit reviewed source archive
+        run: python3 scripts/package-public-source.py "$RUNNER_TEMP/waveworld-source"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: waveworld-source-${{ github.sha }}
+          path: ${{ runner.temp }}/waveworld-source/*
+          if-no-files-found: error
+          retention-days: 7

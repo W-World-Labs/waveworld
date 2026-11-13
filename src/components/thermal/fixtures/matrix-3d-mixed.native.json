@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "caseId": "matrix-3d-mixed",
+  "backend": "native",
+  "specSha256": "c9538b046497a298c37d73aea5d5cd311c02fbfb57da8bec84eccb5a06c1aa6c",
+  "spec": {
+    "schemaVersion": 1,
+    "kind": "thermal-3d-steady",
+    "name": "thermal-steady-material-matrix-3d-mixed",
+    "parameters": {
+      "dimension": 3,
+      "lengthX": 1,
+      "lengthY": 0.8,
+      "lengthZ": 0.6,
+      "nx": 3,
+      "ny": 3,
+      "nz": 3,
+      "conductivity": 2,
+      "volumetricHeatWPerM3": 1,
+      "units": {
+        "length": "m",
+        "temperature": "C",
+        "conductivity": "W/(m\u00b7K)",
+        "power": "W",
+        "heatFlux": "W/m^2"
+      },
+      "boundaries": {
+        "left": {
+          "type": "dirichlet",
+          "temperature": 20
+        },
+        "right": {
+          "type": "robin",
+          "h": 12,
+          "ambientTemp": 65
+        },
+        "bottom": {
+          "type": "neumann",
+          "heatFlux": 4
+        },
+        "top": {
+          "type": "insulated"
+        },
+        "front": {
+          "type": "robin",
+          "h": 24,
+          "ambientTemp": 45
+        },
+        "back": {
+          "type": "neumann",
+          "heatFlux": -2
+        }
+      },
+      "materials": [
+        {
+          "name": "x-layer",
+          "bounds": {
+            "min": [
+              0,
+              0,
+              0
+            ],
+            "max": [
+              0.5,
+              0.8,
+              0.6
+            ]
+          },
+          "conductivity": 3
+        },
+        {
+          "name": "overlap-region",
+          "bounds": {
+            "min": [
+              0.25,
+              0,
+              0
+            ],
+            "max": [
+              0.75,
+              0.8,
+              0.6
+            ]
+          },
+          "conductivity": 7,
+          "volumetricHeatWPerM3": 5
+        }
+      ],
+      "residualTol": 1e-12,
+      "maxIterations": 50000
+    },
+    "run": {
+      "maxSteps": 50000
+    },
+    "outputs": {
+      "forces": false,
+      "history": true,
+      "fields": [
+        "temperature"
+      ],
+      "kpis": [
+        "tMin",
+        "tMax",
+        "energyImbalance"
+      ]
+    }
+  },
+  "result": {
+    "artifacts": [
+      {
+        "artifactId": "thermal-T-22fb764e2bd1",
+        "bytes": 216,
+        "contentType": "application/octet-stream",
+        "kind": "thermal-temperature-field"
+      },
+      {
+        "artifactId": "thermal-kpi-22fb764e2bd1",
+        "bytes": 758,
+        "contentType": "application/json",
+        "kind": "thermal-kpi-summary"
+      }
+    ],
+    "backend": {
+      "agentId": "w-sim-cuda",
+      "deviceName": "NVIDIA GeForce RTX 5090",
+      "id": "native-cuda",
+      "provenance": {
+        "agentBuildId": "@w-sim/solvers-thermal",
+        "dependencyLockSha256": "22fb764e2bd1429b092a34d5b26ebd3a",
+        "modelImplementationSha256": "22fb764e2bd1429b092a34d5b26ebd3a"
+      }
+    },
+    "derived": {
+      "cellCount": 27,
+      "conductivity": 2.0,
+      "dimension": 3,
+      "dx": 0.5,
+      "dy": 0.4,
+      "dz": 0.3,
+      "fieldArtifactId": "thermal-T-22fb764e2bd1",
+      "fieldBytes": 216,
+      "fieldFormat": "float64-le-x-fastest-v1",
+      "fieldInline": 1,
+      "lastProgressIteration": 84,
+      "lastProgressResidual": 9.166001291305292e-13,
+      "lengthUnit": "m",
+      "lengthX": 1.0,
+      "lengthY": 0.8,
+      "lengthZ": 0.6,
+      "residualTol": 1e-12,
+      "temperatureCsv": "20,41.44575514753515,49.81935862216883,20,41.3560087934415,49.72053602761672,20,41.33660627541681,49.711261704460846,20,39.319553187140656,55.046262629149915,20,39.18683469090262,54.84909443667086,20,39.153439857163846,54.82205671482763,20,38.66512379843107,55.66382270668417,20,38.5230429049771,55.45272935446333,20,38.48572570573503,55.42192767273192",
+      "temperatureUnit": "C"
+    },
+    "history": {
+      "residual": [
+        9.166001291305292e-13
+      ],
+      "step": [
+        84
+      ]
+    },
+    "schemaVersion": 1,
+    "summary": {
+      "analyticalMaxAbsError": -1.0,
+      "cellCount": 27,
+      "contractVersion": 1,
+      "converged": 1,
+      "convergenceStatus": "converged",
+      "energyImbalance": 2.0365709119118947e-11,
+      "gridNx": 3,
+      "gridNy": 3,
+      "gridNz": 3,
+      "heatFlowBackW": -1.6,
+      "heatFlowBottomW": 2.4,
+      "heatFlowFrontW": 132.04745951816037,
+      "heatFlowInW": -1.6799999999796342,
+      "heatFlowLeftW": -199.29292907239602,
+      "heatFlowRightW": 64.76546955425601,
+      "heatFlowTopW": 0.0,
+      "inputDigest": "22fb764e2bd1429b092a34d5b26ebd3a",
+      "iterations": 84,
+      "method": "thermal-steady-fv-regions-v1",
+      "precision": "float64",
+      "residual": 9.166001291305292e-13,
+      "runtimeMs": 234,
+      "solverPackage": "@w-sim/solvers-thermal",
+      "solverVersion": "0.1.0",
+      "sourcePowerW": 1.68,
+      "steps": 84,
+      "tMax": 55.66382270668417,
+      "tMin": 20.0,
+      "tjMaxC": 55.66382270668417,
+      "wallTimeMs": 234,
+      "warningCount": 0
+    }
+  },
+  "temperature": [
+    20.0,
+    41.44575514753515,
+    49.81935862216883,
+    20.0,
+    41.3560087934415,
+    49.72053602761672,
+    20.0,
+    41.33660627541681,
+    49.711261704460846,
+    20.0,
+    39.319553187140656,
+    55.046262629149915,
+    20.0,
+    39.18683469090262,
+    54.84909443667086,
+    20.0,
+    39.153439857163846,
+    54.82205671482763,
+    20.0,
+    38.66512379843107,
+    55.66382270668417,
+    20.0,
+    38.5230429049771,
+    55.45272935446333,
+    20.0,
+    38.48572570573503,
+    55.42192767273192
+  ],
+  "sourceBinarySha256": "e73915df547de454833f5e144a702b8c25a5b14a4be041090a849883ba457778"
+}

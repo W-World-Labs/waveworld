@@ -1,0 +1,7 @@
+*HEADING
+Missing include test
+*INCLUDE, INPUT=mesh/missing-nodes.inp
+*STEP
+*STATIC
+1.0, 1.0
+*END STEP

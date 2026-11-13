@@ -1,0 +1,4 @@
+# Cargo loads this from the repo root (deploy.yml cwd). The nested
+# apps/lab/agent/native/.cargo/config.toml is not visible with --manifest-path.
+[target.x86_64-unknown-linux-musl]
+rustflags = ["-C", "target-cpu=x86-64-v3"]

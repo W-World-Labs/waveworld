@@ -1,0 +1,25 @@
+[package]
+name = "w-sim-kernels"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Shared native and WebAssembly numerical kernels for W-Sim"
+license = "MIT"
+
+[lib]
+path = "src/lib.rs"
+
+[features]
+default = []
+parallel = ["dep:rayon"]
+
+[dependencies]
+rayon = { version = "1.10", optional = true }
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[[bench]]
+name = "stencils"
+harness = false

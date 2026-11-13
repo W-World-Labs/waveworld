@@ -1,0 +1,307 @@
+{
+  "version": "2026-05-30",
+  "note": "真实力场参数，带引证。粒径 σ[nm]、能深 ε[kJ/mol] 与 ε/k_B[K] 互校（k_B=0.0083145 kJ/mol/K），电荷 q[e]，质量 [amu]。保真度：quantitative=两体伦纳德–琼斯硬数据，qualitative=粗粒化/多体近似。来自材料研究工作流与独立核查。",
+  "categories": [
+    {
+      "key": "noble-gas",
+      "label": "贵气体（伦纳德–琼斯基准流体）",
+      "crossCheck": "经多源权威互校。氩（基准）最一致：SklogWiki + Wikipedia 伦纳德–琼斯势文 + LibreTexts 均收敛于 sigma=0.3405 nm（约 0.34 nm）与 epsilon/k_B=119.8–120 K；LibreTexts 独立给出 epsilon=0.997 kJ/mol，与 k_B 换算 119.8 K×0.0083145=0.99608 kJ/mol 在三位有效数字上吻合。经典来源为 Rowley/Nicholson/Parsonage (Mol. Phys. 1975) / Hirschfelder–Bird–Curtiss 粘性拟合族。sigma 序列单调且与 HBC 表及 Rutkai 等 2017 (Mol. Phys. 115:1104) 一致：Ne 0.2789 < Ar 0.3405 < Kr 0.3633 < Xe 0.4100 nm。k_B 一致性（k_B=0.0083145 kJ/mol/K）逐项核验：Ne 36.83K→0.3062，Ar 119.8K→0.9961，Kr 164.0K→1.3636，Xe 229.0K→1.9040 kJ/mol。显著分歧：(1) 氙 epsilon——LibreTexts 1.77 kJ/mol（212.9 K）对 HBC 粘性拟合 229 K（1.904 kJ/mol），约 7% 散布；已标注并以粘性拟合为主；(2) 部分教材（如 Chegg/HBC 变体）列 Kr sigma=3.38 Å、Ar=3.41 Å（另一套拟合），本库采用更通行的 Kr 3.633 Å。质量为 IUPAC 标准原子量（Ne 20.1797，Ar 39.948，Kr 83.798，Xe 131.293 amu）。保真度：Ar/Kr/Xe 标 quantitative（重、经典两体 12-6 伦纳德–琼斯为既定硬数据）；Ne 标 qualitative（核量子效应不可忽略，de Boer 参数约 0.59，经典 12-6 仅作有效浅阱；He 完全无法用经典 LJ 表达故略去）。Rutkai 2017 全文 PDF/付费表未能直接取得（403/二进制），Ne/Kr 的 2017 优化 epsilon 位数取自收敛的经典 HBC 文献值；氩的四源一致与单调 sigma 序列使本集对约化 LJ 教学/仿真用途可信度高。",
+      "materials": [
+        {
+          "name": "氩",
+          "formula": "Ar",
+          "sigma_nm": 0.3405,
+          "epsilon_kJmol": 0.9961,
+          "epsilon_over_kB_K": 119.8,
+          "charge_e": 0,
+          "mass_amu": 39.948,
+          "forcefield": "经典 12-6 伦纳德–琼斯参考集",
+          "source": "氩的经典伦纳德–琼斯参数表；SklogWiki 氩/伦纳德–琼斯模型页（sigma=0.3405 nm，epsilon/k_B=119.8 K，引自 Rowley, Nicholson, Parsonage, Mol. Phys. 1975）；经 Wikipedia 伦纳德–琼斯势文（epsilon/k_B≈120 K，sigma 0.34 nm）与 LibreTexts（epsilon=0.997 kJ/mol，sigma=3.40 Å）交叉确认。质量 = IUPAC 标准原子量 39.948 amu。",
+          "fidelity": "quantitative",
+          "notes": "经典伦纳德–琼斯基准流体。sigma=0.3405 nm、epsilon/kB=119.8 K 是被引用最多的 12-6 参数；适合作约化单位教学与对照。"
+        },
+        {
+          "name": "氖",
+          "formula": "Ne",
+          "sigma_nm": 0.2789,
+          "epsilon_kJmol": 0.3062,
+          "epsilon_over_kB_K": 36.83,
+          "charge_e": 0,
+          "mass_amu": 20.1797,
+          "forcefield": "经典 12-6 伦纳德–琼斯",
+          "source": "氖的经典伦纳德–琼斯参数表；Web 检索汇总的标准 HBC 型稀有气体伦纳德–琼斯表（sigma_Ne=2.789 Å，系列 2.789 Å→4.100 Å 自 Ne 至 Xe；参数来自粘性 + 第二维里系数数据）。对照 Rutkai/Thol/Span/Vrabec 2017 Mol. Phys. 115:1104（稀有气体 12-6 伦纳德–琼斯拟合）。质量 = IUPAC 20.1797 amu。",
+          "fidelity": "qualitative",
+          "notes": "玻尔兹曼常数校验： 36.83 K * 0.0083145 = 0.30622 kJ/mol. sigma=0.2789 nm. 失真说明：氖核量子效应不可忽略，经典 12-6 伦纳德–琼斯仅作有效浅阱近似。"
+        },
+        {
+          "name": "氪",
+          "formula": "Kr",
+          "sigma_nm": 0.3633,
+          "epsilon_kJmol": 1.3636,
+          "epsilon_over_kB_K": 164,
+          "charge_e": 0,
+          "mass_amu": 83.798,
+          "forcefield": "经典 12-6 伦纳德–琼斯",
+          "source": "氪的经典伦纳德–琼斯参数表；Web 检索汇总的标准稀有气体伦纳德–琼斯表（sigma_Kr≈3.633 Å，epsilon/k_B≈164 K，来自粘性与第二维里数据）；Chegg 复现的 HBC 集另列sigma_Kr=3.38 Å 等变体，但 3.633 Å / 164 K 为通行 HBC 氪参数。对照 Rutkai 等 2017 Mol. Phys. 115:1104（Kr 12-6 拟合）与 ACS JPCL 2022 关于氪与伦纳德–琼斯势局限的讨论。质量 = IUPAC 83.798 amu。",
+          "fidelity": "quantitative",
+          "notes": "玻尔兹曼常数校验：164.0 K × 0.0083145 = 1.36358 kJ/mol。sigma=0.3633 nm。原子较重，核量子效应可忽略，两体 12-6 伦纳德–琼斯对体相氪是可靠的定量拟合（有效两体图景成立）。注：2022 年 JPCL 指出真实氪对势排斥壁偏离 r^-12，但在约化伦纳德–琼斯分子动力学中，标准 12-6 参数对仍是公认的定量数据集。"
+        },
+        {
+          "name": "氙",
+          "formula": "Xe",
+          "sigma_nm": 0.41,
+          "epsilon_kJmol": 1.904,
+          "epsilon_over_kB_K": 229,
+          "charge_e": 0,
+          "mass_amu": 131.293,
+          "forcefield": "经典 12-6 伦纳德–琼斯",
+          "source": "氙的经典伦纳德–琼斯参数表；Chemistry LibreTexts 伦纳德–琼斯模块直接给出氙：epsilon=1.77 kJ/mol，sigma=4.10 Å（算例）。标准 HBC 稀有气体表给出 sigma_Xe=4.100 Å（Ne…Xe 系列最大）与 epsilon/k_B≈229 K。对照 Rutkai 等 2017 Mol. Phys. 115:1104（Xe 12-6 拟合）。质量 = IUPAC 131.293 amu。",
+          "fidelity": "quantitative",
+          "notes": "sigma=0.4100 nm 由两个独立来源确认（LibreTexts + HBC 表）。epsilon 在不同来源间有散布：LibreTexts 1.77 kJ/mol（约 212.9 K），粘性拟合 HBC 表约 229 K（1.904 kJ/mol）；本库以 HBC 粘性拟合为主。"
+        }
+      ]
+    },
+    {
+      "key": "water-models",
+      "label": "水模型（多位点 伦纳德–琼斯 + 电荷）",
+      "crossCheck": "水模型 LJ 与电荷数值经两类独立权威来源互校，一致。TIP3P(O 位点)：σ=3.1507 Å=0.31507 nm，ε=0.1521 kcal/mol；来源 = Jorgensen et al. J. Chem. Phys. 79, 926 (1983) 原始论文，并经 LAMMPS 官方文档 https://docs.lammps.org/Howto_tip3p.html 复核（qO=-0.834, qH=+0.417, r_OH=0.9572 Å, 角=104.52°）。单位换算自洽：0.1521 kcal/mol × 4.184 = 0.63638 kJ/mol；÷k_B(0.0083145)=76.54 K。SPC/E(O 位点)：σ=3.16557 Å=0.316557 nm，ε=0.650194 kJ/mol；来源 = Berendsen, Grigera, Straatsma J. Phys. Chem. 91, 6269 (1987) 原始论文，经 SklogWiki SPC/E 页与 LAMMPS https://docs.lammps.org/Howto_spc.html 两处独立复核（数值精确吻合）；ε÷k_B=78.20 K。注意 LAMMPS 将 SPC/E 与 SPC 的 ε 同列为 0.1553 kcal/mol(=0.64978 kJ/mol)，与 Berendsen 精确值 0.650194 kJ/mol 仅约 0.06% 舍入差，本表对 SPC/E 采用精确值。SPC(O 位点)与 SPC/E 共享同一 LJ(σ≈0.3166 nm)，仅电荷不同(qO=-0.82/qH=+0.41 对比 SPC/E 的 -0.8476/+0.4238)，来源 = Berendsen et al. 1981 + LAMMPS。三个模型电荷均严格中性(qO+2qH=0)。所有 H 位点在原始 Jorgensen/Berendsen 参数化中无 LJ(σ=ε=0)，仅带点电荷——已单列以防误用单球近似。单球粗粒化水(mW/单 bead)标 qualitative：mW 是三体 Stillinger-Weber 模型(Molinero & Moore 2009)，无法用两体 LJ 表达，强行两体单球会丢失氢键方向性→退化为类氩简单液体。",
+      "materials": [
+        {
+          "name": "TIP3P 氧位点",
+          "formula": "H2O (O site)",
+          "sigma_nm": 0.31507,
+          "epsilon_kJmol": 0.63638,
+          "epsilon_over_kB_K": 76.54,
+          "charge_e": -0.834,
+          "mass_amu": 15.9994,
+          "forcefield": "TIP3P 水模型（Jorgensen 等，1983）",
+          "source": "TIP3P 水模型氧位点；Jorgensen, Chandrasekhar, Madey, Impey, Klein, J. Chem. Phys. 79, 926 (1983), DOI 10.1063/1.445869；数值经 LAMMPS 文档 https://docs.lammps.org/Howto_tip3p.html 复核（O: eps=0.1521 kcal/mol，sigma=3.1507 Å，qO=-0.834，qH=0.417，r_OH=0.9572 Å，角=104.52°）。",
+          "fidelity": "quantitative",
+          "notes": "三点刚性水模型。仅氧带伦纳德–琼斯位点与点电荷；两氢仅带点电荷（无 LJ）。"
+        },
+        {
+          "name": "TIP3P 氢位点",
+          "formula": "H2O (H site)",
+          "sigma_nm": 0,
+          "epsilon_kJmol": 0,
+          "epsilon_over_kB_K": 0,
+          "charge_e": 0.417,
+          "mass_amu": 1.008,
+          "forcefield": "TIP3P 水模型（Jorgensen 等，1983）",
+          "source": "TIP3P 水模型氢位点；Jorgensen et al., J. Chem. Phys. 79, 926 (1983); LAMMPS https://docs.lammps.org/Howto_tip3p.html",
+          "fidelity": "quantitative",
+          "notes": "原版 TIP3P 中氢位点无伦纳德–琼斯相互作用（sigma=eps=0），仅携带 +0.417 e 点电荷。单独列出，以免被误当成单球伦纳德–琼斯缩减。注：CHARMM 修改版 TIP3P 给氢加了极小 LJ，属另一套参数，非 1983 年 Jorgensen 原版。"
+        },
+        {
+          "name": "SPC/E 氧位点",
+          "formula": "H2O (O site)",
+          "sigma_nm": 0.316557,
+          "epsilon_kJmol": 0.650194,
+          "epsilon_over_kB_K": 78.2,
+          "charge_e": -0.8476,
+          "mass_amu": 15.9994,
+          "forcefield": "SPC/E 扩展点电荷水（Berendsen 等，1987）",
+          "source": "SPC/E 水模型氧位点；Berendsen, Grigera, Straatsma, J. Phys. Chem. 91, 6269-6271 (1987), DOI 10.1021/j100308a038；经 SklogWiki SPC/E 页（sigma=3.16557 Å，eps=0.650194 kJ/mol）与 LAMMPS https://docs.lammps.org/Howto_spc.html 复核（qO=-0.8476，qH=0.4238，r_OH=1.0 Å，角=109.47°）。",
+          "fidelity": "quantitative",
+          "notes": "三点刚性水模型，仅氧上有伦纳德–琼斯位点。eps=0.650194 kJ/mol ÷ k_B(0.0083145)=78.20 K（LAMMPS 舍入为 0.1553 kcal/mol = 0.64978 kJ/mol；此处采用 Berendsen 精确值 0.650194 kJ/mol）。几何：r(O-H)=1.0 Å（0.1 nm），键角=109.47°（四面体）。电荷：-0.8476 + 2×0.4238 = 0。SPC/E 与 SPC 仅电荷不同（更大以模拟自极化），LJ 相同。两体 LJ+库仑 → 定量。"
+        },
+        {
+          "name": "SPC/E 氢位点",
+          "formula": "H2O (H site)",
+          "sigma_nm": 0,
+          "epsilon_kJmol": 0,
+          "epsilon_over_kB_K": 0,
+          "charge_e": 0.4238,
+          "mass_amu": 1.008,
+          "forcefield": "SPC/E 扩展点电荷水（Berendsen 等，1987）",
+          "source": "SPC/E 水模型氢位点；Berendsen, Grigera, Straatsma, J. Phys. Chem. 91, 6269 (1987); LAMMPS https://docs.lammps.org/Howto_spc.html",
+          "fidelity": "quantitative",
+          "notes": "氢位点无 LJ（sigma=eps=0），仅携带 +0.4238 e 点电荷。"
+        },
+        {
+          "name": "SPC 氧位点",
+          "formula": "H2O (O site)",
+          "sigma_nm": 0.3166,
+          "epsilon_kJmol": 0.650194,
+          "epsilon_over_kB_K": 78.2,
+          "charge_e": -0.82,
+          "mass_amu": 15.9994,
+          "forcefield": "SPC 简单点电荷水（Berendsen 等，1981）",
+          "source": "SPC 水模型氧位点；Berendsen, Postma, van Gunsteren, Hermans, in Intermolecular Forces, Reidel (1981), p.331；LJ 亦见于 Berendsen 等 J. Phys. Chem. 91, 6269 (1987) 与 SPC/E 并列；经 LAMMPS https://docs.lammps.org/Howto_spc.html 复核（eps=0.1553 kcal/mol，sigma=3.166 Å，qO=-0.82，qH=0.41，r_OH=1.0 Å，角=109.47°）。",
+          "fidelity": "quantitative",
+          "notes": "三点刚性水模型，仅氧上有伦纳德–琼斯位点。与 SPC/E 共用同一 LJ（sigma≈0.3166 nm，eps≈0.6502 kJ/mol；LAMMPS 舍入为 0.1553 kcal/mol=0.64978 kJ/mol）。与 SPC/E 仅电荷不同：qO=-0.82，qH=+0.41（对比 -0.8476/+0.4238）。几何：r(O-H)=1.0 Å，键角=109.47°。-0.82 + 2×0.41 = 0。eps/k_B=78.2 K。两体 LJ+库仑 → 定量。"
+        },
+        {
+          "name": "SPC 氢位点",
+          "formula": "H2O (H site)",
+          "sigma_nm": 0,
+          "epsilon_kJmol": 0,
+          "epsilon_over_kB_K": 0,
+          "charge_e": 0.41,
+          "mass_amu": 1.008,
+          "forcefield": "SPC 简单点电荷水（Berendsen 等，1981）",
+          "source": "SPC 水模型氢位点；Berendsen et al. (1981); LAMMPS https://docs.lammps.org/Howto_spc.html",
+          "fidelity": "quantitative",
+          "notes": "氢位点无 LJ，仅携带 +0.41 e 点电荷。"
+        },
+        {
+          "name": "粗粒化水（单球参考）",
+          "formula": "H2O (1-bead)",
+          "sigma_nm": 0.31,
+          "epsilon_kJmol": 0.65,
+          "epsilon_over_kB_K": 78.2,
+          "charge_e": 0,
+          "mass_amu": 18.015,
+          "forcefield": "粗粒化单点近似（单球伦纳德–琼斯）",
+          "source": "粗粒化水单球参考；Molinero & Moore, J. Phys. Chem. B 113, 4008 (2009)（mW 为三体 Stillinger–Weber 模型，非两体伦纳德–琼斯）；仅用于标示把水压成单 LJ 球时的失真。",
+          "fidelity": "qualitative",
+          "notes": "失真警告：真实水不是单个中性 LJ 球。把氧位点 LJ 压成一个粗粒化珠会丢失氢键方向性与电荷结构；仅可作定性单原子代理。"
+        }
+      ]
+    },
+    {
+      "key": "ions",
+      "label": "离子（郑–奇瑟姆 2008）",
+      "crossCheck": "主源 = Joung & Cheatham 2008（J. Phys. Chem. B 112:9020-9041，DOI 10.1021/jp8001614，全文 PMC2652252），一价离子力场的事实标准。ACS/PMC HTML 未以纯文本给出 Table 5，数值取自规范的 AMBER 机读发布：frcmod.ionsjc_tip3p 与 frcmod.ionsjc_spce（choderalab/ambermini on GitHub），编码已发表的 Rmin/2（Å）与 epsilon（kcal/mol）。TIP3P 集：Na+ Rmin/2=1.369 eps=0.0874393；K+ 1.705/0.1936829；Cl- 2.513/0.0355910。SPC/E 集：Na+ 1.212/0.3526418；K+ 1.593/0.4297054；Cl- 2.711/0.0127850。上述 AMBER 值与文献引用的郑–奇瑟姆数一致。单位换算在 Python 中显式完成并双校：sigma_nm=2×(Rmin/2)/2^(1/6)/10；eps_kJmol=eps_kcal×4.184；eps/k_B=eps_kJmol/0.0083145。两种 eps 表示由构造内洽（如 Na+/TIP3P 0.36585 kJ/mol ÷ 0.0083145 = 44.00 K）。重要一致性提示：离子 LJ 参数不可跨水模型迁移——郑–奇瑟姆对 TIP3P、SPC/E、TIP4P-Ew 分别发表集合；本表以 TIP3P 集为主材料值，SPC/E 集在各 notes/crossCheck 中作对照（eps 可差约 5 倍，sigma 约 10%）。遗留对照 Åqvist 1990（J. Phys. Chem. 94:8021）给出更大半径、远更浅阱，已知过束缚/易盐结晶，正是被郑–奇瑟姆取代的原因；仅作分歧注记，不取为主。",
+      "materials": [
+        {
+          "name": "钠离子",
+          "formula": "Na+",
+          "sigma_nm": 0.24393,
+          "epsilon_kJmol": 0.36585,
+          "epsilon_over_kB_K": 44,
+          "charge_e": 1,
+          "mass_amu": 22.99,
+          "forcefield": "郑–奇瑟姆 一价离子参数（TIP3P 水系）",
+          "source": "郑–奇瑟姆一价离子（钠）；Joung & Cheatham, J. Phys. Chem. B 2008, 112, 9020-9041, DOI 10.1021/jp8001614 (PMC2652252). 机读数值：AMBER frcmod.ionsjc_tip3p (choderalab/ambermini): Na+ Rmin/2=1.369 Å, eps=0.0874393 kcal/mol.",
+          "fidelity": "quantitative",
+          "notes": "二体 12-6 伦纳德–琼斯。由 AMBER Rmin/2 换算：sigma=2×(Rmin/2)/2^(1/6)=2×1.369/1.12246 Å=0.24393 nm；eps=0.0874393 kcal/mol×4.184=0.36585 kJ/mol；eps/k_B=0.36585/0.0083145=44.00 K。参数依赖水模型：本表为 TIP3P 调参集。SPC/E 调参钠差异很大（sigma=0.21595 nm，eps=1.47545 kJ/mol，eps/k_B=177.5 K，来自 frcmod.ionsjc_spce，Rmin/2=1.212 Å，eps=0.3526418 kcal/mol）。勿跨水模型混用。"
+        },
+        {
+          "name": "钾离子",
+          "formula": "K+",
+          "sigma_nm": 0.3038,
+          "epsilon_kJmol": 0.81037,
+          "epsilon_over_kB_K": 97.46,
+          "charge_e": 1,
+          "mass_amu": 39.098,
+          "forcefield": "郑–奇瑟姆 一价离子参数（TIP3P 水系）",
+          "source": "郑–奇瑟姆一价离子（钾）；Joung & Cheatham, J. Phys. Chem. B 2008, 112, 9020-9041, DOI 10.1021/jp8001614. AMBER frcmod.ionsjc_tip3p: K+ Rmin/2=1.705 Å, eps=0.1936829 kcal/mol.",
+          "fidelity": "quantitative",
+          "notes": "二体 12-6 伦纳德–琼斯。sigma=2×1.705/2^(1/6) Å=0.30380 nm；eps=0.1936829×4.184=0.81037 kJ/mol；eps/k_B=97.46 K。SPC/E 调参对照（frcmod.ionsjc_spce）：Rmin/2=1.593 Å，eps=0.4297054 kcal/mol → sigma=0.28384 nm，eps=1.79789 kJ/mol，eps/k_B=216.2 K。参数依赖水模型。"
+        },
+        {
+          "name": "氯离子",
+          "formula": "Cl-",
+          "sigma_nm": 0.44777,
+          "epsilon_kJmol": 0.14891,
+          "epsilon_over_kB_K": 17.91,
+          "charge_e": -1,
+          "mass_amu": 35.453,
+          "forcefield": "郑–奇瑟姆 一价离子参数（TIP3P 水系）",
+          "source": "郑–奇瑟姆一价离子（氯）；Joung & Cheatham, J. Phys. Chem. B 2008, 112, 9020-9041, DOI 10.1021/jp8001614. AMBER frcmod.ionsjc_tip3p: Cl- Rmin/2=2.513 Å, eps=0.0355910 kcal/mol.",
+          "fidelity": "quantitative",
+          "notes": "二体 12-6 伦纳德–琼斯。sigma=2×2.513/2^(1/6) Å=0.44777 nm；eps=0.0355910×4.184=0.14891 kJ/mol；eps/k_B=17.91 K。大 sigma / 小 eps 是软、可极化阴离子的典型特征。SPC/E 调参对照（frcmod.ionsjc_spce）：Rmin/2=2.711 Å，eps=0.0127850 kcal/mol → sigma=0.48305 nm，eps=0.05349 kJ/mol，eps/k_B=6.43 K。参数依赖水模型。"
+        }
+      ]
+    },
+    {
+      "key": "organic-polymer",
+      "label": "有机/聚合物（OPLS全原子 / 粗粒化）",
+      "crossCheck": "每个 OPLS 全原子原子类型均经两套独立镜像、不同单位制互校，单位换算精确无舍入漂移：(1) Jorgensen OPLS 全原子 oplsaa.prm（BrianOn99/oplsaa-moltemplate），sigma 为 Å、epsilon 为 kcal/mol；(2) leelasd/OPLS-AAM_for_Gromacs ffnonbonded.itp，sigma 为 nm、epsilon 为 kJ/mol。一致核验：芳环碳 — 3.5500 Å == 0.355 nm，0.0700 kcal×4.184 = 0.29288 kJ/mol == 2.92880e-01（精确）。芳环氢 — 2.4200 Å == 0.242 nm，0.0300 kcal×4.184 = 0.12552 kJ/mol == 1.25520e-01（精确）。砜/磺酸硫（SY 434/opls_474）— 3.5500 Å == 0.355 nm，0.2500 kcal×4.184 = 1.046 kJ/mol（精确）。砜/磺酸氧（OY 435/opls_475）— 2.9600 Å == 0.296 nm，0.1700 kcal×4.184 = 0.71128 kJ/mol（精确）。噻吩硫（opls_633）取自 itp（0.355 nm，1.046 kJ/mol = 0.250 kcal/mol）；谱系 Watkins & Jorgensen 2001。epsilon/k_B 以 k_B=0.0083145 kJ/mol/K 计算：CA 35.23 K；HA 15.10 K；S 125.8 K；OY 85.55 K；CM(乙烯基) 38.25 K。保真度：噻吩/EDOT 环 C、H、S 与苯乙烯乙烯基碳为真实两体 OPLS 全原子 LJ 数据（quantitative）。PSS 磺酸 S/O 标 qualitative，因 OPLS 全原子无专用 -SO3(-) 类型——砜 SY/OY 为通行借用代理（LJ 可迁移，电荷须为阴离子重推导/电荷平衡）。Martini 3 珠标 qualitative，epsilon 故意为 0/未知：Martini 能量来自离散极性等级相互作用矩阵（约 2–5.6 kJ/mol），不宜捏造为单一 LJ 阱；仅断言 sigma 珠径（0.47/0.41/0.34 nm），出自 Souza 等 Nat. Methods 2021。",
+      "materials": [
+        {
+          "name": "芳环碳",
+          "formula": "C (aromatic, sp2)",
+          "sigma_nm": 0.355,
+          "epsilon_kJmol": 0.29288,
+          "epsilon_over_kB_K": 35.23,
+          "charge_e": -0.115,
+          "mass_amu": 12.011,
+          "forcefield": "OPLS全原子 芳环碳类型",
+          "source": "OPLS全原子 芳环碳；oplsaa.prm (Jorgensen OPLS全原子, BrianOn99/oplsaa-moltemplate mirror): `vdw 90  3.5500 0.0700`（埃，千卡/摩尔）; 交叉确认于 leelasd/OPLS全原子M_for_Gromacs ffnonbonded.itp `opls_145 CA 6 12.011 -0.115 A 3.55000e-01 2.92880e-01` (nm, kJ/mol)",
+          "fidelity": "quantitative",
+          "notes": "这是 OPLS 全原子芳环碳规范类型，用于苯/苯乙烯环，并作为噻吩/EDOT 环碳的基础芳碳类型。0.0700 kcal×4.184=0.29288 kJ/mol。电荷 -0.115 为苯 CA 值；在 EDOT/PSS 中各原子电荷不同（与 S/O 相连的环碳取推导分电荷），故电荷随环环境变化。LJ（sigma,epsilon）稳健，芳环碳类型共用（90/145/147/221 均为 3.55 Å / 0.0700 kcal）。"
+        },
+        {
+          "name": "芳环氢",
+          "formula": "H (aromatic C-H)",
+          "sigma_nm": 0.242,
+          "epsilon_kJmol": 0.12552,
+          "epsilon_over_kB_K": 15.1,
+          "charge_e": 0.115,
+          "mass_amu": 1.008,
+          "forcefield": "OPLS全原子 芳环氢类型",
+          "source": "OPLS全原子 芳环氢；oplsaa.prm: `vdw 91 2.4200 0.0300`（埃，千卡/摩尔）; 交叉确认于 ffnonbonded.itp `opls_146 HA 1 1.008 0.115 A 2.42000e-01 1.25520e-01` (nm, kJ/mol)",
+          "fidelity": "quantitative",
+          "notes": "0.0300 kcal×4.184=0.12552 kJ/mol。联合原子粗粒化模型不显式含 H；此处保留供全原子 PEDOT/PSS 风格芳环使用。"
+        },
+        {
+          "name": "噻吩环硫",
+          "formula": "S (aromatic, in thiophene/EDOT ring)",
+          "sigma_nm": 0.355,
+          "epsilon_kJmol": 1.046,
+          "epsilon_over_kB_K": 125.8,
+          "charge_e": -0.03,
+          "mass_amu": 32.06,
+          "forcefield": "OPLS全原子 芳杂环硫类型",
+          "source": "OPLS全原子 噻吩环硫；leelasd/OPLS全原子M_for_Gromacs ffnonbonded.itp: `opls_633 S 16 32.06 -0.030 A 3.55000e-01 1.04600e+00` (nm, kJ/mol)。底层参数化：E.M.Watkins, W.L.Jorgensen, J.Phys.Chem.A 2001, 105, 4118（OPLS 全原子芳杂环，含噻吩）。",
+          "fidelity": "quantitative",
+          "notes": "1.046 kJ/mol = 0.250 kcal/mol；sigma 3.55 Å。这是合适的 OPLS 全原子噻吩环硫类型，可直接用于 PEDOT 噻吩硫。"
+        },
+        {
+          "name": "磺酸基硫",
+          "formula": "S（R-SO3- 中，经 OPLS 砜 SY 代理）",
+          "sigma_nm": 0.355,
+          "epsilon_kJmol": 1.046,
+          "epsilon_over_kB_K": 125.8,
+          "charge_e": 1.48,
+          "mass_amu": 32.06,
+          "forcefield": "OPLS全原子 砜/磺酸硫类型（PSS 代理）",
+          "source": "OPLS全原子 磺酸硫代理；oplsaa.prm: `vdw 434 3.5500 0.2500`（埃，千卡/摩尔）; 交叉确认于 ffnonbonded.itp `opls_474 SY 16 32.06 1.480 A 3.55000e-01 1.04600e+00` (nm, kJ/mol)",
+          "fidelity": "qualitative",
+          "notes": "失真说明：OPLS 全原子无专用磺酸根原子类型；砜硫 SY（0.2500 kcal=1.046 kJ/mol，3.55 Å）是 PSS/SDS 类模型中磺酸硫普遍借用的 LJ。LJ 尺寸/阱深合理，但形式电荷（此处 +1.48）与成键几何来自砜而非真磺酸根；磺酸根用 3 个等价氧并重分配电荷。LJ 可原样使用，但 SO3- 电荷须重新推导。0.2500 kcal×4.184=1.046 kJ/mol（与噻吩硫 epsilon 数值巧合相同，因 OPLS 硫尺寸设定）。"
+        },
+        {
+          "name": "磺酸基氧",
+          "formula": "O（R-SO3- 中，经 OPLS 砜 OY 代理）",
+          "sigma_nm": 0.296,
+          "epsilon_kJmol": 0.71128,
+          "epsilon_over_kB_K": 85.55,
+          "charge_e": -0.68,
+          "mass_amu": 15.9994,
+          "forcefield": "OPLS全原子 砜/磺酸氧类型（PSS 代理）",
+          "source": "OPLS全原子 磺酸氧代理；oplsaa.prm: `vdw 435 2.9600 0.1700`（埃，千卡/摩尔）; 交叉确认于 ffnonbonded.itp `opls_475 OY 8 15.999 -0.680 A 2.96000e-01 7.11280e-01` (nm, kJ/mol)",
+          "fidelity": "qualitative",
+          "notes": "失真说明：与磺酸硫代理相同——借用砜氧类型代表磺酸氧。0.1700 kcal×4.184=0.71128 kJ/mol。LJ（2.96 Å，0.17 kcal）广泛用于 SO3- 氧；每个氧 -0.68 e 是砜的分电荷（磺酸根将净 -1 分到 3 个氧上，常见 PSS 模型约 -0.65 至 -0.72 e/氧，电荷近似可迁移，但应对阴离子做电荷平衡）。"
+        },
+        {
+          "name": "苯乙烯骨架碳",
+          "formula": "C（烯烃 sp2，聚合前苯乙烯 =CH-/=CH2；聚合后为骨架）",
+          "sigma_nm": 0.355,
+          "epsilon_kJmol": 0.317984,
+          "epsilon_over_kB_K": 38.25,
+          "charge_e": -0.115,
+          "mass_amu": 12.011,
+          "forcefield": "OPLS全原子 烯烃骨架碳类型",
+          "source": "OPLS全原子 烯烃骨架碳；oplsaa.prm: `vdw 86 3.5500 0.0760`, `vdw 87 3.5500 0.0760`, `vdw 88 3.5500 0.0760`（埃，千卡/摩尔）. Jorgensen OPLS 全原子烯烃（Jorgensen, Maxwell, Tirado-Rives, JACS 1996, 118, 11225）",
+          "fidelity": "quantitative",
+          "notes": "0.0760 kcal×4.184=0.317984 kJ/mol。与 PSS 的苯乙烯单元（乙烯基/聚合物骨架）相关。"
+        },
+        {
+          "name": "Martini 3 常规珠",
+          "formula": "CG bead (~4 heavy atoms)",
+          "sigma_nm": 0.47,
+          "epsilon_kJmol": 0,
+          "epsilon_over_kB_K": 0,
+          "charge_e": 0,
+          "mass_amu": 72,
+          "forcefield": "Martini 3 粗粒化常规珠",
+          "source": "Martini 3 粗粒化常规珠；Souza 等，Nat. Methods 18, 382 (2021)，https://www.nature.com/articles/s41592-021-01098-3；珠径亦见 cgmartini.nl。PEDOT:PSS 粗粒化应用：Modarresi 等，Chem. Mater. 2023（acs.chemmater.3c00873）。",
+          "fidelity": "qualitative",
+          "notes": "失真说明：此处 epsilon 留 0/未知，因 Martini 的 epsilon 是离散相互作用等级（I–V），并非经典 LJ 连续阱深；实际非键等级请用 Martini 表。"
+        }
+      ]
+    }
+  ]
+}

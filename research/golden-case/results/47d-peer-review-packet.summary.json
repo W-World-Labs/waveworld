@@ -1,0 +1,105 @@
+{
+  "schema": "waveworld.golden-case-v2-peer-review-packet/v1",
+  "status": "draft-peer-review-packet-only",
+  "registered": false,
+  "formalReviewStillRequired": true,
+  "v1GateRemainsFailed": true,
+  "note": "Draft-only peer-review packet for independent numerical review of preregistration-v2.draft.json. Re-run: npm run golden:draft:peer-packet | golden:draft:check-peer-packet. Does not register v2. Does not close formal #47.",
+  "caseId": "mb-pbs-oxygen-transient-2026-v2",
+  "artifacts": {
+    "draftPath": "research/golden-case/preregistration-v2.draft.json",
+    "v1PreregistrationPath": "research/golden-case/preregistration.json",
+    "frozenEvaluationSummaryPath": "research/golden-case/results/47c-draft-contract-evaluation.summary.json",
+    "attributionReport": "results/47a-precision-attribution-first-cut.md",
+    "rationaleDoc": "results/47b-numerical-rationale.md",
+    "draftEvaluationMarkdown": "results/47c-draft-contract-evaluation.md"
+  },
+  "artifactFileDigests": {
+    "draftPath": "486f263f47f1b6b94d4e552b12e337c0c0881e8345d310d9134f12355ed5b36a",
+    "v1PreregistrationPath": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81",
+    "frozenEvaluationSummaryPath": "e1fe44d5875b4b1fddb470b69d6824724282f89227775de52bad41822cb74c1a",
+    "attributionReport": "4a8aef03e27aa5d1b5f3d4a26a9bda8cc5cc48e1d4f23a0a8eca89b077f3ffd9",
+    "rationaleDoc": "6a44110531975a5d8b0e3d0dfb9010ad1a37f2dd3fa4389d53e8164a1f6c79cf",
+    "draftEvaluationMarkdown": "bffb1d77281665f73847a4ee2936110e8f9f1e3728f3e23de417fc8690c69864"
+  },
+  "digests": {
+    "v1PreregistrationSha256": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81",
+    "draftPreregistrationSha256": "486f263f47f1b6b94d4e552b12e337c0c0881e8345d310d9134f12355ed5b36a",
+    "draftPinsV1": true
+  },
+  "contractBounds": {
+    "maximumAbsoluteStateError": 4.76837158203125e-7,
+    "relativeErrorDenominatorFloor": 0.0001,
+    "maximumFlooredRelativeStateError": 0.00476837158203125,
+    "maximumCalibrationRmseDelta": 0.00001,
+    "refinementFactors": [
+      1,
+      2,
+      4
+    ]
+  },
+  "evaluationSummary": {
+    "allPassed": true,
+    "failedIds": [],
+    "scientificConclusionStable": true,
+    "implementationDefectSuspected": false,
+    "v1GateRemainsFailed": true
+  },
+  "freezeRequirements": [
+    "Review the numerical rationale independently (dimensions, ULP derivation, step accumulation).",
+    "Add the draft and diagnostic report digests to the versioned manifest.",
+    "Assign a registration timestamp before the first v2 formal run.",
+    "Never modify or reinterpret the v1 preregistration or its failed CPU/GPU result.",
+    "Confirm immutablePriorPreregistrationSha256 still matches research/golden-case/preregistration.json."
+  ],
+  "separationFromV1": {
+    "v1CpuGpuAbsoluteTolerance": 1e-9,
+    "v1CpuGpuRelativeTolerance": 1e-7,
+    "whyV1Failed": "v1 compared GPU f32 trajectories to CPU f64 with tolerances tighter than binary32 accumulation over hundreds of steps; failure is expected under correct f32 RK4 and is preserved as a frozen negative result.",
+    "v2DoesNotRescindV1": true
+  },
+  "reviewerChecklist": [
+    {
+      "id": "freeze-requirement-1",
+      "required": true,
+      "done": false,
+      "prompt": "Review the numerical rationale independently (dimensions, ULP derivation, step accumulation)."
+    },
+    {
+      "id": "freeze-requirement-2",
+      "required": true,
+      "done": false,
+      "prompt": "Add the draft and diagnostic report digests to the versioned manifest."
+    },
+    {
+      "id": "freeze-requirement-3",
+      "required": true,
+      "done": false,
+      "prompt": "Assign a registration timestamp before the first v2 formal run."
+    },
+    {
+      "id": "freeze-requirement-4",
+      "required": true,
+      "done": false,
+      "prompt": "Never modify or reinterpret the v1 preregistration or its failed CPU/GPU result."
+    },
+    {
+      "id": "freeze-requirement-5",
+      "required": true,
+      "done": false,
+      "prompt": "Confirm immutablePriorPreregistrationSha256 still matches research/golden-case/preregistration.json."
+    },
+    {
+      "id": "confirm-ci-draft-eval-green",
+      "required": true,
+      "done": false,
+      "prompt": "Confirm npm run golden:draft:check and npm run test:golden are green on the reviewed commit (draft tools only)."
+    },
+    {
+      "id": "do-not-auto-register",
+      "required": true,
+      "done": false,
+      "prompt": "Do not flip draft.status away from draft-not-registered or claim formal v2 registration without human attestation + manifest digests + timestamp."
+    }
+  ]
+}

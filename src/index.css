@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-canvas text-slate-200 font-sans antialiased leading-relaxed;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(1200px 600px at 15% -10%, rgba(124, 92, 255, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(58, 214, 255, 0.12), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* 键盘焦点环：深色 canvas 上始终可见（WCAG 2.4.7） */
+:focus-visible {
+  outline: 2px solid #3ad6ff;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* 标题平衡换行、段落优雅断行 */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+@layer components {
+  .site-header {
+    @apply sticky top-0 z-30 border-b border-edge bg-canvas/95 backdrop-blur;
+  }
+  .card {
+    @apply rounded-2xl border border-edge bg-panel/70 backdrop-blur-sm;
+  }
+  .btn {
+    @apply min-h-11 rounded-lg px-3 py-2 text-sm font-medium transition-colors;
+  }
+  /* 居中工具栏：仿真/交互页控制条统一风格 — 主交互层 */
+  .toolbar {
+    @apply mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-2
+           rounded-xl border border-edge bg-panel/70 px-4 py-2.5 text-sm backdrop-blur-sm
+           shadow-lg shadow-black/20;
+  }
+  /* 居中画布舞台 — 主内容层 */
+  .stage {
+    @apply mx-auto block rounded-xl border border-edge shadow-2xl shadow-black/40;
+  }
+  /* 居中、限宽、可读的说明文字块 — 次要层 */
+  .note {
+    @apply mx-auto mt-4 max-w-3xl text-left text-sm leading-relaxed text-slate-400;
+  }
+  /* 页内次要语境（方法/路径图）压低对比，主舞台优先 */
+  .page-secondary,
+  .page-context {
+    @apply opacity-95;
+  }
+  [data-page-surface='simulation'] .stage {
+    @apply ring-1 ring-white/5;
+  }
+  /* 统一滑块外观 */
+  input[type='range'] {
+    @apply h-6 cursor-pointer appearance-none rounded-full bg-transparent;
+    background-image: linear-gradient(#334155, #334155);
+    background-position: center;
+    background-size: 100% 6px;
+    background-repeat: no-repeat;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    @apply h-5 w-5 appearance-none rounded-full bg-cyan-300;
+    -webkit-appearance: none;
+  }
+  input[type='range']::-moz-range-thumb {
+    @apply h-5 w-5 rounded-full border-0 bg-cyan-300;
+  }
+  @media (pointer: coarse) {
+    input[type='range'] { min-height: 44px; }
+  }
+}
+
+@layer utilities {
+  /* 仪表测量网格底纹（枢纽/着陆页氛围） */
+  .hub-grid {
+    background-image:
+      linear-gradient(rgba(124, 140, 180, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 140, 180, 0.045) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+  /* 胶片颗粒叠层：放在绝对定位元素上 + 低不透明度 + soft-light 混合 */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* 等宽仪表标签（slate-400 保证小字号也过 WCAG AA） */
+  .readout {
+    @apply font-mono text-[11px] uppercase tracking-[0.22em] text-slate-400;
+  }
+  /* 渐入：着陆页编排式入场 */
+  @keyframes hub-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .rise {
+    animation: hub-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rise { animation: none; }
+  }
+}

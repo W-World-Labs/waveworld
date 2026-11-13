@@ -1,0 +1,160 @@
+import type { ApplicationProfile } from '../types'
+
+export const app_squid_magnetometer: ApplicationProfile = {
+    id: 'app-squid-magnetometer',
+    name: '超导量子干涉磁强计',
+    nameEn: 'SQUID magnetometer',
+    icon: '🧊🧲',
+    category: 'sensing',
+    blurb:
+      '外磁场电磁能 → 超导环/约瑟夫森结干涉（磁通量子 Φ0）→ 电压/电流电读出：用超导量子干涉、约瑟夫森与伦敦穿透读一条 电磁→电能 的超灵敏磁传感档案。',
+    goal: { from: 'electromagnetic', to: 'electric' },
+    familyId: 'family-superconducting',
+    familyRole: '超导量子干涉磁强计 · 磁通量子传感',
+    assemblyNote:
+      '相对超导腔/高 Q(超导腔应用) 与腔 量子电动力学 比特(超导量子比特腔应用)：同族约瑟夫森结、伦敦穿透与超导临界电流，但本档案目标是外场磁通→电读出（传感），而非腔储能或量子比特操控。磁通量子 Φ0 与 n=Φ/Φ0 是核心计量原子。',
+    maturity: '商用（生物磁/地磁/材料）/ 量子计量',
+    products: [
+      { vendor: 'Quantum Design', model: 'MPMS 超导量子干涉 VSM', spec: '材料磁矩测量' },
+      { vendor: 'Magnicon / STAR Cryoelectronics', model: 'dc/rf 超导量子干涉 传感器', spec: 'fT 级磁场' },
+      { vendor: 'MEG 系统', model: '多通道 超导量子干涉 头盔', spec: '脑磁图' },
+    ],
+    levels: [
+      {
+        id: 'sqm-system',
+        name: '系统层 · 超导量子干涉磁强计链',
+        nameEn: 'System: SQUID magnetometer chain',
+        summary:
+          '外磁场耦合拾取环 → 超导量子干涉（Φ0）→ 偏置/反馈电路电读出。目标 电磁→电能；约瑟夫森结、伦敦屏蔽与磁通量子把灵敏度与动态范围拆开。',
+        energyNodeIds: [
+          'electromagnetic',
+          'electric',
+          'el-current',
+          'thermal',
+        ],
+        edgeIds: [
+          'electromagnetic-to-electric-squid-flux',
+          'electromagnetic-to-mechanical-kittel-fmr',
+          'electromagnetic-to-electric-meissner-expulsion',
+          'electric-to-electromagnetic-josephson-ac',
+          'electric-to-electromagnetic-london-sc',
+          'electric-to-electromagnetic-coil-nearfield',
+          'el-current-to-electromagnetic-ampere-biot',
+          'electric-to-electric-critical-current-limit',
+          'electric-to-thermal-joule',
+        ],
+        methodIds: [
+          'method-squid',
+          'method-algo-squid-flux',
+          'method-josephson',
+          'method-algo-josephson-freq',
+          'method-london-penetration',
+          'method-algo-london-lambda',
+          'method-critical-current',
+          'method-algo-ic-josephson',
+          'method-path-efficiency',
+          'method-snr',
+        ],
+        simPaths: ['electromagnetic', 'paths', 'rlc'],
+        children: [
+          {
+            id: 'sqm-pickup-london',
+            name: '拾取 / 屏蔽层 · 伦敦穿透',
+            nameEn: 'Pickup / shield: London penetration',
+            summary:
+              '超导拾取环与磁屏蔽筒用伦敦方程把外场限制在 λL 表面层；迈斯纳排斥把入射磁能重定向为屏蔽超流。λL 与环几何决定有效互感与共模抑制。',
+            energyNodeIds: [
+              'electromagnetic',
+              'electric',
+              'el-current',
+              'thermal',
+            ],
+            edgeIds: [
+              'electric-to-electromagnetic-london-sc',
+              'electromagnetic-to-electric-meissner-expulsion',
+              'electric-to-electromagnetic-coil-nearfield',
+              'el-current-to-electromagnetic-ampere-biot',
+            ],
+            methodIds: [
+              'method-london-penetration',
+              'method-algo-london-lambda',
+              'method-biot-savart',
+              'method-algo-biot-b',
+              'method-squid',
+              'method-algo-squid-flux',
+              'method-skin-effect',
+              'method-algo-skin-depth',
+            ],
+            simPaths: ['electromagnetic', 'mutual'],
+            children: [
+              {
+                id: 'sqm-josephson',
+                name: '结层 · 约瑟夫森干涉',
+                nameEn: 'Junctions: Josephson interference',
+                summary:
+                  'dc/rf 超导量子干涉 的一或两个约瑟夫森结把环磁通调制为临界电流/电压；f=2eV/h 与 Ic 定工作点。偏置电流须低于/扫过 Ic；热噪声与分流电阻进电读出预算。',
+                energyNodeIds: [
+                  'electric',
+                  'el-current',
+                  'electromagnetic',
+                  'thermal',
+                ],
+                edgeIds: [
+                  'electric-to-electromagnetic-josephson-ac',
+                  'electric-to-electric-critical-current-limit',
+                  'electric-to-thermal-joule',
+                  'electric-to-electromagnetic-london-sc',
+                ],
+                methodIds: [
+                  'method-josephson',
+                  'method-algo-josephson-freq',
+                  'method-critical-current',
+                  'method-algo-ic-josephson',
+                  'method-squid',
+                  'method-algo-squid-flux',
+                  'method-lumped-circuit',
+                  'method-algo-series-rlc',
+                ],
+                simPaths: ['rlc', 'paths', 'electromagnetic'],
+                children: [
+                  {
+                    id: 'sqm-flux-readout',
+                    name: '磁通 / 读出层 · Φ/Φ0 → 电',
+                    nameEn: 'Flux readout: Φ/Φ0 → electric',
+                    summary:
+                      'n=Φ/Φ0 把外磁通量子化；锁相/磁通锁定把干涉条纹映射为电压或反馈电流，闭合 电磁→电能。信噪比 与带宽受 Φ0 与噪声谱约束。',
+                    energyNodeIds: [
+                      'electromagnetic',
+                      'electric',
+                      'el-current',
+                      'thermal',
+                    ],
+                    edgeIds: [
+                      'electromagnetic-to-electric-meissner-expulsion',
+                      'electric-to-electromagnetic-josephson-ac',
+                      'electric-to-electric-critical-current-limit',
+                      'electric-to-thermal-joule',
+                      'el-current-to-electromagnetic-ampere-biot',
+                    ],
+                    methodIds: [
+                      'method-squid',
+                      'method-algo-squid-flux',
+                      'method-josephson',
+                      'method-algo-josephson-freq',
+                      'method-snr',
+                      'method-algo-snr-db',
+                      'method-path-efficiency',
+                      'method-algo-eta-product',
+                      'method-exergy-analysis',
+                      'method-london-penetration',
+                    ],
+                    simPaths: ['paths', 'electromagnetic', 'rlc'],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }

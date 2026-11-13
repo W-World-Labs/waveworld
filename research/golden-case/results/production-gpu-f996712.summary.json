@@ -1,0 +1,38 @@
+{
+  "schema": "waveworld.golden-case-gpu-comparison/v1",
+  "caseId": "mb-pbs-oxygen-transient-2026",
+  "preregistrationSha256": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81",
+  "execution": {
+    "environment": "production-host",
+    "host": "waveworld.myfastools.com",
+    "executedAt": "2026-08-02T16:48:35Z",
+    "sourceCommit": "f996712befdae60920ff7a3338cb4440b2d6e0d5",
+    "identity": "waveworld:waveworld with supplementary render group",
+    "runner": "transient systemd unit"
+  },
+  "comparisons": [
+    {
+      "condition": "air-saturated PBS, pH 3.5, 431 W cm^-2",
+      "deviceName": "intel-r-hd-graphics-p630-kbl-gt2-",
+      "steps": 922,
+      "precision": "GPU f32 versus CPU f64",
+      "maxAbsoluteError": 3.0423187813433117e-7,
+      "maxRelativeError": 0.00000129250670966411,
+      "pass": false,
+      "absLimit": 1e-9,
+      "relLimit": 1e-7
+    },
+    {
+      "condition": "nitrogen-saturated PBS, pH 3.5, 431 W cm^-2",
+      "deviceName": "intel-r-hd-graphics-p630-kbl-gt2-",
+      "steps": 922,
+      "precision": "GPU f32 versus CPU f64",
+      "maxAbsoluteError": 9.169177409562579e-7,
+      "maxRelativeError": 0.000003134774991978644,
+      "pass": false,
+      "absLimit": 1e-9,
+      "relLimit": 1e-7
+    }
+  ],
+  "pass": false
+}

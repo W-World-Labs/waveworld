@@ -1,0 +1,50 @@
+{
+  "schema": "waveworld.golden-case-independent-review/v1",
+  "status": "completed",
+  "reviewer": {
+    "displayName": "REQUIRED",
+    "productionAccountId": "REQUIRED",
+    "giteaAccount": "REQUIRED",
+    "nonImplementerAttestation": "REQUIRED: I did not implement or prepare this golden case or its publication bundle."
+  },
+  "execution": {
+    "startedAt": "REQUIRED ISO-8601",
+    "finishedAt": "REQUIRED ISO-8601",
+    "productionBuildId": "REQUIRED",
+    "isolatedWorkingDirectoryDescription": "REQUIRED",
+    "projectId": "REQUIRED",
+    "jobIds": ["REQUIRED"],
+    "comparisonId": "REQUIRED",
+    "artifactId": "REQUIRED",
+    "publicationId": "REQUIRED",
+    "bundleSha256": "REQUIRED",
+    "genericVerifierSha256": "REQUIRED",
+    "goldenVerifierSha256": "REQUIRED"
+  },
+  "positiveVerification": {
+    "genericVerifierExitCode": "REQUIRED integer",
+    "goldenVerifierExitCode": "REQUIRED integer",
+    "completeLogArtifactOrIssueUrl": "REQUIRED"
+  },
+  "tamperExercise": {
+    "changedField": "REQUIRED",
+    "resignedTamperedBundleSha256": "REQUIRED",
+    "genericVerifierExitCode": "REQUIRED integer",
+    "goldenVerifierExitCode": "REQUIRED non-zero integer",
+    "goldenVerifierError": "REQUIRED"
+  },
+  "answers": {
+    "datasetAndConditions": "REQUIRED",
+    "hypothesisDecision": "REQUIRED",
+    "workflowVersusModelFailure": "REQUIRED",
+    "claimBoundary": "REQUIRED",
+    "cpuGpuInterpretation": "REQUIRED"
+  },
+  "usability": {
+    "manualSteps": ["REQUIRED"],
+    "failuresOrConfusion": ["REQUIRED, or NONE with explanation"],
+    "elapsedMinutes": "REQUIRED number",
+    "recommendation": "REQUIRED: accept, reject, or accept-with-limitations"
+  },
+  "giteaIssue46CommentUrl": "REQUIRED"
+}

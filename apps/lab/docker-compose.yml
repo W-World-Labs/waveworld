@@ -1,0 +1,16 @@
+# 可选：多用户部署时用 Postgres（默认开发用 SQLite data/tasks.db）
+# 未来可把 TASK store 切到 postgres://
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: tuanliu
+      POSTGRES_PASSWORD: tuanliu
+      POSTGRES_DB: tuanliu_tasks
+    volumes:
+      - tuanliu_pg:/var/lib/postgresql/data
+
+volumes:
+  tuanliu_pg:

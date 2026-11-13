@@ -1,0 +1,37 @@
+{
+  "title": "Synthetic Abaqus one-part assembly tetrahedron",
+  "file": "assembly-tetra-example.inp",
+  "format": "Abaqus input deck (.inp)",
+  "purpose": "Import-format example showing a meshed deformable part and one assembly instance.",
+  "synthetic": true,
+  "analysis_step_defined": false,
+  "solver_execution_assumed": false,
+  "model": {
+    "parts": 1,
+    "instances": 1,
+    "element_type": "C3D4",
+    "nodes": 4,
+    "elements": 1
+  },
+  "units": {
+    "convention": "SI",
+    "length": "m",
+    "elastic_modulus": "Pa",
+    "density": "kg/m^3"
+  },
+  "material_values": {
+    "youngs_modulus_pa": 1000000000,
+    "poissons_ratio": 0.3,
+    "density_kg_m3": 1000
+  },
+  "provenance": {
+    "authored": "WaveWorld synthetic fixture",
+    "syntax_reference": "SIMULIA Abaqus 2025 Analysis User's Guide, Assembly Definition",
+    "syntax_reference_url": "https://docs.software.vt.edu/abaqusv2025/English/SIMACAEMODRefMap/simamod-c-partassy.htm"
+  },
+  "limitations": [
+    "Abaqus input syntax demonstration only; not executed or vendor-validated.",
+    "No boundary conditions, loads, step, solver settings, or numerical result are included.",
+    "Abaqus does not assign units; the SI convention is fixture metadata."
+  ]
+}

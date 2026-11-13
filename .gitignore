@@ -1,0 +1,66 @@
+node_modules
+dist
+*.local
+*.tsbuildinfo
+.DS_Store
+golden.json
+.wrangler
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.worktrees/
+.ci/
+
+# Phase 1 host
+apps/host/.next
+apps/host/node_modules
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/artifacts/
+data/artifacts-test/
+data/artifacts-*-test/
+data/artifacts-test-*/
+data/agent-token.json
+
+# WaveWorld Lab app
+apps/lab/node_modules/
+apps/lab/.next/
+apps/lab/data/
+apps/lab/bin/
+apps/lab/public/draco/draco_decoder.js
+apps/lab/public/draco/draco_decoder.wasm
+apps/lab/public/draco/draco_wasm_wrapper.js
+apps/lab/agent/node_modules/
+apps/lab/agent/native/target/
+apps/lab/validation/node_modules/
+
+# Knowledge DB (runtime authority; seed from static)
+data/knowledge.db
+data/knowledge.db-*
+data/knowledge-blobs/
+
+# Operator / runtime secrets — never commit real values (use *.example only)
+.env
+!.env.example
+deploy/.env
+host.env
+!host.env.example
+agent.env
+!agent.env.example
+lab.env
+!lab.env.example
+# Agent registration material (local)
+**/agent-token.json
+data/agent-token.json
+# Local acceptance runtime, credentials and diagnostics
+.runtime/
+__pycache__/
+
+# Restored/generated only by explicit source-asset preparation.
+/apps/lab/public/models/olympus-1u-preview.glb
+/apps/lab/public/models/olympus-1u-cover-removed-preview.glb
+/apps/lab/public/models/milk-truck-solid.stl
+/apps/lab/public/models/ahmed.stl
+/apps/lab/public/models/manifest.json

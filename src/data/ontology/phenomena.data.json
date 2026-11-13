@@ -1,0 +1,284 @@
+[
+  {
+    "id": "sonodynamic-therapy",
+    "name": "声动力治疗（超声→三线态→活性氧）",
+    "nameEn": "Sonodynamic therapy (ultrasound → triplet → ROS)",
+    "icon": "🔊",
+    "domain": "生物医学",
+    "domainEn": "Biomedicine",
+    "summary": "聚焦超声深入组织激活声敏剂，经三线态枢纽生成活性氧 杀伤肿瘤——是 光动力治疗 的「无光深穿透」对应物。超声如何把声敏剂抬上三线态有多个竞争假说，机理不明确，但主流认为超声途径也能产生三线态激发态。",
+    "summaryEn": "Focused ultrasound reaches deep tissue to activate a sonosensitizer, then produces ROS via a triplet hub to kill tumors—the deep-penetration counterpart of photodynamic therapy. How ultrasound lifts the sensitizer to the triplet is contested across competing hypotheses, but the mainstream view holds that ultrasound pathways can also generate triplet excited states.",
+    "steps": [
+      {
+        "nodeId": "acoustic",
+        "via": "聚焦超声（高强度聚焦超声/低强度聚焦超声）深入组织，在声敏剂处沉积机械/热/空化能量",
+        "viaEn": "Focused ultrasound (HIFU/LIFU) reaches tissue and deposits mechanical/thermal/cavitation energy at the sonosensitizer"
+      },
+      {
+        "label": "[汇聚枢纽]",
+        "via": "多条争议机理在此汇聚——超声经不同路径把声敏剂抬上亚稳三线态 T₁",
+        "labelEn": "[Convergence hub]",
+        "viaEn": "Multiple contested mechanisms converge—ultrasound lifts the sonosensitizer to metastable triplet T₁ along different paths"
+      },
+      {
+        "nodeId": "chemical-excited-triplet",
+        "via": "声敏剂布居三线态激发态 T₁（与 光动力治疗 共享的能量枢纽）",
+        "viaEn": "Sonosensitizer populates triplet excited state T₁ (energy hub shared with PDT)"
+      },
+      {
+        "edgeId": "chemical-triplet-to-ros",
+        "via": "T₁+³O₂→¹O₂（II型）或 T₁+底物→O₂·⁻/·OH（I型）",
+        "viaEn": "T₁+³O₂→¹O₂ (Type II) or T₁+substrate→O₂·⁻/·OH (Type I)"
+      },
+      {
+        "nodeId": "chemical-ros",
+        "via": "活性氧 在病灶高度局域生成",
+        "viaEn": "ROS generated highly locally at the lesion"
+      },
+      {
+        "label": "生物效应：细胞凋亡/坏死、血管损伤、抗肿瘤免疫激活",
+        "via": "局域 活性氧 氧化损伤 + 继发声免疫效应",
+        "labelEn": "Bio effects: apoptosis/necrosis, vascular damage, anti-tumor immune activation",
+        "viaEn": "Local ROS oxidative damage + secondary sono-immune effects"
+      }
+    ],
+    "hypotheses": [
+      {
+        "id": "direct-triplet-sens",
+        "name": "直接三线态敏化（热-力激活）",
+        "summary": "超声的热/力/微射流直接把声敏剂分子布居到三线态 T₁，再经 II型 生成 ¹O₂、I型 生成自由基——与 光动力治疗 共用三线态→活性氧 网关，只是激发源换成超声。被认为是 声动力治疗 最主要的工作假说。",
+        "likelihood": "leading",
+        "consensus": {
+          "status": "open",
+          "confidence": "medium",
+          "summary": "「主要认为超声途径也能产生三线态」——主流采纳但分子级激活细节仍未解，非定论。",
+          "viewpoints": [
+            {
+              "stance": "有机声敏剂在超声下产生 ¹O₂ 且依赖溶解氧，与三线态敏化一致；超声以热/力激活替代光泵浦布居 T₁。",
+              "proponents": [
+                "声动力治疗 声敏剂主流综述",
+                "卟啉/二氢卟吩 声动力治疗 研究群"
+              ],
+              "source": "已知常识性整理（非文献溯源）",
+              "stanceEn": "Organic sonosensitizers produce ¹O₂ under ultrasound in an O₂-dependent way, consistent with triplet sensitization; ultrasound replaces optical pumping to populate T₁ via heat/force."
+            }
+          ],
+          "summaryEn": "“Ultrasound pathways can also produce triplets” is mainstream, but molecular activation details remain open—not settled."
+        },
+        "steps": [
+          {
+            "nodeId": "acoustic",
+            "hypothetical": true,
+            "via": "超声热/力/微射流直接激活声敏剂分子"
+          },
+          {
+            "nodeId": "chemical-excited-triplet",
+            "hypothetical": true,
+            "via": "声敏剂直接布居三线态 T₁"
+          }
+        ],
+        "nameEn": "Direct triplet sensitization (thermo-mechanical activation)",
+        "summaryEn": "Ultrasound heat/force/microstreaming directly populates the sonosensitizer to triplet T₁, then Type II yields ¹O₂ and Type I yields radicals—sharing the triplet→ROS gateway with PDT, only the pump is ultrasound. Widely treated as the leading working hypothesis for SDT."
+      },
+      {
+        "id": "piezo-sonocatalysis",
+        "name": "压电/半导体声催化",
+        "summary": "超声使压电或半导体声敏剂（如 二氧化钛、有机半导体）发生能带弯曲/载流子分离，光生/声生电子-空穴对驱动氧化还原直接生成 活性氧——偏材料催化路径，未必经过分子三线态。",
+        "likelihood": "plausible",
+        "consensus": {
+          "status": "contested",
+          "confidence": "medium",
+          "summary": "纳米半导体声敏剂兴起后被提出，载流子分离贡献与三线态贡献占比有争议。",
+          "summaryEn": "Raised with the rise of nano-semiconductor sonosensitizers; relative weight of carrier separation vs triplet remains contested."
+        },
+        "steps": [
+          {
+            "nodeId": "acoustic",
+            "hypothetical": true,
+            "via": "超声诱导压电势/能带弯曲，分离载流子"
+          },
+          {
+            "nodeId": "chemical-ros",
+            "hypothetical": true,
+            "via": "载流子驱动氧化还原直接生成 活性氧（绕过分子三线态）"
+          }
+        ],
+        "nameEn": "Piezoelectric / semiconductor sonocatalysis",
+        "summaryEn": "Ultrasound bends bands / separates carriers in piezoelectric or semiconductor sonosensitizers (e.g. TiO₂, organic semiconductors); photogenerated/sonogenerated e–h pairs drive redox and ROS directly—a materials-catalysis path that need not pass a molecular triplet."
+      },
+      {
+        "id": "cavitation-sonochem",
+        "name": "空化-声化学",
+        "summary": "超声驱动惯性空化，气泡崩塌瞬时形成 ~5000K 热点使水分子裂解产生 ·OH/·H 等自由基，再生成 活性氧——偏 I型、绕过敏化剂三线态。复用已确立的声化学边。",
+        "likelihood": "plausible",
+        "consensus": {
+          "status": "established",
+          "confidence": "high",
+          "summary": "空化声化学本身机理明确（已立边），争议在于它对 声动力治疗 治疗 活性氧 的实际贡献占比。",
+          "summaryEn": "Cavitation sonochemistry itself is established (edged); the dispute is its share of therapeutic ROS in SDT."
+        },
+        "reuseEdgeIds": [
+          "acoustic-to-chemical-sonochemistry"
+        ],
+        "steps": [
+          {
+            "nodeId": "acoustic",
+            "hypothetical": true,
+            "via": "超声→惯性空化热点 ~5000K"
+          },
+          {
+            "edgeId": "acoustic-to-chemical-sonochemistry",
+            "via": "声化学：水裂解生成 ·OH/·H（已确立边）"
+          },
+          {
+            "nodeId": "chemical-ros",
+            "hypothetical": true,
+            "via": "自由基汇入 活性氧 池（偏 I型）"
+          }
+        ],
+        "nameEn": "Cavitation sonochemistry",
+        "summaryEn": "Inertial cavitation collapses form ~5000 K hotspots that split water into ·OH/·H and further ROS—Type-I biased, bypassing sensitizer triplets. Reuses the established sonochemistry edge."
+      },
+      {
+        "id": "sonolum-photoactivation",
+        "name": "声致发光-光敏化",
+        "summary": "超声空化产生微弱声致发光，敏化剂吸收这些光子如同 光动力治疗 一样被抬到三线态 T₁ 再生成 活性氧——「内源光 光动力治疗」假说。声致发光光通量极弱，多被视为次要贡献。复用声致发光边。",
+        "likelihood": "minority",
+        "consensus": {
+          "status": "open",
+          "confidence": "medium",
+          "summary": "声致发光光子数太少，能否驱动有效敏化存疑，多数视为 minority 贡献。",
+          "summaryEn": "Sonoluminescence photon count is too low for effective sensitization in many views—often minority contribution."
+        },
+        "reuseEdgeIds": [
+          "acoustic-to-radiant-sonoluminescence"
+        ],
+        "steps": [
+          {
+            "nodeId": "acoustic",
+            "hypothetical": true,
+            "via": "超声→空化声致发光"
+          },
+          {
+            "edgeId": "acoustic-to-radiant-sonoluminescence",
+            "via": "声致发光（已确立边）"
+          },
+          {
+            "nodeId": "chemical-excited-triplet",
+            "hypothetical": true,
+            "via": "敏化剂吸收内源光子→T₁（如同 光动力治疗）"
+          }
+        ],
+        "nameEn": "Sonoluminescence photoactivation",
+        "summaryEn": "Cavitation emits weak sonoluminescence; the sensitizer absorbs those photons and is lifted to T₁ as in PDT—“endogenous-light PDT.” Photon flux is tiny; usually treated as a minority contribution. Reuses the sonoluminescence edge."
+      }
+    ],
+    "consensus": {
+      "status": "contested",
+      "confidence": "medium",
+      "summary": "声动力治疗 疗效与三线态→活性氧 网关广受认可，但「超声如何把声敏剂抬上三线态」存在多个竞争假说，主导机理未定论。",
+      "viewpoints": [
+        {
+          "stance": "直接三线态敏化为主导，其余路径协同贡献。",
+          "proponents": [
+            "声动力治疗 声敏剂主流"
+          ],
+          "source": "已知常识性整理（非文献溯源）",
+          "stanceEn": "Direct triplet sensitization leads; other paths contribute synergistically."
+        },
+        {
+          "stance": "空化-声化学与压电声催化在纳米声敏剂体系中贡献不可忽略。",
+          "proponents": [
+            "纳米声敏剂材料群"
+          ],
+          "source": "已知常识性整理（非文献溯源）",
+          "stanceEn": "Cavitation sonochemistry and piezo sonocatalysis are non-negligible in nano-sonosensitizer systems."
+        }
+      ],
+      "summaryEn": "SDT efficacy and the triplet→ROS gateway are widely accepted, but how ultrasound lifts the sonosensitizer to the triplet remains multi-hypothesis—leading mechanism unsettled."
+    },
+    "applications": [
+      {
+        "kind": "science",
+        "title": "有机声敏剂体系：卟啉/二氢卟吩类",
+        "detail": "卟啉（如血卟啉衍生物 血卟啉衍生物）、二氢卟吩（如 protoporphyrin IX、二氢卟吩 e6）等经典光敏剂被复用为声敏剂，在超声下产生依赖溶解氧的 ¹O₂，支持 II型 三线态敏化路径。",
+        "maturity": "实验室",
+        "key": [
+          "血卟啉衍生物",
+          "原卟啉 IX",
+          "二氢卟吩 e6"
+        ],
+        "titleEn": "Organic sonosensitizers: porphyrins / chlorins",
+        "detailEn": "Classic photosensitizers (hematoporphyrin derivatives, protoporphyrin IX, chlorin e6, etc.) reused as sonosensitizers produce O₂-dependent ¹O₂ under ultrasound, supporting Type-II triplet sensitization.",
+        "maturityEn": "Lab",
+        "keyEn": [
+          "Hematoporphyrin derivatives",
+          "Protoporphyrin IX",
+          "Chlorin e6"
+        ]
+      },
+      {
+        "kind": "science",
+        "title": "纳米/半导体声敏剂：二氧化钛 与有机半导体",
+        "detail": "纳米 二氧化钛、有机半导体聚合物点、金属有机框架 声敏剂被研究用于压电/半导体声催化路径，超声诱导载流子分离驱动氧化还原生成 活性氧（I型 偏向），同时探测 I型/II 活性氧 物种实证。",
+        "maturity": "实验室",
+        "key": [
+          "纳米 二氧化钛",
+          "有机半导体聚合物点",
+          "金属有机框架 声敏剂"
+        ],
+        "titleEn": "Nano / semiconductor sonosensitizers: TiO₂ & organic semiconductors",
+        "detailEn": "Nano-TiO₂, organic semiconductor polymer dots, and MOF sonosensitizers are studied for piezo/semiconductor sonocatalysis: ultrasound-driven carrier separation drives redox ROS (Type-I lean), with experimental I/II ROS speciation.",
+        "maturityEn": "Lab",
+        "keyEn": [
+          "Nano-TiO₂",
+          "Organic semiconductor polymer dots",
+          "MOF sonosensitizers"
+        ]
+      },
+      {
+        "kind": "engineering",
+        "title": "聚焦超声换能器与微泡载体",
+        "detail": "高强度聚焦超声 与低强度聚焦超声 提供深穿透声场；微泡作为空化核与药物/声敏剂载体增强局域空化与递送；通过频率（约 0.5–3 MHz）与声强工况调控空化阈值与热效应。",
+        "maturity": "临床前/临床",
+        "key": [
+          "高强度聚焦超声",
+          "低强度聚焦超声",
+          "微泡载体",
+          "0.5–3 MHz 工况"
+        ],
+        "titleEn": "Focused-ultrasound transducers & microbubble carriers",
+        "detailEn": "HIFU/LIFU provide deep-penetration fields; microbubbles act as cavitation nuclei and drug/sonosensitizer carriers; frequency (~0.5–3 MHz) and intensity set cavitation thresholds and thermal effects.",
+        "maturityEn": "Preclinical / clinical",
+        "keyEn": [
+          "HIFU",
+          "LIFU",
+          "Microbubble carriers",
+          "0.5–3 MHz operating points"
+        ]
+      },
+      {
+        "kind": "clinical",
+        "title": "肿瘤 声动力治疗 临床前/早期临床 + 声免疫前沿",
+        "detail": "深部实体瘤（胶质瘤、胰腺癌等）的 声动力治疗 临床前与早期临床探索，利用超声深穿透突破 光动力治疗 的光穿透限制；活性氧 损伤继发的抗肿瘤免疫激活（声免疫治疗，sono-immunotherapy）是活跃前沿方向。",
+        "maturity": "临床前/临床 I–II",
+        "key": [
+          "深部实体瘤",
+          "声免疫治疗"
+        ],
+        "titleEn": "Oncology SDT preclinical/early clinical + sono-immunotherapy frontier",
+        "detailEn": "Preclinical and early clinical SDT for deep solid tumors (glioma, pancreatic, etc.) uses ultrasound depth beyond PDT optical limits; ROS-triggered anti-tumor immunity (sono-immunotherapy) is an active frontier.",
+        "maturityEn": "Preclinical / clinical I–II",
+        "keyEn": [
+          "Deep solid tumors",
+          "Sono-immunotherapy"
+        ]
+      }
+    ],
+    "sampleId": "photosensitization",
+    "refs": [
+      "https://en.wikipedia.org/wiki/Sonodynamic_therapy",
+      "https://en.wikipedia.org/wiki/Photodynamic_therapy"
+    ]
+  }
+]

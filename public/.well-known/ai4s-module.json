@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "ai4s-module/1",
+  "moduleId": "waveworld",
+  "version": "2.0.0",
+  "capabilities": [
+    {
+      "id": "simulation.jobs",
+      "contract": "waveworld-jobs/1",
+      "transport": "http",
+      "path": "/api/v1/jobs",
+      "mode": "numerical",
+      "authentication": "provider-session"
+    },
+    {
+      "id": "simulation.workspace",
+      "contract": "waveworld-workspace/1",
+      "transport": "link",
+      "path": "/app/lab/lab",
+      "authentication": "provider-session"
+    }
+  ]
+}

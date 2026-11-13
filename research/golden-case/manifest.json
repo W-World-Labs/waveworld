@@ -1,0 +1,39 @@
+{
+  "schema": "waveworld.golden-case-manifest/v1",
+  "caseId": "mb-pbs-oxygen-transient-2026",
+  "version": 1,
+  "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+  "citation": {
+    "authors": ["Elin Sandberg", "Chinmaya V. Srambickal", "Joachim Piguet", "Haichun Liu", "Jerker Widengren"],
+    "title": "Local Monitoring of Photosensitizer Transient States Provides Feedback for Enhanced Efficiency and Targeting Selectivity in Photodynamic Therapy",
+    "repository": "Zenodo",
+    "doi": "10.5281/zenodo.7469900",
+    "recordUrl": "https://zenodo.org/records/7469900"
+  },
+  "upstream": {
+    "archive": "MB_Zenodo 221221.zip",
+    "archiveSha256": "89f4f9b170aeae017a39fb27ca871e96e71beddbd104fe7469500f95747c9fe5",
+    "retrievedAt": "2026-08-02T16:24:00.000Z"
+  },
+  "files": [
+    {
+      "path": "data/air-pbs-431w.csv",
+      "condition": "air-saturated PBS, pH 3.5, 431 W cm^-2",
+      "sourceEntry": "MB_Zenodo 221221/Fig1/1C_pH_3.5_air_saturated_PBS_vs_N2_saturated/air_saturated_PBS_431W_per_cm_square.csv",
+      "sourceSha256": "df72cf606c7327ef5fbf3bfc68d17087601a8a6d334d672dce5e8eff33b7c997",
+      "sha256": "30402dc0c7ede7b54e67a4c66f34e344cc01cfe70d8dc1922d90afb6011415a9",
+      "rows": 30,
+      "columns": { "pulse_width_us": "microsecond", "intensity_au": "arbitrary unit" }
+    },
+    {
+      "path": "data/n2-pbs-431w.csv",
+      "condition": "nitrogen-saturated PBS, pH 3.5, 431 W cm^-2",
+      "sourceEntry": "MB_Zenodo 221221/Fig1/1C_pH_3.5_air_saturated_PBS_vs_N2_saturated/N2_saturated_PBS_431W_per_cm_square.csv",
+      "sourceSha256": "865619ffdee28f1de9667f32cee5d9c9d1b3b3420db8f86fb52c6e9ecc933af2",
+      "sha256": "d6dfe1c97573c1d66c32fecb96c86c7b2de4056656cff3550e1ea58f574aceb3",
+      "rows": 30,
+      "columns": { "pulse_width_us": "microsecond", "intensity_au": "arbitrary unit" }
+    }
+  ],
+  "preregistration": { "path": "preregistration.json", "sha256": "6c7a37fb359ced55721a6aac79aea7181b56733815f1e10bee9c99c66a3b7c81" }
+}

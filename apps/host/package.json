@@ -1,0 +1,34 @@
+{
+  "name": "waveworld-host",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "TASK_DB_PATH=\"${TASK_DB_PATH:-$(pwd)/../../data/tasks.db}\" next dev --hostname \"${WAVEWORLD_BIND_HOST:-127.0.0.1}\" --port \"${PORT:-3001}\"",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "start": "TASK_DB_PATH=\"${TASK_DB_PATH:-$(pwd)/../../data/tasks.db}\" next start --hostname \"${WAVEWORLD_BIND_HOST:-127.0.0.1}\" --port \"${PORT:-3001}\"",
+    "test": "NODE_PATH=\"$PWD/node_modules\" tsx --tsconfig tsconfig.json --test test/*.test.ts src/lib/*/*.test.ts",
+    "preinstall": "node ../../scripts/verify-wsim-vendor.mjs"
+  },
+  "dependencies": {
+    "@w-sim/contracts": "file:../../vendor/w-sim/w-sim-contracts-0.3.0.tgz",
+    "@w-sim/kit": "file:../../vendor/w-sim/w-sim-kit-0.3.0.tgz",
+    "@w-sim/runtime": "file:../../vendor/w-sim/w-sim-runtime-0.3.0.tgz",
+    "@w-sim/solvers-lbm": "file:../../vendor/w-sim/w-sim-solvers-lbm-0.3.0.tgz",
+    "@w/xradar": "file:../../vendor/w-xradar-0.2.1.tgz",
+    "better-sqlite3": "^12.11.1",
+    "drizzle-orm": "^0.45.2",
+    "jose": "^6.2.15",
+    "next": "^15.5.28",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,25 @@
+import assert from'node:assert/strict'
+import{readFileSync,writeFileSync,mkdtempSync,rmSync}from'node:fs'
+import{gunzipSync}from'node:zlib'
+import{execFileSync}from'node:child_process'
+import{tmpdir}from'node:os'
+import{join}from'node:path'
+import{fileURLToPath}from'node:url'
+const root=fileURLToPath(new URL('../../..',import.meta.url)),scratch=mkdtempSync(join(tmpdir(),'w-sim-transient-')),fixture=JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/transient-original-ts.json.gz',import.meta.url))))
+const module=new WebAssembly.Module(Buffer.from(readFileSync(join(root,'packages/solvers-lbm/src/wasm-kernel.ts'),'utf8').match(/WASM_KERNEL_BASE64 = '([^']+)'/)[1],'base64'))
+const cases=[...fixture.scenes.map(f=>({op:0,f})),...fixture.helpers.map(f=>({op:1,f})),...fixture.steps.map(f=>({op:2,f})),...[0,1e-24,1e-12,.49999999999999994,.5,.9999999999999999,1,1.0000000000000002,5,745,1e21].map(x=>({op:3,x}))]
+let maxOld=0,maxWeights=0
+try{const lib=join(scratch,'libw_sim_kernels.rlib'),native=join(scratch,'reference'),file=join(scratch,'input')
+ execFileSync('rustc',[join(root,'crates/w-sim-kernels/src/lib.rs'),'--edition','2021','--crate-name','w_sim_kernels','--crate-type','rlib','-O','-C','panic=abort','-o',lib],{stdio:'inherit',timeout:60000})
+ execFileSync('rustc',[fileURLToPath(new URL('./transient-reference.rs',import.meta.url)),'--edition','2021','--extern',`w_sim_kernels=${lib}`,'-O','-C','panic=abort','-o',native],{stdio:'inherit',timeout:60000})
+ for(const c of cases){const e=new WebAssembly.Instance(module).exports,cp=(e.heap_base()+7)&~7,state=cp+40,out=state+8,values=out+64,bytes=new Uint8Array(e.memory.buffer),d=(p,n)=>new Float64Array(e.memory.buffer,p,n),input=Buffer.alloc(48);input.writeUInt32LE(c.op);let got,want
+  if(c.op===0){const s=c.f.scene;input.writeUInt32LE(['rc-charge','rc-discharge','rl'].indexOf(s.mode),8);[s.v0,s.r,s.c,s.l].forEach((v,i)=>input.writeDoubleLE(v,16+i*8));bytes.set(input.subarray(8),cp);assert.equal(e.transient_result(cp,values,out),0);got=Buffer.concat([Buffer.from(bytes.slice(out,out+24)),Buffer.from(bytes.slice(values,values+241*8))]);want=[c.f.result.tau,c.f.result.yMax,c.f.result.steady,...c.f.result.values];assert.equal(e.transient_result(cp,values,values),2);new Uint32Array(e.memory.buffer,cp+4,1)[0]=1;assert.equal(e.transient_result(cp,values,out),7)}
+  if(c.op===1){const f=c.f;[f.t,f.v,f.r,f.c,f.l].forEach((v,i)=>input.writeDoubleLE(v,8+i*8));assert.equal(e.transient_tau_rc(f.r,f.c,out),0);assert.equal(e.transient_tau_rl(f.l,f.r,out+8),0);assert.equal(e.transient_charge(f.t,f.v,f.r,f.c,out+16),0);assert.equal(e.transient_discharge(f.t,f.v,f.r,f.c,out+24),0);assert.equal(e.transient_current(f.t,f.v,f.r,f.l,out+32),0);assert.equal(e.transient_weights(f.t,f.tauRC,out+40),0);got=Buffer.from(bytes.slice(out,out+56));want=[f.tauRC,f.tauRL,f.charge,f.discharge,f.current];}
+  if(c.op===2){const f=c.f;[f.p.V,f.p.R,f.p.C,f.dt,...f.states.slice(0,1)].forEach((v,i)=>input.writeDoubleLE(v,8+i*8));bytes.set(input.subarray(8,40),cp);d(state,1)[0]=f.states[0];const states=[Buffer.from(bytes.slice(state,state+8))];for(let i=0;i<4;i++){assert.equal(e.transient_step(cp,state),0);states.push(Buffer.from(bytes.slice(state,state+8)))}assert.deepEqual(states.map(v=>v.readDoubleLE()),f.states,'original RK4 operation order exact');d(state,1)[0]=f.states[0];assert.equal(e.transient_advance(cp,state,3),0);assert.equal(e.transient_advance(cp,state,1),0);states.push(Buffer.from(bytes.slice(state,state+8)));got=Buffer.concat(states);assert.equal(e.transient_step(cp,cp),2);assert.equal(e.transient_advance(cp,state+1,1),2);assert.equal(e.transient_advance(cp,state,0),1);assert.equal(e.transient_advance(cp,state,65537),1);}
+  if(c.op===3){input.writeDoubleLE(c.x,8);input.writeDoubleLE(1,16);assert.equal(e.transient_weights(c.x,1,out),0);got=Buffer.from(bytes.slice(out,out+16));const expected=-Math.expm1(-c.x),error=Math.abs(d(out+8,1)[0]-expected)/Math.max(1e-300,expected);maxWeights=Math.max(maxWeights,error);assert(error<=4e-16);}
+  if(want)want.forEach((v,i)=>{const error=Math.abs(got.readDoubleLE(i*8)-v);maxOld=Math.max(maxOld,error);assert(error<=3e-15*Math.max(1,Math.abs(v)))});
+  writeFileSync(file,input);assert.deepEqual(got,execFileSync(native,[file],{timeout:10000}),'all transient native/WASM values exact');
+  assert.equal(e.transient_weights(1,0,out),3);assert.equal(e.transient_weights(NaN,1,out),3);assert.equal(e.transient_weights(1,1,out+1),2);assert.equal(e.transient_charge(1,NaN,1,1,out),4);assert.equal(e.transient_tau_rc(Infinity,1,out),3);assert.equal(e.transient_current(1,1,0,1,out),3);assert.equal(e.transient_discharge(1,1,1,1,0),2)
+ }
+ console.log(`Transient: ${fixture.scenes.length} old curves, ${fixture.helpers.length} helper sets, ${fixture.steps.length} four-step RK4 fixtures and 11 expm1 references; native/WASM exact, old RK4 bits unchanged; max old absolute=${maxOld}, settling relative=${maxWeights}; memory/parameter guards pass.`)
+}finally{rmSync(scratch,{recursive:true,force:true})}

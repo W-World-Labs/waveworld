@@ -1,0 +1,349 @@
+{
+  "contractVersion": 1,
+  "id": "kr-sample-48o",
+  "releasedAt": "2026-08-04T18:00:00.000Z",
+  "state": "released",
+  "claims": [
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-1",
+      "kind": "conversion.efficiency",
+      "subjectId": "em-radio-to-electric-rectenna",
+      "statement": {
+        "metric": "eta",
+        "value": 0.55,
+        "unit": "1",
+        "etaMin": 0.55,
+        "etaMax": 0.55,
+        "note": "Offline sample claim — rectenna (#48-O)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    },
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-2",
+      "kind": "conversion.efficiency",
+      "subjectId": "em-visible-to-electric-photovoltaic",
+      "statement": {
+        "metric": "eta",
+        "value": 0.22,
+        "unit": "1",
+        "etaMin": 0.22,
+        "etaMax": 0.22,
+        "note": "Offline sample claim — PV (#48-O)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    },
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-3",
+      "kind": "conversion.efficiency",
+      "subjectId": "thermal-to-electric-thermoelectric",
+      "statement": {
+        "metric": "eta",
+        "value": 0.08,
+        "unit": "1",
+        "etaMin": 0.08,
+        "etaMax": 0.08,
+        "note": "Offline sample claim — thermoelectric (#48-O)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    },
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-4",
+      "kind": "conversion.efficiency",
+      "subjectId": "mechanical-to-electric-piezoelectric",
+      "statement": {
+        "metric": "eta",
+        "value": 0.15,
+        "unit": "1",
+        "etaMin": 0.15,
+        "etaMax": 0.15,
+        "note": "Offline sample claim — piezoelectric (#48-O)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    },
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-5",
+      "kind": "conversion.efficiency",
+      "subjectId": "electric-to-visible-led",
+      "statement": {
+        "metric": "eta",
+        "value": 0.4,
+        "unit": "1",
+        "etaMin": 0.4,
+        "etaMax": 0.4,
+        "note": "Offline sample claim — LED (#48-O)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    },
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-6",
+      "kind": "conversion.mechanism",
+      "subjectId": "chemical-to-electric-battery",
+      "statement": {
+        "source": "offline.sample",
+        "mechanism": "electrochemical intercalation",
+        "note": "Offline sample claim — battery mechanism (#48-O)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    },
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-7",
+      "kind": "other",
+      "subjectId": "information-energy",
+      "statement": {
+        "source": "offline.sample",
+        "topic": "Landauer principle / information is physical",
+        "note": "Offline sample claim — controversy information-energy (#48-Q)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    },
+    {
+      "contractVersion": 1,
+      "id": "claim-sample-48o-8",
+      "kind": "other",
+      "subjectId": "thermal",
+      "statement": {
+        "source": "offline.sample",
+        "topic": "thermal energy vs heat as energy in transfer",
+        "note": "Offline sample claim — energy node thermal (#48-Q)"
+      },
+      "state": "released",
+      "confidence": 0.75,
+      "createdAt": "2026-08-04T12:00:00.000Z",
+      "updatedAt": "2026-08-04T15:00:00.000Z"
+    }
+  ],
+  "evidenceBindings": [
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-1",
+      "claimId": "claim-sample-48o-1",
+      "sourceSnapshotId": "snap-sample-48o-1",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "rectenna RF-to-DC conversion eta=0.55"
+      },
+      "note": "Offline sample binding (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-2",
+      "claimId": "claim-sample-48o-2",
+      "sourceSnapshotId": "snap-sample-48o-2",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "photovoltaic conversion eta=0.22"
+      },
+      "note": "Offline sample binding (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-3",
+      "claimId": "claim-sample-48o-3",
+      "sourceSnapshotId": "snap-sample-48o-3",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "thermoelectric conversion eta=0.08"
+      },
+      "note": "Offline sample binding (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-4",
+      "claimId": "claim-sample-48o-4",
+      "sourceSnapshotId": "snap-sample-48o-4",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "piezoelectric conversion eta=0.15"
+      },
+      "note": "Offline sample binding (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-5",
+      "claimId": "claim-sample-48o-5",
+      "sourceSnapshotId": "snap-sample-48o-5",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "LED wall-plug efficiency eta=0.40"
+      },
+      "note": "Offline sample binding (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-6",
+      "claimId": "claim-sample-48o-6",
+      "sourceSnapshotId": "snap-sample-48o-6",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "electrochemical intercalation discharge"
+      },
+      "note": "Offline sample binding (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-7",
+      "claimId": "claim-sample-48o-7",
+      "sourceSnapshotId": "snap-sample-48o-7",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "erasing 1 bit costs at least kT ln2; information is physical (Landauer/Bennett)"
+      },
+      "note": "Offline sample binding (#48-Q)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "bind-sample-48o-8",
+      "claimId": "claim-sample-48o-8",
+      "sourceSnapshotId": "snap-sample-48o-8",
+      "support": "supports",
+      "locator": {
+        "path": "text",
+        "quote": "heat is energy in transfer, not a stored form; thermal energy is internal energy bookkeeping"
+      },
+      "note": "Offline sample binding (#48-Q)"
+    }
+  ],
+  "sourceSnapshots": [
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-1",
+      "locator": "https://example.org/waveworld/sample-em-radio-to-electric-rectenna-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "3ef9eafdd7c918f54127daccbed30e7aebc5cbf3d33b3956174ec44b48c6e98d",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 80,
+      "provider": "manual",
+      "title": "WaveWorld sample: rectenna RF→DC (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-2",
+      "locator": "https://example.org/waveworld/sample-em-visible-to-electric-photovoltaic-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "a0bcaa7c2d5e5f236c3b20f4c3ab4c8989cf1a7addf513c3f0d378c8363c1454",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 89,
+      "provider": "manual",
+      "title": "WaveWorld sample: visible PV (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-3",
+      "locator": "https://example.org/waveworld/sample-thermal-to-electric-thermoelectric-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "6374a0a026262ec1bbbfe921b54813595a84fb9f26eee5d17400693e47258b01",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 77,
+      "provider": "manual",
+      "title": "WaveWorld sample: thermoelectric (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-4",
+      "locator": "https://example.org/waveworld/sample-mechanical-to-electric-piezoelectric-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "0019d7b70f6743e5219a4967f7f9082e3b25bc622d1da3489910180a6b54634b",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 99,
+      "provider": "manual",
+      "title": "WaveWorld sample: piezoelectric (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-5",
+      "locator": "https://example.org/waveworld/sample-electric-to-visible-led-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "ba5fbb920354a56945b0053f5a8f60eaa49161727afc31663145e8dfe83488ab",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 86,
+      "provider": "manual",
+      "title": "WaveWorld sample: LED (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-6",
+      "locator": "https://example.org/waveworld/sample-chemical-to-electric-battery-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "f7c5b316cffd13920d12a4e4a2f6bf43f8a71dfb232e18ce1f4709275e9e960a",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 105,
+      "provider": "manual",
+      "title": "WaveWorld sample: battery mechanism (#48-O)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-7",
+      "locator": "https://example.org/waveworld/sample-information-energy-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "4ce710765f182e1508f2e50b2305536c51c6da4b0712734a48fd739bf7805039",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 135,
+      "provider": "manual",
+      "title": "WaveWorld sample: information↔energy controversy (#48-Q)"
+    },
+    {
+      "contractVersion": 1,
+      "id": "snap-sample-48o-8",
+      "locator": "https://example.org/waveworld/sample-thermal-48o",
+      "locatorKind": "url",
+      "capturedAt": "2026-08-04T12:00:00.000Z",
+      "contentSha256": "73f4ab96b38bae19b82eef62056632db3fa7d9df4378fdeaded170a4ad93876c",
+      "captureStatus": "bytes-captured",
+      "contentType": "text/plain",
+      "byteLength": 140,
+      "provider": "manual",
+      "title": "WaveWorld sample: thermal node (related to information-energy) (#48-Q)"
+    }
+  ],
+  "conflictSets": [],
+  "sha256": "7b7c20a67b0713f6f7246d81656a0e7dceb45f22b2f974e02b39d1e1f3620d61"
+}

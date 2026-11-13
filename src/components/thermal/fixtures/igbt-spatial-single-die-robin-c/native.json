@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "caseId": "single-die-robin-c",
+  "backend": "native",
+  "specSha256": "5bd9dbb53af32f999cbdd104fce3b87fe1d0bb87a44c3dd0d1e0a3fb3efda52c",
+  "spec": {
+    "schemaVersion": 1,
+    "kind": "electro-thermal-igbt",
+    "name": "igbt-spatial-single-die-robin-c",
+    "model": {
+      "source": "preset",
+      "presetId": "igbt-spatial-chip-v1"
+    },
+    "parameters": {
+      "mode": "spatial-chip",
+      "dimension": 3,
+      "lengthX": 0.04,
+      "lengthY": 0.03,
+      "lengthZ": 0.02,
+      "nx": 5,
+      "ny": 4,
+      "nz": 3,
+      "conductivity": 100,
+      "units": {
+        "length": "m",
+        "temperature": "C",
+        "conductivity": "W/(m\u00b7K)",
+        "power": "W",
+        "heatFlux": "W/m^2"
+      },
+      "boundaries": {
+        "left": {
+          "type": "insulated"
+        },
+        "right": {
+          "type": "insulated"
+        },
+        "bottom": {
+          "type": "robin",
+          "h": 40,
+          "ambientTemp": 25
+        },
+        "top": {
+          "type": "insulated"
+        },
+        "front": {
+          "type": "insulated"
+        },
+        "back": {
+          "type": "insulated"
+        }
+      },
+      "caseFace": "bottom",
+      "materials": [],
+      "dies": [
+        {
+          "id": "die1",
+          "bounds": {
+            "min": [
+              0.01,
+              0.01,
+              0.01
+            ],
+            "max": [
+              0.03,
+              0.02,
+              0.011
+            ]
+          },
+          "operatingPoint": {
+            "currentA": 1,
+            "voltageV": 400,
+            "gateResistanceOnOhm": 4,
+            "gateResistanceOffOhm": 4,
+            "dutyCycle": 0.4,
+            "switchingFrequencyHz": 100
+          },
+          "lossTable": {
+            "operatingPoint": {
+              "currentA": 1,
+              "voltageV": 400,
+              "gateResistanceOnOhm": 4,
+              "gateResistanceOffOhm": 4
+            },
+            "points": [
+              {
+                "temperatureC": 20,
+                "vceSatV": 1.05,
+                "eOnJ": 0.001,
+                "eOffJ": 0.002
+              },
+              {
+                "temperatureC": 100,
+                "vceSatV": 1.45,
+                "eOnJ": 0.0018,
+                "eOffJ": 0.0032
+              },
+              {
+                "temperatureC": 180,
+                "vceSatV": 1.85,
+                "eOnJ": 0.0026,
+                "eOffJ": 0.0044
+              }
+            ],
+            "source": "synthetic-validation-only"
+          },
+          "initialJunctionTempC": 20
+        }
+      ],
+      "coupling": {
+        "maxJunctionTempC": 180,
+        "maxIterations": 200,
+        "temperatureToleranceC": 1e-08,
+        "relativePowerTolerance": 1e-10,
+        "relaxationFactor": 1
+      },
+      "residualTol": 1e-12,
+      "maxIterations": 50000
+    },
+    "run": {
+      "maxSteps": 50000
+    },
+    "outputs": {
+      "forces": false,
+      "history": false,
+      "fields": [
+        "temperature"
+      ],
+      "kpis": [
+        "tMin",
+        "tMax",
+        "tjMaxC",
+        "caseMeanC",
+        "totalLossW",
+        "sourcePowerW",
+        "energyImbalance"
+      ]
+    },
+    "requirements": {
+      "backends": [
+        "cpu"
+      ],
+      "thermal": true,
+      "precision": "float64",
+      "requiredOutputs": [
+        "kpis",
+        "fields"
+      ]
+    }
+  },
+  "result": {
+    "artifacts": [
+      {
+        "artifactId": "thermal-T-f70321bcf7b2",
+        "bytes": 480,
+        "contentType": "application/octet-stream",
+        "kind": "thermal-temperature-field"
+      },
+      {
+        "artifactId": "thermal-kpi-f70321bcf7b2",
+        "bytes": 1309,
+        "contentType": "application/json",
+        "kind": "thermal-kpi-summary"
+      }
+    ],
+    "backend": {
+      "agentId": "w-sim-cuda",
+      "deviceName": "NVIDIA GeForce RTX 5090",
+      "id": "native-cuda",
+      "provenance": {
+        "agentBuildId": "@w-sim/solvers-thermal",
+        "dependencyLockSha256": "f70321bcf7b2113300b1308f43953474",
+        "modelImplementationSha256": "f70321bcf7b2113300b1308f43953474"
+      }
+    },
+    "derived": {
+      "cellCount": 60,
+      "dimension": 3,
+      "dx": 0.01,
+      "dy": 0.01,
+      "dz": 0.01,
+      "fieldArtifactId": "thermal-T-f70321bcf7b2",
+      "fieldBytes": 480,
+      "fieldFormat": "float64-le-x-fastest-v1",
+      "fieldInline": 1,
+      "gridNx": 5,
+      "gridNy": 4,
+      "gridNz": 3,
+      "igbtDieIds": [
+        "die1"
+      ],
+      "igbtDiesJson": "[{\"bounds\":{\"max\":[0.03,0.02,0.011],\"min\":[0.01,0.01,0.01]},\"id\":\"die1\"}]",
+      "inputDigest": "f70321bcf7b2113300b1308f43953474",
+      "lengthUnit": "m",
+      "lengthX": 0.04,
+      "lengthY": 0.03,
+      "lengthZ": 0.02,
+      "temperatureCsv": "52.01481812827456,52.02242700465661,52.02653202178132,52.02242700465661,52.01481812827456,52.1110425904054,52.123739719095646,52.1291843889033,52.123739719095646,52.1110425904054,52.16508936208704,52.177789987466,52.18323724710234,52.177789987466,52.16508936208704,52.17694909638513,52.1845755111408,52.18869220354312,52.1845755111408,52.17694909638513,52.01904406227625,52.030955927863644,52.03609079987266,52.030955927863644,52.01904406227625,52.119434306938516,52.150997171572826,52.15892881317124,52.150997171572826,52.119434306938516,52.17348225540149,52.20504904268377,52.21298345761952,52.20504904268377,52.17348225540149,52.181182415926294,52.19311589599381,52.19826385238496,52.19311589599381,52.181182415926294,52.01481812827456,52.02242700465661,52.02653202178132,52.02242700465661,52.01481812827456,52.1110425904054,52.123739719095646,52.1291843889033,52.123739719095646,52.1110425904054,52.16508936208704,52.177789987466,52.18323724710234,52.177789987466,52.16508936208704,52.17694909638513,52.1845755111408,52.18869220354312,52.1845755111408,52.17694909638513",
+      "temperatureUnit": "C"
+    },
+    "schemaVersion": 1,
+    "summary": {
+      "ambientTempC": 25,
+      "caseMeanC": 52.025406359655676,
+      "cellCount": 60,
+      "conductionLossW": 0.48436133489622013,
+      "contractVersion": 1,
+      "converged": 1,
+      "convergenceStatus": "converged",
+      "couplingIterations": 13,
+      "die0ConductionLossW": 0.48436133489622013,
+      "die0EvaluatedLossW": 0.864813003524478,
+      "die0JunctionMaxC": 52.21298345761952,
+      "die0JunctionMeanC": 52.18066744988399,
+      "die0JunctionMinC": 52.150997171572826,
+      "die0LossEvaluationTempC": 52.18066744811003,
+      "die0SwitchingLossW": 0.3804516686202751,
+      "die0TotalLossW": 0.8648130035164951,
+      "dieCount": 1,
+      "energyImbalance": 7.513767386058134e-12,
+      "gridNx": 5,
+      "gridNy": 4,
+      "gridNz": 3,
+      "heatFlowBackW": 0,
+      "heatFlowBottomW": -0.8648130035089813,
+      "heatFlowFrontW": 0,
+      "heatFlowInW": -0.8648130035089813,
+      "heatFlowLeftW": 0,
+      "heatFlowRightW": 0,
+      "heatFlowTopW": 0,
+      "inputDigest": "f70321bcf7b2113300b1308f43953474",
+      "iterations": 44632,
+      "method": "thermal-igbt-spatial-chip-v1",
+      "precision": "float64",
+      "relativePowerChange": 7.982836613962263e-12,
+      "residual": 9.947598300641403e-13,
+      "runtimeMs": 705,
+      "solverPackage": "@w-sim/solvers-thermal",
+      "solverVersion": "0.1.0",
+      "sourcePowerW": 0.864813003516495,
+      "steps": 13,
+      "switchingLossW": 0.3804516686202751,
+      "tMax": 52.21298345761952,
+      "tMin": 52.01481812827456,
+      "temperatureChangeC": 1.773962310380739e-09,
+      "tjMaxC": 52.21298345761952,
+      "totalLossW": 0.8648130035164951,
+      "wallTimeMs": 705,
+      "warningCount": 0
+    }
+  },
+  "temperature": [
+    52.01481812827456,
+    52.02242700465661,
+    52.02653202178132,
+    52.02242700465661,
+    52.01481812827456,
+    52.1110425904054,
+    52.123739719095646,
+    52.1291843889033,
+    52.123739719095646,
+    52.1110425904054,
+    52.16508936208704,
+    52.177789987466,
+    52.18323724710234,
+    52.177789987466,
+    52.16508936208704,
+    52.17694909638513,
+    52.1845755111408,
+    52.18869220354312,
+    52.1845755111408,
+    52.17694909638513,
+    52.01904406227625,
+    52.030955927863644,
+    52.03609079987266,
+    52.030955927863644,
+    52.01904406227625,
+    52.119434306938516,
+    52.150997171572826,
+    52.15892881317124,
+    52.150997171572826,
+    52.119434306938516,
+    52.17348225540149,
+    52.20504904268377,
+    52.21298345761952,
+    52.20504904268377,
+    52.17348225540149,
+    52.181182415926294,
+    52.19311589599381,
+    52.19826385238496,
+    52.19311589599381,
+    52.181182415926294,
+    52.01481812827456,
+    52.02242700465661,
+    52.02653202178132,
+    52.02242700465661,
+    52.01481812827456,
+    52.1110425904054,
+    52.123739719095646,
+    52.1291843889033,
+    52.123739719095646,
+    52.1110425904054,
+    52.16508936208704,
+    52.177789987466,
+    52.18323724710234,
+    52.177789987466,
+    52.16508936208704,
+    52.17694909638513,
+    52.1845755111408,
+    52.18869220354312,
+    52.1845755111408,
+    52.17694909638513
+  ],
+  "sourceBinarySha256": "10e7788dde2ef7bcbb0c2bde2458f172f72cb6e4b1830369535a911608fe1c71",
+  "nativeLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

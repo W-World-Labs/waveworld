@@ -1,0 +1,156 @@
+import type { ApplicationProfile } from '../types'
+
+export const app_nmr_rabi: ApplicationProfile = {
+    id: 'app-nmr-rabi',
+    name: '核磁脉冲与拉比驱动',
+    nameEn: 'NMR/MRI pulse sequences & Rabi drive',
+    icon: '🧲Ω',
+    category: 'sensing',
+    blurb:
+      '射频电磁能 → 拉莫尔谐振与拉比翻转操控核自旋 → 自由感应衰减/回波感应为电信号：用布洛赫、拉莫尔 ω0=γB0 与拉比 Ω=γ射频激发场 读一条电磁→核自旋→电的脉冲叙事。',
+    goal: { from: 'electromagnetic', to: 'electric' },
+    familyId: 'family-mri-sensing',
+    familyRole: '脉冲/拉比驱动 · 自旋传感',
+    assemblyNote:
+      '相对临床磁共振成像：同族电磁→电与射频收发，但本档案下钻到拉莫尔载波与拉比翻转角标定（脉冲面积），而非 k 空间重建主轴。布洛赫自由进动与 纵向/横向弛豫 为共享自旋动力学层。',
+    maturity: '临床/分析商用 · 脉冲序列研发',
+    products: [
+      { vendor: 'Bruker / JEOL', model: '高分辨核磁谱仪', spec: '400–800 MHz ¹H' },
+      { vendor: '1.5 T / 3 T 临床 磁共振', model: '自旋回波 / 梯度回波序列', spec: '射频场标定与比吸收率管理' },
+      { vendor: '科研脉冲台', model: '任意波形发生器 + 射频 功放', spec: '硬脉冲/软脉冲塑造' },
+    ],
+    levels: [
+      {
+        id: 'nmr-system',
+        name: '系统层 · 脉冲核磁链',
+        nameEn: 'System: pulsed NMR/MRI chain',
+        summary:
+          '主磁场 → 射频发射（电→射频场）→ 核自旋拉比翻转 → 自由感应衰减/回波辐射 → 接收线圈取电。目标电磁→电；拉莫尔与拉比是时序核心。',
+        energyNodeIds: [
+          'electromagnetic',
+          'em-radio',
+          'nuclear',
+          'electric',
+          'el-current',
+          'thermal',
+        ],
+        edgeIds: [
+          'electromagnetic-to-mechanical-larmor-torque',
+          'electric-to-electromagnetic-rabi-drive',
+          'el-current-to-em-radio-mri-transmit',
+          'em-radio-to-nuclear-mri-excitation',
+          'nuclear-to-em-radio-nmr',
+          'em-radio-to-el-current-mri-receive',
+          'electric-to-radio-antenna',
+          'em-radio-to-electric-rectenna',
+          'em-radio-to-el-current-rectenna',
+          'em-radio-to-thermal-rf-heating',
+        ],
+        methodIds: [
+          'method-larmor-precession',
+          'method-algo-larmor-omega',
+          'method-rabi',
+          'method-algo-rabi-freq',
+          'method-bloch',
+          'method-algo-bloch-precess',
+          'method-path-efficiency',
+          'method-algo-eta-product',
+          'method-spectrum-viewer',
+          'method-algo-spectrum-em',
+        ],
+        simPaths: ['electromagnetic', 'paths'],
+        children: [
+          {
+            id: 'nmr-b0-larmor',
+            name: '静磁 / 拉莫尔层 · B0 载波',
+            nameEn: 'Static field / Larmor carrier',
+            summary:
+              '超导或永磁主场建立 塞曼 劈裂；ω0=γB0 定射频载波与化学位移参考。核自旋能与射频能在拉莫尔频率对齐。',
+            energyNodeIds: ['nuclear', 'electromagnetic', 'em-radio', 'electric'],
+            edgeIds: [
+              'nuclear-to-em-radio-nmr',
+              'nuclear-to-electromagnetic-radiation',
+              'nuclear-to-radiant-emission',
+            ],
+            methodIds: [
+              'method-larmor-precession',
+              'method-algo-larmor-omega',
+              'method-bloch',
+              'method-algo-bloch-precess',
+              'method-algo-spectrum-em',
+            ],
+            simPaths: ['electromagnetic'],
+            children: [
+              {
+                id: 'nmr-rf-rabi',
+                name: '射频 / 拉比层 · 射频激发场 脉冲',
+                nameEn: 'RF / Rabi pulse drive',
+                summary:
+                  '功放电流驱动发射线圈建 射频激发场；谐振于 ω0 时 Ω=γ射频激发场，翻转角 α=Ωτ 标定 90°/180°。主能量去向为组织 比吸收率 热。',
+                energyNodeIds: [
+                  'electric',
+                  'el-current',
+                  'em-radio',
+                  'electromagnetic',
+                  'nuclear',
+                  'thermal',
+                ],
+                edgeIds: [
+                  'el-current-to-em-radio-mri-transmit',
+                  'em-radio-to-nuclear-mri-excitation',
+                  'em-radio-to-thermal-rf-heating',
+                  'electric-to-radio-antenna',
+                  'electric-to-electromagnetic-coil-nearfield',
+                ],
+                methodIds: [
+                  'method-rabi',
+                  'method-algo-rabi-freq',
+                  'method-larmor-precession',
+                  'method-algo-larmor-omega',
+                  'method-bloch',
+                  'method-lumped-circuit',
+                  'method-algo-mutual',
+                  'method-path-efficiency',
+                ],
+                simPaths: ['electromagnetic', 'mutual', 'rlc'],
+                children: [
+                  {
+                    id: 'nmr-bloch-receive',
+                    name: '布洛赫 / 接收层 · 自由感应衰减→电',
+                    nameEn: 'Bloch / receive: FID → electric',
+                    summary:
+                      '翻转后横向磁化自由进动并 横向弛豫 衰减；自由感应衰减/回波经接收线圈法拉第感应为电信号。布洛赫方程闭合自旋动力学。',
+                    energyNodeIds: [
+                      'nuclear',
+                      'em-radio',
+                      'electromagnetic',
+                      'electric',
+                      'el-current',
+                      'thermal',
+                    ],
+                    edgeIds: [
+                      'nuclear-to-em-radio-nmr',
+                      'em-radio-to-el-current-mri-receive',
+                      'em-radio-to-electric-rectenna',
+                      'em-radio-to-el-current-rectenna',
+                    ],
+                    methodIds: [
+                      'method-bloch',
+                      'method-algo-bloch-precess',
+                      'method-larmor-precession',
+                      'method-algo-larmor-omega',
+                      'method-fft',
+                      'method-algo-fft-periodogram',
+                      'method-path-efficiency',
+                      'method-algo-eta-product',
+                    ],
+                    simPaths: ['electromagnetic', 'paths'],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }

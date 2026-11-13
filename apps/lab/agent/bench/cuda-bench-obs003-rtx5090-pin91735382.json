@@ -1,0 +1,70 @@
+{
+  "git_sha": "",
+  "binary": "/tmp/wsim-pin-91735382/crates/w-sim-cuda/target/release/w-sim-cuda",
+  "at": "2026-09-19T06:29:40.086Z",
+  "scenes": {
+    "lbm": {
+      "reps": 7,
+      "p50_ms": 146.341768,
+      "p95_ms": 150.39668499999993,
+      "p99_ms": 150.39668499999993,
+      "min_ms": 143.42057999999997,
+      "max_ms": 150.39668499999993,
+      "throughput_per_min": 406.6705579035826,
+      "vram_peak_mb": 19726,
+      "kernel_ms": null
+    },
+    "module-host": {
+      "reps": 7,
+      "p50_ms": 28.47202500000003,
+      "p95_ms": 31.77871200000004,
+      "p99_ms": 31.77871200000004,
+      "min_ms": 28.010504999999966,
+      "max_ms": 31.77871200000004,
+      "throughput_per_min": 1934.1969793019446,
+      "vram_peak_mb": null,
+      "kernel_ms": null
+    },
+    "module-cuda": {
+      "reps": 7,
+      "p50_ms": 132.9613260000001,
+      "p95_ms": 166.16826700000001,
+      "p99_ms": 166.16826700000001,
+      "min_ms": 126.62345900000037,
+      "max_ms": 166.16826700000001,
+      "throughput_per_min": 422.1011248488456,
+      "vram_peak_mb": 19767,
+      "kernel_ms": null
+    }
+  },
+  "gate": {
+    "slack": 1.1,
+    "checks": [
+      {
+        "scene": "lbm",
+        "p95_ms": 150.39668499999993,
+        "baseline_p95_ms": 149.58664700000003,
+        "ratio": 1.0054151758612513,
+        "slack": 1.1,
+        "pass": true
+      },
+      {
+        "scene": "module-cuda",
+        "p95_ms": 166.16826700000001,
+        "baseline_p95_ms": 181.56286299999988,
+        "ratio": 0.9152106562673014,
+        "slack": 1.1,
+        "pass": true
+      }
+    ],
+    "baseline": "/tmp/bench-baseline.json",
+    "pass": true
+  },
+  "parity": {
+    "scene": "actuator-line",
+    "max_rel_diff": 7.3075226425523e-05,
+    "tolerance": 0.001,
+    "within": true
+  },
+  "binary_provenance": "built on OBS-003 from exact git-archive of w-sim pin 91735382b25c38de12f0ecca6be524386fb48503 (572 fatbins); md5 c8ec68c238e7e0826281de3527163a0f"
+}
