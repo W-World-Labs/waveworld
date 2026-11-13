@@ -28,7 +28,7 @@ if (forwarded.length > 0) {
   runVitest(['run', ...forwarded])
   process.exit(0) // A focused run must not also launch the complete golden suite.
 } else {
-  runVitest(['run', '--exclude', perfTest])
+  runVitest(['run', '--exclude', perfTest, '--maxWorkers=1'])
   runVitest([
     'run',
     perfTest,
