@@ -3,14 +3,14 @@
   "distribution": "public-ci-library-bundle",
   "source": {
     "repository": "W-World-Labs/w-sim",
-    "revision": "f558f268922e498cd235c468ee7044586e23a24b",
+    "revision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6",
     "workingTreeClean": true
   },
   "artifact": {
     "filename": "w-sim.tar.gz",
-    "sha256": "e71388a1a39b7f6cac9aaf17579db8e3c28ab627ac199c0f371ad4a681940784",
-    "workflowRun": "https://github.com/W-World-Labs/w-sim/actions/runs/43466966826",
-    "artifactId": 14059977954,
+    "sha256": "a5921ea8af93745be1927f3925e63cd8693a1123196ed2ff9ecdcdd814e1fb46",
+    "workflowRun": "https://github.com/W-World-Labs/w-sim/actions/runs/43509779804",
+    "artifactId": 14078214382,
     "githubArtifactRetentionDays": 7,
     "all_consumed_inputs_vendored": true
   },

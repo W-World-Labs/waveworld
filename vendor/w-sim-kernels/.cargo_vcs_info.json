@@ -1,6 +1,6 @@
 {
   "git": {
-    "sha1": "f558f268922e498cd235c468ee7044586e23a24b"
+    "sha1": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
   },
   "path_in_vcs": "crates/w-sim-kernels"
 }
