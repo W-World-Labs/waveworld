@@ -42,14 +42,13 @@ describe('formal SPA Radar bootstrap gate', () => {
     expect(() => validateFormalSpaHtml(html)).toThrow(message)
   })
 
-  it('pins the formal binding in source and both build-to-deploy workflows', () => {
+  it('pins the formal binding in source and the reviewed public build/archive workflow', () => {
     const shell = readFileSync(new URL('../../index.html', import.meta.url), 'utf8')
     expect(() => validateFormalSpaHtml(shell)).not.toThrow()
 
-    const ci = readFileSync(new URL('../../.gitea/workflows/ci.yml', import.meta.url), 'utf8')
+    const ci = readFileSync(new URL('../../.github/workflows/source.yml', import.meta.url), 'utf8')
     expect(ci).toContain('npm run check:formal-spa')
-    const deploy = readFileSync(new URL('../../.gitea/workflows/deploy.yml', import.meta.url), 'utf8')
-    expect(deploy).toContain('Download the exact main CI release artifact')
-    expect(deploy).toContain('Verify the immutable release package')
+    expect(ci).toContain('python3 scripts/package-public-source.py "$RUNNER_TEMP/waveworld-source"')
+    expect(ci).toContain('name: waveworld-source-${{ github.sha }}')
   })
 })
