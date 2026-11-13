@@ -45,6 +45,14 @@ arbitrary user input or extracted output.
   components under `scripts/research/software-cases/`: CalculiX, cclib, CP2K,
   EnergyPlus, Frame3DD, LAMMPS, MOOSE and Quantum ESPRESSO. Their terms remain
   authoritative for those inputs; the root MIT license does not replace them.
+- `src/lib/sim/fixtures/calculix-orthotropic-engineering-constants.inp`
+  retains three material-card lines from the public CalculiX `test/shell4.inp`
+  at revision `e9e57edea350a6097d0b3cddfc22e6f1d7680887`, lines1673-1675.
+  This is an upstream import fixture, not W-authored synthetic data or proof of
+  CalculiX/Abaqus execution or engineering equivalence. Its original GPLv2 text
+  is retained at `scripts/research/software-cases/calculix/LICENSE`; the root
+  MIT grant does not relicense that input. Only the private local checkout path
+  in the attribution comment was replaced; material cards and constants are unchanged.
 - The paired experimental curves under `research/golden-case/` are from Elin
   Sandberg, Chinmaya V. Srambickal, Joachim Piguet, Haichun Liu and Jerker
   Widengren, Zenodo record [7469900](https://doi.org/10.5281/zenodo.7469900),

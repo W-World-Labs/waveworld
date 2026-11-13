@@ -1,5 +1,5 @@
 ** Source: CalculiX test deck (not an Abaqus execution fixture)
-** Authored synthetic orthotropic import example; not a vendor-validation oracle.
+** Upstream: CalculiX test/shell4.inp, lines 1673-1675; import fixture, not a validation oracle.
 ** Revision: e9e57edea350a6097d0b3cddfc22e6f1d7680887
 ** Units: unspecified in source
 ** Following source context defines an initial temperature field of 295.00.
