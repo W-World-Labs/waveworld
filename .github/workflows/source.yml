@@ -62,6 +62,12 @@ jobs:
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: '22'
+      - name: Critical npm dependency advisory gate
+        run: |
+          npm audit --package-lock-only --ignore-scripts --audit-level=critical --fetch-retries=1 --fetch-timeout=30000 --registry=https://registry.npmjs.org
+          npm --prefix apps/host audit --package-lock-only --ignore-scripts --audit-level=critical --fetch-retries=1 --fetch-timeout=30000 --registry=https://registry.npmjs.org
+          npm --prefix apps/lab audit --package-lock-only --ignore-scripts --audit-level=critical --fetch-retries=1 --fetch-timeout=30000 --registry=https://registry.npmjs.org
+          npm --prefix apps/lab/agent audit --package-lock-only --ignore-scripts --audit-level=critical --fetch-retries=1 --fetch-timeout=30000 --registry=https://registry.npmjs.org
       - name: Explicit reviewed source-asset preparation
         run: node scripts/prepare-source-assets.mjs
       - name: Locked public dependencies

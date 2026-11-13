@@ -16,7 +16,7 @@
     "preview": "vite preview",
     "test": "node scripts/ci/run-tests.mjs",
     "test:unit": "vitest run --exclude src/lib/knowledge-db/edge-detail-p95-smoke.test.ts",
-    "test:perf": "vitest run src/lib/knowledge-db/edge-detail-p95-smoke.test.ts --pool=forks --maxWorkers=1 --minWorkers=1 --no-file-parallelism",
+    "test:perf": "vitest run src/lib/knowledge-db/edge-detail-p95-smoke.test.ts --pool=forks --maxWorkers=1 --no-file-parallelism",
     "test:golden": "node --test scripts/research/golden-case.test.mjs && node --import tsx --test scripts/research/run-golden-case.test.ts scripts/research/diagnose-golden-gpu.test.ts scripts/research/preregistration-v2-draft.test.ts",
     "golden:verify": "node scripts/research/golden-case.mjs verify",
     "golden:run": "tsx scripts/research/run-golden-case.ts",
@@ -49,13 +49,13 @@
     "coverage:capability": "node scripts/loops/capability-coverage.mjs",
     "coverage:capability:json": "node scripts/loops/capability-coverage.mjs --json",
     "coverage:capability:strict": "node scripts/loops/capability-coverage.mjs --strict",
-    "test:smoke": "vitest run src/lib/sim/software-cases.test.ts src/lib/sim/software-cases-exec.test.ts src/lib/sim/signal-array.test.ts src/lib/sim/transient.test.ts src/lib/sim/faraday.test.ts src/lib/sim/spectrum-runnable-algos.test.ts src/lib/sim/trilateration.test.ts src/lib/sim/tdoa.test.ts src/lib/sim/stm.test.ts src/lib/sim/afm.test.ts src/lib/sim/phasedarray.test.ts src/lib/sim/nljd.test.ts src/lib/sim/antenna.test.ts src/lib/sim/antennalink.test.ts src/lib/sim/laser.test.ts src/lib/sim/module-compute.test.ts src/data/methods/moduleRegistry.test.ts src/lib/sim/simCapabilityCatalog.test.ts src/lib/hooks/rafLoopCore.test.ts src/lib/visibilityRaf.test.ts src/lib/lab/optics-lab.test.ts src/lib/webgpu/gpuFallback.test.ts src/lib/playback.test.ts src/lib/labEntry.test.ts --maxWorkers=2 --minWorkers=1",
+    "test:smoke": "vitest run src/lib/sim/software-cases.test.ts src/lib/sim/software-cases-exec.test.ts src/lib/sim/signal-array.test.ts src/lib/sim/transient.test.ts src/lib/sim/faraday.test.ts src/lib/sim/spectrum-runnable-algos.test.ts src/lib/sim/trilateration.test.ts src/lib/sim/tdoa.test.ts src/lib/sim/stm.test.ts src/lib/sim/afm.test.ts src/lib/sim/phasedarray.test.ts src/lib/sim/nljd.test.ts src/lib/sim/antenna.test.ts src/lib/sim/antennalink.test.ts src/lib/sim/laser.test.ts src/lib/sim/module-compute.test.ts src/data/methods/moduleRegistry.test.ts src/lib/sim/simCapabilityCatalog.test.ts src/lib/hooks/rafLoopCore.test.ts src/lib/visibilityRaf.test.ts src/lib/lab/optics-lab.test.ts src/lib/webgpu/gpuFallback.test.ts src/lib/playback.test.ts src/lib/labEntry.test.ts --maxWorkers=2",
     "test:navigation": "node scripts/ci/navigation-smoke.mjs",
     "test:jobs-ui": "node scripts/ci/jobs-ui-smoke.mjs",
     "test:module-ui": "node scripts/ci/simulation-module-smoke.mjs",
     "test:agent:browser": "node scripts/ci/wsim-vite-kernel-smoke.mjs && NODE_PATH=\"$PWD/apps/host/node_modules\" tsx --tsconfig apps/host/tsconfig.json scripts/ci/browser-agent-smoke.ts",
     "test:agent:browser:gpu": "npm run test:agent:browser -- --webgpu",
-    "test:software-cases": "WAVEWORLD_SOFTWARE_CASES_FULL=1 vitest run src/lib/sim/software-cases.test.ts src/lib/sim/software-cases-exec.test.ts src/lib/sim/module-compute.test.ts --maxWorkers=2 --minWorkers=1",
+    "test:software-cases": "WAVEWORLD_SOFTWARE_CASES_FULL=1 vitest run src/lib/sim/software-cases.test.ts src/lib/sim/software-cases-exec.test.ts src/lib/sim/module-compute.test.ts --maxWorkers=2",
     "test:structural-result": "NODE_PATH=\"$PWD/apps/host/node_modules\" tsx --tsconfig apps/host/tsconfig.json --test scripts/ci/structural-result-smoke.ts",
     "preinstall": "node scripts/verify-wsim-vendor.mjs",
     "prebuild": "node scripts/prepare-source-assets.mjs"
@@ -87,7 +87,7 @@
     "tailwindcss": "^3.4.19",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
-    "vite": "^5.4.21",
-    "vitest": "^2.1.9"
+    "vite": "^6.4.6",
+    "vitest": "^4.1.12"
   }
 }

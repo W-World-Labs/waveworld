@@ -83,3 +83,11 @@ Public builds retain meaningful auth/isolation/contract gates and never use
 production secrets or publish user input/review reports as artifacts.
 Private forge/deployment metadata cases are explicitly reported as skipped;
 source authentication, nonce, ownership and tenant-isolation checks remain active.
+
+Dependency security review (2026-11-14): the Vite/Vitest development toolchain
+uses6.4.6/4.1.12, removing the former three critical advisories and obsolete
+Tinypool/vite-node chain. Existing tests and production dependencies are retained.
+Known high/moderate/low findings remain in the root, Host and Lab dependency
+trees; their production reachability and fixes are still pending. CI checks all
+four locks and rejects critical findings while reporting every severity. Passing
+this source gate does not establish complete runtime security or engineering acceptance.
