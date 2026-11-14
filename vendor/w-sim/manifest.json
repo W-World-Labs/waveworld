@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "W-World-Labs/w-sim",
-    "revision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6",
+    "revision": "84114464115e9111bc4304068223f4025295b6b5",
     "workingTreeClean": true
   },
   "roots": [
@@ -36,7 +36,7 @@
         "LICENSE"
       ],
       "dependencies": {},
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/ems-import",
@@ -51,7 +51,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/fem-import",
@@ -66,7 +66,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/kit",
@@ -81,7 +81,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/lammps-import",
@@ -96,7 +96,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/msh-import",
@@ -111,7 +111,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/openfoam-import",
@@ -126,7 +126,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/runtime",
@@ -141,7 +141,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solver-conformance",
@@ -156,7 +156,7 @@
       "dependencies": {
         "@w-sim/contracts": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-acoustics",
@@ -172,7 +172,7 @@
         "@w-sim/contracts": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-em-fdtd",
@@ -188,7 +188,7 @@
         "@w-sim/contracts": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-export-report",
@@ -205,14 +205,14 @@
         "@w-sim/solver-conformance": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-lbm",
       "version": "0.3.0",
       "filename": "w-sim-solvers-lbm-0.3.0.tgz",
-      "sha256": "6d9b8c5c3f7f8433a53ab46820978a9673c3845e08657cf3b23a82ba9487bd22",
-      "sizeBytes": 665219,
+      "sha256": "ab29aa1a65099a8f48f078f476ffa64c98a8b73f875fde2b8051a3937f5fc7dc",
+      "sizeBytes": 667582,
       "license": "MIT",
       "licenseFiles": [
         "LICENSE",
@@ -227,7 +227,7 @@
         "@w-sim/contracts": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-md",
@@ -243,7 +243,7 @@
         "@w-sim/contracts": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-path-experiment",
@@ -260,7 +260,7 @@
         "@w-sim/solver-conformance": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-structural",
@@ -276,7 +276,7 @@
         "@w-sim/contracts": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     },
     {
       "name": "@w-sim/solvers-thermal",
@@ -292,7 +292,7 @@
         "@w-sim/contracts": "0.3.0",
         "@w-sim/kit": "0.3.0"
       },
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     }
   ],
   "rustCrates": [
@@ -300,8 +300,8 @@
       "name": "w-sim-kernels",
       "version": "0.1.0",
       "filename": "w-sim-kernels-0.1.0.crate",
-      "sha256": "08d179a39ba0b22579cd3aff05c8870f057cb69d5b5d8a2cb2a9f0c514bb574b",
-      "sizeBytes": 567387,
+      "sha256": "1cf0ec7653a97045cbbe46618bf91383cbbc3ad61c108973657f1e0c9dc0c296",
+      "sizeBytes": 567519,
       "license": "MIT",
       "licenseFile": "LICENSE",
       "dependencies": [
@@ -318,7 +318,7 @@
           "registry": null
         }
       ],
-      "sourceRevision": "1948ce2d2ef886b14f597eccd05e4ce317ea3ec6"
+      "sourceRevision": "84114464115e9111bc4304068223f4025295b6b5"
     }
   ],
   "licenseFiles": [

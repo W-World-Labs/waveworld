@@ -25,7 +25,7 @@ try {
   rustc([...libraryArgs, '--target', 'wasm32-unknown-unknown', '-o', wasmLib]);
   rustc([abi, '--edition', '2021', '--target', 'wasm32-unknown-unknown', '--crate-type', 'cdylib',
     '--extern', `w_sim_kernels=${wasmLib}`, '-O', '-C', 'panic=abort', '-C', 'link-arg=-zstack-size=16384', '-o', wasm]);
-  const module = new WebAssembly.Module(readFileSync(wasm));
+  const module = new WebAssembly.Module(readFileSync(process.env.WSIM_PARITY_WASM ?? wasm));
   assert.deepEqual(WebAssembly.Module.imports(module), []);
   const { exports: e } = new WebAssembly.Instance(module);
   assert.equal(e.abi_version(), 11);

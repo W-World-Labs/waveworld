@@ -281,6 +281,29 @@ fn divergence(c: &FluidConfig, vx: &[f32], vy: &[f32], div: &mut [f32]) -> Resul
     bnd(c, 0, div)
 }
 
+// Specialize the invariant low-word choice once per full residual pass.
+fn projection_residual<const HAS_LOW: bool>(
+    n: usize,
+    p: &[f32],
+    div: &[f32],
+    lo: &[f32],
+    mut p_max: f64,
+) -> (f64, f64) {
+    let mut residual: f64 = 0.;
+    for j in 1..n - 1 {
+        for i in 1..n - 1 {
+            let k = i + j * n;
+            let pair = |k: usize| p[k] as f64 + if HAS_LOW { lo[k] as f64 } else { 0. };
+            let pk = pair(k);
+            let r = div[k] as f64
+                - (4. * pk - pair(k - 1) - pair(k + 1) - pair(k - n) - pair(k + n));
+            residual = residual.max(r.abs());
+            p_max = p_max.max(pk.abs());
+        }
+    }
+    (residual, p_max)
+}
+
 /// Convergent pressure projection: in-place successive over-relaxation on the
 /// five-point Poisson equation `4p - Σp_nb = div`, iterated until the true f64
 /// residual `||div - L·p||∞` meets `max(1e-6·||div||∞, storage floor)` or the
@@ -361,22 +384,10 @@ fn projection(
         SOLVE_STORE_TOL
     };
     // Exact f64 residual r = div - L·p of the current stored iterate.
-    let mut residual: f64 = 0.;
-    let mut p_max: f64 = 0.;
-    {
-        let l = lo.as_deref();
-        for j in 1..n - 1 {
-            for i in 1..n - 1 {
-                let k = i + j * n;
-                let pair = |k: usize| p[k] as f64 + l.map_or(0., |l| l[k] as f64);
-                let pk = pair(k);
-                let r = div[k] as f64
-                    - (4. * pk - pair(k - 1) - pair(k + 1) - pair(k - n) - pair(k + n));
-                residual = residual.max(r.abs());
-                p_max = p_max.max(pk.abs());
-            }
-        }
-    }
+    let (mut residual, mut p_max) = match lo.as_deref() {
+        Some(l) => projection_residual::<true>(n, p, div, l, 0.),
+        None => projection_residual::<false>(n, p, div, &[], 0.),
+    };
     let mut iterations: u32 = 0;
     while residual > relative.max(storage * p_max).max(SOLVE_ABS_TOL) {
         if iterations >= PROJECTION_MAX_SWEEPS {
@@ -414,19 +425,10 @@ fn projection(
         }
         iterations += 1;
         if iterations % PROJECTION_RESIDUAL_EVERY == 0 || iterations == PROJECTION_MAX_SWEEPS {
-            residual = 0.;
-            let l = lo.as_deref();
-            for j in 1..n - 1 {
-                for i in 1..n - 1 {
-                    let k = i + j * n;
-                    let pair = |k: usize| p[k] as f64 + l.map_or(0., |l| l[k] as f64);
-                    let pk = pair(k);
-                    let r = div[k] as f64
-                        - (4. * pk - pair(k - 1) - pair(k + 1) - pair(k - n) - pair(k + n));
-                    residual = residual.max(r.abs());
-                    p_max = p_max.max(pk.abs());
-                }
-            }
+            (residual, p_max) = match lo.as_deref() {
+                Some(l) => projection_residual::<true>(n, p, div, l, p_max),
+                None => projection_residual::<false>(n, p, div, &[], p_max),
+            };
         }
     }
     // v -= nf·∇_forward p on every sample the backward divergence touches:
